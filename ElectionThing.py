@@ -148,9 +148,11 @@ def Candidates():
     DATA = RQT.text
     SD = BeautifulSoup(DATA, 'html.parser')
     for match in SD.find_all('div', class_ = 'col-md-3 col-sm-6 col-xs-12'):
+        members = []
         NT = match.find('h3')
         name = NT and ''.join(NT.stripped_strings)
-    return name
+        members.append(name)
+    return members
 
 #def CandidateInfo(name):
 
