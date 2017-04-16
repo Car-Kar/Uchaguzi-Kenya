@@ -30,15 +30,13 @@ def GetMessages():
     for message in messages['entry']:
         for msg in message['messaging']:
             SenderID = msg['sender']['id']
-            MessageText = msg['message']['text']
-            RecipientID = msg['recipient']['id']
             if msg.get('message'):
                 if MessageText.lower() == 'hi' or MessageText.lower() == 'hello' or MessageText.lower == 'hey':
                     SendMessage(SenderID, HelloMessage)
                     CampaignMenu(SenderID)
-            if msg.get('postback'):
+            '''if msg.get('postback'):
                 if MessageText == 'Presidential Elections':
-                    SendMessage(SenderID, 'K')
+                    SendMessage(SenderID, '')'''
 
 
   return 'ok', 200
