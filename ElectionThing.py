@@ -4,7 +4,7 @@ import requests
 
 app = Flask(__name__)
 
-PAT = 'EAAENedDtJT4BAJQYNjPodckHZCQjwJLHikLzCd7H4SH6ZANAjiZCh9jNxxptiOuoZBTbf15GgDx6EnBHLNf12kC2pYUU27QQEnfZCQw1KLTN5MmSddh1I4AHNr4qOUF5shMrFfNqzTwIiZABEqIWot'
+PAT = 'EAAENedDtJT4BAEgVkRvp8gKskLKdi2VjGIXj30o6LNUuK3i07be220JnOfxIyeqB5B9Xag1AhaR4kHEgXyf5TOHSvOymLps6xOT77Da139Gemt3OixtonTLLWlfnx2azuULens9o0Cgx1QhZCCAmWYZAHYsZBZAzWEbT9JP8OAZDZD'
 VerifyToken = 'test-token'
 
 HelloMessage = """
@@ -57,6 +57,11 @@ def SendMessage(AccessToken, RecipientID, Text):
     r = requests.post('https://graph.facebook.com/v2.8/me/messages', params=parameters, headers=headers, data=data)
     if r.status_code != 200:
         print(r.text)
+
+def Name(name):
+    name = name.split()
+    name = '-'.join(name)
+    return name.lower()
 
 if __name__ == '__main__':
   app.run(debug = True)
