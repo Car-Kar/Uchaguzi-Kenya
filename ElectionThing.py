@@ -39,7 +39,8 @@ def GetMessages():
 
 
 def SendMessage(RecipientID, Text):
-    print('Sending message to {0}').format(RecipientID)
+    print(('Sending message to {0}').format(RecipientID))
+    
     ''' parameters = {
     'access-token' : AccessToken
     }'''
