@@ -50,6 +50,7 @@ def GetMessages():
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Presidential Elections':
                     names = Candidates()
+                    print(names)
                     SendMessage(SenderID, names)
                     SendMessage(SenderID, MoreInfo)
 
