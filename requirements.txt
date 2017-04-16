@@ -7,3 +7,4 @@ olefile==0.44
 requests==2.13.0
 Werkzeug==0.12.1
 gunicorn==19.6.0
+beautifulsoup4==4.5.3
