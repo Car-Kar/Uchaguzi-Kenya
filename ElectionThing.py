@@ -25,7 +25,7 @@ def verification():
 @app.route('/', methods=['POST'])
 def GetMessages():
   messages = request.get_json
-  if data['object'] == 'page':
+  if messages['object'] == 'page':
   	for message in messages['entry']:
   		for msg in message['messaging']:
   			SenderID = msg['sender']['id']
