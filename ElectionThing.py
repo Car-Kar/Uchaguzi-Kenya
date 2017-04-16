@@ -152,7 +152,7 @@ def Candidates():
         NT = match.find('h3')
         name = NT and ''.join(NT.stripped_strings)
         
-    return names
+    return name
 
 #def CandidateInfo(name):
 
