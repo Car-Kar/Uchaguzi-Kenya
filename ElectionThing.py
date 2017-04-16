@@ -38,7 +38,7 @@ def GetMessages():
   return 'ok', 200
 
 
-def SendMessage(VerifyToken, RecipientID, Text):
+def SendMessage(RecipientID, Text):
   """Send the message text to recipient with id recipient.
   """
 
@@ -53,7 +53,7 @@ def SendMessage(VerifyToken, RecipientID, Text):
   		'id': 'RecipientID'
   	},
   	'message' : {
-  		'text': 'message_text'
+  		'text': Text
   	}
   	})
   r = requests.post('https://graph.facebook.com/v2.6/me/messages', params = parameters, headers = headers, data = data)
