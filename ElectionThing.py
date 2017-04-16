@@ -33,15 +33,13 @@ def GetMessages():
   			RecipientID = msg['recipient']['id']
   			if msg.get('message'):
   				if MessageText.lower() == 'hi' or MessageText.lower() == 'hello':
-  					SendMessage(SenderID, HelloMessage)
+  					SendMessage(SenderID, 'KK')
 
   return 'ok', 200
 
 
 def SendMessage(RecipientID, Text):
-  """Send the message text to recipient with id recipient.
-  """
-
+	print('Sending message')
   parameters = {
   	'access-token' : 'VerifyToken'
   }
@@ -56,7 +54,7 @@ def SendMessage(RecipientID, Text):
   		'text': Text
   	}
   	})
-  r = requests.post('https://graph.facebook.com/v2.6/me/messages', params = parameters, headers = headers, data = data)
+  r = requests.post('https://graph.facebook.com/v2.6/me/messages', params=parameters, headers=headers, data=data)
 
 if __name__ == '__main__':
   app.run(debug = True)
