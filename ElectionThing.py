@@ -32,7 +32,7 @@ def GetMessages():
   		MessageText = msg['message']['text']
   		RecipientID = msg['recipient']['id']
   		if msg.get('message'):
-  			if MessageText.lower() == 'hi' or MessageText.lower() = 'Hello':
+  			if MessageText.lower() == 'hi' or MessageText.lower() == 'hello':
   				SendMessage(SenderID, HelloMessage)
 
   return 'ok', 200
