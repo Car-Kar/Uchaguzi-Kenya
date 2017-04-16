@@ -6,26 +6,23 @@ app = Flask(__name__)
 
 # This needs to be filled with the Page Access Token that will be provided
 # by the Facebook App that will be created.
-PAT = 'EAAFvjgxZA6b4BAMwbaoaAip6JuOa6acItZA52DG3mHjXGoGDt0lc0AHW1qLSrWBKaZAfIwgErI08aLLPz8wbfkEMvdoE4v3vY6h9imKiL3eldaUqXwkCFl5kVUC2bfCmvr8YtvLOAVOxY4N3FnLxOUTdwdaC0K1IHPZBcRt2CgZDZD'
-
+PAT = 'EAAENedDtJT4BACi4y6Hgh9YJI90jYIDHFvlZBxXFC66ZABnjpfsdU751tmPK6gM0wBm8YoZBDzQZB6DMZBAhTwLtIIZA4kjxyRMZCeJxvKRzZBAsawSOZCZCN4xCuiUJX7ZAx24s5LBr9zrPSY8a7iiDvD91oJNCZBf4UontI3m6eth4ZCAZDZD'
 
 @app.route('/', methods=['GET'])
 def handle_verification():
-  print "Handling Verification."
   if request.args.get('hub.verify_token', '') == 'test-token':
-    print "Verification successful!"
+    print("Verification successful!")
     return request.args.get('hub.challenge', '')
   else:
-    print "Verification failed!"
+    print("Verification failed!")
     return 'Error, wrong validation token'
 
 @app.route('/', methods=['POST'])
 def handle_messages():
-  print "Handling Messages"
   payload = request.get_data()
   print payload
   for sender, message in messaging_events(payload):
-    print "Incoming from %s: %s" % (sender, message)
+    print("Incoming from %s: %s" % (sender, message))
     send_message(PAT, sender, message)
   return "ok"
 
