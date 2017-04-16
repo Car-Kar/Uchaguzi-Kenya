@@ -41,7 +41,7 @@ def GetMessages():
 def SendMessage(RecipientID, Text):
     print('Sending message')
     parameters = {
-    'access-token' : 'VerifyToken'
+    'access-token' : PAT
     }
     headers = {
     'Content-Type' : 'application/json'
