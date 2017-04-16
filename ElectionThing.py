@@ -23,7 +23,7 @@ def Candidates():
     SD = BeautifulSoup(DATA)
     for match in SD.find_all('div', class_ = 'col-md-3 col-sm-6 col-xs-12'):
         NT = match.find('h3')
-        name = NT and ''.join(name_tag.stripped_strings)
+        name = NT and ''.join(NT.stripped_strings)
         return(name)
 
 
