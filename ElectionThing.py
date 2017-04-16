@@ -33,7 +33,7 @@ def GetMessages():
             RecipientID = msg['recipient']['id']
             if msg.get('message'):
                 if MessageText.lower() == 'hi' or MessageText.lower() == 'hello':
-                    SendMessage(SenderID, 'KK')
+                    SendMessage(SenderID, HelloMessage)
 
   return 'ok', 200
 
