@@ -46,15 +46,15 @@ def SendMessage(RecipientID, Text):
     headers = {
     'Content-Type' : 'application/json'
     }
-    data = json.dumps({
+    data = {
         'recipient': {
         'id': 'RecipientID'
     },
     'message' : {
         'text': Text
     }
-    })
-    r = requests.post('https://graph.facebook.com/v2.6/me/messages', params=parameters, headers=headers, data=data)
+    }
+    r = requests.post('https://graph.facebook.com/v2.6/me/messages', params=parameters, headers=headers, json=data)
 
 if __name__ == '__main__':
   app.run(debug = True)
