@@ -31,6 +31,7 @@ def GetMessages():
         for msg in message['messaging']:
             SenderID = msg['sender']['id']
             if msg.get('message'):
+                MessageText = msg['message']['text']
                 if MessageText.lower() == 'hi' or MessageText.lower() == 'hello' or MessageText.lower == 'hey':
                     SendMessage(SenderID, HelloMessage)
                     CampaignMenu(SenderID)
