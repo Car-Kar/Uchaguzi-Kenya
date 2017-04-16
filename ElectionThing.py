@@ -165,7 +165,7 @@ def CandidateInfo(name):
     RQT2 = requests.get(Url)
     DATA2 = RQT2.text
     SD2 = BeautifulSoup(DATA2, 'html.parser')
-    for match in sp.find_all('div', class_='member-content'):
+    for match in SD2.find_all('div', class_='member-content'):
         info_tag = match.find('p')
         info = info_tag and ' '.join(info_tag.stripped_strings)
         return info
