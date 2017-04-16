@@ -45,7 +45,7 @@ def GetMessages():
                 if MessageText.lower() == 'hi' or MessageText.lower() == 'hello' or MessageText.lower == 'hey':
                     SendMessage(SenderID, HelloMessage)
                     CampaignMenu(SenderID)
-                if MessageText.lower() == 
+                #if MessageText.lower() == 
             if msg.get('postback'):
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Presidential Elections':
@@ -152,7 +152,7 @@ def Candidates():
         name = NT and ''.join(NT.stripped_strings)
     return name
 
-def CandidateInfo(name):
+#def CandidateInfo(name):
 
 
 if __name__ == '__main__':
