@@ -20,11 +20,11 @@ def Candidates():
     Url = BaseUrl + 'members/presidential-candidates/'
     RQT = requests.get(Url)
     DATA = RQT.text
-    SD = BeautifulSoup(DATA)
+    SD = BeautifulSoup(DATA, 'html.parser')
     for match in SD.find_all('div', class_ = 'col-md-3 col-sm-6 col-xs-12'):
         NT = match.find('h3')
         name = NT and ''.join(NT.stripped_strings)
-        return(name)
+        print(name)
 
 
 @app.route('/', methods=['GET'])
