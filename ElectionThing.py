@@ -25,14 +25,15 @@ def verification():
 @app.route('/', methods=['POST'])
 def GetMessages():
   messages = request.get_json
-  for message in messages['entry']:
-  	for msg in message['messaging']:
-  		SenderID = msg['sender']['id']
-  		MessageText = msg['message']['text']
-  		RecipientID = msg['recipient']['id']
-  		if msg.get('message'):
-  			if MessageText.lower() == 'hi' or MessageText.lower() == 'hello':
-  				SendMessage(SenderID, HelloMessage)
+  if data['object'] == 'page':
+  	for message in messages['entry']:
+  		for msg in message['messaging']:
+  			SenderID = msg['sender']['id']
+  			MessageText = msg['message']['text']
+  			RecipientID = msg['recipient']['id']
+  			if msg.get('message'):
+  				if MessageText.lower() == 'hi' or MessageText.lower() == 'hello':
+  					SendMessage(SenderID, HelloMessage)
 
   return 'ok', 200
 
