@@ -22,6 +22,20 @@ def verification():
     print("Verification failed!")
     return 'Error, wrong validation token'
 
+def GreetingText(RecipientID):
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        'setting-type' : 'greeting',
+        'greeting' : {
+        'text' : 'Hi!'
+        }
+
+        }
+        )
+    r = requests.post('https://graph.facebook.com/v2.8/me/thread_settings/?access_token=' + PAT,  headers=headers, data=data)
+
 @app.route('/', methods=['POST'])
 def GetMessages():
   messages = request.get_json()
@@ -37,10 +51,25 @@ def GetMessages():
 
   return 'ok', 200
 
+def GreetingText(RecipientID):
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        'setting-type' : 'greeting',
+        'greeting' : {
+        'text' : 'Hi!'
+        }
+
+        }
+        )
+    r = requests.post('https://graph.facebook.com/v2.8/me/messages/?access_token=' + PAT,  headers=headers, data=data)
+    
+
 
 def SendMessage(RecipientID, Text):
     print(('Sending message to {0}').format(RecipientID))
-    
+
     ''' parameters = {
     'access-token' : AccessToken
     }'''
