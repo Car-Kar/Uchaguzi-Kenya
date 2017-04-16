@@ -1,6 +1,8 @@
 from flask import Flask, request
 import json
 import requests
+from bs4 import BeautifulSoup
+
 
 app = Flask(__name__)
 
@@ -11,6 +13,18 @@ HelloMessage = """
 Hello!
 My name is ElectionBot, and I provide you with information about the 2017 National Elections candidates.
 """
+
+BaseUrl = 'http://myaspirantmyleader.co.ke/'
+
+def Candidates():
+    Url = BaseUrl + 'members/presidential-candidates/'
+    RQT = requests.get(Url)
+    DATA = RQT.text
+    SD = BeautifulSoup(DATA)
+    for match in SD.find_all('div', class_ = 'col-md-3 col-sm-6 col-xs-12'):
+        NT = match.find('h3')
+        name = NT and ''.join(name_tag.stripped_strings)
+        return(name)
 
 
 @app.route('/', methods=['GET'])
@@ -38,7 +52,8 @@ def GetMessages():
             if msg.get('postback'):
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Presidential Elections':
-                    SendMessage(SenderID, 'K')
+                    names = Candidates()
+                    SendMessage(SenderID, names)
 
 
   return 'ok', 200
