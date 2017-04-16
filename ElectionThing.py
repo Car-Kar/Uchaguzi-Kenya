@@ -54,7 +54,7 @@ def SendMessage(RecipientID, Text):
         'text': Text
     }
     })
-    r = requests.post('https://graph.facebook.com/v2.8/me/messages/?access_token' + PAT,  headers=headers, data=data)
+    r = requests.post('https://graph.facebook.com/v2.8/me/messages/?access_token=' + PAT,  headers=headers, data=data)
     if r.status_code != 200:
         print(r.text)
 
