@@ -22,19 +22,6 @@ def verification():
     print("Verification failed!")
     return 'Error, wrong validation token'
 
-def GreetingText(RecipientID):
-    headers = {
-    'Content-Type' : 'application/json'
-    }
-    data = json.dumps({
-        'setting-type' : 'greeting',
-        'greeting' : {
-        'text' : 'Hi!'
-        }
-
-        }
-        )
-    r = requests.post('https://graph.facebook.com/v2.8/me/thread_settings/?access_token=' + PAT,  headers=headers, data=data)
 
 @app.route('/', methods=['POST'])
 def GetMessages():
@@ -46,12 +33,15 @@ def GetMessages():
             MessageText = msg['message']['text']
             RecipientID = msg['recipient']['id']
             if msg.get('message'):
-                if MessageText.lower() == 'hi' or MessageText.lower() == 'hello':
+                if MessageText.lower() == 'hi' or MessageText.lower() == 'hello' or MessageText.lower == 'hey':
                     SendMessage(SenderID, HelloMessage)
+                    CampaignMenu(SenderID)
+
 
   return 'ok', 200
 
-def GreetingText(RecipientID):
+
+'''def GreetingText(RecipientID):
     headers = {
     'Content-Type' : 'application/json'
     }
@@ -65,7 +55,7 @@ def GreetingText(RecipientID):
         )
     r = requests.post('https://graph.facebook.com/v2.8/me/messages/?access_token=' + PAT,  headers=headers, data=data)
     
-
+'''
 
 def SendMessage(RecipientID, Text):
     print(('Sending message to {0}').format(RecipientID))
@@ -87,6 +77,48 @@ def SendMessage(RecipientID, Text):
     r = requests.post('https://graph.facebook.com/v2.8/me/messages/?access_token=' + PAT,  headers=headers, data=data)
     if r.status_code != 200:
         print(r.text)
+
+def CampaignMenu(RecipientID):
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        'recipient' : {
+            'id' : RecipientID
+        },
+        'message' : {
+            'attachment' : {
+                'type' : 'template',
+                'payload' : {
+                    'template_type' : 'button',
+                    'text' : 'What election level do you want to know more about?',
+                    'buttons' : [
+                        {
+                            'type' : 'postback',
+                            'title' : 'Presidential Elections',
+                            "payload":"USER_DEFINED_PAYLOAD"
+                        },
+                        {
+                            'type' : 'postback',
+                            'title' : 'Governor Elections',
+                            "payload":"USER_DEFINED_PAYLOAD"
+                        },
+                        {
+                            'type' : 'postback',
+                            'title' : 'Woman Representative',
+                            "payload":"USER_DEFINED_PAYLOAD"
+                        }
+
+                    ]
+
+                }
+            }
+        }
+
+        }
+        )
+    r = requests.post('https://graph.facebook.com/v2.8/me/messages/?access_token=' + PAT,  headers=headers, data=data)
+
 
 def Name(name):
     name = name.split()
