@@ -5,8 +5,8 @@ import tokens
 
 app = Flask(__name__)
 
-PAT = tokens.PAT
-VerifyToken = tokens.token
+PAT = 'EAAENedDtJT4BAJQYNjPodckHZCQjwJLHikLzCd7H4SH6ZANAjiZCh9jNxxptiOuoZBTbf15GgDx6EnBHLNf12kC2pYUU27QQEnfZCQw1KLTN5MmSddh1I4AHNr4qOUF5shMrFfNqzTwIiZABEqIWot'
+VerifyToken = 'test-token'
 
 HelloMessage = """
 Hello!
