@@ -26,35 +26,37 @@ def verification():
 def GetMessages():
   messages = request.get_json()
   if messages['object'] == 'page':
-  	for message in messages['entry']:
-  		for msg in message['messaging']:
-  			SenderID = msg['sender']['id']
-  			MessageText = msg['message']['text']
-  			RecipientID = msg['recipient']['id']
-  			if msg.get('message'):
-  				if MessageText.lower() == 'hi' or MessageText.lower() == 'hello':
-  					SendMessage(SenderID, 'KK')
+    for message in messages['entry']:
+        for msg in message['messaging']:
+            SenderID = msg['sender']['id']
+            MessageText = msg['message']['text']
+            RecipientID = msg['recipient']['id']
+            if msg.get('message'):
+                if MessageText.lower() == 'hi' or MessageText.lower() == 'hello':
+                    SendMessage(SenderID, 'KK')
 
   return 'ok', 200
 
 
 def SendMessage(RecipientID, Text):
-	print('Sending message')
-	parameters = {
-  	'access-token' : 'VerifyToken'
-  	}
-  	headers = {
-  	'Content-Type' : 'application/json'
-  	}
-  	data = json.dumps({
-  		'recipient': {
-  		'id': 'RecipientID'
-  	},
-  	'message' : {
-  		'text': Text
-  	}
-  	})
-  	r = requests.post('https://graph.facebook.com/v2.6/me/messages', params=parameters, headers=headers, data=data)
+    print('Sending message')
+    parameters = {
+    'access-token' : 'VerifyToken'
+    }
+
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+
+    data = json.dumps({
+        'recipient': {
+        'id': 'RecipientID'
+    },
+    'message' : {
+        'text': Text
+    }
+    })
+    r = requests.post('https://graph.facebook.com/v2.6/me/messages', params=parameters, headers=headers, data=data)
 
 if __name__ == '__main__':
   app.run(debug = True)
