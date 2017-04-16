@@ -43,11 +43,9 @@ def SendMessage(RecipientID, Text):
     parameters = {
     'access-token' : 'VerifyToken'
     }
-
     headers = {
     'Content-Type' : 'application/json'
     }
-
     data = json.dumps({
         'recipient': {
         'id': 'RecipientID'
