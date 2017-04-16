@@ -35,9 +35,10 @@ def GetMessages():
                 if MessageText.lower() == 'hi' or MessageText.lower() == 'hello' or MessageText.lower == 'hey':
                     SendMessage(SenderID, HelloMessage)
                     CampaignMenu(SenderID)
-            '''if msg.get('postback'):
-                if MessageText == 'Presidential Elections':
-                    SendMessage(SenderID, '')'''
+            if msg.get('postback'):
+                PostbackText = msg['postback']['payload']
+                    if PostbackText == 'Presidential Elections'
+                    SendMessage(SenderID, 'K')
 
 
   return 'ok', 200
@@ -98,7 +99,7 @@ def CampaignMenu(RecipientID):
                         {
                             'type' : 'postback',
                             'title' : 'Presidential Elections',
-                            "payload":"USER_DEFINED_PAYLOAD"
+                            "payload": 'Presidential Elections'
                         },
                         {
                             'type' : 'postback',
