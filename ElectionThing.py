@@ -33,16 +33,16 @@ def GetMessages():
             RecipientID = msg['recipient']['id']
             if msg.get('message'):
                 if MessageText.lower() == 'hi' or MessageText.lower() == 'hello':
-                    SendMessage(PAT, SenderID, 'KK')
+                    SendMessage(SenderID, 'KK')
 
   return 'ok', 200
 
 
-def SendMessage(AccessToken, RecipientID, Text):
+def SendMessage(RecipientID, Text):
     print('Sending message')
-    parameters = {
+    ''' parameters = {
     'access-token' : AccessToken
-    }
+    }'''
     headers = {
     'Content-Type' : 'application/json'
     }
@@ -54,7 +54,7 @@ def SendMessage(AccessToken, RecipientID, Text):
         'text': Text
     }
     })
-    r = requests.post('https://graph.facebook.com/v2.8/me/messages', params=parameters, headers=headers, data=data)
+    r = requests.post('https://graph.facebook.com/v2.8/me/messages/?access_token' + PAT,  headers=headers, data=data)
     if r.status_code != 200:
         print(r.text)
 
