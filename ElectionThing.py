@@ -33,15 +33,15 @@ def GetMessages():
             RecipientID = msg['recipient']['id']
             if msg.get('message'):
                 if MessageText.lower() == 'hi' or MessageText.lower() == 'hello':
-                    SendMessage(SenderID, 'KK')
+                    SendMessage(PAT, SenderID, 'KK')
 
   return 'ok', 200
 
 
-def SendMessage(RecipientID, Text):
+def SendMessage(AccessToken, RecipientID, Text):
     print('Sending message')
     parameters = {
-    'access-token' : PAT
+    'access-token' : AccessToken
     }
     headers = {
     'Content-Type' : 'application/json'
