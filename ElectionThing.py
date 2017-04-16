@@ -37,7 +37,7 @@ def GetMessages():
                     CampaignMenu(SenderID)
             if msg.get('postback'):
                 PostbackText = msg['postback']['payload']
-                    if PostbackText == 'Presidential Elections'
+                if PostbackText == 'Presidential Elections':
                     SendMessage(SenderID, 'K')
 
 
