@@ -36,6 +36,9 @@ def GetMessages():
                 if MessageText.lower() == 'hi' or MessageText.lower() == 'hello' or MessageText.lower == 'hey':
                     SendMessage(SenderID, HelloMessage)
                     CampaignMenu(SenderID)
+            if msg.get('postback'):
+                if MessageText == 'Presidential Elections':
+                    SendMessage(SenderID, 'K')
 
 
   return 'ok', 200
