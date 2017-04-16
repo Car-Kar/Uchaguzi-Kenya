@@ -48,7 +48,7 @@ def SendMessage(RecipientID, Text):
     }
     data = json.dumps({
         'recipient': {
-        'id': 'RecipientID'
+        'id': RecipientID
     },
     'message' : {
         'text': Text
