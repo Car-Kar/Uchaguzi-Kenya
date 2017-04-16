@@ -45,7 +45,12 @@ def GetMessages():
                 if MessageText.lower() == 'hi' or MessageText.lower() == 'hello' or MessageText.lower == 'hey':
                     SendMessage(SenderID, HelloMessage)
                     CampaignMenu(SenderID)
-                #if MessageText.lower() == 
+                if 'moses' in MessageText.lower():
+                    y = 'Moses Masika Wetangula'
+                    a = CandidateInfo(y)
+                    SendMessage(SenderID, a)
+
+
             if msg.get('postback'):
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Presidential Elections':
@@ -154,7 +159,16 @@ def Candidates():
         
     return name
 
-#def CandidateInfo(name):
+def CandidateInfo(name):
+    z = Name(name)
+    Url = BaseUrl + 'member/' + z + '/'
+    RQT2 = requests.get(Url)
+    DATA2 = RQT2.text
+    SD2 = BeautifulSoup(DATA2, 'html.parser')
+    for match in sp.find_all('div', class_='member-content'):
+        info_tag = match.find('p')
+        info = info_tag and ' '.join(info_tag.stripped_strings)
+        return info
 
 
 if __name__ == '__main__':
