@@ -13,18 +13,14 @@ HelloMessage = """
 Hello!
 My name is ElectionBot, and I provide you with information about the 2017 National Elections candidates.
 """
+MoreInfo = '''
+Which candidate do you want to know more about?
+
+(Send me his or her name.)
+
+'''
 
 BaseUrl = 'http://myaspirantmyleader.co.ke/'
-
-def Candidates():
-    Url = BaseUrl + 'members/presidential-candidates/'
-    RQT = requests.get(Url)
-    DATA = RQT.text
-    SD = BeautifulSoup(DATA, 'html.parser')
-    for match in SD.find_all('div', class_ = 'col-md-3 col-sm-6 col-xs-12'):
-        NT = match.find('h3')
-        name = NT and ''.join(NT.stripped_strings)
-        print(name)
 
 
 @app.route('/', methods=['GET'])
@@ -49,11 +45,14 @@ def GetMessages():
                 if MessageText.lower() == 'hi' or MessageText.lower() == 'hello' or MessageText.lower == 'hey':
                     SendMessage(SenderID, HelloMessage)
                     CampaignMenu(SenderID)
+                if MessageText.lower() == 
             if msg.get('postback'):
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Presidential Elections':
                     names = Candidates()
                     SendMessage(SenderID, names)
+                    SendMessage(SenderID, MoreInfo)
+
 
 
   return 'ok', 200
@@ -142,6 +141,19 @@ def Name(name):
     name = name.split()
     name = '-'.join(name)
     return name.lower()
+
+def Candidates():
+    Url = BaseUrl + 'members/presidential-candidates/'
+    RQT = requests.get(Url)
+    DATA = RQT.text
+    SD = BeautifulSoup(DATA, 'html.parser')
+    for match in SD.find_all('div', class_ = 'col-md-3 col-sm-6 col-xs-12'):
+        NT = match.find('h3')
+        name = NT and ''.join(NT.stripped_strings)
+    return name
+
+def CandidateInfo(name):
+
 
 if __name__ == '__main__':
   app.run(debug = True)
