@@ -55,7 +55,6 @@ def GetMessages():
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Presidential Elections':
                     names = Candidates()
-                    print(names)
                     SendMessage(SenderID, names)
                     SendMessage(SenderID, MoreInfo)
 
@@ -158,7 +157,6 @@ def Candidates():
         name = NT and ''.join(NT.stripped_strings)
         print(name)
         
-    return name
 
 def CandidateInfo(name):
     z = Name(name)
