@@ -57,6 +57,7 @@ def GetMessages():
                 if PostbackText == 'Get Started':
                     SendMessage(SenderID, IntroductoryMessage)
                 elif PostbackText == 'k':
+                    SendMessage(SenderID, 'K')
                     CampaignMenu(SenderID)
                 elif PostbackText == 'VoterReg':
                     pass
