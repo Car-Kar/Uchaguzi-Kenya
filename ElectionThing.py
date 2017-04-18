@@ -11,7 +11,7 @@ VerifyToken = 'test-token'
 
 HelloMessage = """
 Hello!
-My name is ElectionBot, and I provide you with information about the 2017 National Elections candidates.
+My name is Uchaguzi, and I provide you with voter and candidate information for the 2017 National Elections.
 """
 MoreInfo = '''
 Which candidate do you want to know more about?
