@@ -62,7 +62,7 @@ def GetMessages():
 
   return 'ok', 200
 
-@app.route('/', methods=['POST'])
+'''@app.route('/', methods=['POST'])
 def GetStarted():
     headers = {
     'Content-Type' : 'application/json'
@@ -91,6 +91,14 @@ def GreetingText():
         })
     r = requests.post('https://graph.facebook.com/v2.8/me/messenger_profile?access_token=' + PAT,  headers=headers, data=data)
 
+def MainMenu():
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+
+    data = json.dumps({
+
+        })'''
 
 def SendMessage(RecipientID, Text):
     print(('Sending message to {0}').format(RecipientID))
@@ -109,6 +117,8 @@ def SendMessage(RecipientID, Text):
     r = requests.post('https://graph.facebook.com/v2.8/me/messages/?access_token=' + PAT,  headers=headers, data=data)
     if r.status_code != 200:
         print(r.text)
+
+
 
 def CampaignMenu(RecipientID):
     headers = {
