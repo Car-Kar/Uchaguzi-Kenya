@@ -33,7 +33,7 @@ def verification():
     return 'Error, wrong validation token'
 
 
-'''@app.route('/', methods=['POST'])
+@app.route('/', methods=['POST'])
 def GetMessages():
   messages = request.get_json()
   if messages['object'] == 'page':
@@ -62,7 +62,6 @@ def GetMessages():
 
   return 'ok', 200
 
-'''
 @app.route('/', methods=['POST'])
 def GetStarted():
     headers = {
@@ -77,7 +76,8 @@ def GetStarted():
         })
     r = requests.post('https://graph.facebook.com/v2.8/me/messenger_profile?access_token=' + PAT,  headers=headers, data=data)
     
-'''def SendMessage(RecipientID, Text):
+
+def SendMessage(RecipientID, Text):
     print(('Sending message to {0}').format(RecipientID))
 
     headers = {
@@ -164,6 +164,6 @@ def CandidateInfo(name):
         info = info_tag and ' '.join(info_tag.stripped_strings)
         return info
 
-'''
+
 if __name__ == '__main__':
   app.run(debug = True)
