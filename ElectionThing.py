@@ -9,16 +9,20 @@ app = Flask(__name__)
 PAT = 'EAAENedDtJT4BAEgVkRvp8gKskLKdi2VjGIXj30o6LNUuK3i07be220JnOfxIyeqB5B9Xag1AhaR4kHEgXyf5TOHSvOymLps6xOT77Da139Gemt3OixtonTLLWlfnx2azuULens9o0Cgx1QhZCCAmWYZAHYsZBZAzWEbT9JP8OAZDZD'
 VerifyToken = 'test-token'
 
-HelloMessage = """
-Hello!
-My name is Uchaguzi, and I provide you with voter and candidate information for the 2017 National Elections.
-"""
+IntroductoryMessage = ''' The 2017 Kenyan National Elections are taking place in August.
+I am a tool for you to acquire more information on voting and the vying candidates.
+I have a top-level menu which you can access at any time by pressing the menu icon (\u2630)  at the bottom to choose the option that you want.
+Go ahead, try it.
+u"\U0001F60A"
+'''
+
 MoreInfo = '''
 Which candidate do you want to know more about?
 
 (Send me his or her name.)
 
 '''
+
 
 BaseUrl = 'http://myaspirantmyleader.co.ke/'
 
@@ -53,10 +57,8 @@ def GetMessages():
 
             if msg.get('postback'):
                 PostbackText = msg['postback']['payload']
-                if PostbackText == 'Presidential Elections':
-                    names = Candidates()
-                    SendMessage(SenderID, names)
-                    SendMessage(SenderID, MoreInfo)
+                if PostbackText == 'Get Started':
+                    SendMessage(SenderID, IntroductoryMessage)
 
 
 
