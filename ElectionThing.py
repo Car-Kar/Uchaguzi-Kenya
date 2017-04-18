@@ -33,7 +33,7 @@ def verification():
     return 'Error, wrong validation token'
 
 
-@app.route('/', methods=['POST'])
+'''@app.route('/', methods=['POST'])
 def GetMessages():
   messages = request.get_json()
   if messages['object'] == 'page':
@@ -62,8 +62,9 @@ def GetMessages():
 
   return 'ok', 200
 
-
-def GreetingText(RecipientID):
+'''
+@app.route('/', methods=['POST'])
+def GetStarted():
     headers = {
     'Content-Type' : 'application/json'
     }
@@ -79,12 +80,9 @@ def GreetingText(RecipientID):
     r = requests.post('https://graph.facebook.com/v2.8/me/thread_settings/?access_token=' + PAT,  headers=headers, data=data)
     
 
-def SendMessage(RecipientID, Text):
+'''def SendMessage(RecipientID, Text):
     print(('Sending message to {0}').format(RecipientID))
 
-    ''' parameters = {
-    'access-token' : AccessToken
-    }'''
     headers = {
     'Content-Type' : 'application/json'
     }
@@ -169,6 +167,6 @@ def CandidateInfo(name):
         info = info_tag and ' '.join(info_tag.stripped_strings)
         return info
 
-
+'''
 if __name__ == '__main__':
   app.run(debug = True)
