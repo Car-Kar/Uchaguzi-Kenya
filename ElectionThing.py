@@ -64,7 +64,7 @@ def GetMessages():
                     pass
                 elif PostbackText == 'Presidential':
                     names = Candidates()
-                    CanMess = 'The' PostbackText.lower() + 'candidates are:'
+                    CanMess = 'The' + PostbackText.lower() + 'candidates are:'
                     SendMessage(SenderID, CanMess)
                     SendMessage(SenderID, names)
 
