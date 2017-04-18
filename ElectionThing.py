@@ -69,14 +69,12 @@ def GetStarted():
     'Content-Type' : 'application/json'
     }
     data = json.dumps({
-        'setting-type' : 'call_to_actions',
-        'thread-state' : 'new_thread',
-        'call_to_actions': [
+        'get_started' : 
             {
             'payload' : 'USER_DEFINED_PAYLOAD'
             }
 
-        ]})
+        })
     r = requests.post('https://graph.facebook.com/v2.8/me/messenger_profile?access_token=' + PAT,  headers=headers, data=data)
     
 
