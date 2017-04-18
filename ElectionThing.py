@@ -56,7 +56,8 @@ def GetMessages():
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Get Started':
                     SendMessage(SenderID, IntroductoryMessage)
-                elif PostbackText == 'k':
+                    CampaignMenu(SenderID)
+               ''' elif PostbackText == 'k':
                     SendMessage(SenderID, 'K')
                     CampaignMenu(SenderID)
                 elif PostbackText == 'VoterReg':
@@ -67,7 +68,7 @@ def GetMessages():
                     names = Candidates()
                     CanMess = 'The' + PostbackText.lower() + 'candidates are:'
                     SendMessage(SenderID, CanMess)
-                    SendMessage(SenderID, names)
+                    SendMessage(SenderID, names)'''
 
 
 
