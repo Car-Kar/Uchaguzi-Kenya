@@ -59,7 +59,7 @@ def GetMessages():
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Get Started':
                     SendMessage(SenderID, IntroductoryMessage)
-                elif PostbackText == 'Election Information':
+                elif PostbackText == 'ElecInfo':
                     CampaignMenu(SenderID)
 
 
