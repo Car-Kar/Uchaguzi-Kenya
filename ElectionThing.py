@@ -13,7 +13,7 @@ IntroductoryMessage = ''' The 2017 Kenyan National Elections are taking place in
 I am a tool for you to acquire more information on voting and the vying candidates.
 I have a top-level menu which you can access at any time by pressing the menu icon (\u2630)  at the bottom to choose the option that you want.
 Go ahead, try it.
-\U0001F60A \u263A \U0001F642
+\U0001F642
 '''
 
 MoreInfo = '''
@@ -59,6 +59,8 @@ def GetMessages():
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Get Started':
                     SendMessage(SenderID, IntroductoryMessage)
+                elif PostbackText == 'Election Information':
+                    CampaignMenu(SenderID)
 
 
 
@@ -140,17 +142,28 @@ def CampaignMenu(RecipientID):
                         {
                             'type' : 'postback',
                             'title' : 'Presidential Elections',
-                            'payload': 'Presidential Elections'
+                            'payload': 'presidents'
                         },
                         {
                             'type' : 'postback',
                             'title' : 'Governor Elections',
-                            'payload':"USER_DEFINED_PAYLOAD"
+                            'payload':"governors"
+                        },
+                        {
+                            'type' : 'postback',
+                            'title' : 'Senator Elections',
+                            'payload' : 'senators'
                         },
                         {
                             'type' : 'postback',
                             'title' : 'Woman Representative',
-                            'payload':"USER_DEFINED_PAYLOAD"
+                            'payload':"wom-rep"
+                        },
+                        {
+                            'type' : 'postback',
+                            'title': 'Members of Parliament',
+                            'payload' : 'mp'
+
                         }
 
                     ]
