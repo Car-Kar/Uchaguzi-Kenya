@@ -71,13 +71,12 @@ def GetStarted():
     data = json.dumps({
         'get_started' : 
             {
-            'payload' : 'USER_DEFINED_PAYLOAD'
+            'payload' : 'GET_STARTED_PAYLOAD'
             }
 
         })
     r = requests.post('https://graph.facebook.com/v2.8/me/messenger_profile?access_token=' + PAT,  headers=headers, data=data)
     
-
 '''def SendMessage(RecipientID, Text):
     print(('Sending message to {0}').format(RecipientID))
 
