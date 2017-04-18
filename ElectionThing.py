@@ -57,19 +57,6 @@ def GetMessages():
                 if PostbackText == 'Get Started':
                     SendMessage(SenderID, IntroductoryMessage)
                     CampaignMenu(SenderID)
-               ''' elif PostbackText == 'k':
-                    SendMessage(SenderID, 'K')
-                    CampaignMenu(SenderID)
-                elif PostbackText == 'VoterReg':
-                    pass
-                elif PostbackText == 'VoterReq':
-                    pass
-                elif PostbackText == 'Presidential':
-                    names = Candidates()
-                    CanMess = 'The' + PostbackText.lower() + 'candidates are:'
-                    SendMessage(SenderID, CanMess)
-                    SendMessage(SenderID, names)'''
-
 
 
 
