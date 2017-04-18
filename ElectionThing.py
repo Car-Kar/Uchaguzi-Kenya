@@ -68,13 +68,14 @@ def GetStarted():
     'Content-Type' : 'application/json'
     }
     data = json.dumps({
-        'get_started' : 
-            {
-            'payload' : 'GET_STARTED_PAYLOAD'
-            }
-
-        })
-    r = requests.post('https://graph.facebook.com/v2.8/me/messenger_profile?access_token=' + PAT,  headers=headers, data=data)
+        "setting_type": "call_to_actions",
+        "thread_state" : "new_thread",
+        "call_to_actions" : [
+        {
+             "payload" : "USER_DEFINED_PAYLOAD"
+    }]
+})
+    r = requests.post('https://graph.facebook.com/v2.8/me/thread_settings?access_token=' + PAT,  headers=headers, data=data)
     
 
 def SendMessage(RecipientID, Text):
