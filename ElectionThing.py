@@ -13,7 +13,7 @@ IntroductoryMessage = ''' The 2017 Kenyan National Elections are taking place in
 I am a tool for you to acquire more information on voting and the vying candidates.
 I have a top-level menu which you can access at any time by pressing the menu icon (\u2630)  at the bottom to choose the option that you want.
 Go ahead, try it.
-u"\U0001F60A"
+\U0001F60A \u263A \U0001F642
 '''
 
 MoreInfo = '''
