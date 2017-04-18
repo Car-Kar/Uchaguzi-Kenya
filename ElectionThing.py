@@ -89,7 +89,7 @@ def GreetingText():
         'text' : HelloMessage
         }]
         })
-    r = requests.post('https://graph.facebook.com/v2.8/me/thread_settings?access_token=' + PAT,  headers=headers, data=data)
+    r = requests.post('https://graph.facebook.com/v2.8/me/messenger_profile?access_token=' + PAT,  headers=headers, data=data)
 
 
 
