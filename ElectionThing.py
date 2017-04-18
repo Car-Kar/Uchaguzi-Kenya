@@ -46,9 +46,6 @@ def GetMessages():
             SenderID = msg['sender']['id']
             if msg.get('message'):
                 MessageText = msg['message']['text']
-                if MessageText.lower() == 'hi' or MessageText.lower() == 'hello' or MessageText.lower == 'hey':
-                    SendMessage(SenderID, HelloMessage)
-                    CampaignMenu(SenderID)
                 if 'moses' in MessageText.lower():
                     y = 'Moses Masika Wetangula'
                     a = CandidateInfo(y)
@@ -59,10 +56,17 @@ def GetMessages():
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Get Started':
                     SendMessage(SenderID, IntroductoryMessage)
-                elif PostbackText == 'ElecInfo':
+                elif PostbackText == 'k':
                     CampaignMenu(SenderID)
                 elif PostbackText == 'VoterReg':
                     pass
+                elif PostbackText == 'VoterReq':
+                    pass
+                elif PostbackText == 'Presidential':
+                    names = Candidates()
+                    CanMess = 'The' PostbackText.lower() + 'candidates are:'
+                    SendMessage(SenderID, CanMess)
+                    SendMessage(SenderID, names)
 
 
 
@@ -145,7 +149,7 @@ def CampaignMenu(RecipientID):
                         {
                             'type' : 'postback',
                             'title' : 'Presidential Elections',
-                            'payload': 'presidents'
+                            'payload': 'Presidential'
                         },
                         {
                             'type' : 'postback',
