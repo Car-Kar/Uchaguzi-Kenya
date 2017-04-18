@@ -62,7 +62,6 @@ def GetMessages():
 
   return 'ok', 200
 
-@app.route('/', methods=['POST'])
 def GetStarted():
     headers = {
     'Content-Type' : 'application/json'
@@ -77,7 +76,7 @@ def GetStarted():
 })
     r = requests.post('https://graph.facebook.com/v2.8/me/thread_settings?access_token=' + PAT,  headers=headers, data=data)
     
-@app.route('/', methods=['POST'])
+
 def GreetingText():
     header = {
     'Content-type' : 'application/json'
