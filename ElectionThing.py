@@ -61,6 +61,9 @@ def GetMessages():
                     SendMessage(SenderID, IntroductoryMessage)
                 elif PostbackText == 'ElecInfo':
                     CampaignMenu(SenderID)
+                elif PostbackText == 'VoterReg':
+                    pass
+
 
 
 
