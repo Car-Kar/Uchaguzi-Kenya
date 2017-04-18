@@ -68,15 +68,30 @@ def GetStarted():
     'Content-Type' : 'application/json'
     }
     data = json.dumps({
-        "setting_type": "call_to_actions",
-        "thread_state" : "new_thread",
-        "call_to_actions" : [
+        'setting_type': 'call_to_actions',
+        'thread_state' : 'new_thread',
+        'call_to_actions' : [
         {
-             "payload" : "USER_DEFINED_PAYLOAD"
+             'payload' : 'USER_DEFINED_PAYLOAD'
     }]
 })
     r = requests.post('https://graph.facebook.com/v2.8/me/thread_settings?access_token=' + PAT,  headers=headers, data=data)
     
+@app.route('/', methods=['POST'])
+def GreetingText():
+    header = {
+    'Content-type' : 'application/json'
+    }
+    data = json.dumps({
+        'greeting' : [
+        {
+        'locale' : 'default',
+        'text' : HelloMessage
+        }]
+
+        })
+
+
 
 def SendMessage(RecipientID, Text):
     print(('Sending message to {0}').format(RecipientID))
