@@ -48,7 +48,7 @@ def GetMessages():
             if msg.get('message'):
                 MessageText = msg['message']['text']
                 if MessageText.lower() == 'presidential' or MessageText.lower() == 'presidents':
-                    names - Candidates()
+                    names = Candidates()
                     TEXT = 'The presidential candidates are: \n' + names
                     SendMessage(SenderID, TEXT)
 
