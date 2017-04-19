@@ -15,8 +15,9 @@ I have a top-level menu which you can access at any time by pressing the menu ic
 Go ahead, try it.
 \U0001F642
 '''
-
-MoreInfo = '''
+VoterRegistration = '''Please enter your National Identification number or Passport number to receive your registration status.
+Don't worry your information is safe with me.'''
+CandidateMoreInfo = '''
 Which candidate do you want to know more about?
 
 (Send me his or her name.)
@@ -46,6 +47,11 @@ def GetMessages():
             SenderID = msg['sender']['id']
             if msg.get('message'):
                 MessageText = msg['message']['text']
+                if MessageText.lower() == 'presidential' or MessageText.lower == 'presidents':
+                    names - Candidates()
+                    TEXT = 'The' + PostbackText + 'candidates are: \n' + names
+                    SendMessage(SenderID, TEXT)
+                    
                 if 'moses' in MessageText.lower():
                     y = 'Moses Masika Wetangula'
                     a = CandidateInfo(y)
@@ -56,7 +62,32 @@ def GetMessages():
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Get Started':
                     SendMessage(SenderID, IntroductoryMessage)
-                    CampaignMenu(SenderID)
+                elif PostbackText == 'presidential':
+                    names - Candidates()
+                    TEXT = 'The' + PostbackText + 'candidates are: \n' + names
+                    SendMessage(SenderID, TEXT)
+
+                elif PostbackText == 'gubernatorial' :
+                    TEXT2 = 'What county?'
+                    SendMessage(SenderID, TEXT1)
+                    TEXT2 = 'The' + PostbackText + 'candidates are'
+                    SendMessage(SenderID, TEXT2)
+                elif PostbackText == 'senate' :
+                    TEXT2 = 'What county?'
+                    SendMessage(SenderID, TEXT1)
+                    TEXT2 = 'The' + PostbackText + 'candidates are'
+                    SendMessage(SenderID, TEXT2)
+                elif PostbackText == 'womrep' :
+                    TEXT2 = 'What county?'
+                    SendMessage(SenderID, TEXT1)
+                    TEXT2 = 'The candidates are'
+                    SendMessage(SenderID, TEXT2)
+                elif PostbackText == 'parliamentary' :
+                    TEXT2 = 'What county?'
+                    SendMessage(SenderID, TEXT1)
+                    TEXT2 = 'The' + PostbackText + 'candidates are'
+                    SendMessage(SenderID, TEXT2)
+
 
 
 
