@@ -120,7 +120,7 @@ def SendMessage(RecipientID, Text):
 
 
 
-def CampaignMenu(RecipientID):
+'''def CampaignMenu(RecipientID):
     print("Sending menu")
     headers = {
     'Content-Type' : 'application/json'
@@ -174,7 +174,7 @@ def CampaignMenu(RecipientID):
     r = requests.post('https://graph.facebook.com/v2.8/me/messages?access_token=' + PAT,  headers=headers, data=data)
     if r.status_code != 200:
         print(r.text)
-
+'''
 
 def Name(name):
     name = name.split()
