@@ -229,8 +229,8 @@ def Candidates():
         party = PT and ''.join(PT.stripped_strings)
         fmt = '{0} {1}'.format(name, party)
         candidates.append(fmt)
-    candidate = '\n'.join([candidates for cand in candidates])
-    return candidates
+    candidate = '\n'.join([str(cand) for cand in candidates])
+    return candidate
         
 
 def CandidateInfo(name):
