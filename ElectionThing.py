@@ -63,7 +63,7 @@ def GetMessages():
                 if PostbackText == 'Get Started':
                     SendMessage(SenderID, IntroductoryMessage)
                 elif PostbackText == 'presidential':
-                    names - Candidates()
+                    names = Candidates()
                     TEXT = 'The' + PostbackText + 'candidates are: \n' + names
                     SendMessage(SenderID, TEXT)
 
