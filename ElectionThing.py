@@ -52,7 +52,7 @@ def GetMessages():
                 MessageText = msg['message']['text']
                 if 'president' in MessageText.lower():
                     names = Candidates()
-                    TEXT = 'The presidential candidates are: \n' + names
+                    TEXT = 'The presidential candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
 
                 if 'moses' in MessageText.lower():
