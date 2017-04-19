@@ -229,7 +229,7 @@ def Candidates():
         party = PT and ''.join(PT.stripped_strings)
         fmt = '{0} {1} \n'.format(name, party)
         candidates.append(fmt)
-        candidates = ' '.join(candidates)
+        candidate = ' '.join(candidates)
     return candidates
         
 
