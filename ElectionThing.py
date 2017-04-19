@@ -15,8 +15,10 @@ I have a top-level menu which you can access at any time by pressing the menu ic
 Go ahead, try it.
 \U0001F642
 '''
-VoterRegistration = '''Please enter your National Identification number or Passport number to receive your registration status.
-Don't worry your information is safe with me.'''
+VoterRegistration = '''Thank you for using Uchaguzi!
+However due to logistical circumstances, the option of finding out your registration status is not available right now.
+Please check again in a little while as we go about incorporating it.
+'''
 CandidateMoreInfo = '''
 Which candidate do you want to know more about?
 
@@ -87,6 +89,8 @@ def GetMessages():
                     SendMessage(SenderID, TEXT1)
                     TEXT2 = 'The' + PostbackText + 'candidates are'
                     SendMessage(SenderID, TEXT2)
+                elif PostbackText == 'VoterReg':
+                    SendMessage(SenderID, VoterRegistration)
 
 
 
