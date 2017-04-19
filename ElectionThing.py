@@ -28,6 +28,7 @@ Which candidate do you want to know more about?
 
 
 BaseUrl = 'http://myaspirantmyleader.co.ke/'
+candidates = []
 
 
 @app.route('/', methods=['GET'])
@@ -224,7 +225,8 @@ def Candidates():
     for match in SD.find_all('div', class_ = 'col-md-3 col-sm-6 col-xs-12'):
         NT = match.find('h3')
         name = NT and ''.join(NT.stripped_strings)
-    return name
+        candidates.append(name)
+    return candidates
         
 
 def CandidateInfo(name):
