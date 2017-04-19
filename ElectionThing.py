@@ -225,7 +225,7 @@ def Candidates():
     for match in SD.find_all('div', class_ = 'col-md-3 col-sm-6 col-xs-12'):
         NT = match.find('h3')
         name = NT and ''.join(NT.stripped_strings)
-        PT = match.find('h3')
+        PT = match.find('span')
         party = PT and ''.join(PT.stripped_strings)
         candidates.append([name, party])
     return candidates
