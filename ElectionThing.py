@@ -49,9 +49,9 @@ def GetMessages():
                 MessageText = msg['message']['text']
                 if MessageText.lower() == 'presidential' or MessageText.lower == 'presidents':
                     names - Candidates()
-                    TEXT = 'The' + PostbackText + 'candidates are: \n' + names
+                    TEXT = 'The presidential candidates are: \n' + names
                     SendMessage(SenderID, TEXT)
-                    
+
                 if 'moses' in MessageText.lower():
                     y = 'Moses Masika Wetangula'
                     a = CandidateInfo(y)
