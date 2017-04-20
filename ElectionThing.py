@@ -72,13 +72,7 @@ def GetMessages():
                 if PostbackText == 'Get Started':
                     SendMessage(SenderID, IntroductoryMessage)
                     LanguageMenu(SenderID)
-                '''elif PostbackText == 'kiswahili':
-                    Kiswahili(SenderID)
-                elif PostbackText == 'presidential':
-                    names = Candidates()
-                    TEXT = 'The presidential candidates are: \n' + str(names[0:])
-                    SendMessage(SenderID, TEXT)'''
-                elif PostbackText == 'gubernatorial' :
+                elif PostbackText == 'gubernatorial':
                     TEXT2 = 'What county?'
                     SendMessage(SenderID, TEXT1)
                     if MessageText.lower() == 'kiambu':
@@ -242,4 +236,4 @@ if __name__ == '__main__':
   app.run(debug = True)
 
 
-#counties - Nairobi, Meru, Nyeri, Mombasa, Kisumu
+#counties - Nairobi, Kiambu, Nakury, Mombasa, Kisumu
