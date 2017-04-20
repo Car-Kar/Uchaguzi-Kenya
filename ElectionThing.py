@@ -74,24 +74,24 @@ def GetMessages():
                     LanguageMenu(SenderID)
                 elif PostbackText == 'gubernatorial':
                     TEXT2 = 'What county?'
-                    SendMessage(SenderID, TEXT1)
+                    SendMessage(SenderID, TEXT2)
                     if MessageText.lower() == 'kiambu':
                         names = Search(MessageText, 'governor')
                         TEXT2 = 'The' + PostbackText + 'candidates are: \n' + str(names[0:])
                         SendMessage(SenderID, TEXT2)
                 elif PostbackText == 'senate' :
                     TEXT2 = 'What county?'
-                    SendMessage(SenderID, TEXT1)
+                    SendMessage(SenderID, TEXT2)
                     TEXT2 = 'The' + PostbackText + 'candidates are'
                     SendMessage(SenderID, TEXT2)
                 elif PostbackText == 'womrep' :
                     TEXT2 = 'What county?'
-                    SendMessage(SenderID, TEXT1)
+                    SendMessage(SenderID, TEXT2)
                     TEXT2 = 'The candidates are'
                     SendMessage(SenderID, TEXT2)
                 elif PostbackText == 'parliamentary' :
                     TEXT2 = 'What county?'
-                    SendMessage(SenderID, TEXT1)
+                    SendMessage(SenderID, TEXT2)
                     TEXT2 = 'The' + PostbackText + 'candidates are'
                     SendMessage(SenderID, TEXT2)
                 elif PostbackText == 'VoterReg':
