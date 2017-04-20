@@ -228,7 +228,7 @@ def Search(CountyName, Level):
         for match in TS.find_all('div', class_= 'upme-team-design-three upme-team-design'):
             for tags in match.find('div', class_ = 'upme-author-name'):
                 name_tag = tags.find('a')
-                name = name_tag and ' '.join(name_tag.stripped_strings)
+                name = name_tag.string
                 return name
 
 
