@@ -176,11 +176,11 @@ def Kiswahili(SID):
                         SendMessage(SID, TXT) 
                     elif PT == 'gubernatorial':
                         pass
-                    elif PT = 'senate':
+                    elif PT == 'senate':
                         pass
-                    elif PT = 'womrep':
+                    elif PT == 'womrep':
                         pass
-                    elif PT = 'parliamentary':
+                    elif PT == 'parliamentary':
                         PT
 
 '''def CampaignMenu(RecipientID):
@@ -278,6 +278,12 @@ def Search(CountyName):
     "upme-search"  :  "Search+&+Filter"
     }
     search = BaseUrl + 'all/'
+    ToSearch = requests.post(url, params=parameters)
+    y = ToSearch.status_code
+    if y == 200:
+        TS = ToSearch.text
+        TS = BeautifulSoup(TS, 'html.parser')
+        for match in TS.find_all
 
 
 if __name__ == '__main__':
