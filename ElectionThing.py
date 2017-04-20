@@ -166,15 +166,15 @@ def Kiswahili(SID):
     SendMessage(SID, SChoice)
     messages = requests.get_json()
     if messages['object'] == 'page':
-    for message in messages['entry']:
-        for msg in message['messaging']:
-            SID = msg['sender']['id']
-            if msg.get('postback'):
-                PT = msg['postback']['payload']
-                if PT == 'presidential':
-                    names = Candidates()
-                    TXT = 'Wagombea wa urais ni: \n' + str(names[0:])
-                    SendMessage(SID, TXT) 
+        for message in messages['entry']:
+            for msg in message['messaging']:
+                SID = msg['sender']['id']
+                if msg.get('postback'):
+                    PT = msg['postback']['payload']
+                    if PT == 'presidential':
+                        names = Candidates()
+                        TXT = 'Wagombea wa urais ni: \n' + str(names[0:])
+                        SendMessage(SID, TXT) 
 
 '''def CampaignMenu(RecipientID):
     print("Sending menu")
