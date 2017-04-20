@@ -72,17 +72,19 @@ def GetMessages():
                 if PostbackText == 'Get Started':
                     SendMessage(SenderID, IntroductoryMessage)
                     LanguageMenu(SenderID)
-                elif PostbackText == 'kiswahili':
+                '''elif PostbackText == 'kiswahili':
                     Kiswahili(SenderID)
-                '''elif PostbackText == 'presidential':
+                elif PostbackText == 'presidential':
                     names = Candidates()
                     TEXT = 'The presidential candidates are: \n' + str(names[0:])
-                    SendMessage(SenderID, TEXT)
+                    SendMessage(SenderID, TEXT)'''
                 elif PostbackText == 'gubernatorial' :
                     TEXT2 = 'What county?'
                     SendMessage(SenderID, TEXT1)
-                    TEXT2 = 'The' + PostbackText + 'candidates are'
-                    SendMessage(SenderID, TEXT2)
+                    if MessageText.lower() == 'kiambu':
+                        names = Search(MessageText, 'governor')
+                        TEXT2 = 'The' + PostbackText + 'candidates are: \n' + str(names[0:])
+                        SendMessage(SenderID, TEXT2)
                 elif PostbackText == 'senate' :
                     TEXT2 = 'What county?'
                     SendMessage(SenderID, TEXT1)
@@ -271,19 +273,23 @@ def CandidateInfo(name):
         info = info_tag and ' '.join(info_tag.stripped_strings)
         return info
 
-def Search(CountyName):
+def Search(CountyName, Level):
     CountyName = CountyName.title() + '+County'
     parameters = {
     "upme_search[county]" : CountyName,
     "upme-search"  :  "Search+&+Filter"
     }
-    search = BaseUrl + 'all/'
+    search = BaseUrl  + 'candidates/' + Level + '-candidates/'
     ToSearch = requests.post(url, params=parameters)
     y = ToSearch.status_code
     if y == 200:
         TS = ToSearch.text
         TS = BeautifulSoup(TS, 'html.parser')
-        for match in TS.find_all
+        for match in TS.find_all('div', class_= 'upme-team-design-three upme-team-design'):
+            for tags in match.find('div', class_ = 'upme-author-name'):
+                name_tag = tags.find('a')
+                name = name_tag and ' '.join(name_tag.stripped_strings)
+                return name
 
 
 if __name__ == '__main__':
