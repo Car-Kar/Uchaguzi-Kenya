@@ -155,7 +155,7 @@ def LanguageMenu(RecipientID):
         })
     RT = requests.post('https://graph.facebook.com/v2.8/me/messages?access_token=' + PAT,  headers=headers, data=data)
     if RT.status_code != 200:
-        print(r.text)
+        print(RT.text)
 
 '''def CampaignMenu(RecipientID):
     print("Sending menu")
