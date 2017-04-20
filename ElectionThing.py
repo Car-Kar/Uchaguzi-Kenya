@@ -171,9 +171,10 @@ def Kiswahili(SID):
             SID = msg['sender']['id']
             if msg.get('postback'):
                 PT = msg['postback']['payload']
-                if PT == 'presidential'
-                TXT = 'Wagombea wa urais ni: \n' + str(names[0:])
-                SendMessage(SID, TXT) 
+                if PT == 'presidential':
+                    names = Candidates()
+                    TXT = 'Wagombea wa urais ni: \n' + str(names[0:])
+                    SendMessage(SID, TXT) 
 
 '''def CampaignMenu(RecipientID):
     print("Sending menu")
