@@ -220,7 +220,7 @@ def Search(CountyName, Level):
     "upme-search"  :  "Search+&+Filter"
     }
     search = BaseUrl  + 'candidates/' + Level + '-candidates/'
-    ToSearch = requests.post(url, params=parameters)
+    ToSearch = requests.post(search, params=parameters)
     y = ToSearch.status_code
     if y == 200:
         TS = ToSearch.text
