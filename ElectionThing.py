@@ -29,6 +29,9 @@ Which candidate do you want to know more about?
 LanguageText = ''' In what language do you want to continue in?
 You can choose by clicking one of the buttons, or by just sending your language choice between the two to me.
 '''
+SChoice = ''' Jambo!
+Chagua aina ya uchaguzi unaoutaka kutoka kwa orodha hapo chini.
+'''
 
 BaseUrl = 'http://myaspirantmyleader.co.ke/'
 candidates = []
@@ -69,6 +72,8 @@ def GetMessages():
                 if PostbackText == 'Get Started':
                     SendMessage(SenderID, IntroductoryMessage)
                     LanguageMenu(SenderID)
+                elif PostbackText == 'kiswahili':
+                    Kiswahili(SenderID)
                 elif PostbackText == 'presidential':
                     names = Candidates()
                     TEXT = 'The presidential candidates are: \n' + str(names[0:])
@@ -156,6 +161,9 @@ def LanguageMenu(RecipientID):
     RT = requests.post('https://graph.facebook.com/v2.8/me/messages?access_token=' + PAT,  headers=headers, data=data)
     if RT.status_code != 200:
         print(RT.text)
+
+def Kiswahili(SenderID):
+    SendMessage(SenderID, SChoice) 
 
 '''def CampaignMenu(RecipientID):
     print("Sending menu")
