@@ -162,8 +162,18 @@ def LanguageMenu(RecipientID):
     if RT.status_code != 200:
         print(RT.text)
 
-def Kiswahili(SenderID):
-    SendMessage(SenderID, SChoice) 
+def Kiswahili(SID):
+    SendMessage(SID, SChoice)
+    messages = requests.get_json()
+    if messages['object'] == 'page':
+    for message in messages['entry']:
+        for msg in message['messaging']:
+            SID = msg['sender']['id']
+            if msg.get('postback'):
+                PT = msg['postback']['payload']
+                if PT == 'presidential'
+                TXT = 'Wagombea wa urais ni: \n' + str(names[0:])
+                SendMessage(SID, TXT) 
 
 '''def CampaignMenu(RecipientID):
     print("Sending menu")
