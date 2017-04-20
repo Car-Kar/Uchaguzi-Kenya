@@ -228,7 +228,7 @@ def Candidates():
         name = NT and ''.join(NT.stripped_strings)
         PT = match.find('span')
         party = PT and ''.join(PT.stripped_strings)
-        fmt = '{0} of the {1} party.'.format(name, party)
+        fmt = '{0} - {1}.'.format(name, party)
         candidates.append(fmt)
     candidate = '\n'.join([str(cand) for cand in candidates])
     return candidate
