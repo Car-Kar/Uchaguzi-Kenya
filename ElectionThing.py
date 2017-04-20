@@ -65,6 +65,10 @@ def GetMessages():
                     y = 'Moses Masika Wetangula'
                     a = CandidateInfo(y)
                     SendMessage(SenderID, a)
+                if MessageText.lower() == 'kiambu':
+                    names = Search(MessageText, 'governor')
+                    TEXT2 = 'The' + PostbackText + 'candidates are: \n' + str(names[0:])
+                    SendMessage(SenderID, TEXT2)
 
 
             if msg.get('postback'):
@@ -75,10 +79,6 @@ def GetMessages():
                 elif PostbackText == 'gubernatorial':
                     TEXT2 = 'What county?'
                     SendMessage(SenderID, TEXT2)
-                    if MessageText.lower() == 'kiambu':
-                        names = Search(MessageText, 'governor')
-                        TEXT2 = 'The' + PostbackText + 'candidates are: \n' + str(names[0:])
-                        SendMessage(SenderID, TEXT2)
                 elif PostbackText == 'senate' :
                     TEXT2 = 'What county?'
                     SendMessage(SenderID, TEXT2)
