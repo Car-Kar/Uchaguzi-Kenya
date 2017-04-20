@@ -26,7 +26,9 @@ Which candidate do you want to know more about?
 (Send me his or her name.)
 
 '''
-
+LanguageText = ''' In what language do you want to continue in?
+You can choose by clicking one of the buttons, or by just sending your language choice between the two to me.
+'''
 
 BaseUrl = 'http://myaspirantmyleader.co.ke/'
 candidates = []
@@ -66,6 +68,7 @@ def GetMessages():
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Get Started':
                     SendMessage(SenderID, IntroductoryMessage)
+                    LanguageMenu(RecipientID)
                 elif PostbackText == 'presidential':
                     names = Candidates()
                     TEXT = 'The presidential candidates are: \n' + str(names[0:])
@@ -99,43 +102,7 @@ def GetMessages():
 
   return 'ok', 200
 
-'''@app.route('/', methods=['POST'])
-def GetStarted():
-    headers = {
-    'Content-Type' : 'application/json'
-    }
-    data = json.dumps({
-        'setting_type': 'call_to_actions',
-        'thread_state' : 'new_thread',
-        'call_to_actions' : [
-        {
-             'payload' : 'Get Started'
-    }]
-})
-    r = requests.post('https://graph.facebook.com/v2.8/me/thread_settings?access_token=' + PAT,  headers=headers, data=data)
-    
-@app.route('/', methods=['POST'])
-def GreetingText():
-    header = {
-    'Content-type' : 'application/json'
-    }
-    data = json.dumps({
-        'greeting' : [
-        {
-        'locale' : 'default',
-        'text' : HelloMessage
-        }]
-        })
-    r = requests.post('https://graph.facebook.com/v2.8/me/messenger_profile?access_token=' + PAT,  headers=headers, data=data)
-
-def MainMenu():
-    headers = {
-    'Content-Type' : 'application/json'
-    }
-
-    data = json.dumps({
-
-        })'''
+   
 
 def SendMessage(RecipientID, Text):
     print(('Sending message to {0}').format(RecipientID))
@@ -155,7 +122,40 @@ def SendMessage(RecipientID, Text):
     if r.status_code != 200:
         print(r.text)
 
+def LanguageMenu(RecipientID):
+    print("Sending options for language")
+    headers = {
+    'Content-type' : 'application/json'
+    }
+    data = json.dumps({
+        'recipient' : {
+        'id' : RecipientID
+        },
+        'message' : {
+            'attachment' : {
+                'type' : 'template',
+                'payload' : {
+                    'template_type' : 'button',
+                    'text' : LanguageText,
+                    'button' : [
+                    {
+                        'type' : 'postback',
+                        'title' :  'English',
+                        'payload' : 'english'
+                    },
+                    {
+                        'type' : 'postback',
+                        'title' : 'Kiswahili',
+                        'payload' : 'kiswahili' 
+                    }]
+                }
 
+        }
+        }
+        })
+    RT = requests.post('https://graph.facebook.com/v2.8/me/messages?access_token=' + PAT,  headers=headers, data=data)
+    if RT.status_code != 200:
+        print(r.text)
 
 '''def CampaignMenu(RecipientID):
     print("Sending menu")
