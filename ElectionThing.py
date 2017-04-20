@@ -245,7 +245,7 @@ def CandidateInfo(name):
         info = info_tag and ' '.join(info_tag.stripped_strings)
         return info
 
-def Search(CountyName):
+'''def Search(CountyName):
     CountyName = CountyName + '+county'
     parameters = {
     "upme_search[county]" : CountyName,
@@ -253,7 +253,7 @@ def Search(CountyName):
     }
     search = BaseUrl + 'all/'
 
-
+'''
 
 if __name__ == '__main__':
   app.run(debug = True)
