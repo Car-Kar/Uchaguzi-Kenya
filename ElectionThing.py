@@ -101,7 +101,7 @@ def GetMessages():
                     TEXT2 = 'The' + PostbackText + 'candidates are'
                     SendMessage(SenderID, TEXT2)
                 elif PostbackText == 'VoterReg':
-                    SendMessage(SenderID, VoterRegistration)'''
+                    SendMessage(SenderID, VoterRegistration)
 
 
 
@@ -185,61 +185,7 @@ def Kiswahili(SID):
                     elif PT == 'parliamentary':
                         PT
 
-'''def CampaignMenu(RecipientID):
-    print("Sending menu")
-    headers = {
-    'Content-Type' : 'application/json'
-    }
-    data = json.dumps({
-        'recipient' : {
-            'id' : RecipientID
-        },
-        'message' : {
-            'attachment' : {
-                'type' : 'template',
-                'payload' : {
-                    'template_type' : 'button',
-                    'text' : 'What election level do you want to know more about?',
-                    'buttons' : [
-                        {
-                            'type' : 'postback',
-                            'title' : 'Presidential Elections',
-                            'payload': 'Presidential'
-                        },
-                        {
-                            'type' : 'postback',
-                            'title' : 'Governor Elections',
-                            'payload':"governors"
-                        },
-                        {
-                            'type' : 'postback',
-                            'title' : 'Senator Elections',
-                            'payload' : 'senators'
-                        },
-                        {
-                            'type' : 'postback',
-                            'title' : 'Woman Representative',
-                            'payload':"wom-rep"
-                        },
-                        {
-                            'type' : 'postback',
-                            'title': 'Members of Parliament',
-                            'payload' : 'mp'
 
-                        }
-
-                    ]
-
-                }
-            }
-        }
-
-        }
-        )
-    r = requests.post('https://graph.facebook.com/v2.8/me/messages?access_token=' + PAT,  headers=headers, data=data)
-    if r.status_code != 200:
-        print(r.text)
-'''
 
 def Name(name):
     name = name.split()
