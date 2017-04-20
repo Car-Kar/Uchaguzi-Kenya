@@ -67,8 +67,8 @@ def GetMessages():
                     SendMessage(SenderID, a)
                 if MessageText.lower() == 'kiambu':
                     names = Search(MessageText, 'governor')
-                    TEXT2 = 'The candidates are: \n' + str(names[0:])
-                    SendMessage(SenderID, TEXT2)
+                    ST = 'The candidates are: \n' + str(names[0:])
+                    SendMessage(SenderID, ST)
 
 
             if msg.get('postback'):
