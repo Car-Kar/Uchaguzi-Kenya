@@ -137,7 +137,7 @@ def LanguageMenu(RecipientID):
                 'payload' : {
                     'template_type' : 'button',
                     'text' : LanguageText,
-                    'button' : [
+                    'buttons' : [
                     {
                         'type' : 'postback',
                         'title' :  'English',
