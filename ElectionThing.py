@@ -74,11 +74,11 @@ def GetMessages():
                     LanguageMenu(SenderID)
                 elif PostbackText == 'kiswahili':
                     Kiswahili(SenderID)
-                elif PostbackText == 'presidential':
+                '''elif PostbackText == 'presidential':
                     names = Candidates()
                     TEXT = 'The presidential candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
-
+'''
                 elif PostbackText == 'gubernatorial' :
                     TEXT2 = 'What county?'
                     SendMessage(SenderID, TEXT1)
@@ -175,6 +175,14 @@ def Kiswahili(SID):
                         names = Candidates()
                         TXT = 'Wagombea wa urais ni: \n' + str(names[0:])
                         SendMessage(SID, TXT) 
+                    elif PT == 'gubernatorial':
+                        pass
+                    elif PT = 'senate':
+                        pass
+                    elif PT = 'womrep':
+                        pass
+                    elif PT = 'parliamentary':
+                        PT
 
 '''def CampaignMenu(RecipientID):
     print("Sending menu")
@@ -264,15 +272,14 @@ def CandidateInfo(name):
         info = info_tag and ' '.join(info_tag.stripped_strings)
         return info
 
-'''def Search(CountyName):
-    CountyName = CountyName + '+county'
+def Search(CountyName):
+    CountyName = CountyName.title() + '+County'
     parameters = {
     "upme_search[county]" : CountyName,
     "upme-search"  :  "Search+&+Filter"
     }
     search = BaseUrl + 'all/'
 
-'''
 
 if __name__ == '__main__':
   app.run(debug = True)
