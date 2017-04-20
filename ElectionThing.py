@@ -2,6 +2,7 @@ from flask import Flask, request
 import json
 import requests
 from bs4 import BeautifulSoup
+import urllib
 
 
 app = Flask(__name__)
@@ -67,7 +68,7 @@ def GetMessages():
                     SendMessage(SenderID, IntroductoryMessage)
                 elif PostbackText == 'presidential':
                     names = Candidates()
-                    TEXT = 'The' + PostbackText + 'candidates are: \n' + str(names[0:])
+                    TEXT = 'The presidential candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
 
                 elif PostbackText == 'gubernatorial' :
@@ -227,7 +228,7 @@ def Candidates():
         name = NT and ''.join(NT.stripped_strings)
         PT = match.find('span')
         party = PT and ''.join(PT.stripped_strings)
-        fmt = '{: <0} of the  {: >1} party'.format(name, party)
+        fmt = '{0} of the {1} party.'.format(name, party)
         candidates.append(fmt)
     candidate = '\n'.join([str(cand) for cand in candidates])
     return candidate
@@ -244,6 +245,18 @@ def CandidateInfo(name):
         info = info_tag and ' '.join(info_tag.stripped_strings)
         return info
 
+def Search(CountyName):
+    CountyName = CountyName + '+county'
+    parameters = {
+    "upme_search[county]" : CountyName,
+    "upme-search"  :  "Search+&+Filter"
+    }
+    search = BaseUrl + 'all/'
+
+
 
 if __name__ == '__main__':
   app.run(debug = True)
+
+
+#counties - Nairobi, Meru, Nyeri, Mombasa, Kisumu
