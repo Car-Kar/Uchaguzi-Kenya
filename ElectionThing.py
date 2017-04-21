@@ -75,6 +75,10 @@ def GetMessages():
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Get Started':
                     SendMessage(SenderID, IntroductoryMessage)
+                elif PostbackText == 'presidential':
+                    names = Candidates()
+                    TEXT = 'The presidential candidates are: \n' + str(names[0:])
+                    SendMessage(SenderID, TEXT)
                 elif PostbackText == 'gubernatorial':
                     TEXT2 = 'What county?'
                     SendMessage(SenderID, TEXT2)
@@ -202,6 +206,7 @@ def Candidates():
         
 
 def CandidateInfo(name):
+    print('Getting info')
     z = Name(name)
     Url = BaseUrl + 'member/' + z + '/'
     RQT2 = requests.get(Url)
