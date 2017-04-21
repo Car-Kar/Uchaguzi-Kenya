@@ -75,7 +75,6 @@ def GetMessages():
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Get Started':
                     SendMessage(SenderID, IntroductoryMessage)
-                    LanguageMenu(SenderID)
                 elif PostbackText == 'gubernatorial':
                     TEXT2 = 'What county?'
                     SendMessage(SenderID, TEXT2)
