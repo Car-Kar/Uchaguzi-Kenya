@@ -60,8 +60,7 @@ def GetMessages():
                     names = Candidates()
                     TEXT = 'The presidential candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
-
-                if 'moses' in MessageText.lower():
+                if  MessageText.lower() == 'moses':
                     y = 'Moses Masika Wetangula'
                     a = CandidateInfo(y)
                     SendMessage(SenderID, a)
@@ -75,6 +74,8 @@ def GetMessages():
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Get Started':
                     SendMessage(SenderID, IntroductoryMessage)
+                    SendMessage(SenderID, LanguageMenu)
+                    LanguageMenu(SenderID)
                 elif PostbackText == 'presidential':
                     names = Candidates()
                     TEXT = 'The presidential candidates are: \n' + str(names[0:])
