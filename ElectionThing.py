@@ -85,8 +85,8 @@ def GetMessages():
                     if PostbackText == 'english':
                         print('Gotten Message.')
                         SendMessage(SenderID, IntroductoryMessage)
-                    elif PostbackText == 'kiswahili':
-                        SendMessage(SenderID, SChoice)
+                elif PostbackText == 'kiswahili':
+                        Kiswahili(SenderID)
 
                 
                         #SendMessage(SenderID, IntroductoryMessage)
@@ -195,7 +195,7 @@ def Kiswahili(SID):
                     elif PT == 'womrep':
                         pass
                     elif PT == 'parliamentary':
-                        PT
+                        PT'''
 
 
 
