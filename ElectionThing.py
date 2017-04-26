@@ -86,7 +86,7 @@ def GetMessages():
                         print('Gotten Message.')
                         SendMessage(SenderID, IntroductoryMessage)
                 elif PostbackText == 'kiswahili':
-                        Kiswahili(SenderID)
+                    Kiswahili(SenderID)
 
                 
                         #SendMessage(SenderID, IntroductoryMessage)
@@ -177,7 +177,7 @@ def LanguageMenu(RecipientID):
 
 def Kiswahili(SID):
     SendMessage(SID, SChoice)
-    messages = requests.get_json()
+    messages = request.get_json()
     if messages['object'] == 'page':
         for message in messages['entry']:
             for msg in message['messaging']:
