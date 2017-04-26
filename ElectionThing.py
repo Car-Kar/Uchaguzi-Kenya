@@ -74,7 +74,7 @@ def GetMessages():
                     ST = 'The candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, ST)
                 else:
-                    SendMessage(SenderID, ApologyMessage.)
+                    SendMessage(SenderID, ApologyMessage)
 
 
             elif msg.get('postback'):
