@@ -178,9 +178,12 @@ def LanguageMenu(RecipientID):
 def Kiswahili(SID):
     SendMessage(SID, SChoice)
     messages = request.get_json()
+    print('Gotten Messages.')
     if messages['object'] == 'page':
         for message in messages['entry']:
+            print('Gotten Messages.')
             for msg in message['messaging']:
+                print('Gotten Messages.')
                 SID = msg['sender']['id']
                 if msg.get('postback'):
                     PT = msg['postback']['payload']
