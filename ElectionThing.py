@@ -70,13 +70,14 @@ def GetMessages():
                     SendMessage(SenderID, ST)
 
 
-            if msg.get('postback'):
+            elif msg.get('postback'):
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Get Started':
                     LanguageMenu(SenderID)
                     if msg.get('postback'):
                         PostbackText = msg['postback']['payload']
                         if PostbackText == 'english':
+                            SendMessage(SenderID, 'this is where I stop.')
                             SendMessage(SenderID, IntroductoryMessage)
                 '''elif PostbackText == 'presidential':
                     names = Candidates()
