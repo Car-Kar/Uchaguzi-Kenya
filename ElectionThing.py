@@ -7,8 +7,8 @@ import urllib
 
 app = Flask(__name__)
 
-PAT = 'EAAENedDtJT4BAG4GdMyj8h6jOcr8FZARe7xDuzsAXSPrvx6FL13aKGZCAZBP3eG8IQtwx3ZBcimVZB1ZBoD1ZB007f8UzwqkPAtOHXjGNpdSNhwvr8jBBdwVC2DtK3zRyN9MTB3gf0ysosMpoKH7vUWxYS2k3eN54veNUPMF9UnawZDZD'
-VerifyToken = 'test-token'
+PAT = 'EAAa9qNLjjJwBAFog5Pj5n67hTsQwS6Ieqr1eCaBEkg4MvqDfV4M6AgowkSFhSKGavs4tmGCOt3tZCnOajxFdXben0sCMf6AzcCjf23rDDqsPW4OKuRXKg9i6qbMUzaZBJfcCvT4RfZCIwZB4uNkbofiATWO3uijTZAE95cLshLQZDZD'
+VerifyToken = '0454'
 
 IntroductoryMessage = ''' The 2017 Kenyan National Elections are taking place in August.
 I am a tool for you to acquire more information on voting and the vying candidates.
