@@ -73,7 +73,6 @@ def GetMessages():
             if msg.get('postback'):
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Get Started':
-                    SendMessage(SenderID, LanguageMenu)
                     LanguageMenu(SenderID)
                     if PostbackText == 'English':
                         SendMessage(SenderID, IntroductoryMessage)
