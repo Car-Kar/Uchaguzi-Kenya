@@ -83,6 +83,7 @@ def GetMessages():
                 if PostbackText == 'Get Started':
                     LanguageMenu(SenderID)
                     if PostbackText == 'english':
+                        print('Gotten Message.')
                         SendMessage(SenderID, IntroductoryMessage)
                     elif PostbackText == 'kiswahili':
                         SendMessage(SenderID, SChoice)
