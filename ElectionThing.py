@@ -30,7 +30,8 @@ LanguageText = ''' In what language do you want to continue in?
 You can choose by clicking one of the buttons, or by just sending your language choice between the two to me.
 '''
 SChoice = ''' Jambo!
-Chagua aina ya uchaguzi unaoutaka kutoka kwa orodha hapo chini.
+Unataka uchaguzi mgani?
+Unaweza chagua kutoka orodha hapo chini, au uniandikie kama ujumbe.
 '''
 
 ApologyMessage = '''
@@ -81,8 +82,11 @@ def GetMessages():
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Get Started':
                     LanguageMenu(SenderID)
-                elif PostbackText == 'english':
+                    if PostbackText == 'english':
                     SendMessage(SenderID, IntroductoryMessage)
+                elif PostbackText == 'kiswahili':
+                    SendMessage(SenderID, Schoice)
+
                 
                         #SendMessage(SenderID, IntroductoryMessage)
                 '''elif PostbackText == 'presidential':
