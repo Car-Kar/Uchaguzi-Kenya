@@ -195,7 +195,7 @@ def Kiswahili(SID):
                     elif PT == 'womrep':
                         pass
                     elif PT == 'parliamentary':
-                        PT'''
+                        pass
 
 
 
