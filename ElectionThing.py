@@ -65,14 +65,16 @@ def GetMessages():
                     names = Candidates()
                     TEXT = 'The presidential candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
-                if  MessageText.lower() == 'moses':
+                elif  MessageText.lower() == 'moses':
                     y = 'Moses Masika Wetangula'
                     a = CandidateInfo(y)
                     SendMessage(SenderID, a)
-                if MessageText.lower() == 'kiambu':
+                elif MessageText.lower() == 'kiambu':
                     names = Search(MessageText, 'governor')
                     ST = 'The candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, ST)
+                else:
+                    SendMessage(SenderID, ApologyMessage.)
 
 
             elif msg.get('postback'):
@@ -81,8 +83,7 @@ def GetMessages():
                     LanguageMenu(SenderID)
                 elif PostbackText == 'english':
                     SendMessage(SenderID, IntroductoryMessage)
-                else:
-                    SendMessage(SenderID, ApologyMessage.)
+                
                         #SendMessage(SenderID, IntroductoryMessage)
                 '''elif PostbackText == 'presidential':
                     names = Candidates()
