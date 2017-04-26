@@ -82,8 +82,10 @@ def GetMessages():
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Get Started':
                     LanguageMenu(SenderID)
-                    if PostbackText == 'english':
-                    SendMessage(SenderID, IntroductoryMessage)
+                    x = msg.get('postback')
+                    y = x['postback']['payload']
+                    if y == 'english':
+                        SendMessage(SenderID, IntroductoryMessage)
                 elif PostbackText == 'kiswahili':
                     SendMessage(SenderID, Schoice)
 
