@@ -33,6 +33,11 @@ SChoice = ''' Jambo!
 Chagua aina ya uchaguzi unaoutaka kutoka kwa orodha hapo chini.
 '''
 
+ApologyMessage = '''
+Sorry, I didn't get that.
+Would you mind repeating it?
+'''
+
 BaseUrl = 'http://myaspirantmyleader.co.ke/'
 candidates = []
 
@@ -74,8 +79,10 @@ def GetMessages():
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Get Started':
                     LanguageMenu(SenderID)
-                    if PostbackText == 'english':
-                        SendMessage(SenderID, 'this is where I stop.')
+                elif PostbackText == 'english':
+                    SendMessage(SenderID, IntroductoryMessage)
+                else:
+                    SendMessage(SenderID, ApologyMessage.)
                         #SendMessage(SenderID, IntroductoryMessage)
                 '''elif PostbackText == 'presidential':
                     names = Candidates()
