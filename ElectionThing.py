@@ -110,8 +110,6 @@ def GetMessages():
                                     m = msg['quick_reply']['payload']
                                     if m.lower() == 'nairobi':
                                         SendMessage(SenderID, 'KKK')
-                    else:
-                        break
                 elif PostbackText == 'senate' :
                     TEXT2 = 'From what county?'
                     SendMessage(SenderID, TEXT2)
