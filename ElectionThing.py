@@ -104,8 +104,8 @@ def GetMessages():
                                     SenderID = msg['sender']['id']
                                     if msg.get('message'):
                                         m = msg['message']['text']
-                                            if m.lower() == 'nairobi':
-                                                SendMessage(SenderID, 'KKK')
+                                        if m.lower() == 'nairobi':
+                                            SendMessage(SenderID, 'KKK')
                     else:
                         break
                 elif PostbackText == 'senate' :
