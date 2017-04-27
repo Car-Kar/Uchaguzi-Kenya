@@ -94,16 +94,14 @@ def GetMessages():
                     TEXT = 'The presidential candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
                 elif PostbackText == 'gubernatorial':
-                    TEXT2 = 'From what county?'
-                    SendMessage(SenderID, TEXT2)
-                    while PostbackText == 'gubernatorial':
-                        messages = request.get_json()
-                        if messages['object'] == 'page':
-                            for message in messages['entry']:
-                                for msg in message['messaging']:
-                                    SenderID = msg['sender']['id']
-                                    if msg.get('message'):
-                                        m = msg['message']['text']
+                    CountyOptions(SenderID)
+                    messages = request.get_json()
+                    if messages['object'] == 'page':
+                        for message in messages['entry']:
+                            for msg in message['messaging']:
+                                SenderID = msg['sender']['id']
+                                if msg.get('message'):
+                                     m = msg['quick_reply']['payload']
                                         if m.lower() == 'nairobi':
                                             SendMessage(SenderID, 'KKK')
                     else:
@@ -156,6 +154,7 @@ def SendMessage(RecipientID, Text):
         print(r.text)
 
 def CountyOptions(RecipientID):
+    print('Sending county options to {0}').format(RecipientID)
     CountyText = 'From what county? Choose one below.'
     headers = {
     'Content-Type' : 'application/json'
@@ -196,6 +195,8 @@ def CountyOptions(RecipientID):
         }
         })
     r = request.post('https://graph.facebook.com/v2.8/me/messages?access_token=' + PAT, headers = headers, data = data)
+    if r != 200:
+        print(r.status_code)
 
 
 
