@@ -160,7 +160,7 @@ def SendMessage(RecipientID, Text):
         print(r.text)
 
 def CountyOptions(RecipientID):
-    print('Sending county options to {0}').format(RecipientID)
+    print(('Sending county options to {0}').format(RecipientID))
     CountyText = 'From what county? Choose one below.'
     headers = {
     'Content-Type' : 'application/json'
