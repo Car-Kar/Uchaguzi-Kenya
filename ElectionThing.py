@@ -97,10 +97,15 @@ def GetMessages():
                     TEXT2 = 'From what county?'
                     SendMessage(SenderID, TEXT2)
                     while PostbackText == 'gubernatorial':
-                        if msg.get('message'):
-                            m = msg['message']['text']
-                            if m.lower() == 'nairobi':
-                                SendMessage(SenderID, 'KKK')
+                        messages = request.get_json()
+                        if messages['object'] == 'page':
+                            for message in messages['entry']:
+                                for msg in message['messaging']:
+                                    SenderID = msg['sender']['id']
+                                    if msg.get('message'):
+                                        m = msg['message']['text']
+                                            if m.lower() == 'nairobi':
+                                                SendMessage(SenderID, 'KKK')
                     else:
                         break
                 elif PostbackText == 'senate' :
