@@ -94,9 +94,9 @@ def GetMessages():
                     TEXT = 'The presidential candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
                 elif PostbackText == 'gubernatorial':
+                    TEXT2 = 'From what county?'
+                    SendMessage(SenderID, TEXT2)
                     while PostbackText == 'gubernatorial':
-                        TEXT2 = 'From what county?'
-                        SendMessage(SenderID, TEXT2)
                         if msg.get('message'):
                             m = msg['message']['text']
                             if m.lower() == 'nairobi':
