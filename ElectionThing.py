@@ -38,7 +38,12 @@ Would you mind repeating it?
 
 BaseUrl = 'http://myaspirantmyleader.co.ke/'
 candidates = []
-
+Counties = ['kiambu', 'kisumu', 'mombasa', 'nairobi', 'nakuru']
+OtherCounties = ''' Thank you for using Uchaguzi.
+However, this is our first beta and us such we can only provide information for Kiambu, Kisumu, Mombasa, Nairobi, or Nakuru.
+Please use any of those five counties for now, as we go about adding information support for all other counties!
+\U0001F642
+'''
 
 @app.route('/', methods=['GET'])
 def verification():
@@ -94,6 +99,7 @@ def GetMessages():
                     TEXT = 'The presidential candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
                 elif PostbackText == 'gubernatorial':
+                    print('governors')
                     CountyOptions(SenderID)
                     messages = request.get_json()
                     if messages['object'] == 'page':
