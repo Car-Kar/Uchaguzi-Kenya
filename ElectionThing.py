@@ -68,6 +68,8 @@ def GetMessages():
                     names = Candidates()
                     TEXT = 'The presidential candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
+                elif 'governor' in MessageText.lower():
+                    CountyOptions(SenderID)
                 elif  MessageText.lower() == 'moses':
                     y = 'Moses Masika Wetangula'
                     a = CandidateInfo(y)
@@ -78,7 +80,7 @@ def GetMessages():
                     names = Search(MessageText, 'governor')
                     ST = 'The candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, ST)
-                elif MessageText.lower() == 'nairobi':
+                elif MessageText.lower() == 'n':
                     pass
                 elif MessageText.lower() == 'kisumu':
                     pass
