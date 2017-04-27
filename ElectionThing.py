@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
-PAT = 'EAAa9qNLjjJwBAFog5Pj5n67hTsQwS6Ieqr1eCaBEkg4MvqDfV4M6AgowkSFhSKGavs4tmGCOt3tZCnOajxFdXben0sCMf6AzcCjf23rDDqsPW4OKuRXKg9i6qbMUzaZBJfcCvT4RfZCIwZB4uNkbofiATWO3uijTZAE95cLshLQZDZD'
+PAT = 'EAAarLkMVMy4BALcfghCBksMQuo5lqLMIsogY1OJEHxVDJZAdIR0KkKWqfdCEbbRIv7IeFrsTTEAFfNRo3y0vgFmZA7wCkcYsZAQSEwlBL6V5VZAexpR4LO4IB1hZAhaoDYejvT5hLjCeZCaiye8qCa5vNrOOGuSyAuWE5ZCZB5VMfwZDZD'
 VerifyToken = '0454'
 
 IntroductoryMessage = ''' The 2017 Kenyan National Elections are taking place in August.
