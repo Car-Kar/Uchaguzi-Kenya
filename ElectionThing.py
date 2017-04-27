@@ -155,6 +155,47 @@ def SendMessage(RecipientID, Text):
     if r.status_code != 200:
         print(r.text)
 
+def CountyOptions(RecipientID):
+    CountyText = 'From what county? Choose one below.'
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        'recipient' : {
+        'id' : RecipientID
+        },
+        'message': {
+            'text' : CountyText,
+            'quick_replies' : [
+            {
+                'content_type' : 'text',
+                'title' : 'Kiambu County',
+                'payload' : 'kiambu'
+            },
+            {
+                'content_type' : 'text',
+                'title': 'Kisumu County',
+                'payload': 'kisumu'
+            },
+            {
+                'content_type' : 'text',
+                'title': 'Mombasa County',
+                'payload': 'mombasa'
+            },
+            {
+                'content_type' : 'text',
+                'title': 'Nairobi County',
+                'payload': 'nairobi'
+            },
+            {
+                'content_type' : 'text',
+                'title': 'Nakuru County',
+                'payload': 'nakuru'
+            }
+            ]
+        }
+        })
+    r = request.post('https://graph.facebook.com/v2.8/me/messages?access_token=' + PAT, headers = headers, data = data)
 
 
 
