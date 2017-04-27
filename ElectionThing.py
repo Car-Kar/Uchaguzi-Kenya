@@ -200,7 +200,7 @@ def CountyOptions(RecipientID):
             ]
         }
         })
-    r = request.post('https://graph.facebook.com/v2.8/me/messages?access_token=' + PAT, headers = headers, data = data)
+    r = requests.post('https://graph.facebook.com/v2.8/me/messages?access_token=' + PAT, headers = headers, data = data)
     if r != 200:
         print(r.status_code)
 
