@@ -199,7 +199,7 @@ def CountyOptions(RecipientID):
             for msg in message['messaging']:
                 SenderID = msg['sender']['id']
                 if msg.get('message'):
-                    m = msg['quick_replies']['payload']
+                    m = msg['message']['quick_reply']['payload']
                     if m.lower() == 'nairobi':
                         SendMessage(SenderID, 'KKK')
     if r != 200:
