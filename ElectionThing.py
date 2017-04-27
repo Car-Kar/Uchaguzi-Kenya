@@ -95,7 +95,7 @@ def GetMessages():
             if msg.get('postback'):
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Get Started':
-                    SendMessage(SendMessage, IntroductoryMessage)
+                    SendMessage(SenderID, IntroductoryMessage)
                 elif PostbackText == 'presidential':
                     names = Candidates()
                     TEXT = 'The presidential candidates are: \n' + str(names[0:])
