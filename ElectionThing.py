@@ -103,6 +103,10 @@ def GetMessages():
                 elif PostbackText == 'gubernatorial':
                     print('governors')
                     CountyOptions(SenderID)
+                    if msg.get('message'):
+                        m = msg['message']['quick_reply']['payload']
+                        if m.lower() == 'nairobi':
+                            SendMessage(SenderID, 'KKK')
                     
                 elif PostbackText == 'senate' :
                     TEXT2 = 'From what county?'
@@ -193,7 +197,7 @@ def CountyOptions(RecipientID):
         }
         })
     r = requests.post('https://graph.facebook.com/v2.9/me/messages?access_token=' + PAT, headers = headers, data = data)
-    messages = request.get_json()
+    '''messages = request.get_json()
     if messages['object'] == 'page':
         for message in messages['entry']:
             for msg in message['messaging']:
@@ -201,7 +205,7 @@ def CountyOptions(RecipientID):
                 if msg.get('message'):
                     m = msg['message']['quick_replies']['payload']
                     if m.lower() == 'nairobi':
-                        SendMessage(SenderID, 'KKK')
+                        SendMessage(SenderID, 'KKK')'''
     if r != 200:
         print(r.status_code)
 
