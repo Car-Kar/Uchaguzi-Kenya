@@ -64,7 +64,7 @@ def GetMessages():
             SenderID = msg['sender']['id']
             MessageText = msg['message']['text']
             MessageText = msg['message']['text']
-            QuickReply = msg['message']['quick_reply']['payload']
+            QuickReply = msg['message']['quick_replies']['payload']
             if msg.get('message'):
                 MessageText = msg['message']['text']
                 QuickReply = msg['message']['quick_replies']['payload']
