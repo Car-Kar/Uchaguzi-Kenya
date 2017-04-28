@@ -44,11 +44,16 @@ However, this is our first beta and us such we can only provide information for 
 Please use any of those five counties for now, as we go about adding information support for all other counties!
 \U0001F642
 '''
-COntinueUsing = '''Please choose another option to continue using me.
+ContinueUsing = '''Please choose another option to continue using me.
 Or say goodbye if you're done!
 \U0001F642
 '''
-
+Goodbye = '''
+Thank you the time! 
+I hope you have learnt enough about our candidates to make an informative decision come August!
+Goodbye!
+\U0001F642
+'''
 @app.route('/', methods=['GET'])
 def verification():
   if request.args.get('hub.verify_token', '') == VerifyToken:
@@ -68,16 +73,23 @@ def GetMessages():
             SenderID = msg['sender']['id']
             #QuickReply = msg['message']['quick_reply']['payload']
             if msg.get('message'):
+
                 MessageText = msg['message']['text']
                 #QuickReply = msg['message']['quick_reply']['payload']
+                if msg.get('quick_reply'):
+                    QuickReply = msg['quick_reply']['payload']
+                    if QuickReply.lower() == 'nairobi':
+                        print('Fuck You.')
+                        SendMessage(SenderID, 'K')
+
                 if 'start' in MessageText.lower():
                     SendMessage(SenderID, IntroductoryMessage)
                 elif 'registration' in MessageText.lower():
                     SendMessage(SenderID, VoterRegistration)
-                    SendMessage(SenderID, COntinueUsing)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'requirement' in MessageText.lower():
                     SendMessage(SenderID, VoterRequirements)
-                    SendMessage(SenderID, COntinueUsing)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'governor' in MessageText.lower():
                     print('governors1')
                     SendMessage(SenderID, 'What county?')
@@ -92,14 +104,11 @@ def GetMessages():
                     SendMessage(SenderID, raila_info)
                 elif 'mohamud' in MessageText.lower():
                     SendMessage(SenderID, mohamud)
+                elif 'bye' in MessageText.lower():
+                    SendMessage(SenderID, Goodbye)
                 '''else:
                     SendMessage(SenderID, ApologyMessage)'''
-                if msg.get('quick_reply'):
-                    QuickReply = msg['quick_reply']['payload']
-                    if 'nairobi' in QuickReply.lower():
-                        print('Fuck You.')
-                        SendMessage(SenderID, 'K')
-
+                
 
             if msg.get('postback'):
                 PostbackText = msg['postback']['payload']
