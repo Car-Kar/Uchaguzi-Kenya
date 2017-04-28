@@ -75,8 +75,8 @@ def GetMessages():
             if msg.get('message'):
 
                 MessageText = msg['message']['text']
-                QuickReply = msg['message']['quick_replies']['payload']
-                print(QuickReply)
+                #QuickReply = msg['message']['quick_replies']['payload']
+                #print(QuickReply)
 
                 if 'start' in MessageText.lower():
                     SendMessage(SenderID, IntroductoryMessage)
@@ -138,8 +138,8 @@ def GetMessages():
                     SendMessage(SenderID, COntinueUsing)
                 else:
                     SendMessage(SenderID, ApologyMessage)
-            elif msg.get('quick_reply'):
-                QuickReply = msg['quick_reply']['payload']
+            elif msg.get('quick_replies'):
+                QuickReply = msg['quick_replies']['payload']
                 if QuickReply.lower() == 'nairobi':
                     print('Fuck You.')
                     SendMessage(SenderID, 'K')
