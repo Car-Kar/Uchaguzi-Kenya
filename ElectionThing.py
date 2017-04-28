@@ -77,7 +77,7 @@ def GetMessages():
                 MessageText = msg['message']['text']
                 #QuickReply = msg['message']['quick_replies']['payload']
                 #print(QuickReply)
-                
+
 
                 if 'start' in MessageText.lower():
                     SendMessage(SenderID, IntroductoryMessage)
@@ -140,8 +140,7 @@ def GetMessages():
                 else:
                     SendMessage(SenderID, ApologyMessage)
             elif msg.get('quick_replies'):
-                QuickReply = msg['quick_replies']['payload']
-                if QuickReply.lower() == 'gnairobi':
+                if msg.get('quick_replies').get('payload')== 'gnairobi':
                     print('Fuck You.')
                     SendMessage(SenderID, 'K')
 
@@ -260,7 +259,7 @@ def SenCountyOptions(RecipientID):
     if r.status_code != 200:
         print(r.text)
     
-def CountyOptions(RecipientID):
+def WomCountyOptions(RecipientID):
     print(('Sending county options to {0}').format(RecipientID))
     CountyText = 'From what county? Choose one below.'
     headers = {
