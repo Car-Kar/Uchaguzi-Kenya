@@ -69,7 +69,6 @@ def GetMessages():
             if msg.get('message'):
                 MessageText = msg['message']['text']
                 #QuickReply = msg['message']['quick_reply']['payload']
-                print(MessageText)
                 if 'governor' in MessageText.lower():
                     print('governors1')
                     SendMessage(SenderID, 'What county?')
@@ -79,6 +78,17 @@ def GetMessages():
                     print(('Hey {0}').format(m))
                     if m.lower() == 'nairobi':
                         SendMessage(SenderID, 'KKK')
+                if 'start' in MessageText.lower():
+                    SendMessage(SenderID, IntroductoryMessage)
+                if 'registration' in MessageText.lower():
+                    SendMessage(SenderID, VoterRegistration)
+                    SendMessage(SenderID, COntinueUsing)
+                if 'requirement' in MessageText.lower():
+                    SendMessage(SenderID, VoterRequirements)
+                    SendMessage(SenderID, COntinueUsing)
+                else:
+                    SendMessage(SenderID, ApologyMessage)
+
             if msg.get('postback'):
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Get Started':
@@ -89,6 +99,7 @@ def GetMessages():
                     SendMessage(SenderID, TEXT)
                 elif PostbackText == 'VoterReg':
                     SendMessage(SenderID, VoterRegistration)
+                    SendMessage(SenderID, COntinueUsing)
                 elif PostbackText == 'VoterReq':
                     SendMessage(SenderID, VoterRequirements)
                     SendMessage(SenderID, COntinueUsing)
