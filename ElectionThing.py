@@ -94,7 +94,7 @@ def GetMessages():
                     SendMessage(SenderID, mohamud)
                 '''else:
                     SendMessage(SenderID, ApologyMessage)'''
-                if msg.get('quick_replies'):
+                if msg.get('quick_reply'):
                     QuickReply = msg['quick_reply']['payload']
                     if 'nairobi' in QuickReply.lower():
                         print('Fuck You.')
