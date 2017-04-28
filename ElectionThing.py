@@ -74,7 +74,7 @@ def GetMessages():
                     print('Gotten Payload.')
                     if m.lower() == 'nairobi':
                         SendMessage(SenderID, 'KKK')
-                        break
+                    break
 
                 '''if 'president' in MessageText.lower():
                     names = Candidates()
