@@ -100,16 +100,14 @@ def GetMessages():
                     names = Candidates()
                     TEXT = 'The presidential candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
-                elif PostbackText == 'gubernatorial':
+                while PostbackText == 'gubernatorial':
                     print('governors')
                     CountyOptions(SenderID)
-                    while PostbackText == 'gubernatorial':
-                        print('Getting text.')
-                        if msg.get('message'):
-                            print('Gotten Text')
-                            m = msg['message']['quick_reply']['payload']
-                            if m.lower() == 'nairobi':
-                                SendMessage(SenderID, 'KKK')
+                    if msg.get('message'):
+                        print('Gotten Text')
+                        m = msg['message']['quick_reply']['payload']
+                        if m.lower() == 'nairobi':
+                            SendMessage(SenderID, 'KKK')
                     
                 elif PostbackText == 'senate' :
                     TEXT2 = 'From what county?'
