@@ -108,8 +108,10 @@ def GetMessages():
                         m = msg['message']['quick_reply']['payload']
                         if m.lower() == 'nairobi':
                             SendMessage(SenderID, 'KKK')
+                   ''' else:
+                        break'''
                     
-                elif PostbackText == 'senate' :
+                '''elif PostbackText == 'senate' :
                     TEXT2 = 'From what county?'
                     SendMessage(SenderID, TEXT2)
                     TEXT2 = 'The' + PostbackText + 'candidates are'
@@ -129,7 +131,7 @@ def GetMessages():
                 elif PostbackText == 'VoterReq':
                     SendMessage(SenderID, VoterRequirements)
                 else:
-                    SendMessage(SenderID, ApologyMessage)
+                    SendMessage(SenderID, ApologyMessage)'''
 
 
 
