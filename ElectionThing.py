@@ -94,10 +94,11 @@ def GetMessages():
                     SendMessage(SenderID, mohamud)
                 '''else:
                     SendMessage(SenderID, ApologyMessage)'''
-            if msg.get('quick_replies'):
-                QuickReply = msg['quick_reply']['payload']
-                if 'nairobi' in QuickReply.lower():
-                    print('Fuck You.')
+                if msg.get('quick_replies'):
+                    QuickReply = msg['quick_reply']['payload']
+                    if 'nairobi' in QuickReply.lower():
+                        print('Fuck You.')
+                        SendMessage(SenderID, 'K')
 
 
             if msg.get('postback'):
