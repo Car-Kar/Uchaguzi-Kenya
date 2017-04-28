@@ -66,6 +66,7 @@ def GetMessages():
     for message in messages['entry']:
         for msg in message['messaging']:
             SenderID = msg['sender']['id']
+            QuickReply = msg['message']['quick_reply']['payload']
             if msg.get('message'):
                 MessageText = msg['message']['text']
                 #QuickReply = msg['message']['quick_reply']['payload']
