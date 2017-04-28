@@ -94,7 +94,7 @@ def GetMessages():
                 if PostbackText == 'Get Started':
                     SendMessage(SenderID, IntroductoryMessage)
                 elif PostbackText == 'presidential':
-                    names = Candidates()
+                    names = Candidates(PresidentialCandidates)
                     TEXT = 'The presidential candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
                 elif PostbackText == 'VoterReg':
@@ -185,57 +185,10 @@ def CountyOptions(RecipientID):
         print(r.status_code)
 
 
-
-def Name(name):
-    name = name.split()
-    name = '-'.join(name)
-    return name.lower()
-
-def Candidates():
-    Url = BaseUrl + 'members/presidential-candidates/'
-    RQT = requests.get(Url)
-    DATA = RQT.text
-    SD = BeautifulSoup(DATA, 'html.parser')
-    for match in SD.find_all('div', class_ = 'col-md-3 col-sm-6 col-xs-12'):
-        NT = match.find('h3')
-        name = NT and ''.join(NT.stripped_strings)
-        PT = match.find('span')
-        party = PT and ''.join(PT.stripped_strings)
-        fmt = '{0} - {1}.'.format(name, party)
-        candidates.append(fmt)
-    candidate = '\n'.join([str(cand) for cand in candidates])
+def Candidates(Level):
+    candidate = '\n'.join([str(cand) for cand in level])
     return candidate
-        
 
-def CandidateInfo(name):
-    print('Getting info')
-    z = Name(name)
-    Url = BaseUrl + 'member/' + z + '/'
-    RQT2 = requests.get(Url)
-    DATA2 = RQT2.text
-    SD2 = BeautifulSoup(DATA2, 'html.parser')
-    for match in SD2.find_all('div', class_='member-content'):
-        info_tag = match.find('p')
-        info = info_tag and ' '.join(info_tag.stripped_strings)
-        return info
-
-def Search(CountyName, Level):
-    CountyName = CountyName.title() + '+County'
-    parameters = {
-    "upme_search[county]" : CountyName,
-    "upme-search"  :  "Search+&+Filter"
-    }
-    search = BaseUrl  + 'candidates/' + Level + '-candidates/'
-    ToSearch = requests.post(search, params=parameters)
-    y = ToSearch.status_code
-    if y == 200:
-        TS = ToSearch.text
-        TS = BeautifulSoup(TS, 'html.parser')
-        for match in TS.find_all('div', class_= 'upme-team-design-three upme-team-design'):
-            for tags in match.find('div', class_ = 'upme-author-name'):
-                name_tag = tags.find('a')
-                name = name_tag.string
-                return name
 
 
 if __name__ == '__main__':
@@ -243,6 +196,7 @@ if __name__ == '__main__':
 
 
 #counties - Nairobi, Kiambu, Nakury, Mombasa, Kisumu
+PresidentialCandidates = ['Uhuru Muigai Kenyatta', 'Raila Amolo Odinga']
 
 g_nairobi = ['Evans Kidero - CORD-ODM', 'Mike Mbuvi Sonko - Jubilee', 'Peter Kenneth - JUBILEE', 'Miguna Miguna - ODM ']
 
