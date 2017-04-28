@@ -250,7 +250,7 @@ def GetMessages():
                         SendMessage(SenderID, ApologyMessage)
                         i += 1
                     else:
-                        break
+                        SendMessage(SenderID, 'Please pick a valid option from the menu!')
 
 
                 
