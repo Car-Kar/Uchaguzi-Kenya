@@ -76,11 +76,6 @@ def GetMessages():
 
                 MessageText = msg['message']['text']
                 #QuickReply = msg['message']['quick_reply']['payload']
-                if msg.get('quick_reply'):
-                    QuickReply = msg['quick_reply']['payload']
-                    if QuickReply.lower() == 'nairobi':
-                        print('Fuck You.')
-                        SendMessage(SenderID, 'K')
 
                 if 'start' in MessageText.lower():
                     SendMessage(SenderID, IntroductoryMessage)
@@ -110,7 +105,7 @@ def GetMessages():
                     SendMessage(SenderID, ApologyMessage)'''
                 
 
-            if msg.get('postback'):
+           elif msg.get('postback'):
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Get Started':
                     SendMessage(SenderID, IntroductoryMessage)
@@ -128,6 +123,11 @@ def GetMessages():
                     SendMessage(SenderID, COntinueUsing)
                 else:
                     SendMessage(SenderID, ApologyMessage)
+            elif msg.get('quick_reply'):
+                QuickReply = msg['quick_reply']['payload']
+                if QuickReply.lower() == 'nairobi':
+                    print('Fuck You.')
+                    SendMessage(SenderID, 'K')
 
                 
 
