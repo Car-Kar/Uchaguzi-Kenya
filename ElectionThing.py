@@ -75,7 +75,6 @@ def GetMessages():
                     print(('Hey {0}').format(m))
                     if m.lower() == 'nairobi':
                         SendMessage(SenderID, 'KKK')
-                        break
             if msg.get('postback'):
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Get Started':
