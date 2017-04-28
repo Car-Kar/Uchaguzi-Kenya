@@ -103,10 +103,11 @@ def GetMessages():
                 elif PostbackText == 'gubernatorial':
                     print('governors')
                     CountyOptions(SenderID)
-                    if msg.get('message'):
-                        m = msg['message']['quick_reply']['payload']
-                        if m.lower() == 'nairobi':
-                            SendMessage(SenderID, 'KKK')
+                    while PostbackText == 'gubernatorial':
+                        if msg.get('message'):
+                            m = msg['message']['quick_reply']['payload']
+                            if m.lower() == 'nairobi':
+                                SendMessage(SenderID, 'KKK')
                     
                 elif PostbackText == 'senate' :
                     TEXT2 = 'From what county?'
