@@ -104,7 +104,7 @@ def GetMessages():
                     SendMessage(SenderID, ApologyMessage)
 '''
 
-            if msg.get('postback'):
+            '''if msg.get('postback'):
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Get Started':
                     SendMessage(SenderID, IntroductoryMessage)
@@ -119,7 +119,7 @@ def GetMessages():
                     m = msg['quick_reply']['payload']
                     print('Gotten Payload.')
                     if m.lower() == 'nairobi':
-                        SendMessage(SenderID, 'KKK')
+                        SendMessage(SenderID, 'KKK')'''
                    
                 '''elif PostbackText == 'senate' :
                     TEXT2 = 'From what county?'
