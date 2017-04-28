@@ -95,7 +95,7 @@ def GetMessages():
                     SendMessage(SenderID, TEXT)
                 elif 'uhuru' in MessageText.lower() or 'kenyatta' in MessageText.lower() or 'muigai' in MessageText.lower():
                     SendMessage(SenderID, uhuru)
-                elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'muigai' in MessageText.lower():
+                elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
                     SendMessage(SenderID, raila_info)
                 elif 'mohamud' in MessageText.lower():
                     SendMessage(SenderID, mohamud)
