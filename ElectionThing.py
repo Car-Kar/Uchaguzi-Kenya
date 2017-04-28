@@ -140,7 +140,7 @@ def GetMessages():
                     SendMessage(SenderID, ApologyMessage)
             elif msg.get('quick_replies'):
                 QuickReply = msg['quick_replies']['payload']
-                if QuickReply.lower() == 'nairobi':
+                if QuickReply.lower() == 'gnairobi':
                     print('Fuck You.')
                     SendMessage(SenderID, 'K')
 
