@@ -92,8 +92,8 @@ def GetMessages():
                     SendMessage(SenderID, raila_info)
                 elif 'mohamud' in MessageText.lower():
                     SendMessage(SenderID, mohamud)
-                else:
-                    SendMessage(SenderID, ApologyMessage)
+                '''else:
+                    SendMessage(SenderID, ApologyMessage)'''
             if msg.get('quick_reply'):
                 QuickReply = msg['quick_reply']['payload']
                 if 'nairobi' in QuickReply.lower():
