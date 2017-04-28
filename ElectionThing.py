@@ -67,7 +67,7 @@ def GetMessages():
                 #QuickReply = msg['message']['quick_reply']['payload']
                 print(MessageText)
                 while 'governor' in MessageText.lower():
-                    print('governors')
+                    print('governors1')
                     SendMessage(SenderID, 'What county?')
                     print('Gotten Text')
                     m = msg['message']['text']
