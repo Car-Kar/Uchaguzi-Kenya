@@ -100,39 +100,51 @@ def GetMessages():
                     SendMessage(SenderID, ContinueUsing)
                 elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
                     SendMessage(SenderID, raila_info)
+                    SendMessage(SenderID, ContinueUsing)
                     
                 elif 'evans' in MessageText.lower() or 'kidero' in MessageText.lower():
                     SendMessage(SenderID, g_evans_info)
+                    SendMessage(SenderID, ContinueUsing)
                     
                 elif 'mike' in MessageText.lower() or 'sonko' in MessageText.lower():
                     SendMessage(SenderID, g_mike_info)
+                    SendMessage(SenderID, ContinueUsing)
                     
                 elif 'ali' in MessageText.lower() or 'joho' in MessageText.lower():
                     SendMessage(SenderID, g_ali_info)
+                    SendMessage(SenderID, ContinueUsing)
                     
                 elif 'mohamud' in MessageText.lower() or 'diba' in MessageText.lower():
                     SendMessage(SenderID, mohamud)
+                    SendMessage(SenderID, ContinueUsing)
                     
                 elif 'suleiman' in MessageText.lower() or 'shahbal' in MessageText.lower():
                     SendMessage(SenderID, g_suleiman_info)
+                    SendMessage(SenderID, ContinueUsing)
                     
                 elif 'hezron' in MessageText.lower() or 'awiti' in MessageText.lower():
                     SendMessage(SenderID, g_hezron_info)
+                    SendMessage(SenderID, ContinueUsing)
                     
                 elif 'jack' in MessageText.lower() or 'ragumba' in MessageText.lower():
                     SendMessage(SenderID, g_jack_info)
+                    SendMessage(SenderID, ContinueUsing)
                     
                 elif 'anyang' in MessageText.lower() or "nyong'o" in MessageText.lower():
                     SendMessage(SenderID, g_anyang_info)
+                    SendMessage(SenderID, ContinueUsing)
                     
                 elif 'chris' in MessageText.lower() or 'ondieki' in MessageText.lower():
                     SendMessage(SenderID, g_chris_info)
+                    SendMessage(SenderID, ContinueUsing)
                     
                 elif 'johnson' in MessageText.lower() or 'sakaia' in MessageText.lower():
                     SendMessage(SenderID, s_johnson_info)
+                    SendMessage(SenderID, ContinueUsing)
                    
                 elif 'richard' in MessageText.lower() or 'kavemba' in MessageText.lower():
                     SendMessage(SenderID, s_richard_info)
+                    SendMessage(SenderID, ContinueUsing)
                     
                 elif 'william' in MessageText.lower() or 'wahome' in MessageText.lower():
                     SendMessage(SenderID, s_william_info)
@@ -142,27 +154,33 @@ def GetMessages():
                     
                 elif 'mohammad' in MessageText.lower() or 'faki' in MessageText.lower():
                     SendMessage(SenderID, s_mohammad_info)
+                    SendMessage(SenderID, ContinueUsing)
                     
                 elif 'tendai' in MessageText.lower() or 'mtwana' in MessageText.lower():
                     SendMessage(SenderID, s_tendai_info)
+                    SendMessage(SenderID, ContinueUsing)
                     
                 elif 'millicent' in MessageText.lower() or 'abudho' in MessageText.lower():
                     SendMessage(SenderID, s_millicent_info)
+                    SendMessage(SenderID, ContinueUsing)
                     
                 elif 'otieno' in MessageText.lower() or 'odongo' in MessageText.lower():
                     SendMessage(SenderID, s_otieno_info)
+                    SendMessage(SenderID, ContinueUsing)
                     
                 elif 'rachel' in MessageText.lower() or 'shebesh' in MessageText.lower():
                     SendMessage(SenderID, w_rachel_info)
-                    
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'esther' in MessageText.lower() or 'passaris' in MessageText.lower():
                     SendMessage(SenderID, w_esther_info)
+                    SendMessage(SenderID, ContinueUsing)
                     
                 elif 'millicent' in MessageText.lower() or 'omanga' in MessageText.lower():
                     SendMessage(SenderID, w_millicent_info)
-                    
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'karen' in MessageText.lower() or 'nyamu' in MessageText.lower():
                     SendMessage(SenderID, w_karen_info)
+                    SendMessage(SenderID, ContinueUsing)
                     
                 elif 'sadaf' in MessageText.lower() or 'deen' in MessageText.lower():
                     SendMessage(SenderID, w_sadaf_info)
@@ -170,9 +188,11 @@ def GetMessages():
                    
                 elif 'mishi' in MessageText.lower() or 'juma' in MessageText.lower():
                     SendMessage(SenderID, w_mishi_info)
+                    SendMessage(SenderID, ContinueUsing)
                     
                 elif 'tendai' in MessageText.lower() or 'mtwana' in MessageText.lower():
                     SendMessage(SenderID, s_tendai_info)
+                    SendMessage(SenderID, ContinueUsing)
                     
                 elif 'bye' in MessageText.lower():
                     SendMessage(SenderID, Goodbye)
