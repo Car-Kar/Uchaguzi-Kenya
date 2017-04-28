@@ -96,7 +96,8 @@ def GetMessages():
                     SendMessage(SenderID, ApologyMessage)
             if msg.get('quick_reply'):
                 QuickReply = msg['quick_reply']['payload']
-                print('Fuck You.')
+                if 'nairobi' in QuickReply.lower():
+                    print('Fuck You.')
 
 
             if msg.get('postback'):
