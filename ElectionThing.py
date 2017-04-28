@@ -297,7 +297,7 @@ def Candidates(Level):
 
 
 if __name__ == '__main__':
-  app.run(port = 5000, debug = True)
+  app.run(debug = True)
 
 
 #counties - Nairobi, Kiambu, Nakury, Mombasa, Kisumu
