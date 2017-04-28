@@ -93,9 +93,9 @@ def GetMessages():
                     names = Candidates(PresidentialCandidates)
                     TEXT = 'The presidential candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
-                elif 'uhuru' in MessageText.lower():
+                elif 'uhuru' in MessageText.lower() or 'kenyatta' in MessageText.lower() or 'muigai' in MessageText.lower():
                     SendMessage(SenderID, uhuru)
-                elif 'raila' in MessageText.lower():
+                elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'muigai' in MessageText.lower():
                     SendMessage(SenderID, raila_info)
                 elif 'mohamud' in MessageText.lower():
                     SendMessage(SenderID, mohamud)
@@ -150,7 +150,7 @@ def SendMessage(RecipientID, Text):
     if r.status_code != 200:
         print(r.text)
 
-def CountyOptions(RecipientID):
+def GovCountyOptions(RecipientID):
     print(('Sending county options to {0}').format(RecipientID))
     CountyText = 'From what county? Choose one below.'
     headers = {
@@ -166,43 +166,110 @@ def CountyOptions(RecipientID):
             {
                 'content_type' : 'text',
                 'title' : 'Kiambu County',
-                'payload' : 'kiambu'
+                'payload' : 'gkiambu'
             },
             {
                 'content_type' : 'text',
                 'title': 'Kisumu County',
-                'payload': 'kisumu'
+                'payload': 'gkisumu'
             },
             {
                 'content_type' : 'text',
                 'title': 'Mombasa County',
-                'payload': 'mombasa'
+                'payload': 'gmombasa'
             },
             {
                 'content_type' : 'text',
                 'title': 'Nairobi County',
-                'payload': 'nairobi'
+                'payload': 'gnairobi'
             },
             {
                 'content_type' : 'text',
                 'title': 'Nakuru County',
-                'payload': 'nakuru'
+                'payload': 'gnakuru'
             }
             ]
         }
         })
     r = requests.post('https://graph.facebook.com/v2.9/me/messages?access_token=' + PAT, headers = headers, data = data)
-    '''messages = request.get_json()
-    if messages['object'] == 'page':
-        for message in messages['entry']:
-            for msg in message['messaging']:
-                SenderID = msg['sender']['id']
-                if msg.get('message'):
-                    m = msg['message']['quick_replies']['payload']
-                    if m.lower() == 'nairobi':
-                        SendMessage(SenderID, 'KKK')'''
-    if r != 200:
-        print(r.status_code)
+    if r.status_code != 200:
+        print(r.text)
+
+
+    def SenCountyOptions(RecipientID):
+    print(('Sending county options to {0}').format(RecipientID))
+    CountyText = 'From what county? Choose one below.'
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        'recipient' : {
+        'id' : RecipientID
+        },
+        'message': {
+            'text' : CountyText,
+            'quick_replies' : [
+            {
+                'content_type' : 'text',
+                'title' : 'Kiambu County',
+                'payload' : 'skiambu'
+            },
+            {
+                'content_type' : 'text',
+                'title': 'Kisumu County',
+                'payload': 'skisumu'
+            },
+            {
+                'content_type' : 'text',
+                'title': 'Mombasa County',
+                'payload': 'smombasa'
+            },
+            {
+                'content_type' : 'text',
+                'title': 'Nairobi County',
+                'payload': 'snairobi'
+            },
+            {
+                'content_type' : 'text',
+                'title': 'Nakuru County',
+                'payload': 'snakuru'
+            }
+            ]
+        }
+        })
+    r = requests.post('https://graph.facebook.com/v2.9/me/messages?access_token=' + PAT, headers = headers, data = data)
+    if r.status_code != 200:
+        print(r.text)
+    
+    def CountyOptions(RecipientID):
+    print(('Sending county options to {0}').format(RecipientID))
+    CountyText = 'From what county? Choose one below.'
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        'recipient' : {
+        'id' : RecipientID
+        },
+        'message': {
+            'text' : CountyText,
+            'quick_replies' : [
+            {
+                'content_type' : 'text',
+                'title': 'Mombasa County',
+                'payload': 'wmombasa'
+            },
+            {
+                'content_type' : 'text',
+                'title': 'Nairobi County',
+                'payload': 'wnairobi'
+            }
+            ]
+        }
+        })
+    r = requests.post('https://graph.facebook.com/v2.9/me/messages?access_token=' + PAT, headers = headers, data = data)
+    if r.status_code != 200:
+        print(r.text)
 
 
 def Candidates(Level):
