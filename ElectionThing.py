@@ -130,7 +130,11 @@ def GetMessages():
                     TEXT = 'The presidential candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
                 elif PostbackText == 'gubernatorial':
-                    GovCountyOptions(SenderID)
+                    GovOptions(SenderID)
+                elif PostbackText == 'gnairobi':
+                    names = Candidates(g_nairobi)
+                    TEXT = 'The presidential candidates are: \n' + str(names[0:])
+                    SendMessage(SenderID, TEXT)
                 elif PostbackText == 'VoterReg':
                     SendMessage(SenderID, VoterRegistration)
                     SendMessage(SenderID, COntinueUsing)
@@ -168,7 +172,7 @@ def SendMessage(RecipientID, Text):
     if r.status_code != 200:
         print(r.text)
 
-def GovCountyOptions(RecipientID):
+'''def GovCountyOptions(RecipientID):
     print(('Sending county options to {0}').format(RecipientID))
     CountyText = 'From what county? Choose one below.'
     headers = {
@@ -288,7 +292,47 @@ def WomCountyOptions(RecipientID):
     r = requests.post('https://graph.facebook.com/v2.9/me/messages?access_token=' + PAT, headers = headers, data = data)
     if r.status_code != 200:
         print(r.text)
+'''
+def GovOptions(SID):
+    print(('Sending county options to {0}').format(RecipientID))
+    CountyText = 'From what county? Choose one below.'
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        'recipient' : {
+        'id' : SID
+        },
+        'message': {
+            'attachment' : {
+                'type' : 'template',
+                'payload' : {
+                    'template_type' : 'button',
+                    'text': CountyText,
+                    'buttons': [
+                    {
+                        'type' : 'postback',
+                        'title' : 'Kisumu County',
+                        'payload' : 'gkisumu'
+                    },
+                    {
+                        'type' : 'postback',
+                        'title' : 'Mombasa County',
+                        'payload' : 'gmombasa'
+                    },
+                    {
+                        'type' : 'postback',
+                        'title' : 'Nairobi County',
+                        'payload' : 'gnairobi'
 
+                    }]
+                }
+            }
+        }
+        })
+    r = requests.post('https://graph.facebook.com/v2.9/me/messages?access_token=' + PAT, headers = headers, data = data)
+    if r.status_code != 200:
+        print(r.text)
 
 def Candidates(Level):
     candidate = '\n'.join([str(cand) for cand in Level])
