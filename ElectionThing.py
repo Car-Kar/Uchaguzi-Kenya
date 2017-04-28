@@ -293,7 +293,7 @@ def WomCountyOptions(RecipientID):
     if r.status_code != 200:
         print(r.text)
 '''
-def GovOptions(SID):
+def GovOptions(RecipientID):
     print(('Sending county options to {0}').format(RecipientID))
     CountyText = 'From what county? Choose one below.'
     headers = {
@@ -301,7 +301,7 @@ def GovOptions(SID):
     }
     data = json.dumps({
         'recipient' : {
-        'id' : SID
+        'id' : RecipientID
         },
         'message': {
             'attachment' : {
@@ -341,7 +341,7 @@ def Candidates(Level):
 
 
 if __name__ == '__main__':
-  app.run(debug = True)
+  app.run(port = 3000, debug = True)
 
 
 #counties - Nairobi, Kiambu, Nakury, Mombasa, Kisumu
