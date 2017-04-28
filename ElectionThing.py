@@ -139,8 +139,8 @@ def GetMessages():
                     SendMessage(SenderID, COntinueUsing)
                 else:
                     SendMessage(SenderID, ApologyMessage)
-            elif msg.get('quick_reply'):
-                if msg.get('quick_reply').get('payload')== 'gnairobi':
+            elif msg.get('quick_replies'):
+                if msg.get('quick_replies').get('payload')== 'gnairobi':
                     print('Fuck You.')
                     SendMessage(SenderID, 'K')
 
