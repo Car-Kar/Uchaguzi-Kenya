@@ -64,8 +64,18 @@ def GetMessages():
             SenderID = msg['sender']['id']
             if msg.get('message'):
                 MessageText = msg['message']['text']
-                QuickReply = msg['message']['quick_reply']['payload']
-                print(QuickReply)
+                #QuickReply = msg['message']['quick_reply']['payload']
+                #print(QuickReply)
+                while MessageText.lower() == 'governor':
+                    print('governors')
+                    SendMessage(SenderID, 'What county?')
+                    print('Gotten Text')
+                    m = msg['message']['text']
+                    print('Gotten Payload.')
+                    if m.lower() == 'nairobi':
+                        SendMessage(SenderID, 'KKK')
+                    break
+
                 '''if 'president' in MessageText.lower():
                     names = Candidates()
                     TEXT = 'The presidential candidates are: \n' + str(names[0:])
