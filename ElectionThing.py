@@ -97,6 +97,7 @@ def GetMessages():
                     SendMessage(SenderID, CandidateMoreInfo)
                 elif 'uhuru' in MessageText.lower() or 'kenyatta' in MessageText.lower() or 'muigai' in MessageText.lower():
                     SendMessage(SenderID, uhuru)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
                     SendMessage(SenderID, raila_info)
                     
@@ -135,7 +136,7 @@ def GetMessages():
                     
                 elif 'william' in MessageText.lower() or 'wahome' in MessageText.lower():
                     SendMessage(SenderID, s_william_info)
-                    
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'yasser' in MessageText.lower() or 'sheikh' in MessageText.lower():
                     SendMessage(SenderID, s_yasser_info)
                     
@@ -146,10 +147,10 @@ def GetMessages():
                     SendMessage(SenderID, s_tendai_info)
                     
                 elif 'millicent' in MessageText.lower() or 'abudho' in MessageText.lower():
-                    SendMessage(SenderID, s_otieno_info)
+                    SendMessage(SenderID, s_millicent_info)
                     
                 elif 'otieno' in MessageText.lower() or 'odongo' in MessageText.lower():
-                    SendMessage(SenderID, s_tendai_info)
+                    SendMessage(SenderID, s_otieno_info)
                     
                 elif 'rachel' in MessageText.lower() or 'shebesh' in MessageText.lower():
                     SendMessage(SenderID, w_rachel_info)
@@ -165,6 +166,7 @@ def GetMessages():
                     
                 elif 'sadaf' in MessageText.lower() or 'deen' in MessageText.lower():
                     SendMessage(SenderID, w_sadaf_info)
+                    SendMessage(SenderID, ContinueUsing)
                    
                 elif 'mishi' in MessageText.lower() or 'juma' in MessageText.lower():
                     SendMessage(SenderID, w_mishi_info)
