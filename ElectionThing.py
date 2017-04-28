@@ -90,7 +90,7 @@ def GetMessages():
                 elif 'governor' in MessageText.lower():
                     print('governors1')
                     SendMessage(SenderID, 'What county?')
-                    CountyOptions(SenderID)
+                    GovCountyOptions(SenderID)
                 elif 'president' in MessageText.lower():
                     names = Candidates(PresidentialCandidates)
                     TEXT = 'The presidential candidates are: \n' + str(names[0:])
