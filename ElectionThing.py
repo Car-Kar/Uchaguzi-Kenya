@@ -80,12 +80,7 @@ def GetMessages():
                 elif 'governor' in MessageText.lower():
                     print('governors1')
                     SendMessage(SenderID, 'What county?')
-                    print('Gotten Text')
-                    m = msg['message']['text']
-                    print('Gotten Payload.')
-                    print(('Hey {0}').format(m))
-                    if m.lower() == 'nairobi':
-                        SendMessage(SenderID, 'KKK')
+                    CountyOptions(SenderID)
                 elif 'president' in MessageText.lower():
                     names = Candidates(PresidentialCandidates)
                     TEXT = 'The presidential candidates are: \n' + str(names[0:])
