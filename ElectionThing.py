@@ -97,16 +97,16 @@ def GetMessages():
                     SendMessage(SenderID, uhuru)
                 elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
                     SendMessage(SenderID, raila_info)
-                elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
+                elif 'evans' in MessageText.lower() or 'kidero' in MessageText.lower():
+                    SendMessage(SenderID, g_evans_info)
+                elif 'mike' in MessageText.lower() or 'sonko' in MessageText.lower():
+                    SendMessage(SenderID, g_mike_info)
+                elif 'peter' in MessageText.lower() or 'kenneth' in MessageText.lower():
+                    SendMessage(SenderID, g_peter_info)
+                elif '' in MessageText.lower() or '' in MessageText.lower():
                     SendMessage(SenderID, raila_info)
-                elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
-                    SendMessage(SenderID, raila_info)
-                elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
-                    SendMessage(SenderID, raila_info)
-                elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
-                    SendMessage(SenderID, raila_info)
-                elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
-                    SendMessage(SenderID, raila_info)
+                elif 'mohamud' in MessageText.lower() or 'diba' in MessageText.lower():
+                    SendMessage(SenderID, mohamud)
                 elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
                     SendMessage(SenderID, raila_info)
                 elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
@@ -445,8 +445,11 @@ Mishi actively participated in Likoni political campaigns in 1997 and 2002. She 
 raila_info = """Prime Minister Raila Amollo Odinga was born on January 7, 1945 in Maseno, Nyanza Province, the son of Vice President Jaramogi Oginga Odinga.
  He is running in the Orange Democratic Movement with Vice President Kalonzo Musyoka as his running mate. Odinga has focusedon youth in his campaign, promising to help them gain access to employment and education. He said he will institute cash transfers forthe poor and elderly, and create a programme for youth waiting to enter university or looking for jobs to teach in primary schools. In 1997, Odinga lost a bid for the presidency. He served as minister of energy from 2001 to 2002 and as minister of roads, public works, andhousing from 2003 to 2005.
 """
-uhuru = """Uhuru Muigai Kenyatta was born in October 1961. His father is Kenya's first president Jomo Kenyatta, who served from 1964 to 1978. He is the presidential candidate for the Jubilee Alliance, a coalition party formed under Kenyatta's The National Alliance and William Ruto's United Republican Party. Kenyatta ran unsuccessfully for president in 2002, yet won a seat in parliament representing Gatundu South that same year. He ran for president again in 2007, but withdrew and put his support behind President Mwai Kibaki for re-election. Kibaki appointed Kenyatta minister for local governments in January 2008 before he became deputy prime minister and minister of trade in April 2008 as part of a coalition government deal to end the violence after the 2007 elections.
+uhuru = """Uhuru  Kenyatta was born in October 1961. 
+He is the presidential candidate for the Jubilee Alliance. 
+Kenyatta ran unsuccessfully for president in 2002, yet won a seat in parliament representing Gatundu South that same year. He ran for president again in 2007, but withdrew and put his support behind President Mwai Kibaki for re-election. Kibaki appointed Kenyatta minister for local governments in January 2008 before he became deputy prime minister and minister of trade in April 2008 as part of a coalition government deal to end the violence after the 2007 elections.
 """
 
 mohamud = """Mohamud Abduba Dida was born in Kenya's Wajir District in 1975. A former teacher, Dida is competing for the presidency with the Alliancefor Real Change. His running mate is Joshua Odongo Onono, also a former teacher. Dida, a newcomer to the political scene, has vowed to be a president who focuses on the poor. He says education should be free for all Kenyans, and not based on a subsidy system. Dida has expressed confidence in his ability to do well in the elections, as he has said his party enjoys significant support among the youth. He holds a bachelor's degree in education from Kenyatta University and is currently pursuing a master's in religious studies from the University of Nairobi.
 """
+
