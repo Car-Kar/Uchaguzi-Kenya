@@ -104,6 +104,7 @@ def GetMessages():
                     print('governors')
                     CountyOptions(SenderID)
                     while PostbackText == 'gubernatorial':
+                        print('Getting text.')
                         if msg.get('message'):
                             m = msg['message']['quick_reply']['payload']
                             if m.lower() == 'nairobi':
