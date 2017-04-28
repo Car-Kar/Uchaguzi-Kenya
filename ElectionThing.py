@@ -186,7 +186,7 @@ def CountyOptions(RecipientID):
 
 
 def Candidates(Level):
-    candidate = '\n'.join([str(cand) for cand in level])
+    candidate = '\n'.join([str(cand) for cand in Level])
     return candidate
 
 
