@@ -127,9 +127,9 @@ def GetMessages():
                 elif PostbackText == 'gubernatorial':
                     GovOptions(SenderID)
                 elif PostbackText == 'senate':
-                    GovOptions(SenderID)
+                    SenOptions(SenderID)
                 elif PostbackText == 'womrep':
-                    GovOptions(SenderID)
+                    WomOptions(SenderID)
                 elif PostbackText == 'gnairobi':
                     names = Candidates(g_nairobi)
                     TEXT = 'The governor candidates are: \n' + str(names[0:])
@@ -366,28 +366,6 @@ g_anyang_info = '''Peter Anyang' Nyong'o (born 10 October 1945) is a Kenyan poli
 '''
 
 g_chris_info = '''Born in the Kisumu slums in 1983 went to a mixed public school to enjoy the Kenyan education system in a journey that culminated in his graduation in 2009 with a Bachelor of Architecture at the Jomo Kenyatta University of Agriculture and Technology. During his campus life he engaged student leadership and youth political movements and also in work study programs to support the siblings and joined business with like minded friends who were fellow students to start business and became pioneer agents for Safaricom mpesa business.
-'''
-
-
-g_nakuru = ['Kinuthia Mbugua - Jubilee Alliance', 'Lee Kinyanjui - Jubilee Alliance', 'James Kiarie Mungai - Jubilee Alliance']
-
-g_kinuthia_info = '''Kinuthia Mbugua , is the first and current governor of Nakuru County in Kenya. He has had an illustrious career in the Civil Service in 1978 as a District Officer and served extensively throughout the countryrising to become a District Commisssioner in Nakuru.
-'''
-g_lee_info = '''Lee Maiyani Kinyanjui is a Kenyan politician.He belongs to the Party of National Unity and was elected to represent the Nakuru Town Constituency in the National Assembly of Kenya since the Kenyan parliamentary election, 2007. He is a 35-year-old graduate of Kenyatta university where he graduated in literature and later pursued a master's degree in business administration at the Nairobi university. He was  the assistant minister for roads.
-'''
-
-g_james_info = '''James Kiarie Mungai was born in 1st January 1960 he is a Kenyan politician and the senator for Nakuru county. He is a member of The National Alliance and a coalition member of Jubilee Alliance. 997 – 2013 : Managing Director, May Feeds(K) Limited.1979 -1987 : Sales Representative, Stellascope Trading Company LimitedSenior Cashier, Unga Limited
-AREAS OF INTEREST: Industrial, Finance And Commerce Agriculture And Tourism.'''
-
-g_kiambu = ['William Kabogo - Jubilee Alliance', 'Ferdinand Waititu - Jubilee Alliance', 'Bedan Mbugua - Safina Party of Kenya']
-
-
-g_william_info = '''William Kabogo Gitau was born on 4th April 1961. He is a Kenyan politician and currently the governor for Kiambu county.He is a member of The National Alliance. He was highly rated among the Members of 10th Parliament for being one of the most inquisitive and one who sought ministerial statements at the behest of his constituents. In 2002, William Kabogo joined politics as a young man and won the Juja parliamentary seat. Since, he has been known to have initiated numerous development projects, including provision of tapped water, installation of electricity, and road construction works as well as, proper management of the bursary fund, construction of health centers and schools. In 2007, he defended his position for the Juja Parliamentary seat, which he controversially lost to George Thuo in a disputed election
-'''
-
-g_ferdinard_info = '''Ferdinard Waititu (born January 1, 1962 in Kibera, Nairobi) was the Kabete Member of Parliament since 2015 and the immediate former Member of Parliament for Embakasi Constituency and assistant minister for Water Services and Irrigation in the government of Kenya. He is a former deputy mayor and Councillor of Nairobi. He is described as a "fiery politician" and has been arrested on several occasions, including for "hate speech" directed against ethnic Maasai and for protesting the demolition of shanty houses in his district. In September 2012 he was suspended from his government post over charges of hate speech and inciting violence.
-'''
-g_bedan_info = '''Bedan Mbugua is Director of Royal Media Services. He was Aspirant Governor of REPUBLIC OF KENYA representing Kiambu between 2012 and 2013-03-04 Bedan Mbugua has been Member of Safina Party Of Kenya since 2013-02-08
 '''
 
 s_nairobi = ['Johnson Sakaja - Jubilee', 'William Wahome - Jubilee', 'Richard Kavemba - Wiper Democratic Movement of Kenya']
