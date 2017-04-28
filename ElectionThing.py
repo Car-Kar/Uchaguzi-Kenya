@@ -76,6 +76,7 @@ def GetMessages():
 
                 MessageText = msg['message']['text']
                 QuickReply = msg['message']['quick_replies']['payload']
+                print(QuickReply)
 
                 if 'start' in MessageText.lower():
                     SendMessage(SenderID, IntroductoryMessage)
