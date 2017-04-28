@@ -75,7 +75,7 @@ def GetMessages():
             if msg.get('message'):
 
                 MessageText = msg['message']['text']
-                #QuickReply = msg['message']['quick_reply']['payload']
+                QuickReply = msg['message']['quick_replies']['payload']
 
                 if 'start' in MessageText.lower():
                     SendMessage(SenderID, IntroductoryMessage)
