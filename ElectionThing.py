@@ -97,6 +97,23 @@ def GetMessages():
                     SendMessage(SenderID, uhuru)
                 elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
                     SendMessage(SenderID, raila_info)
+                elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
+                    SendMessage(SenderID, raila_info)
+                elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
+                    SendMessage(SenderID, raila_info)
+                elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
+                    SendMessage(SenderID, raila_info)
+                elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
+                    SendMessage(SenderID, raila_info)
+                elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
+                    SendMessage(SenderID, raila_info)
+                elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
+                    SendMessage(SenderID, raila_info)
+                elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
+                    SendMessage(SenderID, raila_info)
+                elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
+                    SendMessage(SenderID, raila_info)
+
                 elif 'mohamud' in MessageText.lower():
                     SendMessage(SenderID, mohamud)
                 elif 'bye' in MessageText.lower():
@@ -196,7 +213,7 @@ def GovCountyOptions(RecipientID):
         print(r.text)
 
 
-    def SenCountyOptions(RecipientID):
+def SenCountyOptions(RecipientID):
     print(('Sending county options to {0}').format(RecipientID))
     CountyText = 'From what county? Choose one below.'
     headers = {
@@ -241,7 +258,7 @@ def GovCountyOptions(RecipientID):
     if r.status_code != 200:
         print(r.text)
     
-    def CountyOptions(RecipientID):
+def CountyOptions(RecipientID):
     print(('Sending county options to {0}').format(RecipientID))
     CountyText = 'From what county? Choose one below.'
     headers = {
