@@ -64,7 +64,9 @@ def GetMessages():
             SenderID = msg['sender']['id']
             if msg.get('message'):
                 MessageText = msg['message']['text']
-                if 'president' in MessageText.lower():
+                QuickReply = msg['quick_reply']['payload']
+                print(QuickReply)
+                '''if 'president' in MessageText.lower():
                     names = Candidates()
                     TEXT = 'The presidential candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
@@ -90,7 +92,7 @@ def GetMessages():
                     pass
                 else:
                     SendMessage(SenderID, ApologyMessage)
-
+'''
 
             if msg.get('postback'):
                 PostbackText = msg['postback']['payload']
