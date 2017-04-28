@@ -401,7 +401,7 @@ if __name__ == '__main__':
 #counties - Nairobi, Kiambu, Nakury, Mombasa, Kisumu
 PresidentialCandidates = ['Uhuru Muigai Kenyatta - Jubilee', 'Raila Amollo Odinga - ODM(NASA)', 'Mohamud Diba - Independent Candidate']
 
-g_nairobi = ['Evans Kidero - CORD-ODM', 'Mike Mbuvi Sonko - Jubilee', 'Peter Kenneth - JUBILEE', 'Miguna Miguna - ODM ']
+g_nairobi = ['Evans Kidero - CORD-ODM', 'Mike Mbuvi Sonko - Jubilee', 'Peter Kenneth - JUBILEE']
 
 g_evans_info = '''Evans Odhiambo Kidero is a Kenyan politician and current Governor of Nairobi County. 
 He served as CEO of Mumias Sugar Company for 8 years, resigning in 2012 to join elective politics. 
