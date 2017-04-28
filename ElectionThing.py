@@ -50,7 +50,7 @@ ContinueUsing = '''You can always choose another option to continue using me aft
 \U0001F642
 '''
 Goodbye = '''
-Thank you the time! 
+Thank you for the time! 
 I hope you have learnt enough about our candidates to make an informative decision come August!
 Goodbye!
 \U0001F642
