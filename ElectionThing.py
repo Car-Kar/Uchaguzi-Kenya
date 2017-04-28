@@ -104,7 +104,7 @@ def GetMessages():
                     print('governors')
                     CountyOptions(SenderID)
                     print('Gotten Text')
-                    m = msg['message']['quick_reply']['payload']
+                    m = msg['quick_reply']['payload']
                     print('Gotten Payload.')
                     if m.lower() == 'nairobi':
                         SendMessage(SenderID, 'KKK')
