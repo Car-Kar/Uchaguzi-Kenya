@@ -66,7 +66,7 @@ def GetMessages():
     for message in messages['entry']:
         for msg in message['messaging']:
             SenderID = msg['sender']['id']
-            QuickReply = msg['message']['quick_reply']['payload']
+            #QuickReply = msg['message']['quick_reply']['payload']
             if msg.get('message'):
                 MessageText = msg['message']['text']
                 #QuickReply = msg['message']['quick_reply']['payload']
@@ -94,6 +94,9 @@ def GetMessages():
                     SendMessage(SenderID, mohamud)
                 else:
                     SendMessage(SenderID, ApologyMessage)
+            if msg.get('quick_reply'):
+                QuickReply = msg['quick_reply']['payload']
+                print('Fuck You.')
 
 
             if msg.get('postback'):
@@ -205,7 +208,7 @@ if __name__ == '__main__':
 
 
 #counties - Nairobi, Kiambu, Nakury, Mombasa, Kisumu
-PresidentialCandidates = ['Uhuru Muigai Kenyatta - Jubilee', 'Raila Amolo Odinga - ODM(NASA)', 'Mohamud Diba - Independent Candidate']
+PresidentialCandidates = ['Uhuru Muigai Kenyatta - Jubilee', 'Raila Amollo Odinga - ODM(NASA)', 'Mohamud Diba - Independent Candidate']
 
 g_nairobi = ['Evans Kidero - CORD-ODM', 'Mike Mbuvi Sonko - Jubilee', 'Peter Kenneth - JUBILEE', 'Miguna Miguna - ODM ']
 
@@ -347,8 +350,6 @@ w_mishi_info = '''
 Mishi actively participated in Likoni political campaigns in 1997 and 2002. She vied for Likoni parliamentary seat in 2007 and lost in party nominations which were marred by irregularities. She would like to see government funded drug rehabilitation centres established in Mombasa.
 '''
 
-Raila Amollo Odinga
-POLITICAL PARTY-ODM(NASA)
 raila_info = """Prime Minister Raila Amollo Odinga was born on January 7, 1945 in Maseno, Nyanza Province, the son of Vice President Jaramogi Oginga Odinga.
  He is running in the Orange Democratic Movement with Vice President Kalonzo Musyoka as his running mate. Odinga has focusedon youth in his campaign, promising to help them gain access to employment and education. He said he will institute cash transfers forthe poor and elderly, and create a programme for youth waiting to enter university or looking for jobs to teach in primary schools. In 1997, Odinga lost a bid for the presidency. He served as minister of energy from 2001 to 2002 and as minister of roads, public works, andhousing from 2003 to 2005.
 """
