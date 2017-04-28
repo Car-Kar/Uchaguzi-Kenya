@@ -24,10 +24,9 @@ The national elections are on Tuesday, August 8th.
 You will need to have registered as a voter and carry your national identification, or passport to vote.
 Please come out in support for our best future leaders.
 '''
-CandidateMoreInfo = '''
-Which candidate do you want to know more about?
+CandidateMoreInfo = '''Do you want to know more about one of these candidates?
 
-(Send me his or her name.)
+If so, send me his or her name.
 
 '''
 
@@ -70,7 +69,6 @@ def GetMessages():
         for msg in message['messaging']:
             SenderID = msg['sender']['id']
             if msg.get('message'):
-
                 MessageText = msg['message']['text']
                 if 'start' in MessageText.lower() or 'hello' in MessageText.lower() or 'hi' in MessageText.lower() or 'hey' in MessageText.lower():
                     SendMessage(SenderID, IntroductoryMessage)
@@ -100,21 +98,54 @@ def GetMessages():
                     SendMessage(SenderID, g_mike_info)
                 elif 'peter' in MessageText.lower() or 'kenneth' in MessageText.lower():
                     SendMessage(SenderID, g_peter_info)
-                elif '' in MessageText.lower() or '' in MessageText.lower():
-                    SendMessage(SenderID, raila_info)
+                elif 'ali' in MessageText.lower() or 'joho' in MessageText.lower():
+                    SendMessage(SenderID, g_ali_info)
                 elif 'mohamud' in MessageText.lower() or 'diba' in MessageText.lower():
                     SendMessage(SenderID, mohamud)
-                elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
-                    SendMessage(SenderID, raila_info)
-                elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
-                    SendMessage(SenderID, raila_info)
-                elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
-                    SendMessage(SenderID, raila_info)
-
-                elif 'mohamud' in MessageText.lower():
-                    SendMessage(SenderID, mohamud)
+                elif 'suleiman' in MessageText.lower() or 'shahbal' in MessageText.lower():
+                    SendMessage(SenderID, g_suleiman_info)
+                elif 'hezron' in MessageText.lower() or 'awiti' in MessageText.lower():
+                    SendMessage(SenderID, g_hezron_info)
+                elif 'jack' in MessageText.lower() or 'ragumba' in MessageText.lower():
+                    SendMessage(SenderID, g_jack_info)
+                elif 'anyang' in MessageText.lower() or "nyong'o" in MessageText.lower():
+                    SendMessage(SenderID, g_anyang_info)
+                elif 'chris' in MessageText.lower() or 'ondieki' in MessageText.lower():
+                    SendMessage(SenderID, g_chris_info)
+                elif 'johnson' in MessageText.lower() or 'sakaia' in MessageText.lower():
+                    SendMessage(SenderID, s_johnson_info)
+                elif 'richard' in MessageText.lower() or 'kavemba' in MessageText.lower():
+                    SendMessage(SenderID, s_richard_info)
+                elif 'william' in MessageText.lower() or 'wahome' in MessageText.lower():
+                    SendMessage(SenderID, s_william_info)
+                elif 'yasser' in MessageText.lower() or 'sheikh' in MessageText.lower():
+                    SendMessage(SenderID, s_yasser_info)
+                elif 'mohammad' in MessageText.lower() or 'faki' in MessageText.lower():
+                    SendMessage(SenderID, s_mohammad_info)
+                elif 'tendai' in MessageText.lower() or 'mtwana' in MessageText.lower():
+                    SendMessage(SenderID, s_tendai_info)
+                elif 'millicent' in MessageText.lower() or 'abudho' in MessageText.lower():
+                    SendMessage(SenderID, s_otieno_info)
+                elif 'otieno' in MessageText.lower() or 'odongo' in MessageText.lower():
+                    SendMessage(SenderID, s_tendai_info)
+                elif 'rachel' in MessageText.lower() or 'shebesh' in MessageText.lower():
+                    SendMessage(SenderID, w_rachel_info)
+                elif 'esther' in MessageText.lower() or 'passaris' in MessageText.lower():
+                    SendMessage(SenderID, w_esther_info)
+                elif 'millicent' in MessageText.lower() or 'omanga' in MessageText.lower():
+                    SendMessage(SenderID, w_millicent_info)
+                elif 'karen' in MessageText.lower() or 'nyamu' in MessageText.lower():
+                    SendMessage(SenderID, w_karen_info)
+                elif 'sadaf' in MessageText.lower() or 'deen' in MessageText.lower():
+                    SendMessage(SenderID, w_sadaf_info)
+                elif 'mishi' in MessageText.lower() or 'juma' in MessageText.lower():
+                    SendMessage(SenderID, w_mishi_info)
+                elif 'tendai' in MessageText.lower() or 'mtwana' in MessageText.lower():
+                    SendMessage(SenderID, s_tendai_info)
                 elif 'bye' in MessageText.lower():
                     SendMessage(SenderID, Goodbye)
+                else: 
+                    SendMessage(SendMessage, ApologyMessage)
                 
             elif msg.get('postback'):
                 PostbackText = msg['postback']['payload']
@@ -134,34 +165,42 @@ def GetMessages():
                     names = Candidates(g_nairobi)
                     TEXT = 'The governor candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
+                    SendMessage(SenderID, CandidateMoreInfo)
                 elif PostbackText == 'gkisumu':
                     names = Candidates(g_kisumu)
                     TEXT = 'The governor candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
+                    SendMessage(SenderID, CandidateMoreInfo)
                 elif PostbackText == 'gmombasa':
                     names = Candidates(g_mombasa)
                     TEXT = 'The governor candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
+                    SendMessage(SenderID, CandidateMoreInfo)
                 elif PostbackText == 'smombasa':
                     names = Candidates(s_mombasa)
                     TEXT = 'The senate candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
+                    SendMessage(SenderID, CandidateMoreInfo)
                 elif PostbackText == 'snairobi':
                     names = Candidates(s_nairobi)
                     TEXT = 'The senate candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
+                    SendMessage(SenderID, CandidateMoreInfo)
                 elif PostbackText == 'skisumu':
                     names = Candidates(s_kisumu)
                     TEXT = 'The senate candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
+                    SendMessage(SenderID, CandidateMoreInfo)
                 elif PostbackText == 'wmombasa':
                     names = Candidates(w_mombasa)
                     TEXT = 'The women representative candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
+                    SendMessage(SenderID, CandidateMoreInfo)
                 elif PostbackText == 'wnairobi':
-                    names = Candidates(w_mombasa)
+                    names = Candidates(w_nairobi)
                     TEXT = 'The women representative candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
+                    SendMessage(SenderID, CandidateMoreInfo)
 
                 elif PostbackText == 'VoterReg':
                     SendMessage(SenderID, VoterRegistration)
