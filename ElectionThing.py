@@ -64,7 +64,7 @@ def GetMessages():
             SenderID = msg['sender']['id']
             if msg.get('message'):
                 MessageText = msg['message']['text']
-                QuickReply = msg['message']['quick_replies']['payload']
+                QuickReply = msg['quick_reply']['payload']
                 print(QuickReply)
                 '''if 'president' in MessageText.lower():
                     names = Candidates()
