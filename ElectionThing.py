@@ -68,8 +68,15 @@ def GetMessages():
             SenderID = msg['sender']['id']
             if msg.get('message'):
                 MessageText = msg['message']['text']
-                #QuickReply = msg['message']['quick_reply']['payload']
-                if 'governor' in MessageText.lower():
+                if 'start' in MessageText.lower():
+                    SendMessage(SenderID, IntroductoryMessage)
+                elif 'registration' in MessageText.lower():
+                    SendMessage(SenderID, VoterRegistration)
+                    SendMessage(SenderID, COntinueUsing)
+                elif 'requirement' in MessageText.lower():
+                    SendMessage(SenderID, VoterRequirements)
+                    SendMessage(SenderID, COntinueUsing)
+                elif 'governor' in MessageText.lower():
                     print('governors1')
                     SendMessage(SenderID, 'What county?')
                     print('Gotten Text')
@@ -78,16 +85,13 @@ def GetMessages():
                     print(('Hey {0}').format(m))
                     if m.lower() == 'nairobi':
                         SendMessage(SenderID, 'KKK')
-                if 'start' in MessageText.lower():
-                    SendMessage(SenderID, IntroductoryMessage)
-                if 'registration' in MessageText.lower():
-                    SendMessage(SenderID, VoterRegistration)
-                    SendMessage(SenderID, COntinueUsing)
-                if 'requirement' in MessageText.lower():
-                    SendMessage(SenderID, VoterRequirements)
-                    SendMessage(SenderID, COntinueUsing)
+                elif 'president' in MessageText.lower():
+                    names = Candidates(PresidentialCandidates)
+                    TEXT = 'The presidential candidates are: \n' + str(names[0:])
+                    SendMessage(SenderID, TEXT)
                 else:
                     SendMessage(SenderID, ApologyMessage)
+
 
             if msg.get('postback'):
                 PostbackText = msg['postback']['payload']
@@ -97,6 +101,8 @@ def GetMessages():
                     names = Candidates(PresidentialCandidates)
                     TEXT = 'The presidential candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
+                elif PostbackText == 'gubernatorial':
+                    CountyOptions(SenderID)
                 elif PostbackText == 'VoterReg':
                     SendMessage(SenderID, VoterRegistration)
                     SendMessage(SenderID, COntinueUsing)
