@@ -44,6 +44,10 @@ However, this is our first beta and us such we can only provide information for 
 Please use any of those five counties for now, as we go about adding information support for all other counties!
 \U0001F642
 '''
+COntinueUsing = '''Please choose another option to continue using me.
+Or say goodbye if you're done!
+\U0001F642
+'''
 
 @app.route('/', methods=['GET'])
 def verification():
@@ -83,6 +87,13 @@ def GetMessages():
                     names = Candidates()
                     TEXT = 'The presidential candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
+                elif PostbackText == 'VoterReg':
+                    SendMessage(SenderID, VoterRegistration)
+                elif PostbackText == 'VoterReq':
+                    SendMessage(SenderID, VoterRequirements)
+                    SendMessage(SenderID, COntinueUsing)
+                else:
+                    SendMessage(SenderID, ApologyMessage)
 
                 
 
