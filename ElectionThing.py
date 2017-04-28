@@ -106,6 +106,7 @@ def GetMessages():
                     while PostbackText == 'gubernatorial':
                         print('Getting text.')
                         if msg.get('message'):
+                            print('Gotten Text')
                             m = msg['message']['quick_reply']['payload']
                             if m.lower() == 'nairobi':
                                 SendMessage(SenderID, 'KKK')
