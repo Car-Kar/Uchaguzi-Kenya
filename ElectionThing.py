@@ -68,6 +68,7 @@ def GetMessages():
             SenderID = msg['sender']['id']
             if msg.get('message'):
                 MessageText = msg['message']['text']
+                QuickReply = msg['message']['quick_reply']['payload']
                 if 'start' in MessageText.lower():
                     SendMessage(SenderID, IntroductoryMessage)
                 elif 'registration' in MessageText.lower():
