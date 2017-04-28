@@ -410,8 +410,8 @@ Dr. Kidero is married to Susan Mboya, daughter of the late Kenyan politician, To
 
 g_mike_info = '''Mbuvi Gidion Kioko Mike Sonko  commonly known as Mike Sonko is a Kenyan politician who currently serves as Senator of Nairobi. 
 Sonko is the immediate former Member of Parliament for Makadara Constituency, Kenya, a position he was elected to on September 20, 2010 in a by-election. 
-Born in Mombasa ,Mbuvi became the First Senator of Nairobi.True to his word, his Makadara constituency has recorded a significant surge in employment brought about by establishment and growth of small businesses. 
-His style of leadership has been described as different because unlike other leaders, Mike Sonko walks around dressed in jeans and a t-shirt which has earned him titles like, mtu wa watu (A man of the people).
+Born in Mombasa ,Mbuvi became the First Senator of Nairobi.
+His style of leadership has been described as different and has earned him titles like, mtu wa watu (A man of the people).
 '''
 
 g_peter_info = '''Peter Kenneth (born 27 November 1965) is a Kenyan politician. He hails from Kirwara Sub-location of Gatanga Constituency in Murang'a County, Kenya.Peter Kenneth was first elected a Member of Parliament for Gatanga Constituency in December 2002 on a National rainbow coalition ticket.] He held this seat up to 2013 general elections where he vied for presidency. His constituency was voted the best managed in Kenya, during his tenure.2008 to date: Assistant Minister, Ministry of State for Planning, National Development and Vision 2030.Dec 2005 – 2007: Assistant Minister, Ministry of Finance.Nov 2003 – 2005: Assistant Minister, Ministry of Cooperative Development and Marketing.'''
