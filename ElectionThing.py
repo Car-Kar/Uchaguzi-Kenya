@@ -76,75 +76,7 @@ def GetMessages():
                         SendMessage(SenderID, 'KKK')
                     break
 
-                '''if 'president' in MessageText.lower():
-                    names = Candidates()
-                    TEXT = 'The presidential candidates are: \n' + str(names[0:])
-                    SendMessage(SenderID, TEXT)
-                elif 'governor' in MessageText.lower():
-                    CountyOptions(SenderID)
-                elif  MessageText.lower() == 'moses':
-                    y = 'Moses Masika Wetangula'
-                    a = CandidateInfo(y)
-                    SendMessage(SenderID, a)
-                elif MessageText.lower() == 'uhuru':
-                    y = 'Uhuru Muigai Kenyatta'
-                elif MessageText.lower() == 'kiambu':
-                    names = Search(MessageText, 'governor')
-                    ST = 'The candidates are: \n' + str(names[0:])
-                    SendMessage(SenderID, ST)
-                elif MessageText.lower() == 'n':
-                    pass
-                elif MessageText.lower() == 'kisumu':
-                    pass
-                elif MessageText.lower() == 'nakuru':
-                    pass
-                elif MessageText.lower() == 'mombasa':
-                    pass
-                else:
-                    SendMessage(SenderID, ApologyMessage)
-'''
-
-            '''if msg.get('postback'):
-                PostbackText = msg['postback']['payload']
-                if PostbackText == 'Get Started':
-                    SendMessage(SenderID, IntroductoryMessage)
-                elif PostbackText == 'presidential':
-                    names = Candidates()
-                    TEXT = 'The presidential candidates are: \n' + str(names[0:])
-                    SendMessage(SenderID, TEXT)
-                while PostbackText == 'gubernatorial':
-                    print('governors')
-                    CountyOptions(SenderID)
-                    print('Gotten Text')
-                    m = msg['quick_reply']['payload']
-                    print('Gotten Payload.')
-                    if m.lower() == 'nairobi':
-                        SendMessage(SenderID, 'KKK')'''
-                   
-                '''elif PostbackText == 'senate' :
-                    TEXT2 = 'From what county?'
-                    SendMessage(SenderID, TEXT2)
-                    TEXT2 = 'The' + PostbackText + 'candidates are'
-                    SendMessage(SenderID, TEXT2)
-                elif PostbackText == 'womrep' :
-                    TEXT2 = 'From what county?'
-                    SendMessage(SenderID, TEXT2)
-                    TEXT2 = 'The candidates are'
-                    SendMessage(SenderID, TEXT2)
-                elif PostbackText == 'parliamentary' :
-                    TEXT2 = 'What county?'
-                    SendMessage(SenderID, TEXT2)
-                    TEXT2 = 'The' + PostbackText + 'candidates are'
-                    SendMessage(SenderID, TEXT2)
-                elif PostbackText == 'VoterReg':
-                    SendMessage(SenderID, VoterRegistration)
-                elif PostbackText == 'VoterReq':
-                    SendMessage(SenderID, VoterRequirements)
-                else:
-                    SendMessage(SenderID, ApologyMessage)'''
-
-
-
+                
 
   return 'ok', 200
 
