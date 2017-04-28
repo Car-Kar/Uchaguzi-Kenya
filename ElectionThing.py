@@ -178,7 +178,7 @@ def GetMessages():
                 elif 'bye' in MessageText.lower():
                     SendMessage(SenderID, Goodbye)
                 else: 
-                    SendMessage(SendMessage, ApologyMessage)
+                    SendMessage(SenderID, ApologyMessage)
                 
             elif msg.get('postback'):
                 PostbackText = msg['postback']['payload']
