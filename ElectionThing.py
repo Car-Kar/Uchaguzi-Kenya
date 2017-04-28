@@ -24,12 +24,17 @@ The national elections are on Tuesday, August 8th.
 You will need to have registered as a voter and carry your national identification, or passport to vote.
 Please come out in support for our best future leaders.
 '''
+
 CandidateMoreInfo = '''Do you want to know more about one of these candidates?
 
 If so, send me his or her name.
 
 '''
-
+CountiesMessage = ''''
+We are only supporting three counties right now; Kisumu, Mombasa and Nairobi.
+Please check back from time to time as we integrate more counties!
+\U0001F642
+'''
 ApologyMessage = '''
 Sorry, I didn't get that.
 Would you mind repeating it?
@@ -72,6 +77,7 @@ def GetMessages():
                 MessageText = msg['message']['text']
                 if 'start' in MessageText.lower() or 'hello' in MessageText.lower() or 'hi' in MessageText.lower() or 'hey' in MessageText.lower():
                     SendMessage(SenderID, IntroductoryMessage)
+                    SendMessage(SenderID, CountiesMessage)
                 elif 'registration' in MessageText.lower():
                     SendMessage(SenderID, VoterRegistration)
                     SendMessage(SenderID, ContinueUsing)
@@ -90,58 +96,85 @@ def GetMessages():
                     SendMessage(SenderID, TEXT)
                 elif 'uhuru' in MessageText.lower() or 'kenyatta' in MessageText.lower() or 'muigai' in MessageText.lower():
                     SendMessage(SenderID, uhuru)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
                     SendMessage(SenderID, raila_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'evans' in MessageText.lower() or 'kidero' in MessageText.lower():
                     SendMessage(SenderID, g_evans_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'mike' in MessageText.lower() or 'sonko' in MessageText.lower():
                     SendMessage(SenderID, g_mike_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'peter' in MessageText.lower() or 'kenneth' in MessageText.lower():
                     SendMessage(SenderID, g_peter_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'ali' in MessageText.lower() or 'joho' in MessageText.lower():
                     SendMessage(SenderID, g_ali_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'mohamud' in MessageText.lower() or 'diba' in MessageText.lower():
                     SendMessage(SenderID, mohamud)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'suleiman' in MessageText.lower() or 'shahbal' in MessageText.lower():
                     SendMessage(SenderID, g_suleiman_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'hezron' in MessageText.lower() or 'awiti' in MessageText.lower():
                     SendMessage(SenderID, g_hezron_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'jack' in MessageText.lower() or 'ragumba' in MessageText.lower():
                     SendMessage(SenderID, g_jack_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'anyang' in MessageText.lower() or "nyong'o" in MessageText.lower():
                     SendMessage(SenderID, g_anyang_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'chris' in MessageText.lower() or 'ondieki' in MessageText.lower():
                     SendMessage(SenderID, g_chris_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'johnson' in MessageText.lower() or 'sakaia' in MessageText.lower():
                     SendMessage(SenderID, s_johnson_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'richard' in MessageText.lower() or 'kavemba' in MessageText.lower():
                     SendMessage(SenderID, s_richard_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'william' in MessageText.lower() or 'wahome' in MessageText.lower():
                     SendMessage(SenderID, s_william_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'yasser' in MessageText.lower() or 'sheikh' in MessageText.lower():
                     SendMessage(SenderID, s_yasser_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'mohammad' in MessageText.lower() or 'faki' in MessageText.lower():
                     SendMessage(SenderID, s_mohammad_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'tendai' in MessageText.lower() or 'mtwana' in MessageText.lower():
                     SendMessage(SenderID, s_tendai_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'millicent' in MessageText.lower() or 'abudho' in MessageText.lower():
                     SendMessage(SenderID, s_otieno_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'otieno' in MessageText.lower() or 'odongo' in MessageText.lower():
                     SendMessage(SenderID, s_tendai_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'rachel' in MessageText.lower() or 'shebesh' in MessageText.lower():
                     SendMessage(SenderID, w_rachel_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'esther' in MessageText.lower() or 'passaris' in MessageText.lower():
                     SendMessage(SenderID, w_esther_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'millicent' in MessageText.lower() or 'omanga' in MessageText.lower():
                     SendMessage(SenderID, w_millicent_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'karen' in MessageText.lower() or 'nyamu' in MessageText.lower():
                     SendMessage(SenderID, w_karen_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'sadaf' in MessageText.lower() or 'deen' in MessageText.lower():
                     SendMessage(SenderID, w_sadaf_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'mishi' in MessageText.lower() or 'juma' in MessageText.lower():
                     SendMessage(SenderID, w_mishi_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'tendai' in MessageText.lower() or 'mtwana' in MessageText.lower():
                     SendMessage(SenderID, s_tendai_info)
+                    SendMessage(SenderID, ContinueUsing)
                 elif 'bye' in MessageText.lower():
                     SendMessage(SenderID, Goodbye)
                 else: 
