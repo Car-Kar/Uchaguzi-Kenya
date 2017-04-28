@@ -101,11 +101,8 @@ def GetMessages():
                     SendMessage(SenderID, mohamud)
                 elif 'bye' in MessageText.lower():
                     SendMessage(SenderID, Goodbye)
-                '''else:
-                    SendMessage(SenderID, ApologyMessage)'''
                 
-
-           elif msg.get('postback'):
+            elif msg.get('postback'):
                 PostbackText = msg['postback']['payload']
                 if PostbackText == 'Get Started':
                     SendMessage(SenderID, IntroductoryMessage)
