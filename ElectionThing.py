@@ -72,9 +72,10 @@ def GetMessages():
                     print('Gotten Text')
                     m = msg['message']['text']
                     print('Gotten Payload.')
+                    print(('Hey {0}').format(m))
                     if m.lower() == 'nairobi':
                         SendMessage(SenderID, 'KKK')
-                    break
+                        break
 
                 
 
