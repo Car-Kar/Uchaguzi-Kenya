@@ -94,6 +94,7 @@ def GetMessages():
                     names = Candidates(PresidentialCandidates)
                     TEXT = 'The presidential candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
+                    SendMessage(SenderID, CandidateMoreInfo)
                 elif 'uhuru' in MessageText.lower() or 'kenyatta' in MessageText.lower() or 'muigai' in MessageText.lower():
                     SendMessage(SenderID, uhuru)
                 elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
