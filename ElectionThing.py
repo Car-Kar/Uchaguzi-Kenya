@@ -106,9 +106,6 @@ def GetMessages():
                 elif 'mike' in MessageText.lower() or 'sonko' in MessageText.lower():
                     SendMessage(SenderID, g_mike_info)
                     
-                elif 'peter' in MessageText.lower() or 'kenneth' in MessageText.lower():
-                    SendMessage(SenderID, g_peter_info)
-                    
                 elif 'ali' in MessageText.lower() or 'joho' in MessageText.lower():
                     SendMessage(SenderID, g_ali_info)
                     
@@ -410,7 +407,7 @@ if __name__ == '__main__':
 #counties - Nairobi, Kiambu, Nakury, Mombasa, Kisumu
 PresidentialCandidates = ['Uhuru Muigai Kenyatta - Jubilee', 'Raila Amollo Odinga - ODM(NASA)', 'Mohamud Diba - Independent Candidate']
 
-g_nairobi = ['Evans Kidero - CORD-ODM', 'Mike Mbuvi Sonko - Jubilee', 'Peter Kenneth - JUBILEE']
+g_nairobi = ['Evans Kidero - CORD-ODM', 'Mike Mbuvi Sonko - Jubilee']
 
 g_evans_info = '''Evans Odhiambo Kidero is a Kenyan politician and current Governor of Nairobi County. 
 He served as CEO of Mumias Sugar Company for 8 years, resigning in 2012 to join elective politics. 
@@ -422,8 +419,6 @@ Sonko is the immediate former Member of Parliament for Makadara Constituency, Ke
 Born in Mombasa ,Mbuvi became the First Senator of Nairobi.
 His style of leadership has been described as different and has earned him titles like, mtu wa watu (A man of the people).
 '''
-
-g_peter_info = '''Peter Kenneth (born 27 November 1965) is a Kenyan politician. He hails from Kirwara Sub-location of Gatanga Constituency in Murang'a County, Kenya.Peter Kenneth was first elected a Member of Parliament for Gatanga Constituency in December 2002 on a National rainbow coalition ticket.] He held this seat up to 2013 general elections where he vied for presidency. His constituency was voted the best managed in Kenya, during his tenure.2008 to date: Assistant Minister, Ministry of State for Planning, National Development and Vision 2030.Dec 2005 – 2007: Assistant Minister, Ministry of Finance.Nov 2003 – 2005: Assistant Minister, Ministry of Cooperative Development and Marketing.'''
 g_mombasa = ['Ali Joho - ODM(NASA)', 'Suleiman Shahbal - Jubilee Alliance', 'Hezron Awiti - WIPER(NASA)']
 
 g_ali_info = '''Hassan Joho is a Kenyan politician affiliated to the Orange Democratic Movement and was elected to represent the Kisauni Constituency in the National Assembly of Kenya during the Kenyan parliamentary election, 2007. On 4 March 2013, Joho was elected as the first governor of Mombasa County. Joho joined active politics in the year 2004, and became the Kisauni party chairman for the Liberal Democratic Party between 2006-2007. He was elected as Member of Parliament for Kisauni constituency and the Assistant Minister for Transport. On 4 March 2013 he was elected as Governor of Mombasa.'''
