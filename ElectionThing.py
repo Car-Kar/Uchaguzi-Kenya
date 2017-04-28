@@ -237,10 +237,10 @@ def GetMessages():
 
                 elif PostbackText == 'VoterReg':
                     SendMessage(SenderID, VoterRegistration)
-                    SendMessage(SenderID, COntinueUsing)
+                    SendMessage(SenderID, ContinueUsing)
                 elif PostbackText == 'VoterReq':
                     SendMessage(SenderID, VoterRequirements)
-                    SendMessage(SenderID, COntinueUsing)
+                    SendMessage(SenderID, ContinueUsing)
                 else:
                     SendMessage(SenderID, ApologyMessage)
 
