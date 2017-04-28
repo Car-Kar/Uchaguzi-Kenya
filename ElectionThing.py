@@ -175,10 +175,11 @@ def GetMessages():
                 elif 'bye' in MessageText.lower():
                     SendMessage(SenderID, Goodbye)
                 else: 
-                    if i <= 3:
+                    while i <= 3:
                         SendMessage(SenderID, ApologyMessage)
                         i += 1
-
+                    else:
+                        SendMessage(SenderID, 'Please pick a valid option from the menu!')
                 
             elif msg.get('postback'):
                 i = 0
