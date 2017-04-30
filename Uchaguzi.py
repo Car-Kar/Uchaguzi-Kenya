@@ -94,9 +94,11 @@ def GetMessages():
                     TEXT = 'The presidential candidates are: \n' + str(names[0:])
                     SendMessage(SenderID, TEXT)
                     SendMessage(SenderID, CandidateMoreInfo)
+                    
                 elif 'uhuru' in MessageText.lower() or 'kenyatta' in MessageText.lower() or 'muigai' in MessageText.lower():
                     SendMessage(SenderID, uhuru)
                     SendMessage(SenderID, ContinueUsing)
+                    
                 elif 'raila' in MessageText.lower() or 'amollo' in MessageText.lower() or 'odinga' in MessageText.lower():
                     SendMessage(SenderID, raila_info)
                     SendMessage(SenderID, ContinueUsing)
@@ -148,6 +150,7 @@ def GetMessages():
                 elif 'william' in MessageText.lower() or 'wahome' in MessageText.lower():
                     SendMessage(SenderID, s_william_info)
                     SendMessage(SenderID, ContinueUsing)
+                    
                 elif 'yasser' in MessageText.lower() or 'sheikh' in MessageText.lower():
                     SendMessage(SenderID, s_yasser_info)
                     
@@ -177,6 +180,7 @@ def GetMessages():
                 elif 'millicent' in MessageText.lower() or 'omanga' in MessageText.lower():
                     SendMessage(SenderID, w_millicent_info)
                     SendMessage(SenderID, ContinueUsing)
+                    
                 elif 'karen' in MessageText.lower() or 'nyamu' in MessageText.lower():
                     SendMessage(SenderID, w_karen_info)
                     SendMessage(SenderID, ContinueUsing)
@@ -195,6 +199,10 @@ def GetMessages():
                     
                 elif 'bye' in MessageText.lower():
                     SendMessage(SenderID, Goodbye)
+                    
+                elif 'thanks' in MessageText.lower():
+                    SendMessage(SenderID, "You're Welcome! Make sure to show up on August 8th and make your vote count!")
+                
                 else: 
                     SendMessage(SenderID, 'Please pick a valid option from the menu!')
                 
