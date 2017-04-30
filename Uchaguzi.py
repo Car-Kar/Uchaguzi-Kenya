@@ -72,6 +72,7 @@ def GetMessages():
         for msg in message['messaging']:
             SenderID = msg['sender']['id']
             if msg.get('message'):
+                i = 0
                 MessageText = msg['message']['text']
                 if 'start' in MessageText.lower() or 'hello' in MessageText.lower() or 'hi' in MessageText.lower() or 'hey' in MessageText.lower():
                     SendMessage(SenderID, IntroductoryMessage)
@@ -196,8 +197,7 @@ def GetMessages():
                 elif 'bye' in MessageText.lower():
                     SendMessage(SenderID, Goodbye)
                 else: 
-                    i = 0
-                    if i < 2:
+                    while i < 2:
                         SendMessage(SenderID, ApologyMessage)
                         i += 1
                     else:
@@ -267,12 +267,12 @@ def GetMessages():
                     SendMessage(SenderID, VoterRequirements)
                     SendMessage(SenderID, ContinueUsing)
                 else:
-                    while i <= 3:
+                    while i < 2:
                         SendMessage(SenderID, ApologyMessage)
                         i += 1
                     else:
                         SendMessage(SenderID, 'Please pick a valid option from the menu!')
-
+                
 
                 
 
