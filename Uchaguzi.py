@@ -1,7 +1,6 @@
 from flask import Flask, request
 import json
 import requests
-from bs4 import BeautifulSoup
 
 
 app = Flask(__name__)
@@ -185,7 +184,7 @@ def GetMessages():
                 elif 'sadaf' in MessageText.lower() or 'deen' in MessageText.lower():
                     SendMessage(SenderID, w_sadaf_info)
                     SendMessage(SenderID, ContinueUsing)
-                   
+                    
                 elif 'mishi' in MessageText.lower() or 'juma' in MessageText.lower():
                     SendMessage(SenderID, w_mishi_info)
                     SendMessage(SenderID, ContinueUsing)
@@ -198,7 +197,7 @@ def GetMessages():
                     SendMessage(SenderID, Goodbye)
                 else: 
                     i = 0
-                    if i <= 3:
+                    while i < 2:
                         SendMessage(SenderID, ApologyMessage)
                         i += 1
                     else:
@@ -268,7 +267,8 @@ def GetMessages():
                     SendMessage(SenderID, VoterRequirements)
                     SendMessage(SenderID, ContinueUsing)
                 else:
-                    while i <= 3:
+                    i = 0
+                    while i < 2:
                         SendMessage(SenderID, ApologyMessage)
                         i += 1
                     else:
