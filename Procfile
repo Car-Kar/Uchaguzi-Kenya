@@ -1,1 +1,1 @@
-web: gunicorn ElectionThing:app 
+web: gunicorn Uchaguzi:app 
