@@ -196,12 +196,7 @@ def GetMessages():
                 elif 'bye' in MessageText.lower():
                     SendMessage(SenderID, Goodbye)
                 else: 
-                    i = 0
-                    while i < 2:
-                        SendMessage(SenderID, ApologyMessage)
-                        i += 1
-                    else:
-                        SendMessage(SenderID, 'Please pick a valid option from the menu!')
+                    SendMessage(SenderID, 'Please pick a valid option from the menu!')
                 
             elif msg.get('postback'):
                 i = 0
@@ -267,12 +262,7 @@ def GetMessages():
                     SendMessage(SenderID, VoterRequirements)
                     SendMessage(SenderID, ContinueUsing)
                 else:
-                    i = 0
-                    while i < 2:
-                        SendMessage(SenderID, ApologyMessage)
-                        i += 1
-                    else:
-                        SendMessage(SenderID, 'Please pick a valid option from the menu!')
+                    SendMessage(SenderID, 'Please pick a valid option from the menu!')
 
 
                 
