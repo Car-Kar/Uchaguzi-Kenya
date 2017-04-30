@@ -196,6 +196,8 @@ def GetMessages():
                     
                 elif 'bye' in MessageText.lower():
                     SendMessage(SenderID, Goodbye)
+                elif 'thanks' in MessageText.lower():
+                    SendMessage(SenderID, "You're Welcome! Make sure to show up on August 8th and make your vote count!")
                 else: 
                     SendMessage(SenderID, ApologyMessage)
                 
