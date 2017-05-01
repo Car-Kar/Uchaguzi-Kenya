@@ -106,7 +106,7 @@ def GetMessages():
                     SendMessage(SenderID, g_evans_info)
                     SendMessage(SenderID, ContinueUsing)
                     
-                elif 'mike' in MessageText.lower() or 'sonko' in MessageText.lower():
+                elif 'mike' in MessageText.lower() or 'sonko' in MessageText.lower() or 'mbuvi' in MessageText.lower():
                     SendMessage(SenderID, g_mike_info)
                     SendMessage(SenderID, ContinueUsing)
                     
