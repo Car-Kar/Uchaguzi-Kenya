@@ -429,7 +429,7 @@ He served as CEO of Mumias Sugar Company for 8 years, resigning in 2012 to join 
 Kidero was elected as the first governor of Nairobi County in the Nairobi gubernatorial elections of 2013 on an ODM ticket. 
 Dr. Kidero is married to Susan Mboya, daughter of the late Kenyan politician, Tom Mboya, and together they have 3 children.'''
 
-g_mike_info = '''Mbuvi Gidion Kioko Mike Sonko  commonly known as Mike Sonko is a Kenyan politician who currently serves as Senator of Nairobi. 
+g_mike_info = '''Mbuvi Gidion Kioko - commonly known as Mike Sonko - is a Kenyan politician who currently serves as Senator of Nairobi. 
 Sonko is the immediate former Member of Parliament for Makadara Constituency, Kenya, a position he was elected to on September 20, 2010 in a by-election. 
 Born in Mombasa ,Mbuvi became the First Senator of Nairobi.
 His style of leadership has been described as different and has earned him titles like, mtu wa watu (A man of the people).
