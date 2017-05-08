@@ -110,7 +110,7 @@ def GetMessages():
                     SendMessage(SenderID, g_mike_info)
                     SendMessage(SenderID, ContinueUsing)
                     
-                elif 'ali' in MessageText.lower() or 'joho' in MessageText.lower():
+                elif 'ali' in MessageText.lower() or 'joho' in MessageText.lower() or 'hassan' in MessageText.lower():
                     SendMessage(SenderID, g_ali_info)
                     SendMessage(SenderID, ContinueUsing)
                     
@@ -197,7 +197,7 @@ def GetMessages():
                 elif 'bye' in MessageText.lower():
                     SendMessage(SenderID, Goodbye)
                 elif 'thanks' in MessageText.lower():
-                    SendMessage(SenderID, "You're welcome! Make sure to show up on August 8th and make your vote count!")
+                    SendMessage(SenderID, "You're welcome! Make sure to show up on August 8th to make your vote count!")
                 else: 
                     SendMessage(SenderID, ApologyMessage)
                 
