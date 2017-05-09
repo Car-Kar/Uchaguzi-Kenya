@@ -198,6 +198,9 @@ def GetMessages():
                     SendMessage(SenderID, Goodbye)
                 elif 'thanks' in MessageText.lower():
                     SendMessage(SenderID, "You're welcome! Make sure to show up on August 8th to make your vote count!")
+
+                elif 'nairobi' in MessageText.lower() or 'mombasa' in MessageText.lower() or 'kisumu' in MessageText.lower():
+                    SendMessage(SenderID, 'What level of elections do you want? You can choose one from the menu below.')
                 else: 
                     SendMessage(SenderID, ApologyMessage)
                 
