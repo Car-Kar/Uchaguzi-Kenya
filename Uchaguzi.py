@@ -79,8 +79,8 @@ def GetMessages():
             SenderID = msg['sender']['id']
             if msg.get('message'):
                 PostbackText = msg['postback']['payload']
-                    if PostbackText == 'Get Started':
-                        SendMessage(SenderID, June)
+                if PostbackText == 'Get Started':
+                    SendMessage(SenderID, June)
                 """i = 0
                 MessageText = msg['message']['text']
                 if 'start' in MessageText.lower() or 'hello' in MessageText.lower() or 'hi' in MessageText.lower() or 'hey' in MessageText.lower():
