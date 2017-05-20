@@ -54,6 +54,12 @@ I hope you have learnt enough about our candidates to make an informative decisi
 Goodbye!
 \U0001F642
 '''
+
+June = """Hello! 
+Thank you for your interest, but I'm taking a break until JUne!
+Please check back then!
+\U0001F642
+"""
 @app.route('/', methods=['GET'])
 def verification():
   if request.args.get('hub.verify_token', '') == VerifyToken:
@@ -72,7 +78,10 @@ def GetMessages():
         for msg in message['messaging']:
             SenderID = msg['sender']['id']
             if msg.get('message'):
-                i = 0
+                PostbackText = msg['postback']['payload']
+                    if PostbackText == 'Get Started':
+                        SendMessage(SenderID, June)
+                """i = 0
                 MessageText = msg['message']['text']
                 if 'start' in MessageText.lower() or 'hello' in MessageText.lower() or 'hi' in MessageText.lower() or 'hey' in MessageText.lower():
                     SendMessage(SenderID, IntroductoryMessage)
@@ -269,7 +278,7 @@ def GetMessages():
                     SendMessage(SenderID, VoterRequirements)
                     SendMessage(SenderID, ContinueUsing)
                 else:
-                    SendMessage(SenderID, ApologyMessage)
+                    SendMessage(SenderID, ApologyMessage)"""
 
   return 'ok', 200
 
