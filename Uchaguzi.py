@@ -136,7 +136,7 @@ def StartMessaging():
                 for msg in message['messaging']:
                     SenderID = msg['sender']['id']
                     MessageText =msg['message']['text']
-                    entity, value = UsingWit(MessageText)
+                    #entity, value = UsingWit(MessageText)
                     FindingUser(SenderID)
                     response = None
                     #QuickReply = msg['message']['quick_reply']['payload']
