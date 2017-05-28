@@ -137,6 +137,7 @@ def StartMessaging():
                     SenderID = msg['sender']['id']
                     MessageText =msg['message']['text']
                     entity, value = UsingWit(MessageText)
+                    FindingUser(SenderID)
                     response = None
                     #QuickReply = msg['message']['quick_reply']['payload']
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, MessageText)
@@ -226,6 +227,11 @@ def send(request, response):
     text = response['text']
     SendMessage(SenderID, text)
 
+
+def FindingUser(ID):
+    r = requests.post('https://graph.facebook.com/v2.9/' + ID + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + PAT, headers=headers, data=data)
+    print(r)
+    return r
 
 def UsingWit(TEXT):
     wit_response = client.message(TEXT)
