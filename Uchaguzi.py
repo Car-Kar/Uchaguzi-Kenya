@@ -127,7 +127,7 @@ def StartMessaging():
                 for msg in message['messaging']:
                     SenderID = msg['sender']['id']
                     MessageText =msg['message']['text']
-                     entity, value = UsingWit(MessageText)
+                    entity, value = UsingWit(MessageText)
                     #QuickReply = msg['quick_reply']['payload']
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, MessageText)
                     if msg.get('message'):
