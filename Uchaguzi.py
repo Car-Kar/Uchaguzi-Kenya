@@ -24,6 +24,8 @@ I have a top-level menu which you can access at any time by pressing the menu ic
 Go ahead, try it.
 \U0001F642
 '''
+IntroductoryMessage2 = '''I provide information on voting procedures, voter registration, your county administration, the vying candidates, and governemnt review'''
+
 KiswahiliIntroduction = '''Jambo!
 Uchaguzi wa Taifa wa Kenya unafanyika Agosti.
 Mimi ni chombo kwa ajili ya wewe kupata taarifa zaidi juu ya kupiga kura na wagombea wanaogombea.
