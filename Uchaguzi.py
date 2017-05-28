@@ -3,12 +3,14 @@ import json
 import requests
 import pymongo
 from pymongo import MongoClient
+from wit import Wit
 
 
 app = Flask(__name__)
 
 PAT = 'EAAarLkMVMy4BALcfghCBksMQuo5lqLMIsogY1OJEHxVDJZAdIR0KkKWqfdCEbbRIv7IeFrsTTEAFfNRo3y0vgFmZA7wCkcYsZAQSEwlBL6V5VZAexpR4LO4IB1hZAhaoDYejvT5hLjCeZCaiye8qCa5vNrOOGuSyAuWE5ZCZB5VMfwZDZD'
 VerifyToken = '0454'
+WitToken = 'DYIOAENA3VUYMZ2QHFQ6OX3AOZ3P3D3V'
 
 IntroductoryMessage = ''' The 2017 Kenyan National Elections are taking place in August.
 I am a tool for you to acquire more information on voting and the vying candidates.
@@ -160,6 +162,47 @@ def SendMessage(RecipientID, Text):
     if r.status_code != 200:
         print(r.text)
 
+
+def first_entity_value(entities, entity):
+    if entity not in entities:
+        return None
+    val = entities[entity][0]['value']
+    if not val:
+        return None
+    return val['value'] if isinstance(val, dict) else val
+
+
+def send(request, response):
+    fb_id = request['session_id']
+    text = response['text']
+    SendMessage(SenderID, text)
+
+
+def StorePollingLocation(request):
+    context = request['context']
+    entities = request['entities']
+    loc = first_entity_value(entities, 'location')
+    print(context)
+    print(entities)
+    '''if loc:
+        
+        context['forecast'] = 'sunny'
+        if context.get('missingLocation') is not None:
+            del context['missingLocation']
+    else:
+        context['missingLocation'] = True
+        if context.get('forecast') is not None:
+            del context['forecast']
+    return context'''
+
+
+actions = {
+    'send': send,
+    'StoreLocation': StorePollingLocation,
+}
+
+# Setup Wit Client
+client = Wit(access_token = WitToken, actions = actions)
 
 
 if __name__ == '__main__':
