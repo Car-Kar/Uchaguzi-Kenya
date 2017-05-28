@@ -8,9 +8,11 @@ from wit import Wit
 
 app = Flask(__name__)
 
+
 PAT = 'EAAarLkMVMy4BALcfghCBksMQuo5lqLMIsogY1OJEHxVDJZAdIR0KkKWqfdCEbbRIv7IeFrsTTEAFfNRo3y0vgFmZA7wCkcYsZAQSEwlBL6V5VZAexpR4LO4IB1hZAhaoDYejvT5hLjCeZCaiye8qCa5vNrOOGuSyAuWE5ZCZB5VMfwZDZD'
 VerifyToken = '0454'
 WitToken = 'DYIOAENA3VUYMZ2QHFQ6OX3AOZ3P3D3V'
+client = Wit(access_token = WitToken)
 
 IntroductoryMessage = ''' The 2017 Kenyan National Elections are taking place in August.
 I am a tool for you to acquire more information on voting and the vying candidates.
@@ -125,6 +127,7 @@ def StartMessaging():
                 for msg in message['messaging']:
                     SenderID = msg['sender']['id']
                     MessageText =msg['message']['text']
+                     entity, value = UsingWit(MessageText)
                     #QuickReply = msg['quick_reply']['payload']
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, MessageText)
                     if msg.get('message'):
@@ -132,6 +135,11 @@ def StartMessaging():
                             SendMessage(SenderID, LanguageText)
                         if Kiswahili == True:
                             SendMessage(SenderID, 'Fucker.')
+                        if entity == 'names':
+                            response = 'Hello' + str(value)
+                            SendMessage(SenderID, response)
+                       
+
                     elif msg.get('postback'):
                         PostbackText = msg['postback']['payload']
                         Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, PostbackText)
@@ -178,31 +186,21 @@ def send(request, response):
     SendMessage(SenderID, text)
 
 
-def StorePollingLocation(request):
-    context = request['context']
-    entities = request['entities']
-    loc = first_entity_value(entities, 'location')
-    print(context)
-    print(entities)
-    '''if loc:
-        
-        context['forecast'] = 'sunny'
-        if context.get('missingLocation') is not None:
-            del context['missingLocation']
-    else:
-        context['missingLocation'] = True
-        if context.get('forecast') is not None:
-            del context['forecast']
-    return context'''
+def UsingWit(TEXT):
+    response = client.message(TEXT)
+    entity = None
+    value = None
+
+    try:
+        entity = list(resp['entities'])[0]
+        value = resp['entities'][entity][0]['value']
+    except:
+        pass
+
+    return (entity, value)
 
 
-actions = {
-    'send': send,
-    'StoreLocation': StorePollingLocation,
-}
 
-# Setup Wit Client
-client = Wit(access_token = WitToken, actions = actions)
 
 
 if __name__ == '__main__':
