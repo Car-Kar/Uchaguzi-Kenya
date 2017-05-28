@@ -122,7 +122,7 @@ def StartMessaging():
             for message in messages['entry']:
                 for msg in message['messaging']:
                     SenderID = msg['sender']['id']
-                    PostbackText = msg['postback']['payload']
+                    PostbackText = msg[0]['postback']['payload']
                     MessageText =msg['message']['text']
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, MessageText)
                     if msg.get('message'):
