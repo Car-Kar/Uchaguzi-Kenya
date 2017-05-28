@@ -132,7 +132,7 @@ def StartMessaging():
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, MessageText)
                     if msg.get('message'):
                         if 'start' in MessageText.lower():
-                            response = 'hey'
+                           LanguageOptions(SenderID)
                         if Kiswahili == True:
                            response = 'Fucker'
                         if entity == 'names':
@@ -170,7 +170,36 @@ def SendMessage(RecipientID, Text):
     r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
     if r.status_code != 200:
         print(r.text)
-#def LanguagePostbacks(RecipientID)
+
+def LanguageOptions(RecipientID):
+    print(('Sending message to {0}').format(RecipientID))
+
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        'recipient': {
+        'id': RecipientID
+    },
+    'message' : {
+        'text': 'Pick a language.',
+        "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Red",
+        "payload":"red"
+      },
+      {
+        "content_type":"text",
+        "title":"Green",
+        "payload":"green"
+      }
+    ]
+    }
+    })
+    r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
+    if r.status_code != 200:
+        print(r.text)
 
 
 def first_entity_value(entities, entity):
