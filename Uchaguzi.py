@@ -1,6 +1,8 @@
 from flask import Flask, request
 import json
 import requests
+import pymongo
+from pymongo import MongoClient
 
 
 app = Flask(__name__)
@@ -125,7 +127,7 @@ def StartMessaging():
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, MessageText)
                     if msg.get('message'):
                         if 'start' in MessageText.lower():
-                            SendMessage(SenderID, )
+                            SendMessage(SenderID, LanguageText)
                         if Kiswahili == True:
                             SendMessage(SenderID, 'Fucker.')
                     elif msg.get('postback'):
