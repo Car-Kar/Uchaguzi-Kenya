@@ -130,7 +130,6 @@ def StartMessaging():
     try:
         db = MDB.MongoConnection(uri)
         messages = request.get_json()
-        print(messages)
         if messages['object'] == 'page':
             for message in messages['entry']:
                 for msg in message['messaging']:
@@ -145,6 +144,7 @@ def StartMessaging():
                             LanguageOptions(SenderID, Start)
                         if Kiswahili == True and 'swahili' in MessageText.lower():
                             response = 'Jambo! \n' + KiswahiliIntroduction
+                            response = 'Second response'
                         if entity == 'names':
                             response = 'Hello' + str(value)
                         
