@@ -78,11 +78,17 @@ Goodbye!
 
 LanguageText = ''''What Language do you want to continue with?
 Choose one from the options below.'''
+OptionsText = 'Choose an option below to continue.'
+KiswahiliOptions = 'Chagua chaguo kuendelea.'
 
 ResponseStack = []
 KiswahiliHello = 'Jambo! '
 Options = ['governor', 'senator', 'women representative', 'members of parliament']
 Kiswahili = False
+P1 = "Got it! Let's start!"
+P2 = 'Nimeelewa!'
+P3 = "What are my options?"
+P4 = "Nielezee kuliko hivyo."
 uri = 'mongodb://MC:se*8DGs6t8F*39*k@ds149491.mlab.com:49491/uchaguzike'
 
 
@@ -149,8 +155,9 @@ def StartMessaging():
                         if Kiswahili == True and 'swahili' in MessageText.lower():
                             response =  KiswahiliIntroduction
                             response = 'Second response'
-                        if entity == 'names':
-                            response = 'Hello' + str(value)
+                        #if Kiswahili == True and ''
+                        '''if entity == 'names':
+                            response = 'Hello' + str(value)'''
                         
                         SendMessage(SenderID, response)
                        
@@ -215,20 +222,39 @@ def LanguageOptions(RecipientID, Text):
         print(r.text)
 
 
-def first_entity_value(entities, entity):
-    if entity not in entities:
-        return None
-    val = entities[entity][0]['value']
-    if not val:
-        return None
-    return val['value'] if isinstance(val, dict) else val
-
-
-def send(request, response):
-    fb_id = request['session_id']
-    text = response['text']
-    SendMessage(SenderID, text)
-
+def Options(RecipientID, Text, OP1, OP2):
+    print(('Sending  options to {0}').format(RecipientID))
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        'recipient' : {
+        'id' : RecipientID
+        },
+        'message': {
+            'attachment' : {
+                'type' : 'template',
+                'payload' : {
+                    'template_type' : 'button',
+                    'text': Text,
+                    'buttons': [
+                    {
+                        'type' : 'postback',
+                        'title' : OP1
+                        'payload' : 'start'
+                    },
+                    {
+                        'type' : 'postback',
+                        'title' : OP2,
+                        'payload' : 'explain'
+                    }]
+                }
+            }
+        }
+        })
+    r = requests.post('https://graph.facebook.com/v2.9/me/messages?access_token=' + PAT, headers = headers, data = data)
+    if r.status_code != 200:
+        print(r.text)
 
 def FindingUser(ID):
     headers = {
