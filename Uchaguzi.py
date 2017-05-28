@@ -135,8 +135,8 @@ def StartMessaging():
                     if msg.get('message'):
                         if 'start' in MessageText.lower():
                            LanguageOptions(SenderID)
-                        if Kiswahili == True:
-                           response = 'Fucker'
+                        #if Kiswahili == True:
+                           #response = 'Fucker'
                         if entity == 'names':
                             response = 'Hello' + str(value)
                         
