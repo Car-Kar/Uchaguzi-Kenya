@@ -143,13 +143,13 @@ def StartMessaging():
             for message in messages['entry']:
                 for msg in message['messaging']:
                     SenderID = msg['sender']['id']
-                    MessageText =msg['message']['text']
                     #entity, value = UsingWit(MessageText)
                     FindingUser(SenderID)
                     response = None
                     #QuickReply = msg['message']['quick_reply']['payload']
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, MessageText)
                     if msg.get('message'):
+                        MessageText =msg['message']['text']
                         if 'start' in MessageText.lower():
                             LanguageOptions(SenderID, Start)
                         if Kiswahili == True and 'swahili' in MessageText.lower():
