@@ -132,12 +132,13 @@ def StartMessaging():
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, MessageText)
                     if msg.get('message'):
                         if 'start' in MessageText.lower():
-                            SendMessage(SenderID, LanguageText)
+                            response = 'hey'
                         if Kiswahili == True:
-                            SendMessage(SenderID, 'Fucker.')
+                           response = 'Fucker'
                         if entity == 'names':
                             response = 'Hello' + str(value)
-                            SendMessage(SenderID, response)
+                        
+                        SendMessage(SenderID, response)
                        
 
                     elif msg.get('postback'):
@@ -169,7 +170,7 @@ def SendMessage(RecipientID, Text):
     r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
     if r.status_code != 200:
         print(r.text)
-
+def LanguagePostbacks(RecipientID)
 
 def first_entity_value(entities, entity):
     if entity not in entities:
@@ -187,7 +188,7 @@ def send(request, response):
 
 
 def UsingWit(TEXT):
-    response = client.message(TEXT)
+    wit_response = client.message(TEXT)
     entity = None
     value = None
 
