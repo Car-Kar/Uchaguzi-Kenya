@@ -229,7 +229,10 @@ def send(request, response):
 
 
 def FindingUser(ID):
-    r = requests.post('https://graph.facebook.com/v2.9/' + ID + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + PAT, headers=headers, data=data)
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    r = requests.post('https://graph.facebook.com/v2.9/' + ID + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + PAT, headers=headers)
     print(r)
     return r
 
