@@ -192,8 +192,8 @@ def UsingWit(TEXT):
     value = None
 
     try:
-        entity = list(resp['entities'])[0]
-        value = resp['entities'][entity][0]['value']
+        entity = list(response['entities'])[0]
+        value = response['entities'][entity][0]['value']
     except:
         pass
 
