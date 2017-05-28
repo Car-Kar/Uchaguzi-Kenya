@@ -154,7 +154,7 @@ def StartMessaging():
                             LanguageOptions(SenderID, Start)
                         if Kiswahili == True and 'swahili' in MessageText.lower():
                             SendMessage(SenderID, KiswahiliIntroduction)
-                            SendMessage(SendMessage, KiswahiliIntroduction2)
+                            SendMessage(SenderID, KiswahiliIntroduction2)
                             Options(SenderID, KiswahiliOptions, P2, P4)
                         #if Kiswahili == True and ''
 
