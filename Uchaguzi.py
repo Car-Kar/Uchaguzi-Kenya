@@ -139,6 +139,8 @@ def StartMessaging():
                     if msg.get('message'):
                         if 'start' in MessageText.lower():
                             LanguageOptions(SenderID, Start)
+                        if 'swahili' in MessageText.lower():
+                            response = KiswahiliHello
                         
                         if entity == 'names':
                             response = 'Hello' + str(value)
@@ -148,7 +150,6 @@ def StartMessaging():
 
                     elif msg.get('postback'):
                         PostbackText = msg['postback']['payload']
-                        Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, PostbackText)
                         if Kiswahili == True and PostbackText == 'VoterReq':
                             SendMessage(SenderID, VoterRequirements)
     except Exception as e:
