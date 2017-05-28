@@ -24,7 +24,8 @@ I have a top-level menu which you can access at any time by pressing the menu ic
 Go ahead, try it.
 \U0001F642
 '''
-KiswahiliIntroduction = '''Uchaguzi wa Taifa wa Kenya unafanyika Agosti.
+KiswahiliIntroduction = '''Jambo!
+Uchaguzi wa Taifa wa Kenya unafanyika Agosti.
 Mimi ni chombo kwa ajili ya wewe kupata taarifa zaidi juu ya kupiga kura na wagombea wanaogombea.
 Nina orodha ambayo unaweza kupata wakati wowote kwa kubonyeza menu (\ u2630) hapo chini ili kuchagua chaguo unataka.
 \U0001F642'''
@@ -143,7 +144,7 @@ def StartMessaging():
                         if 'start' in MessageText.lower():
                             LanguageOptions(SenderID, Start)
                         if Kiswahili == True and 'swahili' in MessageText.lower():
-                            response = 'Jambo! \n' + KiswahiliIntroduction
+                            response =  KiswahiliIntroduction
                             response = 'Second response'
                         if entity == 'names':
                             response = 'Hello' + str(value)
