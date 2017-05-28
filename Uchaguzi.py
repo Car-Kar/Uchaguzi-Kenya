@@ -24,8 +24,8 @@ I have a top-level menu which you can access at any time by pressing the menu ic
 Go ahead, try it.
 \U0001F642
 '''
-IntroductoryMessage2 = '''I provide information on voting procedures, voter registration, your county administration, the vying candidates, and government review'''
-
+IntroductoryMessage2 = '''I provide information on voting procedures, voter registration, your county administration, the vying candidates, and government .'''
+KiswahiliIntroduction2 = '''Nitakupa taarifa kuhusu taratibu kupiga kura, usajili wa wapiga kura, utawala wa kata yako, wagombea wanaogombea na ukaguzi wa serikali.'''
 KiswahiliIntroduction = '''Jambo!
 Uchaguzi wa Taifa wa Kenya unafanyika Agosti.
 Mimi ni chombo kwa ajili ya wewe kupata taarifa zaidi juu ya kupiga kura na wagombea wanaogombea.
@@ -153,9 +153,11 @@ def StartMessaging():
                         if 'start' in MessageText.lower():
                             LanguageOptions(SenderID, Start)
                         if Kiswahili == True and 'swahili' in MessageText.lower():
-                            response =  KiswahiliIntroduction
-                            response = 'Second response'
+                            SendMessage(SenderID, KiswahiliIntroduction)
+                            SendMessage(SendMessage, KiswahiliIntroduction2)
+                            Options(SenderID, KiswahiliOptions, P2, P4)
                         #if Kiswahili == True and ''
+
                         '''if entity == 'names':
                             response = 'Hello' + str(value)'''
                         
