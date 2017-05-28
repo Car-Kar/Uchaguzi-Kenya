@@ -66,6 +66,7 @@ ResponseStack = []
 KiswahiliHello = 'Jambo! '
 Options = ['governor', 'senator', 'women representative', 'members of parliament']
 Kiswahili = False
+uri = 'mongodb://MC:se*8DGs6t8F*39*k@ds149491.mlab.com:49491/uchaguzike'
 
 
 class UsingMongo:
@@ -121,19 +122,15 @@ def StartMessaging():
                     SenderID = msg['sender']['id']
                     PostbackText = msg['postback']['payload']
                     MessageText =msg['message']['text']
-                    Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, PostbackText)
+                    Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, MessageText)
                     if msg.get('message'):
-                        MessageText =msg['message']['text']
-                        Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, MessageText)
-                        print(Kiswahili)
                         if 'start' in MessageText.lower():
                             SendMessage(SenderID, )
                         if Kiswahili == True:
                             SendMessage(SenderID, 'Fucker.')
                     elif msg.get('postback'):
-                        Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, MessageText)
                         PostbackText = msg['postback']['payload']
-                        if PostbackText == 'VoterReq':
+                        if Kiswahili == True and PostbackText == 'VoterReq':
                             SendMessage(SenderID, VoterRequirements)
     except Exception as e:
         raise e
