@@ -122,8 +122,8 @@ def StartMessaging():
             for message in messages['entry']:
                 for msg in message['messaging']:
                     SenderID = msg['sender']['id']
-                    PostbackText = msg[0]['postback']['payload']
                     MessageText =msg['message']['text']
+                    QuickReply = msg['quick_reply']['payload']
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, MessageText)
                     if msg.get('message'):
                         if 'start' in MessageText.lower():
@@ -132,6 +132,7 @@ def StartMessaging():
                             SendMessage(SenderID, 'Fucker.')
                     elif msg.get('postback'):
                         PostbackText = msg['postback']['payload']
+                        Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, PostbackText)
                         if Kiswahili == True and PostbackText == 'VoterReq':
                             SendMessage(SenderID, VoterRequirements)
     except Exception as e:
