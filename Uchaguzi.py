@@ -156,7 +156,10 @@ def StartMessaging():
                             SendMessage(SenderID, KiswahiliIntroduction)
                             SendMessage(SenderID, KiswahiliIntroduction2)
                             Options(SenderID, KiswahiliOptions, P2, P4)
-                        #if Kiswahili == True and ''
+                        if Kiswahili == False and 'english' in MessageText.lower():
+                            SendMessage(SenderId, IntroductoryMessage)
+                            SendMessage(SenderId, IntroductoryMessage2)
+                            Options(SenderID, OptionsText, P1, P3 )
 
                         '''if entity == 'names':
                             response = 'Hello' + str(value)'''
