@@ -147,7 +147,6 @@ def StartMessaging():
                     FindingUser(SenderID)
                     response = None
                     #QuickReply = msg['message']['quick_reply']['payload']
-                    Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, MessageText)
                     if msg.get('message'):
                         MessageText =msg['message']['text']
                         if 'start' in MessageText.lower():
@@ -169,6 +168,7 @@ def StartMessaging():
 
                     elif msg.get('postback'):
                         PostbackText = msg['postback']['payload']
+                        Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, PostbackText)
                         if Kiswahili == True and PostbackText == 'VoterReq':
                             SendMessage(SenderID, VoterRequirements)
     except Exception as e:
