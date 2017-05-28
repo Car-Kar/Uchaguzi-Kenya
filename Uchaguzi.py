@@ -170,7 +170,8 @@ def SendMessage(RecipientID, Text):
     r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
     if r.status_code != 200:
         print(r.text)
-def LanguagePostbacks(RecipientID)
+#def LanguagePostbacks(RecipientID)
+
 
 def first_entity_value(entities, entity):
     if entity not in entities:
