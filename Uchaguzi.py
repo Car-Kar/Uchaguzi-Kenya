@@ -14,6 +14,10 @@ VerifyToken = '0454'
 WitToken = 'DYIOAENA3VUYMZ2QHFQ6OX3AOZ3P3D3V'
 client = Wit(access_token = WitToken)
 
+Start = '''Hello There!
+What language do you want to continue in?
+'''
+
 IntroductoryMessage = ''' The 2017 Kenyan National Elections are taking place in August.
 I am a tool for you to acquire more information on voting and the vying candidates.
 I have a top-level menu which you can access at any time by pressing the menu icon (\u2630)  at the bottom to choose the option that you want.
@@ -130,13 +134,13 @@ def StartMessaging():
                     MessageText =msg['message']['text']
                     entity, value = UsingWit(MessageText)
                     response = None
-                    QuickReply = msg['message']['quick_reply']['payload']
+                    #QuickReply = msg['message']['quick_reply']['payload']
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, MessageText)
                     if msg.get('message'):
                         if 'start' in MessageText.lower():
+                            response = Start
                            LanguageOptions(SenderID)
-                        #if Kiswahili == True:
-                           #response = 'Fucker'
+                        
                         if entity == 'names':
                             response = 'Hello' + str(value)
                         
@@ -188,13 +192,13 @@ def LanguageOptions(RecipientID):
         "quick_replies":[
       {
         "content_type":"text",
-        "title":"Red",
-        "payload":"red"
+        "title":"Kiswahili",
+        "payload":"swahili"
       },
       {
         "content_type":"text",
-        "title":"Green",
-        "payload":"green"
+        "title":"English",
+        "payload":"english"
       }
     ]
     }
