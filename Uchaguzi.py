@@ -122,13 +122,14 @@ def StartMessaging():
     try:
         db = MDB.MongoConnection(uri)
         messages = request.get_json()
+        print(messages)
         if messages['object'] == 'page':
             for message in messages['entry']:
                 for msg in message['messaging']:
                     SenderID = msg['sender']['id']
                     MessageText =msg['message']['text']
                     entity, value = UsingWit(MessageText)
-                    QuickReply = msg['message']['quick_reply']['payload']
+                    #QuickReply = msg['message']['quick_reply']['payload']
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, MessageText)
                     if msg.get('message'):
                         if 'start' in MessageText.lower():
