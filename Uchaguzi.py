@@ -24,6 +24,10 @@ I have a top-level menu which you can access at any time by pressing the menu ic
 Go ahead, try it.
 \U0001F642
 '''
+KiswahiliIntroduction = '''Uchaguzi wa Taifa wa Kenya unafanyika Agosti.
+Mimi ni chombo kwa ajili ya wewe kupata taarifa zaidi juu ya kupiga kura na wagombea wanaogombea.
+Nina orodha ambayo unaweza kupata wakati wowote kwa kubonyeza menu (\ u2630) hapo chini ili kuchagua chaguo unataka.
+\U0001F642'''
 VoterRegistration = '''Thank you for using Uchaguzi!
 However due to logistical circumstances, the option of finding out your registration status is not available right now.
 Please check again in a little while as we go about incorporating it.
@@ -139,9 +143,8 @@ def StartMessaging():
                     if msg.get('message'):
                         if 'start' in MessageText.lower():
                             LanguageOptions(SenderID, Start)
-                        if 'swahili' in MessageText.lower():
-                            response = KiswahiliHello
-                        
+                        if Kiswahili == True and 'swahili' in MessageText.lower():
+                            response = 'Jambo! \n' + KiswahiliIntroduction
                         if entity == 'names':
                             response = 'Hello' + str(value)
                         
