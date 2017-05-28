@@ -138,7 +138,7 @@ def StartMessaging():
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, MessageText)
                     if msg.get('message'):
                         if 'start' in MessageText.lower():
-                            LanguageOptions(SenderID)
+                            LanguageOptions(SenderID, Start)
                         
                         if entity == 'names':
                             response = 'Hello' + str(value)
@@ -176,7 +176,7 @@ def SendMessage(RecipientID, Text):
     if r.status_code != 200:
         print(r.text)
 
-def LanguageOptions(RecipientID, Start):
+def LanguageOptions(RecipientID, Text):
     print(('Sending message to {0}').format(RecipientID))
 
     headers = {
@@ -187,7 +187,7 @@ def LanguageOptions(RecipientID, Start):
         'id': RecipientID
     },
     'message' : {
-        'text': Start,
+        'text': Text,
         "quick_replies":[
       {
         "content_type":"text",
