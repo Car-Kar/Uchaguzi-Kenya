@@ -29,7 +29,7 @@ KiswahiliIntroduction2 = '''Nitakupa taarifa kuhusu taratibu kupiga kura, usajil
 KiswahiliIntroduction = '''Jambo!
 Uchaguzi wa Taifa wa Kenya unafanyika Agosti.
 Mimi ni chombo kwa ajili ya wewe kupata taarifa zaidi juu ya kupiga kura na wagombea wanaogombea.
-Nina orodha ambayo unaweza kupata wakati wowote kwa kubonyeza menu (\ u2630) hapo chini ili kuchagua chaguo unataka.
+Nina orodha ambayo unaweza kupata wakati wowote kwa kubonyeza menu (\u2630) hapo chini ili kuchagua chaguo unataka.
 \U0001F642'''
 VoterRegistration = '''Thank you for using Uchaguzi!
 However due to logistical circumstances, the option of finding out your registration status is not available right now.
@@ -148,6 +148,7 @@ def StartMessaging():
     try:
         db = MDB.MongoConnection(uri)
         messages = request.get_json()
+        print(messages)
         if messages['object'] == 'page':
             for message in messages['entry']:
                 for msg in message['messaging']:
@@ -225,6 +226,36 @@ def LanguageOptions(RecipientID, Text):
         "quick_replies":[
       {
         "content_type":"text",
+        "title":"Kiswahili",
+        "payload":"swahili"
+      },
+      {
+        "content_type":"text",
+        "title":"English",
+        "payload":"english"
+      }
+    ]
+    }
+    })
+    r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
+    if r.status_code != 200:
+        print(r.text)
+
+def UserOptions(RecipientID, Text):
+    print(('Sending message to {0}').format(RecipientID))
+
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        'recipient': {
+        'id': RecipientID
+    },
+    'message' : {
+        'text': Text,
+        'quick_replies':[
+      {
+        'content_type' : 'text',
         "title":"Kiswahili",
         "payload":"swahili"
       },
