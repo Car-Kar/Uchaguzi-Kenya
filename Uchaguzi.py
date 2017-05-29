@@ -176,7 +176,7 @@ def StartMessaging():
                             SendMessage(SenderID, VoterRequirements)
                         if Kiswahili == True and UserSays == oi:
                             response = 'Naweza kupa ujumbe kuhusu kupiga kura, au kuweka mawaidha ya kukukumbusha kupiga kura.'
-                            SendMessage(SendMessage, response)
+                            SendMessage(SenderID, response)
                             ReusableOptions(SenderID, KiswahiliOptions, 'Nipe Ujumbe', 'Mawaidha')
 
                         '''if entity == 'names':
