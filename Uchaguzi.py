@@ -89,6 +89,9 @@ P1 = "Got it! Let's start!"
 P2 = 'Nimeelewa!'
 P3 = "What are my options?"
 P4 = "Nielezee zaidi."
+oi = 'Ujumbe'
+oii = 'Uchaguzi'
+oiii = 'Kukagua Serikali'
 uri = 'mongodb://MC:se*8DGs6t8F*39*k@ds149491.mlab.com:49491/uchaguzike'
 
 
@@ -160,17 +163,19 @@ def StartMessaging():
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
                     if msg.get('message'):
                         if 'start' in UserSays.lower():
-                            LanguageOptions(SenderID, Start)
-                        '''if Kiswahili == True and 'swahili' in MessageText.lower():
+                            ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
+                        if Kiswahili == True and 'swahili' in UserSays.lower():
                             SendMessage(SenderID, KiswahiliIntroduction)
                             SendMessage(SenderID, KiswahiliIntroduction2)
                             Options(SenderID, KiswahiliOptions, P2, P4)
-                        if Kiswahili == False and 'english' in MessageText.lower():
+                        if Kiswahili == False and 'english' in UserSays.lower():
                             SendMessage(SenderID, IntroductoryMessage)
                             SendMessage(SenderID, IntroductoryMessage2)
                             Options(SenderID, OptionsText, P1, P3 )
+                        if Kiswahili == True and 'nipe' in UserSays.lower():
+                            SendMessage(SenderID, VoterRequirements)
 
-                        if entity == 'names':
+                        '''if entity == 'names':
                             response = 'Hello' + str(value)
                         
                        SendMessage(SenderID, response)
@@ -180,9 +185,15 @@ def StartMessaging():
                         if Kiswahili == True and UserSays == 'explain':
                             SendMessage(SenderID, 'I will explain later')
 
-                        if Kiswahili == False and UserSays == 'start':
-                            SendMessage(SenderID, 'Choose an option from below!')
+                        if Kiswahili == True and UserSays == 'start':
+                            UsingOptions(SenderID, KiswahiliOptions, oi, oii, oiii)
 
+                        if Kiswahili == True and UserSays == voters:
+                            response = 'Naweza kupa ujumbe kuhusu kupiga kura, au kuweka mawaidha ya kukukumbusha kupiga kura.'
+                            SendMessage(SendMessage, response)
+                            ReusableOptions(SenderID, KiswahiliOptions, 'Nipe Ujumbe', 'Mawaidha')
+
+                        
     except Exception as e:
         raise e
 
@@ -216,7 +227,7 @@ def SendMessage(RecipientID, Text):
     if r.status_code != 200:
         print(r.text)
 
-def LanguageOptions(RecipientID, Text):
+def ReusableOptions(RecipientID, Text, op1, op2):
     print(('Sending message to {0}').format(RecipientID))
 
     headers = {
@@ -228,16 +239,16 @@ def LanguageOptions(RecipientID, Text):
     },
     'message' : {
         'text': Text,
-        "quick_replies":[
+        'quick_replies':[
       {
-        "content_type":"text",
-        "title":"Kiswahili",
-        "payload":"swahili"
+        'content_type': 'text',
+        'title' : op1,
+        'payload' : 'IsReusable'
       },
       {
-        "content_type":"text",
-        "title":"English",
-        "payload":"english"
+        'content_type' : 'text',
+        'title' : op2,
+        'payload': 'IsReusable'
       }
     ]
     }
@@ -246,7 +257,7 @@ def LanguageOptions(RecipientID, Text):
     if r.status_code != 200:
         print(r.text)
 
-def UserOptions(RecipientID, Text):
+def UsingOptions(RecipientID, Text, O1, O2, O3):
     print(('Sending message to {0}').format(RecipientID))
 
     headers = {
@@ -261,13 +272,18 @@ def UserOptions(RecipientID, Text):
         'quick_replies':[
       {
         'content_type' : 'text',
-        "title":"Kiswahili",
-        "payload":"swahili"
+        'title' : 01,
+        'payload' : 'voters'
       },
       {
-        "content_type":"text",
-        "title":"English",
-        "payload":"english"
+        'content_type' : 'text',
+        'title' : 02,
+        'payload' : 'elections'
+      },
+      {
+        'content_type' : 'text',
+        'title' : 03,
+        'payload' : 'elections'
       }
     ]
     }
