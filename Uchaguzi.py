@@ -151,7 +151,7 @@ def StartMessaging():
     try:
         db = MDB.MongoConnection(uri)
         messages = request.get_json()
-        print(messages)
+        #print(messages)
         if messages['object'] == 'page':
             for message in messages['entry']:
                 for msg in message['messaging']:
@@ -174,7 +174,7 @@ def StartMessaging():
                             Options(SenderID, OptionsText, P1, P3 )
                         if Kiswahili == True and 'nipe' in UserSays.lower():
                             SendMessage(SenderID, VoterRequirements)
-                        if Kiswahili == True and UserSays == 'voters':
+                        if Kiswahili == True and UserSays == oi:
                             response = 'Naweza kupa ujumbe kuhusu kupiga kura, au kuweka mawaidha ya kukukumbusha kupiga kura.'
                             SendMessage(SendMessage, response)
                             ReusableOptions(SenderID, KiswahiliOptions, 'Nipe Ujumbe', 'Mawaidha')
@@ -284,7 +284,7 @@ def UsingOptions(RecipientID, Text, O1, O2, O3):
       {
         'content_type' : 'text',
         'title' : O3,
-        'payload' : 'elections'
+        'payload' : 'gov'
       }
     ]
     }
