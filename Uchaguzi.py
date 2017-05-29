@@ -167,8 +167,8 @@ def StartMessaging():
                             SendMessage(SenderID, KiswahiliIntroduction2)
                             Options(SenderID, KiswahiliOptions, P2, P4)
                         if Kiswahili == False and 'english' in MessageText.lower():
-                            SendMessage(SenderId, IntroductoryMessage)
-                            SendMessage(SenderId, IntroductoryMessage2)
+                            SendMessage(SenderID, IntroductoryMessage)
+                            SendMessage(SenderID, IntroductoryMessage2)
                             Options(SenderID, OptionsText, P1, P3 )
 
                         '''if entity == 'names':
@@ -179,8 +179,12 @@ def StartMessaging():
 
                     elif msg.get('postback'):
                         PostbackText = msg['postback']['payload']
-                        if Kiswahili == True and PostbackText == 'VoterReq':
-                            SendMessage(SenderID, VoterRequirements)
+                        if Kiswahili == True and PostbackText == 'explain':
+                            SendMessage(SenderID, 'I will explain later')
+
+                        if Kiswahili == False and PostbackText == 'start':
+                            SendMessage(SenderID, 'Choose an option from below!')
+
     except Exception as e:
         raise e
 
