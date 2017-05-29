@@ -156,14 +156,12 @@ def StartMessaging():
                     #entity, value = UsingWit(MessageText)
                     FindingUser(SenderID)
                     response = None
-
-                    #QuickReply = msg['message']['quick_reply']['payload']
+                    UserSays = ReturnType(msg)
                     if msg.get('message'):
-                        MessageText =msg['message']['text']
-                        Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, MessageText)
-                        if 'start' in MessageText.lower():
+                        Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
+                        if 'start' in UserSays.lower():
                             LanguageOptions(SenderID, Start)
-                        if Kiswahili == True and 'swahili' in MessageText.lower():
+                        '''if Kiswahili == True and 'swahili' in MessageText.lower():
                             SendMessage(SenderID, KiswahiliIntroduction)
                             SendMessage(SenderID, KiswahiliIntroduction2)
                             Options(SenderID, KiswahiliOptions, P2, P4)
@@ -172,10 +170,10 @@ def StartMessaging():
                             SendMessage(SenderID, IntroductoryMessage2)
                             Options(SenderID, OptionsText, P1, P3 )
 
-                        '''if entity == 'names':
+                        if entity == 'names':
                             response = 'Hello' + str(value)'''
                         
-                        SendMessage(SenderID, response)
+                       ''' SendMessage(SenderID, response)
                        
 
                     elif msg.get('postback'):
@@ -184,7 +182,7 @@ def StartMessaging():
                             SendMessage(SenderID, 'I will explain later')
 
                         if Kiswahili == False and PostbackText == 'start':
-                            SendMessage(SenderID, 'Choose an option from below!')
+                            SendMessage(SenderID, 'Choose an option from below!')'''
 
     except Exception as e:
         raise e
@@ -192,6 +190,13 @@ def StartMessaging():
     return 'OK', 200
 
 
+def ReturnType(msg):
+    print('Checking Type')
+    if msg.get('message'):
+        MessageText = msg['message']['text']
+    elif msg.get('postback'):
+        PostbackText = msg['postback']['payload']
+        return PostbackText
 
 def SendMessage(RecipientID, Text):
     print(('Sending message to {0}').format(RecipientID))
