@@ -157,8 +157,8 @@ def StartMessaging():
                     FindingUser(SenderID)
                     response = None
                     UserSays = ReturnType(msg)
+                    Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
                     if msg.get('message'):
-                        Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
                         if 'start' in UserSays.lower():
                             LanguageOptions(SenderID, Start)
                         '''if Kiswahili == True and 'swahili' in MessageText.lower():
@@ -174,15 +174,14 @@ def StartMessaging():
                             response = 'Hello' + str(value)
                         
                        SendMessage(SenderID, response)
-                       
+                       '''
 
                     elif msg.get('postback'):
-                        PostbackText = msg['postback']['payload']
                         if Kiswahili == True and PostbackText == 'explain':
                             SendMessage(SenderID, 'I will explain later')
 
                         if Kiswahili == False and PostbackText == 'start':
-                            SendMessage(SenderID, 'Choose an option from below!')'''
+                            SendMessage(SenderID, 'Choose an option from below!')
 
     except Exception as e:
         raise e
