@@ -115,7 +115,7 @@ class UsingMongo:
         if user is not None:
             swahili = True
             return swahili
-        elif:
+        elif user is None:
             if 'kiswahili' == data.lower():
                 language = collection.insert({'fromuser': FromUser})
                 print('Added new Kiswahili User!')
