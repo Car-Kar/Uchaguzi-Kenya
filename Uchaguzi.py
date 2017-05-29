@@ -115,17 +115,13 @@ class UsingMongo:
         if user is not None:
             swahili = True
             return swahili
-        elif user is None:
+            
+        else:
             if 'kiswahili' == data.lower():
                 language = collection.insert({'fromuser': FromUser})
                 print('Added new Kiswahili User!')
                 return True
-        else:
-            if user is not None:
-                if 'english' == data.lower():
-                    language = collection.deleteOne({'fromuser': FromUser})
-                    return False
-            else:
+            elif 'english' == data.lower():
                 return False
 
 MDB = UsingMongo()
