@@ -114,7 +114,7 @@ class UsingMongo:
         user =  collection.find_one({'fromuser': FromUser})
         if user is not None and 'english' == data.lower():
             print('Changed a language!')
-            language = collection.deleteOne({'fromuser': FromUser})
+            language = collection.delete_one({'fromuser': FromUser})
             swahili = False
             return swahili
         elif user is not None:
