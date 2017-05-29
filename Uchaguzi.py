@@ -174,6 +174,10 @@ def StartMessaging():
                             Options(SenderID, OptionsText, P1, P3 )
                         if Kiswahili == True and 'nipe' in UserSays.lower():
                             SendMessage(SenderID, VoterRequirements)
+                        if Kiswahili == True and UserSays == 'voters':
+                            response = 'Naweza kupa ujumbe kuhusu kupiga kura, au kuweka mawaidha ya kukukumbusha kupiga kura.'
+                            SendMessage(SendMessage, response)
+                            ReusableOptions(SenderID, KiswahiliOptions, 'Nipe Ujumbe', 'Mawaidha')
 
                         '''if entity == 'names':
                             response = 'Hello' + str(value)
@@ -188,10 +192,7 @@ def StartMessaging():
                         if Kiswahili == True and UserSays == 'start':
                             UsingOptions(SenderID, KiswahiliOptions, oi, oii, oiii)
 
-                        if Kiswahili == True and UserSays == voters:
-                            response = 'Naweza kupa ujumbe kuhusu kupiga kura, au kuweka mawaidha ya kukukumbusha kupiga kura.'
-                            SendMessage(SendMessage, response)
-                            ReusableOptions(SenderID, KiswahiliOptions, 'Nipe Ujumbe', 'Mawaidha')
+                        
 
                         
     except Exception as e:
