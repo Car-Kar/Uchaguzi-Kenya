@@ -171,9 +171,8 @@ def StartMessaging():
                             Options(SenderID, OptionsText, P1, P3 )
 
                         if entity == 'names':
-                            response = 'Hello' + str(value)'''
-                        
-                       ''' SendMessage(SenderID, response)
+                            response = 'Hello' + str(value)
+                            SendMessage(SenderID, response)
                        
 
                     elif msg.get('postback'):
