@@ -272,17 +272,17 @@ def UsingOptions(RecipientID, Text, O1, O2, O3):
         'quick_replies':[
       {
         'content_type' : 'text',
-        'title' : 01,
+        'title' : O1,
         'payload' : 'voters'
       },
       {
         'content_type' : 'text',
-        'title' : 02,
+        'title' : O2,
         'payload' : 'elections'
       },
       {
         'content_type' : 'text',
-        'title' : 03,
+        'title' : O3,
         'payload' : 'elections'
       }
     ]
