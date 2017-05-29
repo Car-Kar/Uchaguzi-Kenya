@@ -116,7 +116,7 @@ class UsingMongo:
             swahili = True
             return swahili
 
-        elif user is not None and 'english' == data.lower():
+        if user is not None and 'english' == data.lower():
             print('Changed a language!')
             language = collection.deleteOne({'fromuser': FromUser})
             swahili = False
