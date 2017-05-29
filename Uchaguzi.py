@@ -153,15 +153,14 @@ def StartMessaging():
             for message in messages['entry']:
                 for msg in message['messaging']:
                     SenderID = msg['sender']['id']
-                    MessageText =msg['message']['text']
-                    PostbackText = msg['postback']['payload']
                     #entity, value = UsingWit(MessageText)
                     FindingUser(SenderID)
                     response = None
-                    Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, MessageText)
 
                     #QuickReply = msg['message']['quick_reply']['payload']
                     if msg.get('message'):
+                        MessageText =msg['message']['text']
+                        Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, MessageText)
                         if 'start' in MessageText.lower():
                             LanguageOptions(SenderID, Start)
                         if Kiswahili == True and 'swahili' in MessageText.lower():
@@ -180,6 +179,7 @@ def StartMessaging():
                        
 
                     elif msg.get('postback'):
+                        PostbackText = msg['postback']['payload']
                         if Kiswahili == True and PostbackText == 'explain':
                             SendMessage(SenderID, 'I will explain later')
 
