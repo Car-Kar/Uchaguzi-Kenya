@@ -172,7 +172,8 @@ def StartMessaging():
 
                         if entity == 'names':
                             response = 'Hello' + str(value)
-                            SendMessage(SenderID, response)
+                        
+                       SendMessage(SenderID, response)
                        
 
                     elif msg.get('postback'):
@@ -193,6 +194,7 @@ def ReturnType(msg):
     print('Checking Type')
     if msg.get('message'):
         MessageText = msg['message']['text']
+        return MessageText
     elif msg.get('postback'):
         PostbackText = msg['postback']['payload']
         return PostbackText
