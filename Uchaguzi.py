@@ -154,6 +154,7 @@ def StartMessaging():
                 for msg in message['messaging']:
                     SenderID = msg['sender']['id']
                     MessageText =msg['message']['text']
+                    PostbackText = msg['postback']['payload']
                     #entity, value = UsingWit(MessageText)
                     FindingUser(SenderID)
                     response = None
@@ -179,7 +180,6 @@ def StartMessaging():
                        
 
                     elif msg.get('postback'):
-                        PostbackText = msg['postback']['payload']
                         if Kiswahili == True and PostbackText == 'explain':
                             SendMessage(SenderID, 'I will explain later')
 
