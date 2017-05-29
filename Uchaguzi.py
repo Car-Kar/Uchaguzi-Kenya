@@ -143,12 +143,14 @@ def StartMessaging():
             for message in messages['entry']:
                 for msg in message['messaging']:
                     SenderID = msg['sender']['id']
+                    MessageText =msg['message']['text']
                     #entity, value = UsingWit(MessageText)
                     FindingUser(SenderID)
                     response = None
+                    Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, MessageText)
+
                     #QuickReply = msg['message']['quick_reply']['payload']
                     if msg.get('message'):
-                        MessageText =msg['message']['text']
                         if 'start' in MessageText.lower():
                             LanguageOptions(SenderID, Start)
                         if Kiswahili == True and 'swahili' in MessageText.lower():
@@ -168,7 +170,6 @@ def StartMessaging():
 
                     elif msg.get('postback'):
                         PostbackText = msg['postback']['payload']
-                        Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, PostbackText)
                         if Kiswahili == True and PostbackText == 'VoterReq':
                             SendMessage(SenderID, VoterRequirements)
     except Exception as e:
