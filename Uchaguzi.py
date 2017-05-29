@@ -112,16 +112,14 @@ class UsingMongo:
         collection = self.DB['kiswahili']
         print('Connected to kiswahili users collection!')
         user =  collection.find_one({'fromuser': FromUser})
-        if user is not None:
-            swahili = True
-            return swahili
-
         if user is not None and 'english' == data.lower():
             print('Changed a language!')
             language = collection.deleteOne({'fromuser': FromUser})
             swahili = False
             return swahili
-
+        elif user is not None:
+            swahili = True
+            return swahili
         else:
             if 'kiswahili' == data.lower():
                 language = collection.insert({'fromuser': FromUser})
