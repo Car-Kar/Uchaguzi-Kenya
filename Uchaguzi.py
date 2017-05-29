@@ -88,7 +88,7 @@ Kiswahili = False
 P1 = "Got it! Let's start!"
 P2 = 'Nimeelewa!'
 P3 = "What are my options?"
-P4 = "Nielezee kuliko hivyo."
+P4 = "Nielezee zaidi."
 uri = 'mongodb://MC:se*8DGs6t8F*39*k@ds149491.mlab.com:49491/uchaguzike'
 
 
@@ -115,11 +115,18 @@ class UsingMongo:
         if user is not None:
             swahili = True
             return swahili
-        else:
+        elif:
             if 'kiswahili' == data.lower():
                 language = collection.insert({'fromuser': FromUser})
                 print('Added new Kiswahili User!')
                 return True
+        else:
+            if user is not None:
+                if 'english' == data.lower():
+                    language = collection.deleteOne({'fromuser': FromUser})
+                    return False
+            else:
+                return False
 
 MDB = UsingMongo()
 
