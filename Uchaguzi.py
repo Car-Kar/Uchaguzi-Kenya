@@ -177,10 +177,10 @@ def StartMessaging():
                        '''
 
                     elif msg.get('postback'):
-                        if Kiswahili == True and PostbackText == 'explain':
+                        if Kiswahili == True and UserSays == 'explain':
                             SendMessage(SenderID, 'I will explain later')
 
-                        if Kiswahili == False and PostbackText == 'start':
+                        if Kiswahili == False and UserSays == 'start':
                             SendMessage(SenderID, 'Choose an option from below!')
 
     except Exception as e:
