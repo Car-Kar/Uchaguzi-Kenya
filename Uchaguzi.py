@@ -14,6 +14,8 @@ VerifyToken = '0454'
 WitToken = 'DYIOAENA3VUYMZ2QHFQ6OX3AOZ3P3D3V'
 client = Wit(access_token = WitToken)
 
+SurveyUrl = 'https://m.me/672849446250204/?ref=f258b3c90e014ce15030df0a91a0a322'
+
 Start = '''Hello There!
 What language do you want to continue in?
 '''
@@ -178,6 +180,9 @@ def StartMessaging():
                             response = 'Naweza kupa ujumbe kuhusu kupiga kura, au kuweka mawaidha ya kukukumbusha kupiga kura.'
                             SendMessage(SenderID, response)
                             ReusableOptions(SenderID, KiswahiliOptions, 'Nipe Ujumbe', 'Mawaidha')
+                        if Kiswahili == True and 'mawaidha' in UserSays.lower():
+                            response = '''Nitakutumia alani ya kukukumbusha siku ya uchaguzi.
+                            Unataka alani ya siku gani?'''
 
                         '''if entity == 'names':
                             response = 'Hello' + str(value)
@@ -328,6 +333,111 @@ def Options(RecipientID, Text, OP1, OP2):
     if r.status_code != 200:
         print(r.text)
 
+def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, OP1, OP2, OP3, OP4, OP5, OP6):
+    print(('Sending  options to {0}').format(RecipientID))
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        'recipient':{
+        'id' : RecipientID
+        },
+        'message' : {
+            'attachment' : {
+            'type' : 'template',
+            'payload' : {
+            'template_type' : 'generic',
+            'elements' : [
+                {
+            'title' : TXT1,
+                'buttons' : [
+                    {
+                        'type' : 'postback',
+                        'payload' : 'voters',
+                        'title' : OP1
+                    },
+                    {
+                        'type' : 'postback',
+                        'payload' : 'voters',
+                        'title' : OP2
+                    }              
+                
+                ]}
+                ],
+           'elements' : [
+                {
+            'title' : TXT1,
+                'buttons' : [
+                    {
+                        'type' : 'postback',
+                        'payload' : 'voters',
+                        'title' : OP1
+                    },
+                    {
+                        'type' : 'postback',
+                        'payload' : 'voters',
+                        'title' : OP2
+                    }              
+                
+                ]}
+                ],
+        'elements' : [
+                {
+            'title' : TXT1,
+                'buttons' : [
+                    {
+                        'type' : 'postback',
+                        'payload' : 'voters',
+                        'title' : OP1
+                    },
+                    {
+                        'type' : 'postback',
+                        'payload' : 'voters',
+                        'title' : OP2
+                    }              
+                
+                ]}
+                ]
+        
+
+        }}}}
+    r = requests.post('https://graph.facebook.com/v2.9/me/messages?access_token=' + PAT, headers = headers, data = data)
+    if r.status_code != 200:
+        print(r.text)
+
+
+def TakeSurvey(RecipientID, Text, OP1, URL):
+    print(('Sending message to {0}').format(RecipientID))
+
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        'recipient' : {
+        'id' : RecipientID
+        },
+        'message': {
+            'attachment' : {
+                'type' : 'template',
+                'payload' : {
+                    'template_type' : 'button',
+                    'text': Text,
+                    'buttons': [
+                    {
+                        'type' : 'web_url',
+                        'url' : SurveyUrl,
+                        'title' : OP1
+                    }]
+                }
+            }
+        }
+        })
+    r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
+    if r.status_code != 200:
+        print(r.text)
+
+
+
 def FindingUser(ID):
     headers = {
     'Content-Type' : 'application/json'
@@ -350,7 +460,8 @@ def UsingWit(TEXT):
     return (entity, value)
 
 
-
+def Reminder(date):
+    
 
 
 if __name__ == '__main__':
