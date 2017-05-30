@@ -206,6 +206,8 @@ def StartMessaging():
                                 'Chagua cheo cha kura',
                                 'Review Survey',
                                 'Contact Them')
+                        if Kiswahili == True and UserSays == 'survey':
+                            TakeSurvey(SenderID, 'Tafadhali Jibu maswali haya ili - review them.', SurveyUrl, 'SurveyName')
 
 
                         if Kiswahili == True and UserSays == 'start':
@@ -372,7 +374,7 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, OP1, OP2, OP3, OP4, OP
                     },
                     {
                         'type' : 'postback',
-                        'payload' : 'voters',
+                        'payload' : 'reminder',
                         'title' : OP2
                     }              
                 
@@ -384,14 +386,9 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, OP1, OP2, OP3, OP4, OP
                 'buttons' : [
                     {
                         'type' : 'postback',
-                        'payload' : 'voters',
+                        'payload' : 'levels',
                         'title' : OP1
-                    },
-                    {
-                        'type' : 'postback',
-                        'payload' : 'voters',
-                        'title' : OP2
-                    }              
+                    }             
                 
                 ]}
                 ],
@@ -401,12 +398,12 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, OP1, OP2, OP3, OP4, OP
                 'buttons' : [
                     {
                         'type' : 'postback',
-                        'payload' : 'voters',
+                        'payload' : 'survey',
                         'title' : OP1
                     },
                     {
                         'type' : 'postback',
-                        'payload' : 'voters',
+                        'payload' : 'contact',
                         'title' : OP2
                     }              
                 
@@ -437,7 +434,7 @@ def TakeSurvey(RecipientID, Text, OP1, URL):
                     'buttons': [
                     {
                         'type' : 'web_url',
-                        'url' : SurveyUrl,
+                        'url' : URL,
                         'title' : OP1
                     }]
                 }
