@@ -201,7 +201,7 @@ def StartMessaging():
 
                         if Kiswahili == True and UserSays == 'explain':
                             GenericTemplateOptions(SenderID, 
-                                'Kupiga Kura', 'Wagombea', 'Serikali',
+                                'Kupiga Kura', 'Tunakupa mawaidha kuhusu kupiga kura', 'Wagombea', 'Jua nani anagombea cheo cha serikali', 'Serikali', 'Pata ujumbe kuhusu serikali ya kata yako.',
                                 'Mahitaji ya Kura', 'Weka Mawaidha',
                                 'Chagua cheo cha kura',
                                 'Review Survey',
@@ -354,7 +354,7 @@ def Options(RecipientID, Text, OP1, OP2):
     if r.status_code != 200:
         print(r.text)
 
-def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, OP1, OP2, OP3, OP4, OP5):
+def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6 OP1, OP2, OP3, OP4, OP5):
     print(('Sending  options to {0}').format(RecipientID))
     headers = {
     'Content-Type' : 'application/json'
@@ -371,6 +371,7 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, OP1, OP2, OP3, OP4, OP
             'elements' : [
                 {
             'title' : TXT1,
+            'subtitle': TXT2,
                 'buttons' : [
                     {
                         'type' : 'postback',
@@ -385,7 +386,8 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, OP1, OP2, OP3, OP4, OP
                 
                 ]},
                 {
-            'title' : TXT1,
+            'title' : TXT3,
+            'subtitle': TXT4,
                 'buttons' : [
                     {
                         'type' : 'postback',
@@ -395,7 +397,8 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, OP1, OP2, OP3, OP4, OP
                 
                 ]},
                 {
-            'title' : TXT1,
+            'title' : TXT5,
+            'subtitle': TXT6,
                 'buttons' : [
                     {
                         'type' : 'postback',
