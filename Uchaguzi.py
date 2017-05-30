@@ -183,6 +183,8 @@ def StartMessaging():
                         if Kiswahili == True and 'mawaidha' in UserSays.lower():
                             response = '''Nitakutumia alani ya kukukumbusha siku ya uchaguzi.
                             Unataka alani ya siku gani?'''
+                            ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
+
 
                         '''if entity == 'names':
                             response = 'Hello' + str(value)
@@ -211,6 +213,10 @@ def StartMessaging():
 
                         if Kiswahili == False and UserSays == 'survey':
                             TakeSurvey(SenderID, 'Please take the following survey to review your county administration', SurveyUrl, 'SurveyName')
+
+                        if Kiswahili == True and UserSays == 'reminder':
+                            ReusableOptions(SenderID, 'When would you like to get a reminder notification?', 'A Week Before', 'Two Days Before')
+
 
 
 
@@ -354,7 +360,7 @@ def Options(RecipientID, Text, OP1, OP2):
     if r.status_code != 200:
         print(r.text)
 
-def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6 OP1, OP2, OP3, OP4, OP5):
+def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1, OP2, OP3, OP4, OP5):
     print(('Sending  options to {0}').format(RecipientID))
     headers = {
     'Content-Type' : 'application/json'
@@ -448,6 +454,9 @@ def TakeSurvey(RecipientID, Text, OP1, URL):
     r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
     if r.status_code != 200:
         print(r.text)
+
+
+
 
 
 
