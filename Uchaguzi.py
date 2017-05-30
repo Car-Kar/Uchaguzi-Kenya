@@ -209,6 +209,11 @@ def StartMessaging():
                         if Kiswahili == True and UserSays == 'survey':
                             TakeSurvey(SenderID, 'Tafadhali Jibu maswali haya ili - review them.', SurveyUrl, 'SurveyName')
 
+                        if Kiswahili == False and UserSays == 'survey':
+                            TakeSurvey(SenderID, 'Please take the following survey to review your county administration', SurveyUrl, 'SurveyName')
+
+
+
 
                         if Kiswahili == True and UserSays == 'start':
                             UsingOptions(SenderID, KiswahiliOptions, oi, oii, oiii)
@@ -469,7 +474,7 @@ def UsingWit(TEXT):
     return (entity, value)
 
 
-def Reminder(date):
+#def Reminder(date):
     
 
 
