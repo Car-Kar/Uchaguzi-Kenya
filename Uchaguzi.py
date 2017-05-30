@@ -398,9 +398,7 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, OP1, OP2, OP3, OP4, OP
                 
                 ]}
                 ]
-        
-
-        }}}}
+        }}}})
     r = requests.post('https://graph.facebook.com/v2.9/me/messages?access_token=' + PAT, headers = headers, data = data)
     if r.status_code != 200:
         print(r.text)
