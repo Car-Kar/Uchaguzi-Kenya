@@ -191,8 +191,22 @@ def StartMessaging():
                        '''
 
                     elif msg.get('postback'):
+                        if Kiswahili == False and UserSays == 'explain':
+                            GenericTemplateOptions(SenderID, 
+                                'Get Voter information', 'Know your candidates', 'Goverment Review',
+                                'Voter Requirements', 'Set A Reminder',
+                                'Choose and Election Level',
+                                'Review Survey',
+                                'Contact them')
+
                         if Kiswahili == True and UserSays == 'explain':
-                            SendMessage(SenderID, 'I will explain later')
+                            GenericTemplateOptions(SenderID, 
+                                'Kupiga Kura', 'Wagombea', 'Serikali',
+                                'Mahitaji ya Kura', 'Weka Mawaidha',
+                                'Chagua cheo cha kura',
+                                'Review Survey',
+                                'Contact Them')
+
 
                         if Kiswahili == True and UserSays == 'start':
                             UsingOptions(SenderID, KiswahiliOptions, oi, oii, oiii)
