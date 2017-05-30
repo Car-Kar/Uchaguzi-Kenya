@@ -383,9 +383,7 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, OP1, OP2, OP3, OP4, OP
                         'title' : OP2
                     }              
                 
-                ]}
-                ],
-           'elements' : [
+                ]},
                 {
             'title' : TXT1,
                 'buttons' : [
@@ -395,9 +393,7 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, OP1, OP2, OP3, OP4, OP
                         'title' : OP3
                     }             
                 
-                ]}
-                ],
-        'elements' : [
+                ]},
                 {
             'title' : TXT1,
                 'buttons' : [
