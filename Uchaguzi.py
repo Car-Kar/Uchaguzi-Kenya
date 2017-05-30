@@ -354,7 +354,7 @@ def Options(RecipientID, Text, OP1, OP2):
     if r.status_code != 200:
         print(r.text)
 
-def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, OP1, OP2, OP3, OP4, OP5, OP6):
+def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, OP1, OP2, OP3, OP4, OP5):
     print(('Sending  options to {0}').format(RecipientID))
     headers = {
     'Content-Type' : 'application/json'
@@ -392,7 +392,7 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, OP1, OP2, OP3, OP4, OP
                     {
                         'type' : 'postback',
                         'payload' : 'levels',
-                        'title' : OP1
+                        'title' : OP3
                     }             
                 
                 ]}
@@ -404,12 +404,12 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, OP1, OP2, OP3, OP4, OP
                     {
                         'type' : 'postback',
                         'payload' : 'survey',
-                        'title' : OP1
+                        'title' : OP4
                     },
                     {
                         'type' : 'postback',
                         'payload' : 'contact',
-                        'title' : OP2
+                        'title' : OP5
                     }              
                 
                 ]}
