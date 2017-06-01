@@ -163,30 +163,7 @@ def StartMessaging():
                         if 'start' in UserSays.lower():
                             SendMessage(SenderID, Start)
                             ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
-
-
-                        
-    except Exception as e:
-        raise e
-
-    return 'OK', 200
-
-
-def ReturnType(msg):
-    print('Checking Type')
-    if msg.get('message'):
-        MessageText = msg['message']['text']
-        return MessageText
-    elif msg.get('postback'):
-        PostbackText = msg['postback']['payload']
-        return PostbackText
-    elif msg.get('web_url'):
-        URLText = msg['web_url']['title']
-        return URLText
-
-
-
-if Kiswahili == True and 'swahili' in UserSays.lower():
+                        if Kiswahili == True and 'swahili' in UserSays.lower():
                             SendMessage(SenderID, KiswahiliIntroduction)
                             SendMessage(SenderID, KiswahiliIntroduction2)
                             Options(SenderID, KiswahiliOptions, P2, P4)
@@ -230,6 +207,30 @@ if Kiswahili == True and 'swahili' in UserSays.lower():
 
                         if Kiswahili == True and UserSays == 'reminder':
                             ReusableOptions(SenderID, 'When would you like to get a reminder notification?', 'A Week Before', 'Two Days Before')
+
+
+
+                        
+    except Exception as e:
+        raise e
+
+    return 'OK', 200
+
+
+def ReturnType(msg):
+    print('Checking Type')
+    if msg.get('message'):
+        MessageText = msg['message']['text']
+        return MessageText
+    elif msg.get('postback'):
+        PostbackText = msg['postback']['payload']
+        return PostbackText
+    elif msg.get('web_url'):
+        URLText = msg['web_url']['title']
+        return URLText
+
+
+
 
 
 def ReusableOptions(RecipientID, Text, op1, op2):
