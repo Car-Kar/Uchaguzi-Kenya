@@ -172,16 +172,6 @@ def StartMessaging():
     return 'OK', 200
 
 
-'''def ReturnType(msg):
-    print('Checking Type')
-    if msg.get('message'):
-        MessageText = msg['message']['text']
-        return MessageText
-    elif msg.get('postback'):
-        PostbackText = msg['postback']['payload']
-        return PostbackText
-    elif msg.get('web_url'):
-        URLText = msg['web_url']['title']'''
 
 def SendMessage(RecipientID, Text):
     print(('Sending message to {0}').format(RecipientID))
