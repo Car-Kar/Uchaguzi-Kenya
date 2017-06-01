@@ -215,7 +215,8 @@ def StartMessaging():
 
                         elif Kiswahili == False and UserSays == 'survey':
                             TakeSurvey(SenderID, 'Please take the following survey to review your county administration', SurveyUrl, 'SurveyName')
-                        elif Kiswahili == False and UserSays == 'levels':
+
+                        if Kiswahili == False and UserSays == 'levels':
                             LevelTemplateOptions(SenderID,
                                 'Presidential Candidates.',
                                 'Know the vying presidential candidates and their running mates.',
