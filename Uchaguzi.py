@@ -189,16 +189,17 @@ def StartMessaging():
                             SendMessage(SenderID, response)
                             ReusableOptions(SenderID, KiswahiliOptions, 'Nipe Ujumbe', 'Mawaidha')
                         if Kiswahili == True and 'mawaidha' in UserSays.lower():
-                            response = '''Nitakutumia alani ya kukukumbusha siku ya uchaguzi.
-                            Unataka alani ya siku gani?'''
-                            ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
-'''
+                            #response = '''Nitakutumia alani ya kukukumbusha siku ya uchaguzi.
+                            #Unataka alani ya siku gani?'''
+                            '''ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
 
+                        '''
                         '''if entity == 'names':
                             response = 'Hello' + str(value)
                         
                        SendMessage(SenderID, response)
-                    '''   '''
+                    '''
+                       '''
 
                     elif msg.get('postback'):
                             
