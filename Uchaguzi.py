@@ -161,59 +161,6 @@ def StartMessaging():
                     if msg.get('message'):
                         if 'start' in UserSays.lower():
                             ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
-                        '''if Kiswahili == True and 'swahili' in UserSays.lower():
-                            SendMessage(SenderID, KiswahiliIntroduction)
-                            SendMessage(SenderID, KiswahiliIntroduction2)
-                            Options(SenderID, KiswahiliOptions, P2, P4)
-                        if Kiswahili == False and 'english' in UserSays.lower():
-                            SendMessage(SenderID, IntroductoryMessage)
-                            SendMessage(SenderID, IntroductoryMessage2)
-                            GenericTemplateOptions(SenderID, 
-                                'Get Voter information', 'Get to know your voter requirements or set a reminder', 'Know your candidates','Get information on who is vying.', 'Goverment Review',
-                                'Get information about your county administration, or take a survey about them', 'Voter Requirements', 'Set A Reminder',
-                                'Choose and Election Level',
-                                'Review Survey',
-                                'Contact them')
-                        if Kiswahili == True and 'swahili' in UserSays.lower():
-                            GenericTemplateOptions(SenderID, 
-                                'Kupiga Kura', 'Tunakupa mawaidha kuhusu kupiga kura', 'Wagombea', 'Jua nani anagombea cheo cha serikali', 'Serikali', 'Pata ujumbe kuhusu serikali ya kata yako.',
-                                'Mahitaji ya Kura', 'Weka Mawaidha',
-                                'Chagua cheo cha kura',
-                                'Review Survey',
-                                'Contact Them')
-
-                        if Kiswahili == True and 'nipe' in UserSays.lower():
-                            SendMessage(SenderID, VoterRequirements)
-                        if Kiswahili == True and UserSays == oi:
-                            response = 'Naweza kupa ujumbe kuhusu kupiga kura, au kuweka mawaidha ya kukukumbusha kupiga kura.'
-                            SendMessage(SenderID, response)
-                            ReusableOptions(SenderID, KiswahiliOptions, 'Nipe Ujumbe', 'Mawaidha')
-                        if Kiswahili == True and 'mawaidha' in UserSays.lower():
-                            #response = '''Nitakutumia alani ya kukukumbusha siku ya uchaguzi.
-                            #Unataka alani ya siku gani?'''
-                            '''ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
-
-                        '''
-                        '''if entity == 'names':
-                            response = 'Hello' + str(value)
-                        
-                       SendMessage(SenderID, response)
-                    '''
-                       '''
-
-                    elif msg.get('postback'):
-                            
-                        
-                        if Kiswahili == True and UserSays == 'survey':
-                            TakeSurvey(SenderID, 'Tafadhali Jibu maswali haya ili - review them.', SurveyUrl, 'SurveyName')
-
-                        if Kiswahili == False and UserSays == 'survey':
-                            TakeSurvey(SenderID, 'Please take the following survey to review your county administration', SurveyUrl, 'SurveyName')
-
-                        if Kiswahili == True and UserSays == 'reminder':
-                            ReusableOptions(SenderID, 'When would you like to get a reminder notification?', 'A Week Before', 'Two Days Before')'''
-
-                        
                         
 
                         
