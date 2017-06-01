@@ -161,7 +161,7 @@ def StartMessaging():
                     if msg.get('message'):
                         if 'start' in UserSays.lower():
                             ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
-                        
+
 
                         
     except Exception as e:
@@ -175,11 +175,11 @@ def ReturnType(msg):
     if msg.get('message'):
         MessageText = msg['message']['text']
         return MessageText
-    elif msg.get('postback'):
+    '''elif msg.get('postback'):
         PostbackText = msg['postback']['payload']
         return PostbackText
     elif msg.get('web_url'):
-        URLText = msg['web_url']['title']
+        URLText = msg['web_url']['title']'''
 
 def SendMessage(RecipientID, Text):
     print(('Sending message to {0}').format(RecipientID))
