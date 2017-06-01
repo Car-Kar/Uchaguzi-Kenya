@@ -316,7 +316,7 @@ def UsingOptions(RecipientID, Text, O1, O2, O3):
         print(r.text)
 
 
-def Options(RecipientID, Text, OP1, OP2):
+'''def Options(RecipientID, Text, OP1, OP2):
     print(('Sending  options to {0}').format(RecipientID))
     headers = {
     'Content-Type' : 'application/json'
@@ -349,7 +349,7 @@ def Options(RecipientID, Text, OP1, OP2):
     r = requests.post('https://graph.facebook.com/v2.9/me/messages?access_token=' + PAT, headers = headers, data = data)
     if r.status_code != 200:
         print(r.text)
-
+'''
 def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1, OP2, OP3, OP4, OP5):
     print(('Sending  options to {0}').format(RecipientID))
     headers = {
