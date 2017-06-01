@@ -170,6 +170,7 @@ def StartMessaging():
                     print(UserSays)
                     surveying = False
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
+                    print(Kiswahili)
                     if msg.get('message'):
                         if 'start' in UserSays.lower():
                             SendMessage(SenderID, Start)
