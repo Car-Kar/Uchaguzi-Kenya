@@ -215,7 +215,17 @@ def StartMessaging():
 
                         elif Kiswahili == False and UserSays == 'survey':
                             TakeSurvey(SenderID, 'Please take the following survey to review your county administration', SurveyUrl, 'SurveyName')
-                        #elif Kiswahili == False and UserSays == ''
+                        elif Kiswahili == False and UserSays == 'levels':
+                            LevelTemplateOptions(SenderID,
+                                'Presidential Candidates.',
+                                'Know the vying presidential candidates and their running mates.',
+                                'Governor Candidates.',
+                                'Know the vying gubernatorial candidates and their running mates.',
+                                'Senator Candidates.',
+                                'Know the vying senate candidates and their running mates.',
+                                'Women Representatives Candidates.',
+                                'Know the vying candidates and their policies.'
+                                )
 
                         elif Kiswahili == True and UserSays == 'reminder':
                             ReusableOptions(SenderID, 'When would you like to get a reminder notification?', 'A Week Before', 'Two Days Before')
@@ -366,7 +376,7 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
             'elements' : [
                 {
             'title' : TXT1,
-            'image_url' : 'https://farm5.staticflickr.com/4250/34872749292_f794d1ef38_q_d.jpg',
+            'image_url' : 'https://farm5.staticflickr.com/4250/34872749292_8a55ae49ad_k_d.jpg',
             'subtitle': TXT2,
                 'buttons' : [
                     {
