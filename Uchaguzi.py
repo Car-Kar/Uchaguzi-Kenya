@@ -241,6 +241,8 @@ def ReturnType(msg):
     elif msg.get('postback'):
         PostbackText = msg['postback']['payload']
         return PostbackText
+    elif msg.get('web_url'):
+        URLText = msg['web_url']['title']
 
 def SendMessage(RecipientID, Text):
     print(('Sending message to {0}').format(RecipientID))
