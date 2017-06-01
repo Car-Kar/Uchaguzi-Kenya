@@ -153,7 +153,7 @@ def StartMessaging():
                     print(msg)
                     SenderID = msg['sender']['id']
                     #entity, value = UsingWit(MessageText)
-                    FindingUser(SenderID)
+                    #FindingUser(SenderID)
                     response = None
                     #UserSays = ReturnType(msg)
                     surveying = False
