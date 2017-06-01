@@ -366,7 +366,7 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
             'elements' : [
                 {
             'title' : TXT1,
-            'image_url' : 'https://farm5.staticflickr.com/4221/34872757372_26a343544c_o_d.jpg',
+            'image_url' : 'https://farm5.staticflickr.com/4250/34872749292_f794d1ef38_q_d.jpg',
             'subtitle': TXT2,
                 'buttons' : [
                     {
