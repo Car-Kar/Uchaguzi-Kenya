@@ -156,10 +156,10 @@ def StartMessaging():
                     FindingUser(SenderID)
                     response = None
                     UserSays = ReturnType(msg)
+                    print(UserSays)
                     surveying = False
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
                     if msg.get('message'):
-                        MessageText = msg['message']['text']
                         if 'start' in UserSays.lower():
                             SendMessage(SenderID, Start)
                             #ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
