@@ -458,7 +458,7 @@ def LevelTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, TXT7, 
                 ]},
                 {
             'title' : TXT3,
-            'image_url' : 'https://farm5.staticflickr.com/4197/35036869425_4fd1bbe1fd_o_d.jpg',
+            'image_url' : 'https://farm5.staticflickr.com/4197/35036869425_46ea01be1d_m_d.jpg',
             'subtitle': TXT4,
                 'buttons' : [
                     {
