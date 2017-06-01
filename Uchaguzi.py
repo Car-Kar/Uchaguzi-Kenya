@@ -162,7 +162,7 @@ def StartMessaging():
                     if msg.get('message'):
                         if 'start' in UserSays.lower():
                             SendMessage(SenderID, Start)
-                            #ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
+                            ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
 
 
                         
@@ -185,6 +185,274 @@ def ReturnType(msg):
         return URLText
 
 
+
+if Kiswahili == True and 'swahili' in UserSays.lower():
+                            SendMessage(SenderID, KiswahiliIntroduction)
+                            SendMessage(SenderID, KiswahiliIntroduction2)
+                            Options(SenderID, KiswahiliOptions, P2, P4)
+                        if Kiswahili == False and 'english' in UserSays.lower():
+                            SendMessage(SenderID, IntroductoryMessage)
+                            SendMessage(SenderID, IntroductoryMessage2)
+                            GenericTemplateOptions(SenderID, 
+                                'Get Voter information', 'Get to know your voter requirements or set a reminder', 'Know your candidates','Get information on who is vying.', 'Goverment Review',
+                                'Get information about your county administration, or take a survey about them', 'Voter Requirements', 'Set A Reminder',
+                                'Choose and Election Level',
+                                'Review Survey',
+                                'Contact them')
+                        if Kiswahili == True and 'swahili' in UserSays.lower():
+                            GenericTemplateOptions(SenderID, 
+                                'Kupiga Kura', 'Tunakupa mawaidha kuhusu kupiga kura', 'Wagombea', 'Jua nani anagombea cheo cha serikali', 'Serikali', 'Pata ujumbe kuhusu serikali ya kata yako.',
+                                'Mahitaji ya Kura', 'Weka Mawaidha',
+                                'Chagua cheo cha kura',
+                                'Review Survey',
+                                'Contact Them')
+
+                        if Kiswahili == True and 'nipe' in UserSays.lower():
+                            SendMessage(SenderID, VoterRequirements)
+                        if Kiswahili == True and UserSays == oi:
+                            response = 'Naweza kupa ujumbe kuhusu kupiga kura, au kuweka mawaidha ya kukukumbusha kupiga kura.'
+                            SendMessage(SenderID, response)
+                            ReusableOptions(SenderID, KiswahiliOptions, 'Nipe Ujumbe', 'Mawaidha')
+                        if Kiswahili == True and 'mawaidha' in UserSays.lower():
+                            response = '''Nitakutumia alani ya kukukumbusha siku ya uchaguzi.
+                            Unataka alani ya siku gani?'''
+                            ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
+
+                        
+
+                    elif msg.get('postback'):    
+                        
+                        if Kiswahili == True and UserSays == 'survey':
+                            TakeSurvey(SenderID, 'Tafadhali Jibu maswali haya ili - review them.', SurveyUrl, 'SurveyName')
+
+                        if Kiswahili == False and UserSays == 'survey':
+                            TakeSurvey(SenderID, 'Please take the following survey to review your county administration', SurveyUrl, 'SurveyName')
+
+                        if Kiswahili == True and UserSays == 'reminder':
+                            ReusableOptions(SenderID, 'When would you like to get a reminder notification?', 'A Week Before', 'Two Days Before')
+
+
+def ReusableOptions(RecipientID, Text, op1, op2):
+    print(('Sending message to {0}').format(RecipientID))
+
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        'recipient': {
+        'id': RecipientID
+    },
+    'message' : {
+        'text': Text,
+        'quick_replies':[
+      {
+        'content_type': 'text',
+        'title' : op1,
+        'payload' : 'IsReusable'
+      },
+      {
+        'content_type' : 'text',
+        'title' : op2,
+        'payload': 'IsReusable'
+      }
+    ]
+    }
+    })
+    r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
+    if r.status_code != 200:
+        print(r.text)
+
+def UsingOptions(RecipientID, Text, O1, O2, O3):
+    print(('Sending message to {0}').format(RecipientID))
+
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        'recipient': {
+        'id': RecipientID
+    },
+    'message' : {
+        'text': Text,
+        'quick_replies':[
+      {
+        'content_type' : 'text',
+        'title' : O1,
+        'payload' : 'voters'
+      },
+      {
+        'content_type' : 'text',
+        'title' : O2,
+        'payload' : 'elections'
+      },
+      {
+        'content_type' : 'text',
+        'title' : O3,
+        'payload' : 'gov'
+      }
+    ]
+    }
+    })
+    r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
+    if r.status_code != 200:
+        print(r.text)
+
+
+def Options(RecipientID, Text, OP1, OP2):
+    print(('Sending  options to {0}').format(RecipientID))
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        'recipient' : {
+        'id' : RecipientID
+        },
+        'message': {
+            'attachment' : {
+                'type' : 'template',
+                'payload' : {
+                    'template_type' : 'button',
+                    'text': Text,
+                    'buttons': [
+                    {
+                        'type' : 'postback',
+                        'title' : OP1,
+                        'payload' : 'start'
+                    },
+                    {
+                        'type' : 'postback',
+                        'title' : OP2,
+                        'payload' : 'explain'
+                    }]
+                }
+            }
+        }
+        })
+    r = requests.post('https://graph.facebook.com/v2.9/me/messages?access_token=' + PAT, headers = headers, data = data)
+    if r.status_code != 200:
+        print(r.text)
+
+
+def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1, OP2, OP3, OP4, OP5):
+    print(('Sending  options to {0}').format(RecipientID))
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        'recipient':{
+        'id' : RecipientID
+        },
+        'message' : {
+            'attachment' : {
+            'type' : 'template',
+            'payload' : {
+            'template_type' : 'generic',
+            'elements' : [
+                {
+            'title' : TXT1,
+            'subtitle': TXT2,
+                'buttons' : [
+                    {
+                        'type' : 'postback',
+                        'payload' : 'voters',
+                        'title' : OP1
+                    },
+                    {
+                        'type' : 'postback',
+                        'payload' : 'reminder',
+                        'title' : OP2
+                    }              
+                
+                ]},
+                {
+            'title' : TXT3,
+            'subtitle': TXT4,
+                'buttons' : [
+                    {
+                        'type' : 'postback',
+                        'payload' : 'levels',
+                        'title' : OP3
+                    }             
+                
+                ]},
+                {
+            'title' : TXT5,
+            'subtitle': TXT6,
+                'buttons' : [
+                    {
+                        'type' : 'postback',
+                        'payload' : 'survey',
+                        'title' : OP4
+                    },
+                    {
+                        'type' : 'postback',
+                        'payload' : 'contact',
+                        'title' : OP5
+                    }              
+                
+                ]}
+                ]
+        }}}})
+    r = requests.post('https://graph.facebook.com/v2.9/me/messages?access_token=' + PAT, headers = headers, data = data)
+    if r.status_code != 200:
+        print(r.text)
+
+
+def TakeSurvey(RecipientID, Text, URL, OP1):
+    print(('Sending message to {0}').format(RecipientID))
+
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        'recipient' : {
+        'id' : RecipientID
+        },
+        'message': {
+            'attachment' : {
+                'type' : 'template',
+                'payload' : {
+                    'template_type' : 'button',
+                    'text': Text,
+                    'buttons': [
+                    {
+                        'type' : 'web_url',
+                        'url' : URL,
+                        'title' : OP1
+                    }]
+                }
+            }
+        }
+        })
+    r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
+    if r.status_code != 200:
+        print(r.text)
+
+
+
+
+
+
+def FindingUser(ID):
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    r = requests.post('https://graph.facebook.com/v2.9/' + ID + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + PAT, headers=headers)
+    print(r)
+    return r
+
+def UsingWit(TEXT):
+    wit_response = client.message(TEXT)
+    entity = None
+    value = None
+
+    try:
+        entity = list(response['entities'])[0]
+        value = response['entities'][entity][0]['value']
+    except:
+        pass
+
+    return (entity, value)
 
 
 
