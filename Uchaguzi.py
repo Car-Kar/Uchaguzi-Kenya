@@ -129,6 +129,7 @@ class UsingMongo:
                 return swahili
 
 MDB = UsingMongo()
+PresidentsVoting = {'Uhuru Kenyatta' : 0, 'Raila Odinga': 0, ''}
 
 
 @app.route('/', methods=['GET'])
@@ -351,7 +352,7 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
             'elements' : [
                 {
             'title' : TXT1,
-            'image_url' : 'C:/Python34/FacebookBot/bot/Introduction message/ELECTION.jpg',
+            'image_url' : 'https://farm5.staticflickr.com/4221/34872757372_26a343544c_o_d.jpg',
             'subtitle': TXT2,
                 'buttons' : [
                     {
@@ -368,6 +369,7 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
                 ]},
                 {
             'title' : TXT3,
+            'image_url' : 'https://farm5.staticflickr.com/4250/34872749292_ffd4cc9444_o_d.jpg',
             'subtitle': TXT4,
                 'buttons' : [
                     {
@@ -379,6 +381,7 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
                 ]},
                 {
             'title' : TXT5,
+            'image_url' : 'https://farm5.staticflickr.com/4221/34872757372_26a343544c_o_d.jpg',
             'subtitle': TXT6,
                 'buttons' : [
                     {
