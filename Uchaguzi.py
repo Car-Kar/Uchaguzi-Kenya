@@ -167,9 +167,9 @@ def StartMessaging():
                         if Kiswahili == False and 'english' in UserSays.lower():
                             SendMessage(SenderID, IntroductoryMessage)
                             SendMessage(SenderID, IntroductoryMessage2)
-                           GenericTemplateOptions(SenderID, 
-                                'Get Voter information', 'Know your candidates', 'Goverment Review',
-                                'Voter Requirements', 'Set A Reminder',
+                            GenericTemplateOptions(SenderID, 
+                                'Get Voter information', 'Get to know your voter requirements or set a reminder', 'Know your candidates','Get information on who is vying.', 'Goverment Review',
+                                'Get information about your county administration, or take a survey about them', 'Voter Requirements', 'Set A Reminder',
                                 'Choose and Election Level',
                                 'Review Survey',
                                 'Contact them')
