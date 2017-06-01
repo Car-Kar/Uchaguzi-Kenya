@@ -192,8 +192,8 @@ def StartMessaging():
                                 'Kupiga Kura', 'Tunakupa mawaidha kuhusu kupiga kura', 'Wagombea', 'Jua nani anagombea cheo cha serikali', 'Serikali', 'Pata ujumbe kuhusu serikali ya kata yako.',
                                 'Mahitaji ya Kura', 'Weka Mawaidha',
                                 'Chagua cheo cha kura',
-                                'Review Survey',
-                                'Contact Them')
+                                'Kagua Serikali',
+                                'Wasiliana na serikali ya kata yako')
 
                         if Kiswahili == True and 'nipe' in UserSays.lower():
                             SendMessage(SenderID, VoterRequirements)
@@ -215,7 +215,7 @@ def StartMessaging():
 
                         elif Kiswahili == False and UserSays == 'survey':
                             TakeSurvey(SenderID, 'Please take the following survey to review your county administration', SurveyUrl, 'SurveyName')
-                        elif Kiswahili == False and UserSays == ''
+                        #elif Kiswahili == False and UserSays == ''
 
                         elif Kiswahili == True and UserSays == 'reminder':
                             ReusableOptions(SenderID, 'When would you like to get a reminder notification?', 'A Week Before', 'Two Days Before')
