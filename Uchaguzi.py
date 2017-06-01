@@ -87,13 +87,6 @@ ResponseStack = []
 KiswahiliHello = 'Jambo! '
 Options = ['governor', 'senator', 'women representative', 'members of parliament']
 Kiswahili = False
-P1 = "Got it! Let's start!"
-P2 = 'Nimeelewa!'
-P3 = "What are my options?"
-P4 = "Nielezee zaidi."
-oi = 'Ujumbe'
-oii = 'Uchaguzi'
-oiii = 'Kukagua Serikali'
 uri = 'mongodb://MC:se*8DGs6t8F*39*k@ds149491.mlab.com:49491/uchaguzike'
 
 
@@ -162,6 +155,7 @@ def StartMessaging():
                     FindingUser(SenderID)
                     response = None
                     UserSays = ReturnType(msg)
+                    surveying = False
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
                     if msg.get('message'):
                         if 'start' in UserSays.lower():
@@ -173,7 +167,20 @@ def StartMessaging():
                         if Kiswahili == False and 'english' in UserSays.lower():
                             SendMessage(SenderID, IntroductoryMessage)
                             SendMessage(SenderID, IntroductoryMessage2)
-                            Options(SenderID, OptionsText, P1, P3 )
+                           GenericTemplateOptions(SenderID, 
+                                'Get Voter information', 'Know your candidates', 'Goverment Review',
+                                'Voter Requirements', 'Set A Reminder',
+                                'Choose and Election Level',
+                                'Review Survey',
+                                'Contact them')
+                        if Kiswahili == True and 'swahili' in UserSays.lower():
+                            GenericTemplateOptions(SenderID, 
+                                'Kupiga Kura', 'Tunakupa mawaidha kuhusu kupiga kura', 'Wagombea', 'Jua nani anagombea cheo cha serikali', 'Serikali', 'Pata ujumbe kuhusu serikali ya kata yako.',
+                                'Mahitaji ya Kura', 'Weka Mawaidha',
+                                'Chagua cheo cha kura',
+                                'Review Survey',
+                                'Contact Them')
+
                         if Kiswahili == True and 'nipe' in UserSays.lower():
                             SendMessage(SenderID, VoterRequirements)
                         if Kiswahili == True and UserSays == oi:
@@ -193,21 +200,8 @@ def StartMessaging():
                        '''
 
                     elif msg.get('postback'):
-                        if Kiswahili == False and UserSays == 'explain':
-                            GenericTemplateOptions(SenderID, 
-                                'Get Voter information', 'Know your candidates', 'Goverment Review',
-                                'Voter Requirements', 'Set A Reminder',
-                                'Choose and Election Level',
-                                'Review Survey',
-                                'Contact them')
-
-                        if Kiswahili == True and UserSays == 'explain':
-                            GenericTemplateOptions(SenderID, 
-                                'Kupiga Kura', 'Tunakupa mawaidha kuhusu kupiga kura', 'Wagombea', 'Jua nani anagombea cheo cha serikali', 'Serikali', 'Pata ujumbe kuhusu serikali ya kata yako.',
-                                'Mahitaji ya Kura', 'Weka Mawaidha',
-                                'Chagua cheo cha kura',
-                                'Review Survey',
-                                'Contact Them')
+                            
+                        
                         if Kiswahili == True and UserSays == 'survey':
                             TakeSurvey(SenderID, 'Tafadhali Jibu maswali haya ili - review them.', SurveyUrl, 'SurveyName')
 
@@ -217,13 +211,7 @@ def StartMessaging():
                         if Kiswahili == True and UserSays == 'reminder':
                             ReusableOptions(SenderID, 'When would you like to get a reminder notification?', 'A Week Before', 'Two Days Before')
 
-
-
-
-
-                        if Kiswahili == True and UserSays == 'start':
-                            UsingOptions(SenderID, KiswahiliOptions, oi, oii, oiii)
-
+                        
                         
 
                         
