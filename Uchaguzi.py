@@ -186,10 +186,10 @@ def StartMessaging():
 
                         if Kiswahili == True and 'nipe' in UserSays.lower():
                             SendMessage(SenderID, VoterRequirements)
-                        if Kiswahili == True and UserSays == oi:
+                        '''if Kiswahili == True and UserSays == oi:
                             response = 'Naweza kupa ujumbe kuhusu kupiga kura, au kuweka mawaidha ya kukukumbusha kupiga kura.'
                             SendMessage(SenderID, response)
-                            ReusableOptions(SenderID, KiswahiliOptions, 'Nipe Ujumbe', 'Mawaidha')
+                            ReusableOptions(SenderID, KiswahiliOptions, 'Nipe Ujumbe', 'Mawaidha')'''
                         if Kiswahili == True and 'mawaidha' in UserSays.lower():
                             response = '''Nitakutumia alani ya kukukumbusha siku ya uchaguzi.
                             Unataka alani ya siku gani?'''
