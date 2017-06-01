@@ -224,14 +224,18 @@ def StartMessaging():
                                 'Senator Candidates.',
                                 'Know the vying senate candidates and their running mates.',
                                 'Women Representatives Candidates.',
-                                'Know the vying candidates and their policies.'
+                                'Know the vying candidates and their policies.',
+                                'Presidential Candidates',
+                                'Governors Candidates',
+                                'Senator Candidates',
+                                'Women Representative Candidates'
+
                                 )
 
                         elif Kiswahili == True and UserSays == 'reminder':
                             ReusableOptions(SenderID, 'When would you like to get a reminder notification?', 'A Week Before', 'Two Days Before')
 
 
-                        #if Kiswahili == False and 
 
 
 
@@ -426,7 +430,7 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
     if r.status_code != 200:
         print(r.text)
 
-def LevelTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, TXT7, TXT8, OP1, OP2, OP3, OP4, OP5, OP6, OP7):
+def LevelTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, TXT7, TXT8, OP1, OP3, OP4, OP5):
     print(('Sending  options to {0}').format(RecipientID))
     headers = {
     'Content-Type' : 'application/json'
@@ -448,15 +452,9 @@ def LevelTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, TXT7, 
                 'buttons' : [
                     {
                         'type' : 'postback',
-                        'payload' : 'voters',
+                        'payload' : 'pres',
                         'title' : OP1
-                    },
-                    {
-                        'type' : 'postback',
-                        'payload' : 'reminder',
-                        'title' : OP2
-                    }              
-                
+                    }
                 ]},
                 {
             'title' : TXT3,
@@ -465,7 +463,7 @@ def LevelTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, TXT7, 
                 'buttons' : [
                     {
                         'type' : 'postback',
-                        'payload' : 'levels',
+                        'payload' : 'gov',
                         'title' : OP3
                     }             
                 
@@ -475,15 +473,11 @@ def LevelTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, TXT7, 
             'image_url' : 'https://farm5.staticflickr.com/4223/35036874755_edc636d99d_o_d.jpg',
             'subtitle': TXT6,
                 'buttons' : [
+                    
                     {
                         'type' : 'postback',
-                        'payload' : 'survey',
+                        'payload' : 'senate',
                         'title' : OP4
-                    },
-                    {
-                        'type' : 'postback',
-                        'payload' : 'contact',
-                        'title' : OP5
                     }              
                 
                 ]},
@@ -494,15 +488,9 @@ def LevelTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, TXT7, 
                 'buttons' : [
                     {
                         'type' : 'postback',
-                        'payload' : 'survey',
-                        'title' : OP6
-                    },
-                    {
-                        'type' : 'postback',
-                        'payload' : 'contact',
-                        'title' : OP7
-                    }              
-                
+                        'payload' : 'womrep',
+                        'title' : OP5
+                    }
                 ]}
                 ]
         }}}})
