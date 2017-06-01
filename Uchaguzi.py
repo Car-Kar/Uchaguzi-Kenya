@@ -157,11 +157,12 @@ def StartMessaging():
                     response = None
                     #UserSays = ReturnType(msg)
                     surveying = False
-                    Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
+                    #Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
                     if msg.get('message'):
                         MessageText = msg['message']['text']
                         if 'start' in MessageText.lower():
-                            ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
+                            SendMessage(SenderID, Start)
+                            #ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
 
 
                         
