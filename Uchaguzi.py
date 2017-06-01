@@ -129,7 +129,25 @@ class UsingMongo:
                 return swahili
 
 MDB = UsingMongo()
-PresidentsVoting = {'Uhuru Kenyatta' : 0, 'Raila Odinga': 0, ''}
+PresidentsVoting = {'UHURU KENYATTA - Jubilee Party' : 0,
+'RAILA AMOLLO ODINGA - ODM (NASA)' : 0,
+'MOHAMED ABDUBA DIDA - ALLIANCE FOR REAL CHANGE' : 0,
+'AUKOT EKURU - THIRDWAY ALLIANCE KENYA' : 0,
+'KHWA JIRONGO SHAKHALAGA - UNITED DEMOCRATIC PARTY' : 0,
+'MICHAEL WAINAINA WAWERU' : 0, 
+'JUSTUS ZACHAOS ONYANGO - JUSTICE AND FREEDOM PARTY' : 0,
+'AMRAM INYAMBUKU -MAENDELEO DEMOCRATIC PARTY': 0, 
+'PETER SOLOMON GICHIRA' : 0,
+'JOSEPH WILLIAM NTHIGA NYAGAH' : 0,
+'MICHAEL NYAGWACHI ORENGE' : 0,
+'STEPHEN OWOKO OGANGA': 0,
+ 'JAPHET KAVINGA KALUYU' : 0,
+ 'STEPHEN OWOKO OGANGA': 0,
+ 'PETER OSOTSI' : 0,
+ 'NAZLIN UMAR RAJPUT': 0,
+ 'DAVID MUNGA MWADENDA': 0,
+ 'RASTUS NYAMERA MASIRA': 0
+ }
 
 
 @app.route('/', methods=['GET'])
@@ -401,6 +419,91 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
     r = requests.post('https://graph.facebook.com/v2.9/me/messages?access_token=' + PAT, headers = headers, data = data)
     if r.status_code != 200:
         print(r.text)
+
+def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1, OP2, OP3, OP4, OP5):
+    print(('Sending  options to {0}').format(RecipientID))
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        'recipient':{
+        'id' : RecipientID
+        },
+        'message' : {
+            'attachment' : {
+            'type' : 'template',
+            'payload' : {
+            'template_type' : 'generic',
+            'elements' : [
+                {
+            'title' : TXT1,
+            'image_url' : 'https://farm5.staticflickr.com/4221/34872757372_26a343544c_o_d.jpg',
+            'subtitle': TXT2,
+                'buttons' : [
+                    {
+                        'type' : 'postback',
+                        'payload' : 'voters',
+                        'title' : OP1
+                    },
+                    {
+                        'type' : 'postback',
+                        'payload' : 'reminder',
+                        'title' : OP2
+                    }              
+                
+                ]},
+                {
+            'title' : TXT3,
+            'image_url' : 'https://farm5.staticflickr.com/4250/34872749292_ffd4cc9444_o_d.jpg',
+            'subtitle': TXT4,
+                'buttons' : [
+                    {
+                        'type' : 'postback',
+                        'payload' : 'levels',
+                        'title' : OP3
+                    }             
+                
+                ]},
+                {
+            'title' : TXT5,
+            'image_url' : 'https://farm5.staticflickr.com/4221/34872757372_26a343544c_o_d.jpg',
+            'subtitle': TXT6,
+                'buttons' : [
+                    {
+                        'type' : 'postback',
+                        'payload' : 'survey',
+                        'title' : OP4
+                    },
+                    {
+                        'type' : 'postback',
+                        'payload' : 'contact',
+                        'title' : OP5
+                    }              
+                
+                ]},
+                {
+                'title' : TXT5,
+            'image_url' : 'https://farm5.staticflickr.com/4221/34872757372_26a343544c_o_d.jpg',
+            'subtitle': TXT6,
+                'buttons' : [
+                    {
+                        'type' : 'postback',
+                        'payload' : 'survey',
+                        'title' : OP4
+                    },
+                    {
+                        'type' : 'postback',
+                        'payload' : 'contact',
+                        'title' : OP5
+                    }              
+                
+                ]}
+                ]
+        }}}})
+    r = requests.post('https://graph.facebook.com/v2.9/me/messages?access_token=' + PAT, headers = headers, data = data)
+    if r.status_code != 200:
+        print(r.text)
+
 
 
 def TakeSurvey(RecipientID, Text, URL, OP1):
