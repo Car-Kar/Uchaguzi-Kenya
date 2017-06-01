@@ -127,27 +127,19 @@ class UsingMongo:
             elif 'english' == data.lower():
                 swahili = False
                 return swahili
+    def PresidentialRace(self, pres, votes):
+        collection = self.DB['presidentialrace']
+        print('Connected to presidents collection!')
+        user =  collection.find_one({'name': pres})
+        if user is not None:
+            votes = user['votes']
+            collection.update_one({'name' : pres, {'$set': {'votes': votes + 1}}})
+            print(votes)
+
+
+
 
 MDB = UsingMongo()
-PresidentsVoting = {'UHURU KENYATTA - Jubilee Party' : 0,
-'RAILA AMOLLO ODINGA - ODM (NASA)' : 0,
-'MOHAMED ABDUBA DIDA - ALLIANCE FOR REAL CHANGE' : 0,
-'AUKOT EKURU - THIRDWAY ALLIANCE KENYA' : 0,
-'KHWA JIRONGO SHAKHALAGA - UNITED DEMOCRATIC PARTY' : 0,
-'MICHAEL WAINAINA WAWERU' : 0, 
-'JUSTUS ZACHAOS ONYANGO - JUSTICE AND FREEDOM PARTY' : 0,
-'AMRAM INYAMBUKU -MAENDELEO DEMOCRATIC PARTY': 0, 
-'PETER SOLOMON GICHIRA' : 0,
-'JOSEPH WILLIAM NTHIGA NYAGAH' : 0,
-'MICHAEL NYAGWACHI ORENGE' : 0,
-'STEPHEN OWOKO OGANGA': 0,
- 'JAPHET KAVINGA KALUYU' : 0,
- 'STEPHEN OWOKO OGANGA': 0,
- 'PETER OSOTSI' : 0,
- 'NAZLIN UMAR RAJPUT': 0,
- 'DAVID MUNGA MWADENDA': 0,
- 'RASTUS NYAMERA MASIRA': 0
- }
 
 
 @app.route('/', methods=['GET'])
@@ -221,11 +213,13 @@ def StartMessaging():
                         if Kiswahili == True and UserSays == 'survey':
                             TakeSurvey(SenderID, 'Tafadhali Jibu maswali haya ili - review them.', SurveyUrl, 'SurveyName')
 
-                        if Kiswahili == False and UserSays == 'survey':
+                        elif Kiswahili == False and UserSays == 'survey':
                             TakeSurvey(SenderID, 'Please take the following survey to review your county administration', SurveyUrl, 'SurveyName')
+                        elif Kiswahili == False and UserSays == ''
 
-                        if Kiswahili == True and UserSays == 'reminder':
+                        elif Kiswahili == True and UserSays == 'reminder':
                             ReusableOptions(SenderID, 'When would you like to get a reminder notification?', 'A Week Before', 'Two Days Before')
+
 
                         #if Kiswahili == False and 
 
@@ -508,7 +502,7 @@ def LevelTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, TXT7, 
 
 
 
-def PresidentialList(RecipientID, )
+#def PresidentialList(RecipientID, )
 
 
 def TakeSurvey(RecipientID, Text, URL, OP1):
