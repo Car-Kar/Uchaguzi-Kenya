@@ -141,6 +141,7 @@ class UsingMongo:
 
 MDB = UsingMongo()
 
+VotingInformation = {'gif' : '', 'gif' : '', 'gif' : '', 'image' : '', 'image' : ''}
 
 @app.route('/', methods=['GET'])
 def verification():
@@ -229,11 +230,13 @@ def StartMessaging():
                                 'Governors Candidates',
                                 'Senator Candidates',
                                 'Women Representative Candidates'
-
                                 )
+                        elif Kiswahili is not True and UserSays == 'voters':
+                            SendMessage(SenderID, VoterRequirements )
 
-                        elif Kiswahili == True and UserSays == 'reminder':
-                            ReusableOptions(SenderID, 'When would you like to get a reminder notification?', 'A Week Before', 'Two Days Before')
+
+                        elif Kiswahili is not True and UserSays == 'reminder':
+                            ReusableOptions(SenderID, 'When would you like to get a reminder notification for the elections?', 'A Week Before', 'Two Days Before')
 
 
 
@@ -380,7 +383,7 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
             'elements' : [
                 {
             'title' : TXT1,
-            'image_url' : 'https://farm5.staticflickr.com/4250/34872749292_8a55ae49ad_k_d.jpg',
+            'image_url' : 'https://c1.staticflickr.com/5/4219/34872765202_148d73b973_c.jpg',
             'subtitle': TXT2,
                 'buttons' : [
                     {
@@ -390,9 +393,15 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
                     },
                     {
                         'type' : 'postback',
-                        'payload' : 'reminder',
+                        'payload' : 'registration',
                         'title' : OP2
+                    },
+                     {
+                        'type' : 'postback',
+                        'payload' : 'reminder',
+                        'title' : OP3
                     }              
+                             
                 
                 ]},
                 {
@@ -403,7 +412,7 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
                     {
                         'type' : 'postback',
                         'payload' : 'levels',
-                        'title' : OP3
+                        'title' : OP4
                     }             
                 
                 ]},
@@ -415,12 +424,12 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
                     {
                         'type' : 'postback',
                         'payload' : 'survey',
-                        'title' : OP4
+                        'title' : OP5
                     },
                     {
                         'type' : 'postback',
                         'payload' : 'contact',
-                        'title' : OP5
+                        'title' : OP6
                     }              
                 
                 ]}
@@ -534,7 +543,28 @@ def TakeSurvey(RecipientID, Text, URL, OP1):
         print(r.text)
 
 
+def SendAttachment(RecipientID, Type, Link):
+    print(('Sending message to {0}').format(RecipientID))
 
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        'recipient' : {
+        'id' : RecipientID
+        },
+        'message': {
+            'attachment' : {
+                'type' : Type,
+                'payload' : {
+                    'url' : Link,
+                }
+            }
+        }
+        })
+    r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
+    if r.status_code != 200:
+        print(r.text)
 
 
 
