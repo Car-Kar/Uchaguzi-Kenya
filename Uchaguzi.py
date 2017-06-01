@@ -155,11 +155,12 @@ def StartMessaging():
                     #entity, value = UsingWit(MessageText)
                     FindingUser(SenderID)
                     response = None
-                    UserSays = ReturnType(msg)
+                    #UserSays = ReturnType(msg)
                     surveying = False
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
                     if msg.get('message'):
-                        if 'start' in UserSays.lower():
+                        MessageText = msg['message']['text']
+                        if 'start' in MessageText.lower():
                             ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
 
 
@@ -170,12 +171,12 @@ def StartMessaging():
     return 'OK', 200
 
 
-def ReturnType(msg):
+'''def ReturnType(msg):
     print('Checking Type')
     if msg.get('message'):
         MessageText = msg['message']['text']
         return MessageText
-    '''elif msg.get('postback'):
+    elif msg.get('postback'):
         PostbackText = msg['postback']['payload']
         return PostbackText
     elif msg.get('web_url'):
