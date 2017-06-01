@@ -150,6 +150,7 @@ def StartMessaging():
         if messages['object'] == 'page':
             for message in messages['entry']:
                 for msg in message['messaging']:
+                    print(msg)
                     SenderID = msg['sender']['id']
                     #entity, value = UsingWit(MessageText)
                     FindingUser(SenderID)
