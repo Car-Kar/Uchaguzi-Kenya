@@ -178,8 +178,13 @@ def StartMessaging():
                         if Kiswahili == True and 'swahili' in UserSays.lower():
                             SendMessage(SenderID, KiswahiliIntroduction)
                             SendMessage(SenderID, KiswahiliIntroduction2)
-                            Options(SenderID, KiswahiliOptions, P2, P4)
-                        if Kiswahili == False and 'english' in UserSays.lower():
+                            GenericTemplateOptions(SenderID, 
+                                'Kupiga Kura', 'Tunakupa mawaidha kuhusu kupiga kura', 'Wagombea', 'Jua nani anagombea cheo cha serikali', 'Serikali', 'Pata ujumbe kuhusu serikali ya kata yako.',
+                                'Mahitaji ya Kura', 'Weka Mawaidha',
+                                'Chagua cheo cha kura',
+                                'Kagua Serikali',
+                                'Wasiliana na serikali ya kata yako')
+                        if Kiswahili is not True and 'english' in UserSays.lower():
                             SendMessage(SenderID, IntroductoryMessage)
                             SendMessage(SenderID, IntroductoryMessage2)
                             GenericTemplateOptions(SenderID, 
@@ -189,12 +194,7 @@ def StartMessaging():
                                 'Review Survey',
                                 'Contact them')
                         if Kiswahili == True and 'swahili' in UserSays.lower():
-                            GenericTemplateOptions(SenderID, 
-                                'Kupiga Kura', 'Tunakupa mawaidha kuhusu kupiga kura', 'Wagombea', 'Jua nani anagombea cheo cha serikali', 'Serikali', 'Pata ujumbe kuhusu serikali ya kata yako.',
-                                'Mahitaji ya Kura', 'Weka Mawaidha',
-                                'Chagua cheo cha kura',
-                                'Kagua Serikali',
-                                'Wasiliana na serikali ya kata yako')
+                           
 
                         if Kiswahili == True and 'nipe' in UserSays.lower():
                             SendMessage(SenderID, VoterRequirements)
