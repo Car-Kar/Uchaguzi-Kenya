@@ -161,7 +161,7 @@ def StartMessaging():
                     if msg.get('message'):
                         if 'start' in UserSays.lower():
                             ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
-                        if Kiswahili == True and 'swahili' in UserSays.lower():
+                        '''if Kiswahili == True and 'swahili' in UserSays.lower():
                             SendMessage(SenderID, KiswahiliIntroduction)
                             SendMessage(SenderID, KiswahiliIntroduction2)
                             Options(SenderID, KiswahiliOptions, P2, P4)
@@ -192,13 +192,13 @@ def StartMessaging():
                             response = '''Nitakutumia alani ya kukukumbusha siku ya uchaguzi.
                             Unataka alani ya siku gani?'''
                             ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
-
+'''
 
                         '''if entity == 'names':
                             response = 'Hello' + str(value)
                         
                        SendMessage(SenderID, response)
-                       '''
+                    '''   '''
 
                     elif msg.get('postback'):
                             
@@ -210,7 +210,7 @@ def StartMessaging():
                             TakeSurvey(SenderID, 'Please take the following survey to review your county administration', SurveyUrl, 'SurveyName')
 
                         if Kiswahili == True and UserSays == 'reminder':
-                            ReusableOptions(SenderID, 'When would you like to get a reminder notification?', 'A Week Before', 'Two Days Before')
+                            ReusableOptions(SenderID, 'When would you like to get a reminder notification?', 'A Week Before', 'Two Days Before')'''
 
                         
                         
