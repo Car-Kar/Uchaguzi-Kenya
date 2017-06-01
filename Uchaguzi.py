@@ -133,7 +133,7 @@ class UsingMongo:
         user =  collection.find_one({'name': pres})
         if user is not None:
             votes = user['votes']
-            collection.update_one({'name' : pres, {'$set': {'votes': votes + 1}}})
+            collection.update_one({'name' : pres}, {'$set': {'votes': votes + 1}}})
             print(votes)
 
 
