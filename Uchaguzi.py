@@ -447,7 +447,7 @@ def LevelTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, TXT7, 
             'elements' : [
                 {
             'title' : TXT1,
-            'image_url' : 'https://farm5.staticflickr.com/4250/34872749292_f794d1ef38_q_d.jpg',
+            'image_url' : 'https://farm5.staticflickr.com/4197/34904964391_4266fb0521_b_d.jpg',
             'subtitle': TXT2,
                 'buttons' : [
                     {
@@ -470,7 +470,7 @@ def LevelTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, TXT7, 
                 ]},
                 {
             'title' : TXT5,
-            'image_url' : 'https://farm5.staticflickr.com/4223/35036874755_edc636d99d_o_d.jpg',
+            'image_url' : 'https://farm5.staticflickr.com/4223/35036874755_6e1a91296d_z_d.jpg',
             'subtitle': TXT6,
                 'buttons' : [
                     
@@ -483,7 +483,7 @@ def LevelTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, TXT7, 
                 ]},
                 {
                 'title' : TXT7,
-            'image_url' : 'https://farm5.staticflickr.com/4243/34904966591_3fd5f5f248_o_d.jpg',
+            'image_url' : 'https://farm5.staticflickr.com/4243/34904966591_db66e618ba_z_d.jpg',
             'subtitle': TXT8,
                 'buttons' : [
                     {
