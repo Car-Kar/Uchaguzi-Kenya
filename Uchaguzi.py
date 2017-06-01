@@ -427,7 +427,7 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
         print(r.text)
 
 
-def TakeSurvey(RecipientID, Text, OP1, URL):
+def TakeSurvey(RecipientID, Text, URL, OP1):
     print(('Sending message to {0}').format(RecipientID))
 
     headers = {
