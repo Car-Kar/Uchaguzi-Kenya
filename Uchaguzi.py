@@ -193,9 +193,7 @@ def StartMessaging():
                                 'Choose and Election Level',
                                 'Review Survey',
                                 'Contact them')
-                        if Kiswahili == True and 'swahili' in UserSays.lower():
-                           
-
+                            
                         if Kiswahili == True and 'nipe' in UserSays.lower():
                             SendMessage(SenderID, VoterRequirements)
                         '''if Kiswahili == True and UserSays == oi:
