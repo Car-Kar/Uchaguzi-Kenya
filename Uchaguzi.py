@@ -206,6 +206,13 @@ def SendMessage(RecipientID, Text):
     if r.status_code != 200:
         print(r.text)
 
+def FindingUser(ID):
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    r = requests.post('https://graph.facebook.com/v2.9/' + ID + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + PAT, headers=headers)
+    print(r)
+    return r
 
 
 
