@@ -227,6 +227,8 @@ def StartMessaging():
                         if Kiswahili == True and UserSays == 'reminder':
                             ReusableOptions(SenderID, 'When would you like to get a reminder notification?', 'A Week Before', 'Two Days Before')
 
+                        #if Kiswahili == False and 
+
 
 
                         
@@ -420,7 +422,7 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
     if r.status_code != 200:
         print(r.text)
 
-def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1, OP2, OP3, OP4, OP5):
+def LevelTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, TXT7, TXT8, OP1, OP2, OP3, OP4, OP5, OP6, OP7):
     print(('Sending  options to {0}').format(RecipientID))
     headers = {
     'Content-Type' : 'application/json'
@@ -437,7 +439,7 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
             'elements' : [
                 {
             'title' : TXT1,
-            'image_url' : 'https://farm5.staticflickr.com/4221/34872757372_26a343544c_o_d.jpg',
+            'image_url' : 'https://farm5.staticflickr.com/4197/34904964391_18b2bfe6cf_o_d.jpg',
             'subtitle': TXT2,
                 'buttons' : [
                     {
@@ -454,7 +456,7 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
                 ]},
                 {
             'title' : TXT3,
-            'image_url' : 'https://farm5.staticflickr.com/4250/34872749292_ffd4cc9444_o_d.jpg',
+            'image_url' : 'https://farm5.staticflickr.com/4197/35036869425_4fd1bbe1fd_o_d.jpg',
             'subtitle': TXT4,
                 'buttons' : [
                     {
@@ -466,7 +468,7 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
                 ]},
                 {
             'title' : TXT5,
-            'image_url' : 'https://farm5.staticflickr.com/4221/34872757372_26a343544c_o_d.jpg',
+            'image_url' : 'https://farm5.staticflickr.com/4223/35036874755_edc636d99d_o_d.jpg',
             'subtitle': TXT6,
                 'buttons' : [
                     {
@@ -482,19 +484,19 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
                 
                 ]},
                 {
-                'title' : TXT5,
-            'image_url' : 'https://farm5.staticflickr.com/4221/34872757372_26a343544c_o_d.jpg',
-            'subtitle': TXT6,
+                'title' : TXT7,
+            'image_url' : 'https://farm5.staticflickr.com/4243/34904966591_3fd5f5f248_o_d.jpg',
+            'subtitle': TXT8,
                 'buttons' : [
                     {
                         'type' : 'postback',
                         'payload' : 'survey',
-                        'title' : OP4
+                        'title' : OP6
                     },
                     {
                         'type' : 'postback',
                         'payload' : 'contact',
-                        'title' : OP5
+                        'title' : OP7
                     }              
                 
                 ]}
@@ -504,6 +506,9 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
     if r.status_code != 200:
         print(r.text)
 
+
+
+def PresidentialList(RecipientID, )
 
 
 def TakeSurvey(RecipientID, Text, URL, OP1):
