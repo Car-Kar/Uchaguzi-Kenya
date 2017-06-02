@@ -357,7 +357,7 @@ def StartMessaging():
                         elif Kiswahili is not True and UserSays == 'registration':
                             SendAttachment(SenderID, 'image', 'https://farm5.staticflickr.com/4243/34193089344_55a2249bd6_o_d.jpg')
                             SendMessage(SenderID, VoterRegistration)
-                            Home(SenderID, 'Go back to home?')
+                            Home(SenderID, 'Go back to home?', 'Home')
 
                         elif Kiswahili is not True and UserSays == 'gov':
                             SendMessage(SenderID, 'From what county?')
@@ -866,6 +866,11 @@ def OneWeek():
 
 def TwoDays():
     return True
+    
+def Candidates(Level):
+    candidate = '\n'.join([str(cand) for cand in Level])
+    return candidate
+
 
 
 
