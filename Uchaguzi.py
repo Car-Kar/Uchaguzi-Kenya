@@ -310,7 +310,7 @@ def StartMessaging():
                                 'Women Representatives Candidates.',
                                 'Know the vying candidates and their policies.',
                                 'Presidential Candidates',
-                                'Take the presidential poll'
+                                'Take the presidential poll',
                                 'Governors Candidates',
                                 'Senator Candidates',
                                 'Women Representative Candidates'
