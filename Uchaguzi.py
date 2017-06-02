@@ -330,7 +330,7 @@ def StartMessaging():
                         elif Kiswahili is not True and UserSays == 'survey':
                             ReusableOptions(SenderID, 'Vote for your preferred candidate', 'See the results.')
 
-                         elif Kiswahili is not True and UserSays == 'subscribe':
+                        elif Kiswahili is not True and UserSays == 'subscribe':
                             UsingOptions(SenderID, 'What level of governmentt do you want to subscribe to?', 'Presidential', 'Governor', 'Senate', 'Women Representative')
 
                         elif Kiswahili is not True and UserSays == 'registration':
