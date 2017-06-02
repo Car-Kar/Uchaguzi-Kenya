@@ -317,7 +317,8 @@ def StartMessaging():
 
     return 'OK', 200
 
- @app.route('/', methods=['POST'])
+
+@app.route('/', methods=['POST'])
  def Subscribed(SenderID, week, day):
     try:
         db = MDB.MongoConnection(uri)
