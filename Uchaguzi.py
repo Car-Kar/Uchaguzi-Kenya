@@ -6,7 +6,6 @@ from pymongo import MongoClient
 from wit import Wit
 import datetime
 from datetime import date
-from apscheduler.scheduler import Scheduler
 import os
 from datetime import date
 from apscheduler.schedulers.blocking import BlockingScheduler
@@ -19,7 +18,7 @@ import pymysql
 app = Flask(__name__)
 
 
-
+sched = Scheduler()
 
 
 PAT = 'EAAarLkMVMy4BAERvNFAqZBaIfdpnrILzYWnLXeUhst52bj6d6oiA3YewwP7UvhDDGHdWciSElZCtZAWNnN15IbCZB10kepGG0BbkwAErwzi3jWnPZA6tPSh985a2j38lcrhRTNFFNaWZAvy6qv2FejYK7ZCaqgSXZCKm5D9V0vsj0QZDZD'
