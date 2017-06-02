@@ -140,7 +140,6 @@ class UsingMongo:
                 swahili = False
                 return swahili
 
-    def 
 
     def Subscribers(self, FromUser,  data):
         collection = self.DB['subscribers']
