@@ -255,7 +255,7 @@ def StartMessaging():
                             GenericTemplateOptions(SenderID, 
                                 'Get Voter information', 'Get to know your voter requirements or set a reminder', 'Know your voting status', 'Know your candidates','Get information on who is vying.', 'Goverment Review',
                                 'Get information about your county administration, or take a survey about them', 'Voter Requirements', 'Set A Reminder', 'Subscribe to election news',
-                                'Choose and Election Level',
+                                'Choose an Election Level',
                                 'Review your county administration',
                                 'Contact your county administration')
 
@@ -324,6 +324,9 @@ def StartMessaging():
 
                         elif Kiswahili is not True and UserSays == 'survey':
                             ReusableOptions(SenderID, 'Vote for your preferred candidate', 'See the results.')
+
+                         elif Kiswahili is not True and UserSays == 'subscribe':
+                            UsingOptions(SenderID, 'What level of governmentt do you want to subscribe to?', 'Presidential', 'Governor', 'Senate', 'Women Representative')
 
                         elif Kiswahili is not True and UserSays == 'registration':
                             SendAttachment(SenderID, 'image', 'https://farm5.staticflickr.com/4243/34193089344_55a2249bd6_o_d.jpg')
@@ -546,12 +549,12 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
                 'buttons' : [
                     {
                         'type' : 'postback',
-                        'payload' : 'levels',
+                        'payload' : 'subscribe',
                         'title' : OP4
                     }
                     ,{
                         'type' : 'postback',
-                        'payload' : 'subscribe',
+                        'payload' : 'levels',
                         'title' : OP5
                     }  
                 
