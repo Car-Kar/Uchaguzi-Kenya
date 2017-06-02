@@ -310,14 +310,14 @@ def StartMessaging():
                             SendMessage(SenderID, 'Here are some helpful graphics to help you.')
                             for key, value in VotingInformation.items():
                                 SendAttachment(SenderID, key, value)
-                                SendMessage(SenderID, ContinueUsing)
+                            SendMessage(SenderID, ContinueUsing)
 
                         elif Kiswahili is not True and UserSays == 'survey':
                             ReusableOptions(SenderID, 'Vote for your preferred candidate', 'See the results.')
 
                         elif Kiswahili is not True and UserSays == 'registration':
                             SendAttachment(SenderID, 'image', 'https://farm5.staticflickr.com/4243/34193089344_55a2249bd6_o_d.jpg')
-                            SendMessage(SendMessage, VoterRegistration)
+                            SendMessage(SenderID, VoterRegistration)
                             
 
 
