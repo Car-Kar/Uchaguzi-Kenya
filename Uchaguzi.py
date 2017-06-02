@@ -276,6 +276,16 @@ def StartMessaging():
                         if Kiswahili is not True and 'see results' in UserSays.lower():
                             WebView(SenderID, 'https://uchaguzi.herokuapp.com/')
 
+                        if Kiswahili is not True and 'a week' in UserSays.lower():
+                            response = 'I will be messaging you a week before the elections as a reminder'
+                            SendMessage(SenderID, response)
+
+                        if Kiswahili is not True and 'two days' in UserSays.lower():
+                            response = 'I will be messaging you two days before the elections as a reminder'
+                            SendMessage(SenderID, response)
+
+
+
                     
                         
 
