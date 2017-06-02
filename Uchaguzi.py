@@ -355,6 +355,11 @@ def Subscribed(SenderID, week, day):
                             SendMessage(su, response)
 
 
+    except Exception as e:
+        raise e
+
+    return 'OK', 200
+
 
 def ReturnType(msg):
     print('Checking Type')
@@ -768,16 +773,10 @@ def FindingUser(ID):
     print(r)
     return r
 
-def Search(url):
+#def Search(url):
 
-
-
-
-
-
-
-week = sched.add_job(OneWeek, 'date', run_date = datetime(2017, 8, 01, 12, 00))
-day = sched.add_job(TwoDays, 'date', run_date = datetime(2017, 8, 06, 12, 00))
+week = sched.add_job(OneWeek, 'date', run_date = datetime(2017, 8, 1, 12, 00))
+day = sched.add_job(TwoDays, 'date', run_date = datetime(2017, 8, 6, 12, 00))
 
 
 def OneWeek():
