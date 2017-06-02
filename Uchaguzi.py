@@ -322,7 +322,7 @@ def StartMessaging():
 
 
 @app.route('/', methods=['POST'])
- def Subscribed(SenderID, week, day):
+def Subscribed(SenderID, week, day):
     try:
         db = MDB.MongoConnection(uri)
         messages = request.get_json()
