@@ -294,12 +294,12 @@ def StartMessaging():
                                 'Review your county administration',
                                 'Contact your county administration')
 
-                        elif 'evans' in MessageText.lower() or 'kidero' in MessageText.lower():
+                        elif 'evans' in UserSays.lower() or 'kidero' in UserSays.lower():
                             SendMessage(SenderID, g_evans_info)
                             SendMessage(SenderID, ContinueUsing)
                             Home(SenderID, 'Go back to home?')
                     
-                        elif 'mike' in MessageText.lower() or 'sonko' in MessageText.lower():
+                        elif 'mike' in UserSays.lower() or 'sonko' in UserSays.lower():
                             SendMessage(SenderID, g_mike_info)
                             SendMessage(SenderID, ContinueUsing)
                             Home(SenderID, 'Go back to home?')
