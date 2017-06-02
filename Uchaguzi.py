@@ -433,7 +433,7 @@ def Home(RecipientID, TXT):
         'id': RecipientID
     },
     'message' : {
-        'text': Text,
+        'text': TXT,
         'quick_replies':[
       {
         'content_type': 'text',
