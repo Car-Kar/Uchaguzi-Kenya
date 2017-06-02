@@ -313,10 +313,7 @@ def StartMessaging():
                         elif 'bye' in UserSays.lower():
                             SendMessage(SenderID, Goodbye)
 
-                        else:
-                            SendMessage(SenderID, ApologyMessage)
-                    
-
+                        
                     
                         
 
