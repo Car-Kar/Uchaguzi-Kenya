@@ -328,10 +328,7 @@ def StartMessaging():
                             SendMessage(SenderID, ContinueUsing)
 
                         elif Kiswahili is not True and UserSays == 'survey':
-                            ReusableOptions(SenderID, 'Vote for your preferred candidate', 'See the results.')
-
-                        elif Kiswahili is not True and UserSays == 'subscribe':
-                            UsingOptions(SenderID, 'What level of governmentt do you want to subscribe to?', 'Presidential', 'Governor', 'Senate', 'Women Representative')
+                            ReusableOptions(SenderID, OptionsText, 'Vote for your preferred candidate', 'See the results.')
 
                         elif Kiswahili is not True and UserSays == 'registration':
                             SendAttachment(SenderID, 'image', 'https://farm5.staticflickr.com/4243/34193089344_55a2249bd6_o_d.jpg')
