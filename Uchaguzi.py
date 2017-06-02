@@ -610,7 +610,7 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
                         'url' : URL,
                         'title' : OP4,
                         "webview_height_ratio": "tall",
-                        "messenger_extensions": True
+                        "messenger_extensions": False
                     }
                     ,{
                         'type' : 'postback',
