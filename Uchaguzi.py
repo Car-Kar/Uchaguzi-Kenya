@@ -769,7 +769,7 @@ def WebView(RecipientID, Text, URL, OP1):
                         'url' : URL,
                         'title' : OP1,
                         "webview_height_ratio": "tall",
-                        "messenger_extensions": true  
+                        "messenger_extensions": True  
                     }]
                 }
             }
@@ -866,7 +866,7 @@ def OneWeek():
 
 def TwoDays():
     return True
-    
+
 def Candidates(Level):
     candidate = '\n'.join([str(cand) for cand in Level])
     return candidate
