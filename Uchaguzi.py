@@ -198,6 +198,7 @@ class UsingMongo:
 
 MDB = UsingMongo()
 
+options = ['pres', 'gov', 'sen', 'wom']
 VotingInformation = {'gif' : 'https://media.giphy.com/media/3o6ZtkFObzcJiaMOFG/giphy.gif', 'gif' : 'https://media.giphy.com/media/26vUCOMzBiBZ0qW1a/giphy.gif', 
 'video' : 'https://www.youtube.com/watch?v=nQbztjkag1A&feature=youtu.be&t=1', 'image' : 'https://farm5.staticflickr.com/4248/34872766342_a66c0fa485_o_d.jpg', 'image' : 'https://farm5.staticflickr.com/4267/34872767952_f36c5a4dda_o_d.jpg'}
 
@@ -282,6 +283,10 @@ def StartMessaging():
 
                         if Kiswahili is not True and 'two days' in UserSays.lower():
                             response = 'I will be messaging you two days before the elections as a reminder'
+                            SendMessage(SenderID, response)
+
+                        if Kiswahili is not True and MessageText.lower() in options:
+                            response = 'You have successful subscribed! I will be messaging you weekly to give you up to date news!'
                             SendMessage(SenderID, response)
 
 
