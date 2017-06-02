@@ -293,7 +293,7 @@ def StartMessaging():
                                 'Choose an Election Level',
                                 'Review your county administration',
                                 'Contact your county administration',
-                                'http://www.nation.co.ke/page/search/DailyNation/election2017/3439870-3439870-view-asSearch-ccr8qt/index.html')
+                                'https://www.standardmedia.co.ke/elections2017/news')
             
 
                         elif 'evans' in UserSays.lower() or 'kidero' in UserSays.lower():
