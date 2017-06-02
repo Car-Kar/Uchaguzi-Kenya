@@ -199,7 +199,7 @@ class UsingMongo:
 MDB = UsingMongo()
 
 VotingInformation = {'gif' : 'https://media.giphy.com/media/3o6ZtkFObzcJiaMOFG/giphy.gif', 'gif' : 'https://media.giphy.com/media/26vUCOMzBiBZ0qW1a/giphy.gif', 
-'video' : 'https://www.youtube.com/watch?v=nQbztjkag1A&feature=youtu.be&t=1', 'image' : '', 'image' : ''}
+'video' : 'https://www.youtube.com/watch?v=nQbztjkag1A&feature=youtu.be&t=1', 'image' : 'https://farm5.staticflickr.com/4248/34872766342_a66c0fa485_o_d.jpg', 'image' : 'https://farm5.staticflickr.com/4267/34872767952_f36c5a4dda_o_d.jpg'}
 
 @app.route('/', methods=['GET'])
 def verification():
@@ -308,11 +308,17 @@ def StartMessaging():
                         elif Kiswahili is not True and UserSays == 'voters':
                             SendMessage(SenderID, VoterRequirements )
                             SendMessage(SenderID, 'Here are some helpful graphics to help you.')
-                            for key, value in VotingInformation:
+                            for key, value in VotingInformation.items():
                                 SendAttachment(SenderID, key, value)
+                                SendMessage(SenderID, ContinueUsing)
 
                         elif Kiswahili is not True and UserSays == 'survey':
                             ReusableOptions(SenderID, 'Vote for your preferred candidate', 'See the results.')
+
+                        elif Kiswahili is not True and UserSays == 'registration':
+                            SendAttachment(SenderID, 'image', 'https://farm5.staticflickr.com/4243/34193089344_55a2249bd6_o_d.jpg')
+                            SendMessage(SendMessage, VoterRegistration)
+                            
 
 
                         elif Kiswahili is not True and UserSays == 'reminder':
