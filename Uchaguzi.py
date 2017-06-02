@@ -184,7 +184,7 @@ class UsingMongo:
         collection = self.DB['presidentialrace']
         print('Connected to presidents collection!')
         regex = re.compile('.*(%s).*'%pres)
-        user =  collection.find_one({'name': {'$regex' : ^'regex'}})
+        user =  collection.find_one({'name': {'$regex' : '^regex'}})
         if user is not None:
             votes = user['votes']
             collection.update_one({'name' : pres}, {'$set': {'votes': votes + 1}})
@@ -269,7 +269,7 @@ def StartMessaging():
                             response = 'What presidential candidate would you vote for if the elections were tomorrow?'
                             SendMessage(SendMessage, response)
                         if Kiswahili is not True and 'see results' in UserSays.lower():
-                            WebView(SenderID, )
+                            WebView(SenderID, 'https://uchaguzi.herokuapp.com/')
 
                     
                         
@@ -760,6 +760,9 @@ def FindingUser(ID):
     r = requests.post('https://graph.facebook.com/v2.9/' + ID + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + PAT, headers=headers)
     print(r)
     return r
+
+def Search(url):
+
 
 
 
