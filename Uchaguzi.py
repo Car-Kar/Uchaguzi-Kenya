@@ -309,7 +309,7 @@ def StartMessaging():
                             response = 'What level of election do you want to get weekly news for?'
                             UsingOptions(SenderID, response, 'Presidential', 'Governor', 'Senate', 'Women Representative')
 '''
-                        elif Kiswahili == False and UserSays == 'survey':
+                        if Kiswahili == False and UserSays == 'survey':
                             TakeSurvey(SenderID, 'Please take the following survey to review your county administration', SurveyUrl, 'SurveyName')
 
                         if Kiswahili is not True and UserSays == 'levels':
@@ -328,7 +328,7 @@ def StartMessaging():
                                 'Senator Candidates',
                                 'Women Representative Candidates'
                                 )
-                        elif Kiswahili is not True and UserSays == 'voters':
+                        if Kiswahili is not True and UserSays == 'voters':
                             SendMessage(SenderID, VoterRequirements )
                             SendMessage(SenderID, 'Here are some helpful graphics to help you.')
                             for key, value in VotingInformation.items():
