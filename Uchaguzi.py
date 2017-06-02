@@ -335,17 +335,18 @@ def Subscribed(SenderID, week, day):
                         MessageText = msg['message']['text']
                         su = MDB.Subscribers(SenderID, MessageText)
                         if week == True:
-                                response = '''The national elections are coming up in week! 
+                            response = '''The national elections are coming up in week! 
                                     Please remember to show up and vote for your leaders!
                                 \U0001F44D'''
 
-                        SendMessage(su, response)
+                            SendMessage(su, response)
+
                         elif day == True:
                             response = '''The national elections are coming up in two days time! 
                             Please remember to show up and vote for your leaders!
                             \U0001F44D'''
 
-                        SendMessage(su, response)
+                            SendMessage(su, response)
 
 
 
