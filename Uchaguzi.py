@@ -142,7 +142,7 @@ class UsingMongo:
 
 
     def Subscribers(self, FromUser,  data):
-        collection = self.DB['subscribers']
+        collection = self.DB['reminders']
         user =  collection.find_one({'fromuser': FromUser})
         if user is not None: 
             time =  user['time']
@@ -182,7 +182,7 @@ class UsingMongo:
     def PresidentialRace(self, pres):
         collection = self.DB['presidentialrace']
         print('Connected to presidents collection!')
-        user =  collection.find_one({'name': pres})
+        user =  collection.find_one({'name': {'$regex' : ^pres}})
         if user is not None:
             votes = user['votes']
             collection.update_one({'name' : pres}, {'$set': {'votes': votes + 1}})
@@ -195,7 +195,7 @@ class UsingMongo:
 
 MDB = UsingMongo()
 
-VotingInformation = {'gif' : '', 'gif' : '', 'gif' : '', 'image' : '', 'image' : ''}
+VotingInformation = {'gif' : 'https://media.giphy.com/media/3o6ZtkF', 'gif' : '', 'gif' : '', 'image' : '', 'image' : ''}
 
 @app.route('/', methods=['GET'])
 def verification():
@@ -262,6 +262,12 @@ def StartMessaging():
                             Unataka alani ya siku gani?'''
                             ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
 
+                        if Kiswahili is not True and 'vote for' in UserSays.lower():
+                            response = 'What presidential candidate would you vote for if the elections were tomorrow?'
+                            SendMessage(SendMessage, response)
+                        if Kiswahili is not True and 'see results' in UserSays.lower():
+                            WebView(SenderID, )
+
                     
                         
 
@@ -292,6 +298,10 @@ def StartMessaging():
                                 )
                         elif Kiswahili is not True and UserSays == 'voters':
                             SendMessage(SenderID, VoterRequirements )
+                            SendMessage(SenderID, 'Here are some helpful graphics to help you.')
+
+                        elif Kiswahili is not True and UserSays == 'survey':
+                            ReusableOptions(SenderID, 'Vote for your preferred candidate', 'See the results.')
 
 
                         elif Kiswahili is not True and UserSays == 'reminder':
@@ -605,7 +615,6 @@ def LevelTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, TXT7, 
 
 
 
-#def PresidentialList(RecipientID, )
 
 
 def TakeSurvey(RecipientID, Text, URL, OP1):
@@ -628,7 +637,41 @@ def TakeSurvey(RecipientID, Text, URL, OP1):
                     {
                         'type' : 'web_url',
                         'url' : URL,
-                        'title' : OP1
+                        'title' : OP1,
+                        "webview_height_ratio": "tall",
+                        "messenger_extensions": true  
+                    }]
+                }
+            }
+        }
+        })
+    r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
+    if r.status_code != 200:
+        print(r.text)
+
+def WebView(RecipientID, Text, URL, OP1):
+    print(('Sending message to {0}').format(RecipientID))
+
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        'recipient' : {
+        'id' : RecipientID
+        },
+        'message': {
+            'attachment' : {
+                'type' : 'template',
+                'payload' : {
+                    'template_type' : 'button',
+                    'text': Text,
+                    'buttons': [
+                    {
+                        'type' : 'web_url',
+                        'url' : URL,
+                        'title' : OP1,
+                        "webview_height_ratio": "tall",
+                        "messenger_extensions": true  
                     }]
                 }
             }
