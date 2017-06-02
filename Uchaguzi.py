@@ -241,7 +241,6 @@ def StartMessaging():
                     race = MDB.PresidentialRace(UserSays)
                     if msg.get('message'):
                         if 'start' in UserSays.lower():
-                            SendMessage(SenderID, Start)
                             ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
                         if Kiswahili == True and 'swahili' in UserSays.lower():
                             SendMessage(SenderID, KiswahiliIntroduction)
@@ -286,12 +285,12 @@ def StartMessaging():
                         if Kiswahili is not True and 'two days' in UserSays.lower():
                             response = 'I will be messaging you two days before the elections as a reminder'
                             SendMessage(SenderID, response)
-                            Home(SenderID, 'Go back to home?', 'Home')
+                            Home(SenderID, 'Go back to home?')
 
                         if Kiswahili is not True and UserSays.lower() in options:
                             response = 'You have successful subscribed! I will be messaging you weekly to give you up to date news!'
                             SendMessage(SenderID, response)
-                            Home(SenderID, 'Go back to home?', 'Home')
+                            Home(SenderID, 'Go back to home?')
 
                         if Kiswahili is not True and 'home' in UserSays.lower():
                             GenericTemplateOptions(SenderID, 
@@ -307,11 +306,11 @@ def StartMessaging():
                     elif msg.get('postback'):  
                         if Kiswahili == True and UserSays == 'survey':
                             TakeSurvey(SenderID, 'Tafadhali Jibu maswali haya ili - review them.', SurveyUrl, 'SurveyName')
-                        elif Kiswahili is not True and UserSays == 'subscribe':
+                        ''''elif Kiswahili is not True and UserSays == 'subscribe':
                             response = 'What level of election do you want to get weekly news for?'
                             UsingOptions(SenderID, response, 'Presidential', 'Governor', 'Senate', 'Women Representative')
-
-                        elif Kiswahili == False and UserSays == 'survey':
+'''
+                        if Kiswahili == False and UserSays == 'survey':
                             TakeSurvey(SenderID, 'Please take the following survey to review your county administration', SurveyUrl, 'SurveyName')
 
                         if Kiswahili is not True and UserSays == 'levels':
@@ -330,13 +329,13 @@ def StartMessaging():
                                 'Senator Candidates',
                                 'Women Representative Candidates'
                                 )
-                        elif Kiswahili is not True and UserSays == 'voters':
+                        if Kiswahili is not True and UserSays == 'voters':
                             SendMessage(SenderID, VoterRequirements )
                             SendMessage(SenderID, 'Here are some helpful graphics to help you.')
                             for key, value in VotingInformation.items():
                                 SendAttachment(SenderID, key, value)
                             SendMessage(SenderID, ContinueUsing)
-                            Home(SenderID, 'Go back to home?', 'Home')
+                            Home(SenderID, 'Go back to home?')
 
                         elif Kiswahili is not True and UserSays == 'poll':
                             ReusableOptions(SenderID, OptionsText, 'Vote for your preferred candidate', 'See the results.')
@@ -344,10 +343,10 @@ def StartMessaging():
                         elif Kiswahili is not True and UserSays == 'registration':
                             SendAttachment(SenderID, 'image', 'https://farm5.staticflickr.com/4243/34193089344_55a2249bd6_o_d.jpg')
                             SendMessage(SenderID, VoterRegistration)
-                            Home(SenderID, 'Go back to home?', 'Home')
+                            Home(SenderID, 'Go back to home?')
 
                         elif Kiswahili is not True and 'subscribe' in UserSays:
-                            WebView(SenderID, 'News', 'http://www.nation.co.ke/page/search/DailyNation/election2017/3439870-3439870-view-asSearch-ccr8qt/index.html')
+                            WebView(SenderID, 'News', 'http://www.nation.co.ke/page/search/DailyNation/election2017/3439870-3439870-view-asSearch-ccr8qt/index.html', 'The Top Election News Today')
                             
 
 
@@ -411,7 +410,7 @@ def ReturnType(msg):
         URLText = msg['web_url']['title']
         return URLText
 
-def Home(SenderID, TXT):
+def Home(RecipientID, TXT):
     headers = {
     'Content-Type' : 'application/json'
     }
