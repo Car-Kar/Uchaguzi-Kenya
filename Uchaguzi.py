@@ -215,9 +215,11 @@ def verification():
 @app.route('/', methods=['POST'])
 def StartMessaging():
     try:
-        ''''conn=pymysql.connect(user='root',passwd='',host = '127.0.0.1',database='newday')
+        conn=pymysql.connect(user='b5ad6687738858',passwd='23bfecef',host = 'us-cdbr-iron-east-03.cleardb.net',database='heroku_611862edb2b2330	')
         curs=conn.cursor()
-        print(curs)'''
+        curs.execute("""SELECT * FROM presidential_candidates u_id = 1""")
+	    result = curs.fetchone()
+        print(result)
 
         db = MDB.MongoConnection(uri)
         messages = request.get_json()
