@@ -309,6 +309,12 @@ def StartMessaging():
                             TEXT = 'The governor candidates are: \n' + str(names[0:])
                             SendMessage(SenderID, TEXT)
                             SendMessage(SenderID, CandidateMoreInfo)
+
+                        elif 'bye' in UserSays.lower():
+                            SendMessage(SenderID, Goodbye)
+
+                        else:
+                            SendMessage(SenderID, ApologyMessage)
                     
 
                     
