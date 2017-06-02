@@ -283,8 +283,8 @@ def StartMessaging():
                         if Kiswahili == True and UserSays == 'survey':
                             TakeSurvey(SenderID, 'Tafadhali Jibu maswali haya ili - review them.', SurveyUrl, 'SurveyName')
                         elif Kiswahili is not True and UserSays == 'subscribe':
-                            SendMessage(SenderID, 'What level of election do you want to get weekly news for?')
-                            UsingOptions(SenderID, 'Presidential', 'Governor', 'Senate', 'Women Representative')
+                            response = 'What level of election do you want to get weekly news for?'
+                            UsingOptions(SenderID, response, 'Presidential', 'Governor', 'Senate', 'Women Representative')
 
                         elif Kiswahili == False and UserSays == 'survey':
                             TakeSurvey(SenderID, 'Please take the following survey to review your county administration', SurveyUrl, 'SurveyName')
