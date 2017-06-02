@@ -349,7 +349,7 @@ def StartMessaging():
                             
                             SendAttachment(SenderID,'image', 'https://farm5.staticflickr.com/4248/34872766342_a66c0fa485_o_d.jpg')
                             SendMessage(SenderID, ContinueUsing)
-                            Home(SenderID, 'Go back to home?')
+                            Home(SenderID, 'Go back to home?', 'Home')
 
                         elif Kiswahili is not True and UserSays == 'poll':
                             ReusableOptions(SenderID, OptionsText, 'Vote for your preferred candidate', 'See the results.')
