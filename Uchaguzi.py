@@ -307,6 +307,12 @@ def StartMessaging():
                             SendMessage(SenderID, g_mike_info)
                             SendMessage(SenderID, ContinueUsing)
                             Home(SenderID, 'Go back to home?')
+
+                        elif 'nairobi' in UserSays.lower():
+                            names = Candidates(g_nairobi)
+                            TEXT = 'The governor candidates are: \n' + str(names[0:])
+                            SendMessage(SenderID, TEXT)
+                            SendMessage(SenderID, CandidateMoreInfo)
                     
 
                     
@@ -353,6 +359,9 @@ def StartMessaging():
                             SendAttachment(SenderID, 'image', 'https://farm5.staticflickr.com/4243/34193089344_55a2249bd6_o_d.jpg')
                             SendMessage(SenderID, VoterRegistration)
                             Home(SenderID, 'Go back to home?')
+
+                        elif Kiswahili is not True and UserSays == 'gov':
+                            SendMessage(SenderID, 'From what county?')
 
                         elif Kiswahili is not True and 'subscribe' in UserSays:
                             WebView(SenderID, 'News', 'http://www.nation.co.ke/page/search/DailyNation/election2017/3439870-3439870-view-asSearch-ccr8qt/index.html', 'The Top Election News Today')
