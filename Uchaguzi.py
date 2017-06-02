@@ -156,26 +156,26 @@ class UsingMongo:
                 return time
 
         def NewsSubscribers(self, FromUser,  data):
-        collection = self.DB['newssubscribers']
-        user =  collection.find_one({'fromuser': FromUser})
-        if user is not None: 
-            news =  user['news']
-            return news
-        else:
-            if 'pres' in data.lower():
-                news = collection.insert_one({'fromuser' : FromUser}, {'news': 'presidential'})
-                return news
-            elif 'gov' in data.lower():
-                news = collection.insert_one({'fromuser' : FromUser}, {'news': 'governor'})
-                return news
+        	collection = self.DB['newssubscribers']
+        	user =  collection.find_one({'fromuser': FromUser})
+        	if user is not None: 
+            	news =  user['news']
+            	return news
+        	else:
+            	if 'pres' in data.lower():
+                	news = collection.insert_one({'fromuser' : FromUser}, {'news': 'presidential'})
+                	return news
+            	elif 'gov' in data.lower():
+                	news = collection.insert_one({'fromuser' : FromUser}, {'news': 'governor'})
+                	return news
 
-            elif 'sen' in data.lower():
-                news = collection.insert_one({'fromuser' : FromUser}, {'news': 'senate'})
-                return news
+            	elif 'sen' in data.lower():
+                	news = collection.insert_one({'fromuser' : FromUser}, {'news': 'senate'})
+                	return news
 
-            elif ''wom in data.lower():
-                news = collection.insert_one({'fromuser' : FromUser}, {'news': 'women representative'})
-                return news
+            	elif ''wom in data.lower():
+                	news = collection.insert_one({'fromuser' : FromUser}, {'news': 'women representative'})
+                	return news
 
 
 
@@ -245,8 +245,8 @@ def StartMessaging():
                                 'Get Voter information', 'Get to know your voter requirements or set a reminder', 'Know your candidates','Get information on who is vying.', 'Goverment Review',
                                 'Get information about your county administration, or take a survey about them', 'Voter Requirements', 'Set A Reminder', 'Subscribe to election news',
                                 'Choose and Election Level',
-                                'Review Survey',
-                                'Contact them')
+                                'Review your county administration',
+                                'Contact your county administration')
 
                         if Kiswahili == True and 'nipe' in UserSays.lower():
                             SendMessage(SenderID, VoterRequirements)
@@ -262,8 +262,7 @@ def StartMessaging():
                     
                         
 
-                    elif msg.get('postback'):    
-                        
+                    elif msg.get('postback'):  
                         if Kiswahili == True and UserSays == 'survey':
                             TakeSurvey(SenderID, 'Tafadhali Jibu maswali haya ili - review them.', SurveyUrl, 'SurveyName')
                         elif Kiswahili is not True and UserSays == 'subscribe':
