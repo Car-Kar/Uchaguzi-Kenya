@@ -287,13 +287,7 @@ def StartMessaging():
                             Home(SenderID, 'Go back to home?', 'Home')
 
                         if Kiswahili is not True and 'home' in UserSays.lower():
-                            GenericTemplateOptions(SenderID, 
-                                'Get Voter information', 'Get to know your voter requirements or set a reminder', 'Know your voting status', 'Know your candidates','Get information on who is vying.', 'Goverment Review',
-                                'Get information about your county administration, or take a survey about them', 'Voter Requirements', 'Set A Reminder', 'Subscribe to election news',
-                                'Choose an Election Level',
-                                'Review your county administration',
-                                'Contact your county administration',
-                                'https://www.standardmedia.co.ke/elections2017/news')
+                            GenericTemplateOptions(SenderID)
             
 
                         elif 'evans' in UserSays.lower() or 'kidero' in UserSays.lower():
@@ -565,11 +559,12 @@ def Options(RecipientID, Text, OP1, OP2):
         print(r.text)
 
 
-def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1, OP2, OP3, OP4, OP5, OP6, OP7, URL):
+def GenericTemplateOptions(RecipientID):
     print(('Sending  options to {0}').format(RecipientID))
     headers = {
     'Content-Type' : 'application/json'
     }
+                                
     data = json.dumps({
         'recipient':{
         'id' : RecipientID
@@ -581,60 +576,60 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
             'template_type' : 'generic',
             'elements' : [
                 {
-            'title' : TXT1,
+            'title' : 'Get Voter information',
             'image_url' : 'https://c1.staticflickr.com/5/4219/34872765202_148d73b973_c.jpg',
-            'subtitle': TXT2,
+            'subtitle': 'Get to know your voter requirements or set a reminder',
                 'buttons' : [
                     {
                         'type' : 'postback',
                         'payload' : 'voters',
-                        'title' : OP1
+                        'title' : 'Voter Requirements'
                     },
                     {
                         'type' : 'postback',
                         'payload' : 'registration',
-                        'title' : OP2
+                        'title' : 'Know your voting status.'
                     },
                      {
                         'type' : 'postback',
                         'payload' : 'reminder',
-                        'title' : OP3
+                        'title' : 'Set A Reminder'
                     }              
                              
                 
                 ]},
                 {
-            'title' : TXT3,
+            'title' : 'Know your candidates',
             'image_url' : 'https://farm5.staticflickr.com/4250/34872749292_ffd4cc9444_o_d.jpg',
-            'subtitle': TXT4,
+            'subtitle': 'Get information on who is vying.',
                 'buttons' : [
                     {
                         'type' : 'web_url',
-                        'url' : URL,
-                        'title' : OP4,
+                        'url' : 'https://www.standardmedia.co.ke/elections2017/news',
+                        'title' : 'Get election News',
                         "webview_height_ratio": "tall"
                     }
                     ,{
                         'type' : 'postback',
                         'payload' : 'levels',
-                        'title' : OP5
-                    }  
+                        'title' : 'Choose an Election Level'
+                    },
                 
                 ]},
                 {
-            'title' : TXT5,
+            'title' : 'Goverment Review',
             'image_url' : 'https://farm5.staticflickr.com/4221/34872757372_26a343544c_o_d.jpg',
-            'subtitle': TXT6,
+            'subtitle': 'Get information about your county administration, or take a survey about them',
                 'buttons' : [
                     {
                         'type' : 'postback',
                         'payload' : 'survey',
-                        'title' : OP6
+                        'title' : 'Review your county administration'
                     },
                     {
                         'type' : 'postback',
                         'payload' : 'contact',
-                        'title' : OP7
+                        'title' : 'Contact your county administration'
                     }              
                 
                 ]}
