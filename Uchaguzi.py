@@ -291,7 +291,7 @@ def StartMessaging():
                             SendMessage(SenderID, response)
                             Home(SenderID, 'Go back to home?', 'Home')
 
-                        if Kiswahili is not True and 'home' UserSays.lower():
+                        if Kiswahili is not True and 'home' in UserSays.lower():
                             GenericTemplateOptions(SenderID, 
                                 'Get Voter information', 'Get to know your voter requirements or set a reminder', 'Know your voting status', 'Know your candidates','Get information on who is vying.', 'Goverment Review',
                                 'Get information about your county administration, or take a survey about them', 'Voter Requirements', 'Set A Reminder', 'Subscribe to election news',
@@ -343,6 +343,9 @@ def StartMessaging():
                             SendAttachment(SenderID, 'image', 'https://farm5.staticflickr.com/4243/34193089344_55a2249bd6_o_d.jpg')
                             SendMessage(SenderID, VoterRegistration)
                             Home(SenderID, 'Go back to home?', 'Home')
+
+                        elif Kiswahili is not True and 'subscribe' in UserSays:
+                            WebView(SenderID, 'News', 'http://www.nation.co.ke/page/search/DailyNation/election2017/3439870-3439870-view-asSearch-ccr8qt/index.html')
                             
 
 
