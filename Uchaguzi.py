@@ -4,9 +4,33 @@ import requests
 import pymongo
 from pymongo import MongoClient
 from wit import Wit
+import datetime
+from datetime import date
+from apscheduler.scheduler import Scheduler
+import psycopg2
+import urllib.parse as urlparse
+import os
+
 
 
 app = Flask(__name__)
+
+
+
+url = urlparse.urlparse(os.environ['postgres://qhtbkezzkjvzhk:1ef0bdfa3b788be8bfc82370ef58bb559956794aa45667d25abe8f28f35c93b8@ec2-50-19-219-69.compute-1.amazonaws.com:5432/d3cndvhbosano5'])
+dbname = url.path[1:]
+user = url.username
+password = url.password
+host = url.hostname
+port = url.port
+
+con = psycopg2.connect(
+            dbname=dbname,
+            user=user,
+            password=password,
+            host=host,
+            port=port
+            )
 
 
 PAT = 'EAAarLkMVMy4BAERvNFAqZBaIfdpnrILzYWnLXeUhst52bj6d6oiA3YewwP7UvhDDGHdWciSElZCtZAWNnN15IbCZB10kepGG0BbkwAErwzi3jWnPZA6tPSh985a2j38lcrhRTNFFNaWZAvy6qv2FejYK7ZCaqgSXZCKm5D9V0vsj0QZDZD'
@@ -88,6 +112,8 @@ KiswahiliHello = 'Jambo! '
 Options = ['governor', 'senator', 'women representative', 'members of parliament']
 Kiswahili = False
 uri = 'mongodb://MC:se*8DGs6t8F*39*k@ds149491.mlab.com:49491/uchaguzike'
+rw = False
+rd = False
 
 
 class UsingMongo:
@@ -127,6 +153,32 @@ class UsingMongo:
             elif 'english' == data.lower():
                 swahili = False
                 return swahili
+
+    def 
+
+    def Subscribers(self, FromUser,  data):
+        collection = self.DB['subscribers']
+        if user is not None:
+            user =  collection.find_one({'fromuser': FromUser})
+            if datetime.datetime.now() == t1:
+                rw = True
+                user =  collection.find_one({'time': 'week' })
+                ID = user['fromuser']
+                return ID
+            elif datetime.datetime.now() == t2:
+                rd = True
+                user =  collection.find_one({'time': 'day' })
+                ID = user['fromuser']
+                return ID
+
+        else:
+            if 'week' in data.lower():
+                time = collection.insert_one({'fromuser' : FromUser}, {'time': 'week'})
+            elif 'day' in data.lower():
+                time = collection.insert_one({'fromuser' : FromUser}, {'time': 'day'})
+
+
+
     def PresidentialRace(self, pres, votes):
         collection = self.DB['presidentialrace']
         print('Connected to presidents collection!')
@@ -171,6 +223,7 @@ def StartMessaging():
                     print(UserSays)
                     surveying = False
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
+                    Reminder = MDB.Subscribers(SenderID, UserSays)
                     print(Kiswahili)
                     if msg.get('message'):
                         if 'start' in UserSays.lower():
@@ -205,6 +258,11 @@ def StartMessaging():
                             response = '''Nitakutumia alani ya kukukumbusha siku ya uchaguzi.
                             Unataka alani ya siku gani?'''
                             ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
+
+                        if Kiswahili is not True:
+                            
+                            SendMessage(Reminder, response)
+
 
                         
 
@@ -247,6 +305,22 @@ def StartMessaging():
         raise e
 
     return 'OK', 200
+
+ @app.route('/', methods=['POST'])
+ def Subscribed(SenderID):
+ 	if week == True:
+ 		response = '''The national elections are coming up in week! 
+                    Please remember to show up and vote for your leaders!
+                        \U0001F44D'''
+
+ 		SendMessage(SenderID, response)
+ 	elif day == True:
+ 		response = '''The national elections are coming up in two days time! 
+                    Please remember to show up and vote for your leaders!
+                        \U0001F44D'''
+
+ 		SendMessage(SenderID, response)
+
 
 
 def ReturnType(msg):
@@ -609,6 +683,11 @@ def SendMessage(RecipientID, Text):
     if r.status_code != 200:
         print(r.text)
 
+def Reminder(SenderID, time):
+    now = datetime.datetime.now()
+    if 
+
+    SendMessage(SenderID, )
 def FindingUser(ID):
     headers = {
     'Content-Type' : 'application/json'
@@ -619,5 +698,23 @@ def FindingUser(ID):
 
 
 
+from datetime import date
+
+from apscheduler.schedulers.blocking import BlockingScheduler
+
+
+week = sched.add_job(OneWeek, 'date', run_date = datetime(2017, 8, 01, 12, 00))
+day = sched.add_job(TwoDays, 'date', run_date = datetime(2017, 8, 06, 12, 00))
+
+
+def OneWeek():
+    return True
+
+def TwoDays():
+	return True
+
+
+
 if __name__ == '__main__':
+    sched.start()
     app.run(debug = True)
