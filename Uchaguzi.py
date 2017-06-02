@@ -11,6 +11,8 @@ import os
 from datetime import date
 from apscheduler.schedulers.blocking import BlockingScheduler
 import re
+import pymysql
+
 
 
 
@@ -213,6 +215,10 @@ def verification():
 @app.route('/', methods=['POST'])
 def StartMessaging():
     try:
+        conn=pymysql.connect(user='root',passwd='',host = '127.0.0.1',database='newday')
+        curs=conn.cursor()
+        print(curs)
+
         db = MDB.MongoConnection(uri)
         messages = request.get_json()
         print(messages)
