@@ -307,6 +307,8 @@ def StartMessaging():
                         elif Kiswahili is not True and UserSays == 'voters':
                             SendMessage(SenderID, VoterRequirements )
                             SendMessage(SenderID, 'Here are some helpful graphics to help you.')
+                            for key, value in VotingInformation:
+                                SendAttachment(SenderID, key, value)
 
                         elif Kiswahili is not True and UserSays == 'survey':
                             ReusableOptions(SenderID, 'Vote for your preferred candidate', 'See the results.')
