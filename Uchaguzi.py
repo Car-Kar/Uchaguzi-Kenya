@@ -8,7 +8,7 @@ import datetime
 from datetime import date
 import os
 from datetime import date
-from apscheduler.scheduler import Scheduler
+#from apscheduler.scheduler import Scheduler
 import re
 import pymysql
 
@@ -326,7 +326,7 @@ def StartMessaging():
     return 'OK', 200
 
 
-@app.route('/', methods=['POST'])
+''''@app.route('/', methods=['POST'])
 def Subscribed(SenderID, week, day):
     try:
         db = MDB.MongoConnection(uri)
@@ -340,16 +340,16 @@ def Subscribed(SenderID, week, day):
                         MessageText = msg['message']['text']
                         su = MDB.Subscribers(SenderID, MessageText)
                         if week == True:
-                            response = '''The national elections are coming up in week! 
+                            response = The national elections are coming up in week! 
                                     Please remember to show up and vote for your leaders!
-                                \U0001F44D'''
+                                \U0001F44D
 
                             SendMessage(su, response)
 
                         elif day == True:
-                            response = '''The national elections are coming up in two days time! 
+                            response = The national elections are coming up in two days time! 
                             Please remember to show up and vote for your leaders!
-                            \U0001F44D'''
+                            \U0001F44D
 
                             SendMessage(su, response)
 
@@ -357,7 +357,7 @@ def Subscribed(SenderID, week, day):
     except Exception as e:
         raise e
 
-    return 'OK', 200
+    return 'OK', 200'''
 
 
 def ReturnType(msg):
@@ -774,8 +774,8 @@ def FindingUser(ID):
 
 #def Search(url):
 
-week = sched.add_job(OneWeek, 'date', run_date = datetime(2017, 8, 1, 12, 00))
-day = sched.add_job(TwoDays, 'date', run_date = datetime(2017, 8, 6, 12, 00))
+#week = sched.add_job(OneWeek, 'date', run_date = datetime(2017, 8, 1, 12, 00))
+#day = sched.add_job(TwoDays, 'date', run_date = datetime(2017, 8, 6, 12, 00))
 
 
 def OneWeek():
@@ -787,5 +787,5 @@ def TwoDays():
 
 
 if __name__ == '__main__':
-    sched.start()
+    #sched.start()
     app.run(debug = True)
