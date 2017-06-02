@@ -7,9 +7,9 @@ from wit import Wit
 import datetime
 from datetime import date
 from apscheduler.scheduler import Scheduler
-import psycopg2
-import urllib.parse as urlparse
 import os
+from datetime import date
+from apscheduler.schedulers.blocking import BlockingScheduler
 
 
 
@@ -17,20 +17,6 @@ app = Flask(__name__)
 
 
 
-url = urlparse.urlparse(os.environ['postgres://qhtbkezzkjvzhk:1ef0bdfa3b788be8bfc82370ef58bb559956794aa45667d25abe8f28f35c93b8@ec2-50-19-219-69.compute-1.amazonaws.com:5432/d3cndvhbosano5'])
-dbname = url.path[1:]
-user = url.username
-password = url.password
-host = url.hostname
-port = url.port
-
-con = psycopg2.connect(
-            dbname=dbname,
-            user=user,
-            password=password,
-            host=host,
-            port=port
-            )
 
 
 PAT = 'EAAarLkMVMy4BAERvNFAqZBaIfdpnrILzYWnLXeUhst52bj6d6oiA3YewwP7UvhDDGHdWciSElZCtZAWNnN15IbCZB10kepGG0BbkwAErwzi3jWnPZA6tPSh985a2j38lcrhRTNFFNaWZAvy6qv2FejYK7ZCaqgSXZCKm5D9V0vsj0QZDZD'
@@ -158,24 +144,39 @@ class UsingMongo:
 
     def Subscribers(self, FromUser,  data):
         collection = self.DB['subscribers']
-        if user is not None:
-            user =  collection.find_one({'fromuser': FromUser})
-            if datetime.datetime.now() == t1:
-                rw = True
-                user =  collection.find_one({'time': 'week' })
-                ID = user['fromuser']
-                return ID
-            elif datetime.datetime.now() == t2:
-                rd = True
-                user =  collection.find_one({'time': 'day' })
-                ID = user['fromuser']
-                return ID
-
+        user =  collection.find_one({'fromuser': FromUser})
+        if user is not None: 
+            time =  user['time']
+            return time
         else:
             if 'week' in data.lower():
                 time = collection.insert_one({'fromuser' : FromUser}, {'time': 'week'})
+                return time
             elif 'day' in data.lower():
                 time = collection.insert_one({'fromuser' : FromUser}, {'time': 'day'})
+                return time
+
+        def NewsSubscribers(self, FromUser,  data):
+        collection = self.DB['newssubscribers']
+        user =  collection.find_one({'fromuser': FromUser})
+        if user is not None: 
+            news =  user['news']
+            return news
+        else:
+            if 'pres' in data.lower():
+                news = collection.insert_one({'fromuser' : FromUser}, {'news': 'presidential'})
+                return news
+            elif 'gov' in data.lower():
+                news = collection.insert_one({'fromuser' : FromUser}, {'news': 'governor'})
+                return news
+
+            elif 'sen' in data.lower():
+                news = collection.insert_one({'fromuser' : FromUser}, {'news': 'senate'})
+                return news
+
+            elif ''wom in data.lower():
+                news = collection.insert_one({'fromuser' : FromUser}, {'news': 'women representative'})
+                return news
 
 
 
@@ -223,7 +224,7 @@ def StartMessaging():
                     print(UserSays)
                     surveying = False
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
-                    Reminder = MDB.Subscribers(SenderID, UserSays)
+                    News = MDB.NewsSubscribers(SenderID, UserSays)
                     print(Kiswahili)
                     if msg.get('message'):
                         if 'start' in UserSays.lower():
@@ -243,7 +244,7 @@ def StartMessaging():
                             SendMessage(SenderID, IntroductoryMessage2)
                             GenericTemplateOptions(SenderID, 
                                 'Get Voter information', 'Get to know your voter requirements or set a reminder', 'Know your candidates','Get information on who is vying.', 'Goverment Review',
-                                'Get information about your county administration, or take a survey about them', 'Voter Requirements', 'Set A Reminder',
+                                'Get information about your county administration, or take a survey about them', 'Voter Requirements', 'Set A Reminder', 'Subscribe to election news',
                                 'Choose and Election Level',
                                 'Review Survey',
                                 'Contact them')
@@ -259,17 +260,16 @@ def StartMessaging():
                             Unataka alani ya siku gani?'''
                             ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
 
-                        if Kiswahili is not True:
-                            
-                            SendMessage(Reminder, response)
-
-
+                    
                         
 
                     elif msg.get('postback'):    
                         
                         if Kiswahili == True and UserSays == 'survey':
                             TakeSurvey(SenderID, 'Tafadhali Jibu maswali haya ili - review them.', SurveyUrl, 'SurveyName')
+                        elif Kiswahili is not True and UserSays == 'subscribe':
+                        	SendMessage(SenderID, 'What level of election do you want to get weekly news for?')
+                        	UsingOptions(SenderID, 'Presidential', 'Governor', 'Senate', 'Women Representative')
 
                         elif Kiswahili == False and UserSays == 'survey':
                             TakeSurvey(SenderID, 'Please take the following survey to review your county administration', SurveyUrl, 'SurveyName')
@@ -307,19 +307,30 @@ def StartMessaging():
     return 'OK', 200
 
  @app.route('/', methods=['POST'])
- def Subscribed(SenderID):
- 	if week == True:
- 		response = '''The national elections are coming up in week! 
-                    Please remember to show up and vote for your leaders!
-                        \U0001F44D'''
+ def Subscribed(SenderID, week, day):
+ 	try:
+        db = MDB.MongoConnection(uri)
+        messages = request.get_json()
+        print(messages)
+        if messages['object'] == 'page':
+            for message in messages['entry']:
+                for msg in message['messaging']:
+                	SenderID = msg['sender']['id']
+                    if msg.get('message'):
+                    	MessageText = msg['message']['text']
+                    	su = MDB.Subscribers(SenderID, MessageText)
+ 						if week == True:
+ 								response = '''The national elections are coming up in week! 
+                    				Please remember to show up and vote for your leaders!
+                        		\U0001F44D'''
 
- 		SendMessage(SenderID, response)
- 	elif day == True:
- 		response = '''The national elections are coming up in two days time! 
-                    Please remember to show up and vote for your leaders!
-                        \U0001F44D'''
+ 						SendMessage(su, response)
+ 						elif day == True:
+ 							response = '''The national elections are coming up in two days time! 
+                    		Please remember to show up and vote for your leaders!
+                        	\U0001F44D'''
 
- 		SendMessage(SenderID, response)
+ 						SendMessage(su, response)
 
 
 
@@ -369,7 +380,7 @@ def ReusableOptions(RecipientID, Text, op1, op2):
     if r.status_code != 200:
         print(r.text)
 
-def UsingOptions(RecipientID, Text, O1, O2, O3):
+def UsingOptions(RecipientID, Text, O1, O2, O3, O4):
     print(('Sending message to {0}').format(RecipientID))
 
     headers = {
@@ -385,17 +396,22 @@ def UsingOptions(RecipientID, Text, O1, O2, O3):
       {
         'content_type' : 'text',
         'title' : O1,
-        'payload' : 'voters'
+        'payload' : 'pres'
       },
       {
         'content_type' : 'text',
         'title' : O2,
-        'payload' : 'elections'
+        'payload' : 'gov'
       },
       {
         'content_type' : 'text',
         'title' : O3,
-        'payload' : 'gov'
+        'payload' : 'sen'
+      },
+      {
+        'content_type' : 'text',
+        'title' : O4,
+        'payload' : 'wom'
       }
     ]
     }
@@ -440,7 +456,7 @@ def Options(RecipientID, Text, OP1, OP2):
         print(r.text)
 
 
-def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1, OP2, OP3, OP4, OP5):
+def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1, OP2, OP3, OP4, OP5, OP6, OP7):
     print(('Sending  options to {0}').format(RecipientID))
     headers = {
     'Content-Type' : 'application/json'
@@ -487,7 +503,12 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
                         'type' : 'postback',
                         'payload' : 'levels',
                         'title' : OP4
-                    }             
+                    }
+                    ,{
+                        'type' : 'postback',
+                        'payload' : 'subscribe',
+                        'title' : OP5
+                    }  
                 
                 ]},
                 {
@@ -498,12 +519,12 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
                     {
                         'type' : 'postback',
                         'payload' : 'survey',
-                        'title' : OP5
+                        'title' : OP6
                     },
                     {
                         'type' : 'postback',
                         'payload' : 'contact',
-                        'title' : OP6
+                        'title' : OP7
                     }              
                 
                 ]}
@@ -683,11 +704,7 @@ def SendMessage(RecipientID, Text):
     if r.status_code != 200:
         print(r.text)
 
-def Reminder(SenderID, time):
-    now = datetime.datetime.now()
-    if 
 
-    SendMessage(SenderID, )
 def FindingUser(ID):
     headers = {
     'Content-Type' : 'application/json'
@@ -698,9 +715,7 @@ def FindingUser(ID):
 
 
 
-from datetime import date
 
-from apscheduler.schedulers.blocking import BlockingScheduler
 
 
 week = sched.add_job(OneWeek, 'date', run_date = datetime(2017, 8, 01, 12, 00))
