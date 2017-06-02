@@ -284,12 +284,20 @@ def StartMessaging():
                         if Kiswahili is not True and 'two days' in UserSays.lower():
                             response = 'I will be messaging you two days before the elections as a reminder'
                             SendMessage(SenderID, response)
+                            Home(SenderID, 'Go back to home?', 'Home')
 
                         if Kiswahili is not True and UserSays.lower() in options:
                             response = 'You have successful subscribed! I will be messaging you weekly to give you up to date news!'
                             SendMessage(SenderID, response)
+                            Home(SenderID, 'Go back to home?', 'Home')
 
-
+                        if Kiswahili is not True and 'home' UserSays.lower():
+                            GenericTemplateOptions(SenderID, 
+                                'Get Voter information', 'Get to know your voter requirements or set a reminder', 'Know your voting status', 'Know your candidates','Get information on who is vying.', 'Goverment Review',
+                                'Get information about your county administration, or take a survey about them', 'Voter Requirements', 'Set A Reminder', 'Subscribe to election news',
+                                'Choose an Election Level',
+                                'Review your county administration',
+                                'Contact your county administration')
 
                     
                         
@@ -326,6 +334,7 @@ def StartMessaging():
                             for key, value in VotingInformation.items():
                                 SendAttachment(SenderID, key, value)
                             SendMessage(SenderID, ContinueUsing)
+                            Home(SenderID, 'Go back to home?', 'Home')
 
                         elif Kiswahili is not True and UserSays == 'survey':
                             ReusableOptions(SenderID, OptionsText, 'Vote for your preferred candidate', 'See the results.')
@@ -333,6 +342,7 @@ def StartMessaging():
                         elif Kiswahili is not True and UserSays == 'registration':
                             SendAttachment(SenderID, 'image', 'https://farm5.staticflickr.com/4243/34193089344_55a2249bd6_o_d.jpg')
                             SendMessage(SenderID, VoterRegistration)
+                            Home(SenderID, 'Go back to home?', 'Home')
                             
 
 
@@ -395,6 +405,29 @@ def ReturnType(msg):
     elif msg.get('web_url'):
         URLText = msg['web_url']['title']
         return URLText
+
+def Home(SenderID, TXT):
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        'recipient': {
+        'id': RecipientID
+    },
+    'message' : {
+        'text': Text,
+        'quick_replies':[
+      {
+        'content_type': 'text',
+        'title' : op1,
+        'payload' : 'IsReusable'
+      }
+    ]
+    }
+    })
+    r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
+    if r.status_code != 200:
+        print(r.text)
 
 
 
