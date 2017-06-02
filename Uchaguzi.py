@@ -10,6 +10,7 @@ from apscheduler.scheduler import Scheduler
 import os
 from datetime import date
 from apscheduler.schedulers.blocking import BlockingScheduler
+import re
 
 
 
@@ -182,7 +183,8 @@ class UsingMongo:
     def PresidentialRace(self, pres):
         collection = self.DB['presidentialrace']
         print('Connected to presidents collection!')
-        user =  collection.find_one({'name': {'$regex' : ^pres}})
+        regex = re.compile('.*(%s).*'%pres)
+        user =  collection.find_one({'name': {'$regex' : ^'regex'}})
         if user is not None:
             votes = user['votes']
             collection.update_one({'name' : pres}, {'$set': {'votes': votes + 1}})
@@ -195,7 +197,8 @@ class UsingMongo:
 
 MDB = UsingMongo()
 
-VotingInformation = {'gif' : 'https://media.giphy.com/media/3o6ZtkF', 'gif' : '', 'gif' : '', 'image' : '', 'image' : ''}
+VotingInformation = {'gif' : 'https://media.giphy.com/media/3o6ZtkFObzcJiaMOFG/giphy.gif', 'gif' : 'https://media.giphy.com/media/26vUCOMzBiBZ0qW1a/giphy.gif', 
+'video' : 'https://www.youtube.com/watch?v=nQbztjkag1A&feature=youtu.be&t=1', 'image' : '', 'image' : ''}
 
 @app.route('/', methods=['GET'])
 def verification():
