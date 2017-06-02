@@ -305,10 +305,10 @@ def StartMessaging():
                     elif msg.get('postback'):  
                         if Kiswahili == True and UserSays == 'survey':
                             TakeSurvey(SenderID, 'Tafadhali Jibu maswali haya ili - review them.', SurveyUrl, 'SurveyName')
-                        elif Kiswahili is not True and UserSays == 'subscribe':
+                        ''''elif Kiswahili is not True and UserSays == 'subscribe':
                             response = 'What level of election do you want to get weekly news for?'
                             UsingOptions(SenderID, response, 'Presidential', 'Governor', 'Senate', 'Women Representative')
-
+'''
                         elif Kiswahili == False and UserSays == 'survey':
                             TakeSurvey(SenderID, 'Please take the following survey to review your county administration', SurveyUrl, 'SurveyName')
 
@@ -345,7 +345,7 @@ def StartMessaging():
                             Home(SenderID, 'Go back to home?', 'Home')
 
                         elif Kiswahili is not True and 'subscribe' in UserSays:
-                            WebView(SenderID, 'News', 'http://www.nation.co.ke/page/search/DailyNation/election2017/3439870-3439870-view-asSearch-ccr8qt/index.html')
+                            WebView(SenderID, 'News', 'http://www.nation.co.ke/page/search/DailyNation/election2017/3439870-3439870-view-asSearch-ccr8qt/index.html', 'The Top Election News Today')
                             
 
 
