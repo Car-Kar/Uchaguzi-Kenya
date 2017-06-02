@@ -320,6 +320,9 @@ def StartMessaging():
                         
 
                     elif msg.get('postback'):  
+                        if UserSays == 'Get Started':
+                            ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
+
                         if Kiswahili == True and UserSays == 'survey':
                             TakeSurvey(SenderID, 'Tafadhali Jibu maswali haya ili - review them.', SurveyUrl, 'SurveyName')
                         ''''elif Kiswahili is not True and UserSays == 'subscribe':
