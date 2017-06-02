@@ -336,7 +336,7 @@ def StartMessaging():
                             SendMessage(SenderID, ContinueUsing)
                             Home(SenderID, 'Go back to home?', 'Home')
 
-                        elif Kiswahili is not True and UserSays == 'survey':
+                        elif Kiswahili is not True and UserSays == 'poll':
                             ReusableOptions(SenderID, OptionsText, 'Vote for your preferred candidate', 'See the results.')
 
                         elif Kiswahili is not True and UserSays == 'registration':
