@@ -173,7 +173,7 @@ class UsingMongo:
                     news = collection.insert_one({'fromuser' : FromUser}, {'news': 'senate'})
                     return news
 
-                elif ''wom in data.lower():
+                elif 'wom' in data.lower():
                     news = collection.insert_one({'fromuser' : FromUser}, {'news': 'women representative'})
                     return news
 
