@@ -292,7 +292,9 @@ def StartMessaging():
                                 'Get information about your county administration, or take a survey about them', 'Voter Requirements', 'Set A Reminder', 'Subscribe to election news',
                                 'Choose an Election Level',
                                 'Review your county administration',
-                                'Contact your county administration')
+                                'Contact your county administration',
+                                'http://www.nation.co.ke/page/search/DailyNation/election2017/3439870-3439870-view-asSearch-ccr8qt/index.html')
+            
 
                         elif 'evans' in UserSays.lower() or 'kidero' in UserSays.lower():
                             SendMessage(SenderID, g_evans_info)
@@ -560,7 +562,7 @@ def Options(RecipientID, Text, OP1, OP2):
         print(r.text)
 
 
-def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1, OP2, OP3, OP4, OP5, OP6, OP7):
+def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1, OP2, OP3, OP4, OP5, OP6, OP7, URL):
     print(('Sending  options to {0}').format(RecipientID))
     headers = {
     'Content-Type' : 'application/json'
@@ -604,9 +606,11 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
             'subtitle': TXT4,
                 'buttons' : [
                     {
-                        'type' : 'postback',
-                        'payload' : 'subscribe',
-                        'title' : OP4
+                        'type' : 'web_url',
+                        'url' : URL,
+                        'title' : OP4,
+                        "webview_height_ratio": "tall",
+                        "messenger_extensions": True
                     }
                     ,{
                         'type' : 'postback',
