@@ -8,7 +8,7 @@ import datetime
 from datetime import date
 import os
 from datetime import date
-from apscheduler.schedulers.blocking import Scheduler
+from apscheduler.scheduler import Scheduler
 import re
 import pymysql
 
