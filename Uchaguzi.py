@@ -279,12 +279,12 @@ def StartMessaging():
                         if Kiswahili is not True and 'two days' in UserSays.lower():
                             response = 'I will be messaging you two days before the elections as a reminder'
                             SendMessage(SenderID, response)
-                            Home(SenderID, 'Go back to home?')
+                            Home(SenderID, 'Go back to home?', 'Home')
 
                         if Kiswahili is not True and UserSays.lower() in options:
                             response = 'You have successful subscribed! I will be messaging you weekly to give you up to date news!'
                             SendMessage(SenderID, response)
-                            Home(SenderID, 'Go back to home?')
+                            Home(SenderID, 'Go back to home?', 'Home')
 
                         if Kiswahili is not True and 'home' in UserSays.lower():
                             GenericTemplateOptions(SenderID, 
@@ -297,12 +297,12 @@ def StartMessaging():
                         elif 'evans' in UserSays.lower() or 'kidero' in UserSays.lower():
                             SendMessage(SenderID, g_evans_info)
                             SendMessage(SenderID, ContinueUsing)
-                            Home(SenderID, 'Go back to home?')
+                            Home(SenderID, 'Go back to home?', 'Home')
                     
                         elif 'mike' in UserSays.lower() or 'sonko' in UserSays.lower():
                             SendMessage(SenderID, g_mike_info)
                             SendMessage(SenderID, ContinueUsing)
-                            Home(SenderID, 'Go back to home?')
+                            Home(SenderID, 'Go back to home?', 'Home')
 
                         elif 'nairobi' in UserSays.lower():
                             names = Candidates(g_nairobi)
@@ -313,7 +313,7 @@ def StartMessaging():
                         elif 'bye' in UserSays.lower():
                             SendMessage(SenderID, Goodbye)
 
-                        
+
                     
                         
 
@@ -427,7 +427,7 @@ def ReturnType(msg):
         URLText = msg['web_url']['title']
         return URLText
 
-def Home(RecipientID, TXT):
+def Home(RecipientID, TXT, op1):
     headers = {
     'Content-Type' : 'application/json'
     }
