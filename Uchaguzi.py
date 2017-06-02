@@ -200,7 +200,7 @@ MDB = UsingMongo()
 
 options = ['pres', 'gov', 'sen', 'wom']
 VotingInformation = {'image' : 'https://media.giphy.com/media/3o6ZtkFObzcJiaMOFG/giphy.gif', 'image' : 'https://media.giphy.com/media/26vUCOMzBiBZ0qW1a/giphy.gif', 
-'video' : 'https://www.youtube.com/watch?v=nQbztjkag1A&feature=youtu.be&t=1', 'image' : 'https://farm5.staticflickr.com/4248/34872766342_a66c0fa485_o_d.jpg', 'image' : 'https://farm5.staticflickr.com/4267/34872767952_f36c5a4dda_o_d.jpg'}
+'video' : 'https://www.youtube.com/watch?v=nQbztjkag1A&feature=youtu.be&t=1',  'image' : 'https://farm5.staticflickr.com/4267/34872767952_f36c5a4dda_o_d.jpg'}
 
 @app.route('/', methods=['GET'])
 def verification():
@@ -346,8 +346,8 @@ def StartMessaging():
                         if Kiswahili is not True and UserSays == 'voters':
                             SendMessage(SenderID, VoterRequirements )
                             SendMessage(SenderID, 'Here are some helpful graphics to help you.')
-                            for key, value in VotingInformation.items():
-                                SendAttachment(SenderID, key, value)
+                            
+                            SendAttachment(SenderID,'image', 'https://farm5.staticflickr.com/4248/34872766342_a66c0fa485_o_d.jpg')
                             SendMessage(SenderID, ContinueUsing)
                             Home(SenderID, 'Go back to home?')
 
