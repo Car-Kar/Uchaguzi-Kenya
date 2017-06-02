@@ -156,30 +156,30 @@ class UsingMongo:
                 return time
 
         def NewsSubscribers(self, FromUser,  data):
-        	collection = self.DB['newssubscribers']
-        	user =  collection.find_one({'fromuser': FromUser})
-        	if user is not None: 
-            	news =  user['news']
-            	return news
-        	else:
-            	if 'pres' in data.lower():
-                	news = collection.insert_one({'fromuser' : FromUser}, {'news': 'presidential'})
-                	return news
-            	elif 'gov' in data.lower():
-                	news = collection.insert_one({'fromuser' : FromUser}, {'news': 'governor'})
-                	return news
+            collection = self.DB['newssubscribers']
+            user =  collection.find_one({'fromuser': FromUser})
+            if user is not None: 
+                news =  user['news']
+                return news
+            else:
+                if 'pres' in data.lower():
+                    news = collection.insert_one({'fromuser' : FromUser}, {'news': 'presidential'})
+                    return news
+                elif 'gov' in data.lower():
+                    news = collection.insert_one({'fromuser' : FromUser}, {'news': 'governor'})
+                    return news
 
-            	elif 'sen' in data.lower():
-                	news = collection.insert_one({'fromuser' : FromUser}, {'news': 'senate'})
-                	return news
+                elif 'sen' in data.lower():
+                    news = collection.insert_one({'fromuser' : FromUser}, {'news': 'senate'})
+                    return news
 
-            	elif ''wom in data.lower():
-                	news = collection.insert_one({'fromuser' : FromUser}, {'news': 'women representative'})
-                	return news
+                elif ''wom in data.lower():
+                    news = collection.insert_one({'fromuser' : FromUser}, {'news': 'women representative'})
+                    return news
 
 
 
-    def PresidentialRace(self, pres, votes):
+    def PresidentialRace(self, pres):
         collection = self.DB['presidentialrace']
         print('Connected to presidents collection!')
         user =  collection.find_one({'name': pres})
@@ -187,6 +187,8 @@ class UsingMongo:
             votes = user['votes']
             collection.update_one({'name' : pres}, {'$set': {'votes': votes + 1}})
             print(votes)
+        else:
+            pass
 
 
 
@@ -225,6 +227,7 @@ def StartMessaging():
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
                     News = MDB.NewsSubscribers(SenderID, UserSays)
                     print(Kiswahili)
+                    race = MDB.PresidentialRace(UserSays)
                     if msg.get('message'):
                         if 'start' in UserSays.lower():
                             SendMessage(SenderID, Start)
@@ -266,8 +269,8 @@ def StartMessaging():
                         if Kiswahili == True and UserSays == 'survey':
                             TakeSurvey(SenderID, 'Tafadhali Jibu maswali haya ili - review them.', SurveyUrl, 'SurveyName')
                         elif Kiswahili is not True and UserSays == 'subscribe':
-                        	SendMessage(SenderID, 'What level of election do you want to get weekly news for?')
-                        	UsingOptions(SenderID, 'Presidential', 'Governor', 'Senate', 'Women Representative')
+                            SendMessage(SenderID, 'What level of election do you want to get weekly news for?')
+                            UsingOptions(SenderID, 'Presidential', 'Governor', 'Senate', 'Women Representative')
 
                         elif Kiswahili == False and UserSays == 'survey':
                             TakeSurvey(SenderID, 'Please take the following survey to review your county administration', SurveyUrl, 'SurveyName')
@@ -306,29 +309,29 @@ def StartMessaging():
 
  @app.route('/', methods=['POST'])
  def Subscribed(SenderID, week, day):
- 	try:
+    try:
         db = MDB.MongoConnection(uri)
         messages = request.get_json()
         print(messages)
         if messages['object'] == 'page':
             for message in messages['entry']:
                 for msg in message['messaging']:
-                	SenderID = msg['sender']['id']
+                    SenderID = msg['sender']['id']
                     if msg.get('message'):
-                    	MessageText = msg['message']['text']
-                    	su = MDB.Subscribers(SenderID, MessageText)
- 						if week == True:
- 								response = '''The national elections are coming up in week! 
-                    				Please remember to show up and vote for your leaders!
-                        		\U0001F44D'''
+                        MessageText = msg['message']['text']
+                        su = MDB.Subscribers(SenderID, MessageText)
+                        if week == True:
+                                response = '''The national elections are coming up in week! 
+                                    Please remember to show up and vote for your leaders!
+                                \U0001F44D'''
 
- 						SendMessage(su, response)
- 						elif day == True:
- 							response = '''The national elections are coming up in two days time! 
-                    		Please remember to show up and vote for your leaders!
-                        	\U0001F44D'''
+                        SendMessage(su, response)
+                        elif day == True:
+                            response = '''The national elections are coming up in two days time! 
+                            Please remember to show up and vote for your leaders!
+                            \U0001F44D'''
 
- 						SendMessage(su, response)
+                        SendMessage(su, response)
 
 
 
@@ -724,7 +727,7 @@ def OneWeek():
     return True
 
 def TwoDays():
-	return True
+    return True
 
 
 
