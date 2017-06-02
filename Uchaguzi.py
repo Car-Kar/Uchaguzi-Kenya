@@ -253,7 +253,7 @@ def StartMessaging():
                             SendMessage(SenderID, IntroductoryMessage)
                             SendMessage(SenderID, IntroductoryMessage2)
                             GenericTemplateOptions(SenderID, 
-                                'Get Voter information', 'Get to know your voter requirements or set a reminder', 'Know your candidates','Get information on who is vying.', 'Goverment Review',
+                                'Get Voter information', 'Get to know your voter requirements or set a reminder', 'Know your voting status', 'Know your candidates','Get information on who is vying.', 'Goverment Review',
                                 'Get information about your county administration, or take a survey about them', 'Voter Requirements', 'Set A Reminder', 'Subscribe to election news',
                                 'Choose and Election Level',
                                 'Review your county administration',
@@ -300,6 +300,7 @@ def StartMessaging():
                                 'Women Representatives Candidates.',
                                 'Know the vying candidates and their policies.',
                                 'Presidential Candidates',
+                                'Take the presidential poll'
                                 'Governors Candidates',
                                 'Senator Candidates',
                                 'Women Representative Candidates'
@@ -562,7 +563,7 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
     if r.status_code != 200:
         print(r.text)
 
-def LevelTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, TXT7, TXT8, OP1, OP3, OP4, OP5):
+def LevelTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, TXT7, TXT8, OP1, OP, OP3, OP4, OP5):
     print(('Sending  options to {0}').format(RecipientID))
     headers = {
     'Content-Type' : 'application/json'
@@ -586,6 +587,11 @@ def LevelTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, TXT7, 
                         'type' : 'postback',
                         'payload' : 'pres',
                         'title' : OP1
+                    },
+                    {
+                        'type' : 'postback',
+                        'payload' : 'poll',
+                        'title' : OP
                     }
                 ]},
                 {
