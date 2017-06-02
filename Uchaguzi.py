@@ -6,7 +6,6 @@ from pymongo import MongoClient
 from wit import Wit
 import datetime
 from datetime import date
-from apscheduler.scheduler import Scheduler
 import os
 from datetime import date
 from apscheduler.schedulers.blocking import BlockingScheduler
