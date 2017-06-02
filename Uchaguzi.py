@@ -298,6 +298,17 @@ def StartMessaging():
                                 'Review your county administration',
                                 'Contact your county administration')
 
+                        elif 'evans' in MessageText.lower() or 'kidero' in MessageText.lower():
+                            SendMessage(SenderID, g_evans_info)
+                            SendMessage(SenderID, ContinueUsing)
+                            Home(SenderID, 'Go back to home?')
+                    
+                        elif 'mike' in MessageText.lower() or 'sonko' in MessageText.lower():
+                            SendMessage(SenderID, g_mike_info)
+                            SendMessage(SenderID, ContinueUsing)
+                            Home(SenderID, 'Go back to home?')
+                    
+
                     
                         
 
@@ -853,3 +864,16 @@ def TwoDays():
 if __name__ == '__main__':
     #sched.start()
     app.run(debug = True)
+
+
+g_nairobi = ['Evans Kidero - CORD-ODM', 'Mike Mbuvi Sonko - Jubilee']
+g_evans_info = '''Evans Odhiambo Kidero is a Kenyan politician and current Governor of Nairobi County. 
+He served as CEO of Mumias Sugar Company for 8 years, resigning in 2012 to join elective politics. 
+Kidero was elected as the first governor of Nairobi County in the Nairobi gubernatorial elections of 2013 on an ODM ticket. 
+Dr. Kidero is married to Susan Mboya, daughter of the late Kenyan politician, Tom Mboya, and together they have 3 children.'''
+
+g_mike_info = '''Mbuvi Gidion Kioko Mike Sonko  commonly known as Mike Sonko is a Kenyan politician who currently serves as Senator of Nairobi. 
+Sonko is the immediate former Member of Parliament for Makadara Constituency, Kenya, a position he was elected to on September 20, 2010 in a by-election. 
+Born in Mombasa ,Mbuvi became the First Senator of Nairobi.
+His style of leadership has been described as different and has earned him titles like, mtu wa watu (A man of the people).
+'''
