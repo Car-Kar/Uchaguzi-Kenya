@@ -207,13 +207,13 @@ class UsingSQL:
 
     def all_presidential_candidates(self):
         self.curs.execute("""SELECT name, political_party FROM presidential_candidates""")
-        result = list(self.curs.fetchall())
         results = list(self.curs.fetchall())
         result = '\n'.join([str(cand) for cand in results])
         result = result.replace('(', ' ')
         result = result.replace(')', ' ')
         result = result.replace("'", ' ')
         result = result.replace(',', '-')
+        print(result)
         return result
 
     def all_presidential_names(self):
@@ -429,6 +429,7 @@ def StartMessaging():
 
                         elif Kiswahili is not True and UserSays == 'pres':
                             candidates = SQL.all_presidential_candidates()
+                            print(candidates)
                             first_names, second_names = CheckListLength(candidates)
                             response = 'The governor candidates are: \n' + str(first_names[0:])
                             SendMessage(SenderID, response)
