@@ -212,10 +212,13 @@ def verification():
 @app.route('/', methods=['POST'])
 def StartMessaging():
     try:
-    	conn = pymysql.connect(user='b5ad6687738858',passwd='23bfecef',host = 'us-cdbr-iron-east-03.cleardb.net',database='heroku_611862edb2b2330')
-    	curs = conn.cursor()
-    	print(curs)
-    	db = MDB.MongoConnection(uri)
+        conn = pymysql.connect(user='b5ad6687738858',
+            passwd='23bfecef',
+            host = 'us-cdbr-iron-east-03.cleardb.net',
+            database='heroku_611862edb2b2330')
+        curs = conn.cursor()
+        print(curs)
+        db = MDB.MongoConnection(uri)
         messages = request.get_json()
         print(messages)
         if messages['object'] == 'page':
@@ -366,7 +369,7 @@ def StartMessaging():
 
 
                         elif Kiswahili is not True and UserSays == 'pres':
-                        	response = all_presidential_candidates()
+                            response = all_presidential_candidates()
 
 
 
@@ -872,10 +875,10 @@ def Candidates(Level):
     return candidate
 
 def all_presidential_candidates():
-	curs.execute("""SELECT name, political_party FROM presidential_candidates""")
-	result = curs.fetchall()
-	print (result)
-	#return result
+    curs.execute("""SELECT name, political_party FROM presidential_candidates""")
+    result = curs.fetchall()
+    print (result)
+    #return result
 
 
 if __name__ == '__main__':
