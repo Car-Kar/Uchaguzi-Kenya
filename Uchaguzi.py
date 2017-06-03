@@ -285,7 +285,7 @@ def StartMessaging():
                     print(ResponseStack)
                     race = MDB.PresidentialRace(UserSays)
                     cs = SQL.all_presidential_names()
-                    matching = [s for s in cs if ResponseStack.pop() in s]
+                    matching = [s for s in cs if str(ResponseStack.pop()) in s]
                     print(matching)
                     if msg.get('message'):
                         if 'start' in UserSays.lower() or 'hey' in UserSays.lower() or 'hi' in UserSays.lower() or 'hello' in UserSays.lower():
