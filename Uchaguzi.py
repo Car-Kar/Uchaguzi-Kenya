@@ -199,8 +199,8 @@ class UsingMongo:
 MDB = UsingMongo()
 
 options = ['pres', 'gov', 'sen', 'wom']
-VotingInformation = {'gif' : 'https://media.giphy.com/media/3o6ZtkFObzcJiaMOFG/giphy.gif', 'gif' : 'https://media.giphy.com/media/26vUCOMzBiBZ0qW1a/giphy.gif', 
-'video' : 'https://www.youtube.com/watch?v=nQbztjkag1A&feature=youtu.be&t=1', 'image' : 'https://farm5.staticflickr.com/4248/34872766342_a66c0fa485_o_d.jpg', 'image' : 'https://farm5.staticflickr.com/4267/34872767952_f36c5a4dda_o_d.jpg'}
+VotingInformation = {'image' : 'https://media.giphy.com/media/3o6ZtkFObzcJiaMOFG/giphy.gif', 'image' : 'https://media.giphy.com/media/26vUCOMzBiBZ0qW1a/giphy.gif', 
+'video' : 'https://www.youtube.com/watch?v=nQbztjkag1A&feature=youtu.be&t=1',  'image' : 'https://farm5.staticflickr.com/4267/34872767952_f36c5a4dda_o_d.jpg'}
 
 @app.route('/', methods=['GET'])
 def verification():
@@ -215,6 +215,7 @@ def verification():
 @app.route('/', methods=['POST'])
 def StartMessaging():
     try:
+<<<<<<< HEAD
        
        import pymysql.cursors
 
@@ -231,6 +232,8 @@ finally:
     connection.close()
     
 
+=======
+>>>>>>> ffe44bc57d8c343ac32f394c163036e60b8e153b
         db = MDB.MongoConnection(uri)
         messages = request.get_json()
         print(messages)
@@ -264,12 +267,7 @@ finally:
                         if Kiswahili is not True and 'english' in UserSays.lower():
                             SendMessage(SenderID, IntroductoryMessage)
                             SendMessage(SenderID, IntroductoryMessage2)
-                            GenericTemplateOptions(SenderID, 
-                                'Get Voter information', 'Get to know your voter requirements or set a reminder', 'Know your voting status', 'Know your candidates','Get information on who is vying.', 'Goverment Review',
-                                'Get information about your county administration, or take a survey about them', 'Voter Requirements', 'Set A Reminder', 'Subscribe to election news',
-                                'Choose an Election Level',
-                                'Review your county administration',
-                                'Contact your county administration')
+                            GenericTemplateOptions(SenderID)
 
                         if Kiswahili == True and 'nipe' in UserSays.lower():
                             SendMessage(SenderID, VoterRequirements)
@@ -295,25 +293,44 @@ finally:
                         if Kiswahili is not True and 'two days' in UserSays.lower():
                             response = 'I will be messaging you two days before the elections as a reminder'
                             SendMessage(SenderID, response)
-                            Home(SenderID, 'Go back to home?')
+                            Home(SenderID, 'Go back to home?', 'Home')
 
                         if Kiswahili is not True and UserSays.lower() in options:
                             response = 'You have successful subscribed! I will be messaging you weekly to give you up to date news!'
                             SendMessage(SenderID, response)
-                            Home(SenderID, 'Go back to home?')
+                            Home(SenderID, 'Go back to home?', 'Home')
 
                         if Kiswahili is not True and 'home' in UserSays.lower():
-                            GenericTemplateOptions(SenderID, 
-                                'Get Voter information', 'Get to know your voter requirements or set a reminder', 'Know your voting status', 'Know your candidates','Get information on who is vying.', 'Goverment Review',
-                                'Get information about your county administration, or take a survey about them', 'Voter Requirements', 'Set A Reminder', 'Subscribe to election news',
-                                'Choose an Election Level',
-                                'Review your county administration',
-                                'Contact your county administration')
+                            GenericTemplateOptions(SenderID)
+            
+
+                        elif 'evans' in UserSays.lower() or 'kidero' in UserSays.lower():
+                            SendMessage(SenderID, g_evans_info)
+                            SendMessage(SenderID, ContinueUsing)
+                            Home(SenderID, 'Go back to home?', 'Home')
+                    
+                        elif 'mike' in UserSays.lower() or 'sonko' in UserSays.lower():
+                            SendMessage(SenderID, g_mike_info)
+                            SendMessage(SenderID, ContinueUsing)
+                            Home(SenderID, 'Go back to home?', 'Home')
+
+                        elif 'nairobi' in UserSays.lower():
+                            names = Candidates(g_nairobi)
+                            TEXT = 'The governor candidates are: \n' + str(names[0:])
+                            SendMessage(SenderID, TEXT)
+                            SendMessage(SenderID, CandidateMoreInfo)
+
+                        elif 'bye' in UserSays.lower():
+                            SendMessage(SenderID, Goodbye)
+
 
                     
                         
 
                     elif msg.get('postback'):  
+                        if UserSays == 'Get Started':
+                            ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
+
                         if Kiswahili == True and UserSays == 'survey':
                             TakeSurvey(SenderID, 'Tafadhali Jibu maswali haya ili - review them.', SurveyUrl, 'SurveyName')
                         ''''elif Kiswahili is not True and UserSays == 'subscribe':
@@ -342,10 +359,10 @@ finally:
                         if Kiswahili is not True and UserSays == 'voters':
                             SendMessage(SenderID, VoterRequirements )
                             SendMessage(SenderID, 'Here are some helpful graphics to help you.')
-                            for key, value in VotingInformation.items():
-                                SendAttachment(SenderID, key, value)
+                            
+                            SendAttachment(SenderID,'image', 'https://farm5.staticflickr.com/4248/34872766342_a66c0fa485_o_d.jpg')
                             SendMessage(SenderID, ContinueUsing)
-                            Home(SenderID, 'Go back to home?')
+                            Home(SenderID, 'Go back to home?', 'Home')
 
                         elif Kiswahili is not True and UserSays == 'poll':
                             ReusableOptions(SenderID, OptionsText, 'Vote for your preferred candidate', 'See the results.')
@@ -353,7 +370,10 @@ finally:
                         elif Kiswahili is not True and UserSays == 'registration':
                             SendAttachment(SenderID, 'image', 'https://farm5.staticflickr.com/4243/34193089344_55a2249bd6_o_d.jpg')
                             SendMessage(SenderID, VoterRegistration)
-                            Home(SenderID, 'Go back to home?')
+                            Home(SenderID, 'Go back to home?', 'Home')
+
+                        elif Kiswahili is not True and UserSays == 'gov':
+                            SendMessage(SenderID, 'From what county?')
 
                         elif Kiswahili is not True and 'subscribe' in UserSays:
                             WebView(SenderID, 'News', 'http://www.nation.co.ke/page/search/DailyNation/election2017/3439870-3439870-view-asSearch-ccr8qt/index.html', 'The Top Election News Today')
@@ -420,7 +440,7 @@ def ReturnType(msg):
         URLText = msg['web_url']['title']
         return URLText
 
-def Home(RecipientID, TXT):
+def Home(RecipientID, TXT, op1):
     headers = {
     'Content-Type' : 'application/json'
     }
@@ -429,7 +449,7 @@ def Home(RecipientID, TXT):
         'id': RecipientID
     },
     'message' : {
-        'text': Text,
+        'text': TXT,
         'quick_replies':[
       {
         'content_type': 'text',
@@ -553,11 +573,12 @@ def Options(RecipientID, Text, OP1, OP2):
         print(r.text)
 
 
-def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1, OP2, OP3, OP4, OP5, OP6, OP7):
+def GenericTemplateOptions(RecipientID):
     print(('Sending  options to {0}').format(RecipientID))
     headers = {
     'Content-Type' : 'application/json'
     }
+                                
     data = json.dumps({
         'recipient':{
         'id' : RecipientID
@@ -569,59 +590,60 @@ def GenericTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, OP1,
             'template_type' : 'generic',
             'elements' : [
                 {
-            'title' : TXT1,
+            'title' : 'Get Voter information',
             'image_url' : 'https://c1.staticflickr.com/5/4219/34872765202_148d73b973_c.jpg',
-            'subtitle': TXT2,
+            'subtitle': 'Get to know your voter requirements or set a reminder',
                 'buttons' : [
                     {
                         'type' : 'postback',
                         'payload' : 'voters',
-                        'title' : OP1
+                        'title' : 'Voter Requirements'
                     },
                     {
                         'type' : 'postback',
                         'payload' : 'registration',
-                        'title' : OP2
+                        'title' : 'Know your voting status.'
                     },
                      {
                         'type' : 'postback',
                         'payload' : 'reminder',
-                        'title' : OP3
+                        'title' : 'Set A Reminder'
                     }              
                              
                 
                 ]},
                 {
-            'title' : TXT3,
+            'title' : 'Know your candidates',
             'image_url' : 'https://farm5.staticflickr.com/4250/34872749292_ffd4cc9444_o_d.jpg',
-            'subtitle': TXT4,
+            'subtitle': 'Get information on who is vying.',
                 'buttons' : [
                     {
-                        'type' : 'postback',
-                        'payload' : 'subscribe',
-                        'title' : OP4
+                        'type' : 'web_url',
+                        'url' : 'https://www.standardmedia.co.ke/elections2017/news',
+                        'title' : 'Get election News',
+                        "webview_height_ratio": "tall"
                     }
                     ,{
                         'type' : 'postback',
                         'payload' : 'levels',
-                        'title' : OP5
-                    }  
+                        'title' : 'Choose an Election Level'
+                    },
                 
                 ]},
                 {
-            'title' : TXT5,
+            'title' : 'Goverment Review',
             'image_url' : 'https://farm5.staticflickr.com/4221/34872757372_26a343544c_o_d.jpg',
-            'subtitle': TXT6,
+            'subtitle': 'Get information about your county administration, or take a survey about them',
                 'buttons' : [
                     {
                         'type' : 'postback',
                         'payload' : 'survey',
-                        'title' : OP6
+                        'title' : 'Review your county administration'
                     },
                     {
                         'type' : 'postback',
                         'payload' : 'contact',
-                        'title' : OP7
+                        'title' : 'Contact your county administration'
                     }              
                 
                 ]}
@@ -762,7 +784,7 @@ def WebView(RecipientID, Text, URL, OP1):
                         'url' : URL,
                         'title' : OP1,
                         "webview_height_ratio": "tall",
-                        "messenger_extensions": true  
+                        "messenger_extensions": True  
                     }]
                 }
             }
@@ -860,8 +882,26 @@ def OneWeek():
 def TwoDays():
     return True
 
+def Candidates(Level):
+    candidate = '\n'.join([str(cand) for cand in Level])
+    return candidate
+
+
 
 
 if __name__ == '__main__':
     #sched.start()
     app.run(debug = True)
+
+
+g_nairobi = ['Evans Kidero - CORD-ODM', 'Mike Mbuvi Sonko - Jubilee']
+g_evans_info = '''Evans Odhiambo Kidero is a Kenyan politician and current Governor of Nairobi County. 
+He served as CEO of Mumias Sugar Company for 8 years, resigning in 2012 to join elective politics. 
+Kidero was elected as the first governor of Nairobi County in the Nairobi gubernatorial elections of 2013 on an ODM ticket. 
+Dr. Kidero is married to Susan Mboya, daughter of the late Kenyan politician, Tom Mboya, and together they have 3 children.'''
+
+g_mike_info = '''Mbuvi Gidion Kioko Mike Sonko  commonly known as Mike Sonko is a Kenyan politician who currently serves as Senator of Nairobi. 
+Sonko is the immediate former Member of Parliament for Makadara Constituency, Kenya, a position he was elected to on September 20, 2010 in a by-election. 
+Born in Mombasa ,Mbuvi became the First Senator of Nairobi.
+His style of leadership has been described as different and has earned him titles like, mtu wa watu (A man of the people).
+'''
