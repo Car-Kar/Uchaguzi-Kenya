@@ -194,7 +194,7 @@ class UsingSQL:
     def __init__(self):
         self.DB = ''
 
-    def MongoConnection(self):
+    def SQLConnection(self):
         try:
             conn = pymysql.connect(user='b5ad6687738858',passwd='23bfecef',host = 'us-cdbr-iron-east-03.cleardb.net', database='heroku_611862edb2b2330')
             self.curs = conn.cursor()
@@ -211,11 +211,31 @@ class UsingSQL:
         print (result)
         #return result
 
+    def president_bio(value):
+        curs.execute("""SELECT running_mate,political_bio FROM presidential_candidates WHERE UPPER(name) Like  UPPER('%s') """ % (value))
+        result = curs.fetchall()
+        #print(result)
+        return result
+
+    def governor_bio(value):
+        curs.execute("""SELECT running_mate,political_bio FROM governor_candidates WHERE UPPER(name) Like  UPPER('%s') """ % (value))
+        result= curs.fetchall()
+        #print(str(result))
+        return result
+
+    def governors(value):
+        curs.execute("""SELECT name, political_party FROM governor_candidates WHERE UPPER(county) Like  UPPER('%s') """ % (value))
+        result = curs.fetchall()
+        #print(str(result))
+        return result
+
+
 
 
 
 
 MDB = UsingMongo()
+SQL = UsingSQL()
 
 options = ['pres', 'gov', 'sen', 'wom']
 VotingInformation = {'image' : 'https://media.giphy.com/media/3o6ZtkFObzcJiaMOFG/giphy.gif', 'image' : 'https://media.giphy.com/media/26vUCOMzBiBZ0qW1a/giphy.gif', 
@@ -234,7 +254,7 @@ def verification():
 @app.route('/', methods=['POST'])
 def StartMessaging():
     try:
-
+        InfoDB = SQL.SQLConnection()
         db = MDB.MongoConnection(uri)
         messages = request.get_json()
         print(messages)
@@ -891,11 +911,6 @@ def Candidates(Level):
     candidate = '\n'.join([str(cand) for cand in Level])
     return candidate
 
-def all_presidential_candidates():
-    curs.execute("""SELECT name, political_party FROM presidential_candidates""")
-    result = curs.fetchall()
-    print (result)
-    #return result
 
 
 if __name__ == '__main__':
