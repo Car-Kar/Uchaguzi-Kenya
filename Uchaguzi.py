@@ -905,7 +905,7 @@ def UsingWit(TEXT):
 
     try:
         entity = list(response['entities'])[0]
-        if entity == 'name':
+        if entity == 'names':
             value = response['entities'][entity][0]['value']
             return value
         else:
