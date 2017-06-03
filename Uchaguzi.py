@@ -903,6 +903,8 @@ def TwoDays():
 def Candidates(Level):
     candidate = '\n'.join([str(cand) for cand in Level])
     candidate = candidate.replace('(', ' ')
+    candidate = candidate.replace(')', ' ')
+    candidate = candidate.replace(',', '-')
     return candidate
 
 def CheckListLength(text):
