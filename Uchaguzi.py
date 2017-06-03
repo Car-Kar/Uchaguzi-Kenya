@@ -292,7 +292,7 @@ def StartMessaging():
                     cs = SQL.all_presidential_names()
                     if msg.get('message'):
                         #matching = [s for s in cs if str(ResponseStack.pop()) in s]
-                        print(matching)
+                        #print(matching)
                         if 'start' in UserSays.lower() or 'hey' in UserSays.lower() or 'hi' in UserSays.lower() or 'hello' in UserSays.lower():
                             ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
                         if Kiswahili == True and 'swahili' in UserSays.lower():
