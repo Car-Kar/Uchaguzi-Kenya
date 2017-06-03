@@ -272,7 +272,6 @@ def StartMessaging():
                     response = None
                     UserSays = ReturnType(msg)
                     value = UsingWit(UserSays)
-                    print(UserSays)
                     surveying = False
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
                     #News = MDB.NewsSubscribers(SenderID, UserSays)
@@ -280,7 +279,7 @@ def StartMessaging():
                     ResponseStack.append(value)
                     print(ResponseStack)
                     race = MDB.PresidentialRace(UserSays)
-                    if Kiswahili is not True and ResponseStack.pop() in SQL.all_presidential_names():
+                    if Kiswahili is not True and ResponseStack.pop().lower() in SQL.all_presidential_names().lower():
                             print('Fuck yes')
                     if msg.get('message'):
                         if 'start' in UserSays.lower() or 'hey' in UserSays.lower() or 'hi' in UserSays.lower() or 'hello' in UserSays.lower():
@@ -893,15 +892,13 @@ def UsingWit(TEXT):
 
     try:
         entity = list(response['entities'])[0]
-        value = response['entities'][entity][0]['value']
         if entity == 'name':
+            value = response['entities'][entity][0]['value']
             return value
         else:
             pass
     except Exception as e:
         raise e
-
-    return (entity, value)
 
 #def Search(url):
 
