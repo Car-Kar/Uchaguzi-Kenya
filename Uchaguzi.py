@@ -342,6 +342,9 @@ def StartMessaging():
 
                         if Kiswahili is not True and 'home' in UserSays.lower():
                             GenericTemplateOptions(SenderID)
+
+                        if 'from what' in UserSays.lower():
+                            print('Fuck you facebook')
             
 
                         elif 'evans' in UserSays.lower() or 'kidero' in UserSays.lower():
