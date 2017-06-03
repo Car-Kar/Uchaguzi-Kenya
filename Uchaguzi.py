@@ -212,7 +212,8 @@ class UsingSQL:
 
     def all_presidential_names(self):
         self.curs.execute("""SELECT name FROM presidential_candidates""")
-        result = list(self.curs.fetchall())
+        results = list(self.curs.fetchall())
+        result = '\n'.join([str(cand) for cand in results])
         result = result.replace('(', ' ')
         result = result.replace(')', ' ')
         result = result.replace("'", ' ')
