@@ -406,8 +406,8 @@ def StartMessaging():
 
                         elif Kiswahili is not True and UserSays == 'pres':
                             candidates = SQL.all_presidential_candidates()
-                            names = Candidates(candidates)
-                            names = CheckListLength(names)
+                            names = CheckListLength(candidates)
+                            names = Candidates(names) 
                             print(names)
                             response = 'The governor candidates are: \n' + str(names[0:])
                             SendMessage(SenderID, response)
