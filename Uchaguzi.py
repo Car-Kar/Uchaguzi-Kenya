@@ -101,8 +101,6 @@ KiswahiliHello = 'Jambo! '
 Options = ['governor', 'senator', 'women representative', 'members of parliament']
 Kiswahili = False
 uri = 'mongodb://MC:se*8DGs6t8F*39*k@ds149491.mlab.com:49491/uchaguzike'
-rw = False
-rd = False
 
 
 class UsingMongo:
@@ -216,26 +214,7 @@ def verification():
 @app.route('/', methods=['POST'])
 def StartMessaging():
     try:
-<<<<<<< HEAD
-       
- """      import pymysql.cursors
-
-# Connect to the database
-connection = pymysql.connect(host='us-cdbr-iron-east-03.cleardb.net', user='b5ad6687738858', password='23bfecef', db='heroku_611862edb2b2330', charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
-try:
-with connection.cursor() as cursor:
-        # Read a single record
-        sql = "SELECT `u_id`, `name` FROM `presidential_candidates` WHERE `u_id`=1"
-        cursor.execute(sql, ('webmaster@python.org',))
-        result = cursor.fetchone()
-        print(result)
-finally:
-    connection.close()
-    
-"""
-=======
->>>>>>> ffe44bc57d8c343ac32f394c163036e60b8e153b
-        db = MDB.MongoConnection(uri)
+       db = MDB.MongoConnection(uri)
         messages = request.get_json()
         print(messages)
         if messages['object'] == 'page':
