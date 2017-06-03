@@ -906,7 +906,7 @@ def Candidates(Level):
 
 def CheckListLength(text):
     if len(text) > 7:
-        names = len(text)/2
+        names = len(text)//2
         return text[:names], text[names:]
     else:
         pass
