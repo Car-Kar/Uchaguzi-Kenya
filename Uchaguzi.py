@@ -408,6 +408,7 @@ def StartMessaging():
                             candidates = SQL.all_presidential_candidates()
                             names = Candidates(candidates)
                             names = CheckListLength(names)
+                            print(names)
                             response = 'The governor candidates are: \n' + str(names[0:])
                             SendMessage(SenderID, response)
                             SendMessage(SenderID, CandidateMoreInfo)
@@ -905,7 +906,10 @@ def CheckListLength(text):
     pl = [text[i:i + l] for i in range(0, len(text), l)]
     return pl
 
-
+def CheckTextLength(text):
+    l = 640
+    pl = [text[i:i + l] for i in range(0, len(text), l)]
+    return pl
 
 if __name__ == '__main__':
     #sched.start()
