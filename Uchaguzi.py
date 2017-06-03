@@ -213,6 +213,10 @@ class UsingSQL:
     def all_presidential_names(self):
         self.curs.execute("""SELECT name FROM presidential_candidates""")
         result = list(self.curs.fetchall())
+        result = result.replace('(', ' ')
+        result = result.replace(')', ' ')
+        result = result.replace("'", ' ')
+        result = result.replace(',', '-')
         print(result)
         return result
 
@@ -279,7 +283,9 @@ def StartMessaging():
                     ResponseStack.append(value)
                     print(ResponseStack)
                     race = MDB.PresidentialRace(UserSays)
-                    if Kiswahili is not True and ResponseStack.pop().lower() in SQL.all_presidential_names().lower():
+                    cs = SQL.all_presidential_names()
+
+                    if Kiswahili is not True and ResponseStack.pop().lower() in :
                             print('Fuck yes')
                     if msg.get('message'):
                         if 'start' in UserSays.lower() or 'hey' in UserSays.lower() or 'hi' in UserSays.lower() or 'hello' in UserSays.lower():
@@ -914,10 +920,6 @@ def TwoDays():
 
 def Candidates(Level):
     candidate = '\n'.join([str(cand) for cand in Level])
-    candidate = candidate.replace('(', ' ')
-    candidate = candidate.replace(')', ' ')
-    candidate = candidate.replace("'", ' ')
-    candidate = candidate.replace(',', '-')
     return candidate
 
 def CheckListLength(text):
