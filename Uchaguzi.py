@@ -406,11 +406,14 @@ def StartMessaging():
 
                         elif Kiswahili is not True and UserSays == 'pres':
                             candidates = SQL.all_presidential_candidates()
-                            names = CheckListLength(candidates)
-                            names = Candidates(names) 
-                            print(names)
-                            response = 'The governor candidates are: \n' + str(names[0:])
+                            first_names, second_names = CheckListLength(candidates)
+                            first_names = Candidates(first_names)
+                            second_names = Candidates(second_names) 
+                            #print(names)
+                            response = 'The governor candidates are: \n' + str(first_names[0:])
+
                             SendMessage(SenderID, response)
+                            SendMessage(SenderID, second_names)
                             SendMessage(SenderID, CandidateMoreInfo)
 
 
@@ -903,9 +906,8 @@ def Candidates(Level):
 
 def CheckListLength(text):
     if len(text) > 7:
-        l = 7
-        pl = [text[i:i + l] for i in range(0, len(text), l)]
-        return pl
+        names = len(text)/2
+        return text[:names], text[names:]
     else:
         pass
 
