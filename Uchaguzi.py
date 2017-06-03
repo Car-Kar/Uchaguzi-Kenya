@@ -190,6 +190,28 @@ class UsingMongo:
         else:
             pass
 
+class UsingSQL:
+    def __init__(self):
+        self.DB = ''
+
+    def MongoConnection(self):
+        try:
+            conn = pymysql.connect(user='b5ad6687738858',passwd='23bfecef',host = 'us-cdbr-iron-east-03.cleardb.net', database='heroku_611862edb2b2330')
+            self.curs = conn.cursor()
+            print("Connection to database successful!")
+            return self.curs
+        
+        except Exception as e:
+            raise e
+            print('Connection Unsuccessful!')
+
+    def all_presidential_candidates(self):
+        self.curs.execute("""SELECT name, political_party FROM presidential_candidates""")
+        result = self.curs.fetchall()
+        print (result)
+        #return result
+
+
 
 
 
@@ -212,12 +234,7 @@ def verification():
 @app.route('/', methods=['POST'])
 def StartMessaging():
     try:
-        conn = pymysql.connect(user='b5ad6687738858',
-            passwd='23bfecef',
-            host = 'us-cdbr-iron-east-03.cleardb.net',
-            database='heroku_611862edb2b2330')
-        curs = conn.cursor()
-        print(curs)
+
         db = MDB.MongoConnection(uri)
         messages = request.get_json()
         print(messages)
