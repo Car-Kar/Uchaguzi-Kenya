@@ -250,7 +250,7 @@ def StartMessaging():
                     print(UserSays)
                     surveying = False
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
-                    News = MDB.NewsSubscribers(SenderID, UserSays)
+                    #News = MDB.NewsSubscribers(SenderID, UserSays)
                     print(Kiswahili)
                     race = MDB.PresidentialRace(UserSays)
                     if msg.get('message'):
