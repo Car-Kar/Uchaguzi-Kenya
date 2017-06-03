@@ -210,6 +210,11 @@ class UsingSQL:
         result = list(self.curs.fetchall())
         return result
 
+    def all_presidential_names(self):
+        self.curs.execute("""SELECT name FROM presidential_candidates""")
+        result = list(self.curs.fetchall())
+        return result
+
     def president_bio(value):
         curs.execute("""SELECT running_mate,political_bio FROM presidential_candidates WHERE UPPER(name) Like  UPPER('%s') """ % (value))
         result = curs.fetchall()
@@ -262,18 +267,18 @@ def StartMessaging():
                 for msg in message['messaging']:
                     print(msg)
                     SenderID = msg['sender']['id']
-                    #entity, value = UsingWit(MessageText)
                     FindingUser(SenderID)
                     response = None
                     UserSays = ReturnType(msg)
+                    value = UsingWit(UserSays)
                     print(UserSays)
                     surveying = False
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
                     #News = MDB.NewsSubscribers(SenderID, UserSays)
                     print(Kiswahili)
-                    ResponseStack.append(UserSays)
+                    ResponseStack.append(value)
                     race = MDB.PresidentialRace(UserSays)
-                    if Kiswahili is not True and ResponseStack.pop() == 'gov':
+                    if Kiswahili is not True and ResponseStack.pop() in SQL.all_presidential_names():
                             print('Fuck yes')
                     if msg.get('message'):
                         if 'start' in UserSays.lower() or 'hey' in UserSays.lower() or 'hi' in UserSays.lower() or 'hello' in UserSays.lower():
@@ -852,19 +857,6 @@ def FindingUser(ID):
     print(r)
     return r
 
-def UsingWit(TEXT):
-    wit_response = client.message(TEXT)
-    entity = None
-    value = None
-
-    try:
-        entity = list(response['entities'])[0]
-        value = response['entities'][entity][0]['value']
-    except:
-        pass
-
-    return (entity, value)
-
 def SendMessage(RecipientID, Text):
     print(('Sending message to {0}').format(RecipientID))
 
@@ -890,6 +882,25 @@ def FindingUser(ID):
     r = requests.post('https://graph.facebook.com/v2.9/' + ID + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + PAT, headers=headers)
     print(r)
     return r
+
+
+def UsingWit(TEXT):
+    wit_response = client.message(TEXT)
+    entity = None
+    value = None
+
+    try:
+        entity = list(response['entities'])[0]
+        value = response['entities'][entity][0]['value']
+        if entity == 'name':
+            return value
+        else:
+            pass
+    except:
+        except Exception as e:
+        raise e
+
+    return (entity, value)
 
 #def Search(url):
 
