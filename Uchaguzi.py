@@ -406,7 +406,8 @@ def StartMessaging():
 
                         elif Kiswahili is not True and UserSays == 'pres':
                             candidates = SQL.all_presidential_candidates()
-                            names = Candidates(candidates) 
+                            names = Candidates(candidates)
+                            names = CheckListLength(names)
                             response = 'The governor candidates are: \n' + str(names[0:])
                             SendMessage(SenderID, response)
                             SendMessage(SenderID, CandidateMoreInfo)
@@ -492,10 +493,6 @@ def Home(RecipientID, TXT, op1):
     if r.status_code != 200:
         print(r.text)
 
-
-
-
-
 def ReusableOptions(RecipientID, Text, op1, op2):
     print(('Sending message to {0}').format(RecipientID))
 
@@ -566,7 +563,6 @@ def UsingOptions(RecipientID, Text, O1, O2, O3, O4):
     if r.status_code != 200:
         print(r.text)
 
-
 def Options(RecipientID, Text, OP1, OP2):
     print(('Sending  options to {0}').format(RecipientID))
     headers = {
@@ -600,7 +596,6 @@ def Options(RecipientID, Text, OP1, OP2):
     r = requests.post('https://graph.facebook.com/v2.9/me/messages?access_token=' + PAT, headers = headers, data = data)
     if r.status_code != 200:
         print(r.text)
-
 
 def GenericTemplateOptions(RecipientID):
     print(('Sending  options to {0}').format(RecipientID))
@@ -755,10 +750,6 @@ def LevelTemplateOptions(RecipientID, TXT1, TXT2, TXT3, TXT4, TXT5, TXT6, TXT7, 
     if r.status_code != 200:
         print(r.text)
 
-
-
-
-
 def TakeSurvey(RecipientID, Text, URL, OP1):
     print(('Sending message to {0}').format(RecipientID))
 
@@ -823,7 +814,6 @@ def WebView(RecipientID, Text, URL, OP1):
     if r.status_code != 200:
         print(r.text)
 
-
 def SendAttachment(RecipientID, Type, Link):
     print(('Sending message to {0}').format(RecipientID))
 
@@ -847,8 +837,6 @@ def SendAttachment(RecipientID, Type, Link):
     if r.status_code != 200:
         print(r.text)
 
-
-
 def FindingUser(ID):
     headers = {
     'Content-Type' : 'application/json'
@@ -870,8 +858,6 @@ def UsingWit(TEXT):
 
     return (entity, value)
 
-
-
 def SendMessage(RecipientID, Text):
     print(('Sending message to {0}').format(RecipientID))
 
@@ -889,7 +875,6 @@ def SendMessage(RecipientID, Text):
     r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
     if r.status_code != 200:
         print(r.text)
-
 
 def FindingUser(ID):
     headers = {
@@ -914,6 +899,11 @@ def TwoDays():
 def Candidates(Level):
     candidate = '\n'.join([str(cand) for cand in Level])
     return candidate
+
+def CheckListLength(text):
+    l = 10
+    pl = [text[i:i + l] for i in range(0, len(text), l)]
+    return pl
 
 
 
