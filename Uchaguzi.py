@@ -208,6 +208,12 @@ class UsingSQL:
     def all_presidential_candidates(self):
         self.curs.execute("""SELECT name, political_party FROM presidential_candidates""")
         result = list(self.curs.fetchall())
+        results = list(self.curs.fetchall())
+        result = '\n'.join([str(cand) for cand in results])
+        result = result.replace('(', ' ')
+        result = result.replace(')', ' ')
+        result = result.replace("'", ' ')
+        result = result.replace(',', '-')
         return result
 
     def all_presidential_names(self):
@@ -217,7 +223,6 @@ class UsingSQL:
         result = result.replace('(', ' ')
         result = result.replace(')', ' ')
         result = result.replace("'", ' ')
-        result = result.replace(',', '-')
         print(result)
         return result
 
@@ -285,9 +290,9 @@ def StartMessaging():
                     print(ResponseStack)
                     race = MDB.PresidentialRace(UserSays)
                     cs = SQL.all_presidential_names()
-                    matching = [s for s in cs if str(ResponseStack.pop()) in s]
                     print(matching)
                     if msg.get('message'):
+                         matching = [s for s in cs if str(ResponseStack.pop()) in s]
                         if 'start' in UserSays.lower() or 'hey' in UserSays.lower() or 'hi' in UserSays.lower() or 'hello' in UserSays.lower():
                             ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
                         if Kiswahili == True and 'swahili' in UserSays.lower():
@@ -422,8 +427,6 @@ def StartMessaging():
                         elif Kiswahili is not True and UserSays == 'pres':
                             candidates = SQL.all_presidential_candidates()
                             first_names, second_names = CheckListLength(candidates)
-                            first_names = Candidates(first_names)
-                            second_names = Candidates(second_names) 
                             response = 'The governor candidates are: \n' + str(first_names[0:])
                             SendMessage(SenderID, response)
                             SendMessage(SenderID, second_names)
