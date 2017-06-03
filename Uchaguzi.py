@@ -885,7 +885,7 @@ def FindingUser(ID):
 
 
 def UsingWit(TEXT):
-    wit_response = client.message(TEXT)
+    response = client.message(TEXT)
     entity = None
     value = None
 
@@ -917,6 +917,7 @@ def Candidates(Level):
     candidate = '\n'.join([str(cand) for cand in Level])
     candidate = candidate.replace('(', ' ')
     candidate = candidate.replace(')', ' ')
+    candidate = candidate.replace("'", ' ')
     candidate = candidate.replace(',', '-')
     return candidate
 
