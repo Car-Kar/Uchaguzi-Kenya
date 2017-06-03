@@ -409,12 +409,13 @@ def StartMessaging():
                             first_names, second_names = CheckListLength(candidates)
                             first_names = Candidates(first_names)
                             second_names = Candidates(second_names) 
-                            #print(names)
                             response = 'The governor candidates are: \n' + str(first_names[0:])
-
                             SendMessage(SenderID, response)
                             SendMessage(SenderID, second_names)
                             SendMessage(SenderID, CandidateMoreInfo)
+
+                        elif Kiswahili is not True and ResponseStack.pop() == 'gov':
+                            print('Fuck yes')
 
 
 
