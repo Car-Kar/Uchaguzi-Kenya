@@ -271,7 +271,10 @@ def StartMessaging():
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
                     #News = MDB.NewsSubscribers(SenderID, UserSays)
                     print(Kiswahili)
+                    ResponseStack.append(UserSays)
                     race = MDB.PresidentialRace(UserSays)
+                    if Kiswahili is not True and ResponseStack.pop() == 'gov':
+                            print('Fuck yes')
                     if msg.get('message'):
                         if 'start' in UserSays.lower() or 'hey' in UserSays.lower() or 'hi' in UserSays.lower() or 'hello' in UserSays.lower():
                             ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
@@ -414,8 +417,7 @@ def StartMessaging():
                             SendMessage(SenderID, second_names)
                             SendMessage(SenderID, CandidateMoreInfo)
 
-                        elif Kiswahili is not True and ResponseStack.pop() == 'gov':
-                            print('Fuck yes')
+
 
 
 
