@@ -896,8 +896,7 @@ def UsingWit(TEXT):
             return value
         else:
             pass
-    except:
-        except Exception as e:
+    except Exception as e:
         raise e
 
     return (entity, value)
