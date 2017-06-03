@@ -7,6 +7,7 @@ from wit import Wit
 import datetime
 from datetime import date
 import os
+import sys
 from datetime import date
 #from apscheduler.scheduler import Scheduler
 import re
@@ -217,7 +218,7 @@ def StartMessaging():
     try:
 <<<<<<< HEAD
        
-       import pymysql.cursors
+ """      import pymysql.cursors
 
 # Connect to the database
 connection = pymysql.connect(host='us-cdbr-iron-east-03.cleardb.net', user='b5ad6687738858', password='23bfecef', db='heroku_611862edb2b2330', charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
@@ -231,7 +232,7 @@ with connection.cursor() as cursor:
 finally:
     connection.close()
     
-
+"""
 =======
 >>>>>>> ffe44bc57d8c343ac32f394c163036e60b8e153b
         db = MDB.MongoConnection(uri)
