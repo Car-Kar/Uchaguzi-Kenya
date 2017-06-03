@@ -207,7 +207,7 @@ class UsingSQL:
 
     def all_presidential_candidates(self):
         self.curs.execute("""SELECT name, political_party FROM presidential_candidates""")
-        result = self.curs.fetchall()
+        result = list(self.curs.fetchall())
         print (result)
         #return result
 
