@@ -406,7 +406,7 @@ def StartMessaging():
 
 
                         elif Kiswahili is not True and UserSays == 'pres':
-                            response = all_presidential_candidates()
+                            response = InfoDB.all_presidential_candidates()
 
 
 
