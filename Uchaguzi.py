@@ -902,9 +902,12 @@ def Candidates(Level):
     return candidate
 
 def CheckListLength(text):
-    l = 10
-    pl = [text[i:i + l] for i in range(0, len(text), l)]
-    return pl
+    if len(text) > 7:
+        l = 7
+        pl = [text[i:i + l] for i in range(0, len(text), l)]
+        return pl
+    else:
+        pass
 
 def CheckTextLength(text):
     l = 640
