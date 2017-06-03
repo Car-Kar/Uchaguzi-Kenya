@@ -278,7 +278,7 @@ def StartMessaging():
                     print(Kiswahili)
                     ResponseStack.append(value)
                     race = MDB.PresidentialRace(UserSays)
-                    if Kiswahili is not True and ResponseStack.pop() in SQL.all_presidential_names():
+                    if Kiswahili is not True and ResponseStack.pop().lower() in SQL.all_presidential_names().lower():
                             print('Fuck yes')
                     if msg.get('message'):
                         if 'start' in UserSays.lower() or 'hey' in UserSays.lower() or 'hi' in UserSays.lower() or 'hello' in UserSays.lower():
