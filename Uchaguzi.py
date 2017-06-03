@@ -154,7 +154,7 @@ class UsingMongo:
                 time = collection.insert_one({'fromuser' : FromUser}, {'time': 'day'})
                 return time
 
-    def NewsSubscribers(self, FromUser,  data):
+    '''def NewsSubscribers(self, FromUser,  data):
         collection = self.DB['newssubscribers']
         user =  collection.find_one({'fromuser': FromUser})
         if user is not None: 
@@ -176,7 +176,7 @@ class UsingMongo:
                 news = collection.insert_one({'fromuser' : FromUser}, {'news': 'women representative'})
                 return news
 
-
+'''
 
     def PresidentialRace(self, pres):
         collection = self.DB['presidentialrace']
