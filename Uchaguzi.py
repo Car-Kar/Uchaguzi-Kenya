@@ -12,9 +12,7 @@ from datetime import date
 #from apscheduler.scheduler import Scheduler
 import re
 import pymysql
-
-
-
+import sys
 
 app = Flask(__name__)
 
@@ -214,7 +212,10 @@ def verification():
 @app.route('/', methods=['POST'])
 def StartMessaging():
     try:
-       db = MDB.MongoConnection(uri)
+    	conn = pymysql.connect(user='b5ad6687738858',passwd='23bfecef',host = 'us-cdbr-iron-east-03.cleardb.net',database='heroku_611862edb2b2330')
+    	curs = conn.cursor()
+    	print(curs)
+    	db = MDB.MongoConnection(uri)
         messages = request.get_json()
         print(messages)
         if messages['object'] == 'page':
@@ -362,6 +363,10 @@ def StartMessaging():
 
                         elif Kiswahili is not True and UserSays == 'reminder':
                             ReusableOptions(SenderID, 'When would you like to get a reminder notification for the elections?', 'A Week Before', 'Two Days Before')
+
+
+                        elif Kiswahili is not True and UserSays == 'pres':
+                        	response = all_presidential_candidates()
 
 
 
@@ -866,7 +871,11 @@ def Candidates(Level):
     candidate = '\n'.join([str(cand) for cand in Level])
     return candidate
 
-
+def all_presidential_candidates():
+	curs.execute("""SELECT name, political_party FROM presidential_candidates""")
+	result = curs.fetchall()
+	print (result)
+	#return result
 
 
 if __name__ == '__main__':
