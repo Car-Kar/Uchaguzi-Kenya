@@ -273,7 +273,7 @@ def StartMessaging():
                     print(Kiswahili)
                     race = MDB.PresidentialRace(UserSays)
                     if msg.get('message'):
-                        if 'start' in UserSays.lower():
+                        if 'start' in UserSays.lower() or 'hey' in UserSays.lower() or 'hi' in UserSays.lower() or 'hello' in UserSays.lower():
                             ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
                         if Kiswahili == True and 'swahili' in UserSays.lower():
                             SendMessage(SenderID, KiswahiliIntroduction)
@@ -902,6 +902,7 @@ def TwoDays():
 
 def Candidates(Level):
     candidate = '\n'.join([str(cand) for cand in Level])
+    candidate = candidate.replace('(', ' ')
     return candidate
 
 def CheckListLength(text):
