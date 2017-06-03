@@ -208,8 +208,7 @@ class UsingSQL:
     def all_presidential_candidates(self):
         self.curs.execute("""SELECT name, political_party FROM presidential_candidates""")
         result = list(self.curs.fetchall())
-        print (result)
-        #return result
+        return result
 
     def president_bio(value):
         curs.execute("""SELECT running_mate,political_bio FROM presidential_candidates WHERE UPPER(name) Like  UPPER('%s') """ % (value))
@@ -406,7 +405,12 @@ def StartMessaging():
 
 
                         elif Kiswahili is not True and UserSays == 'pres':
-                            response = SQL.all_presidential_candidates()
+                            candidates = SQL.all_presidential_candidates()
+                            names = Candidates(candidates) 
+                            response = 'The governor candidates are: \n' + str(names[0:])
+                            SendMessage(SenderID, response)
+                            SendMessage(SenderID, CandidateMoreInfo)
+
 
 
 
