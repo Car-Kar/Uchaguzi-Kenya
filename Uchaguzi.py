@@ -257,7 +257,7 @@ class UsingSQL:
         return candidates
 
     def all_rep_names(self):
-        self.curs.execute("""SELECT name FROM women_rep""")
+        self.curs.execute("""SELECT name FROM women_reps""")
         results = self.curs.fetchall()
         candidates = []
         for row in results:
