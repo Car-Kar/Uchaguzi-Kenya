@@ -504,7 +504,7 @@ def ReturnType(msg):
 def FindingCandidate(name):
     candidates = SQL.all_presidential_names()
     result = [c for c in candidates if name.lower() in c.lower()]
-    result = str(result)
+    result = ' '.join(result)
     return result.lower()
 
 def Home(RecipientID, TXT, op1):
