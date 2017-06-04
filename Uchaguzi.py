@@ -505,8 +505,8 @@ def StartMessaging():
                                     Home(SenderID, 'Do you want to know about another candidate, or go back to home?', 'Home')
 
 
-                        elif Kiswahili is not True and 'nairobi' == UserSays.lower() and 'gov' == level:
-                            query = '%nairobi%'
+                        elif Kiswahili is not True and 'gov' == level:
+                            query = '%' + county + '%'
                             candidates = SQL.governors(query)
                             response = 'The gubernatorial candidates for Nairobi are: \n' + str(candidates[0:])
                             SendMessage(SenderID, response)
@@ -564,6 +564,20 @@ def StartMessaging():
                             query = '%mombasa%'
                             candidates = SQL.governors(query)
                             response = 'The gubernatorial candidates in Mombasa are: \n' + str(candidates[0:])
+                            SendMessage(SenderID, response)
+                            SendMessage(SenderID, CandidateMoreInfo)
+
+                        elif Kiswahili is not True and 'narok' == UserSays.lower() and 'gov' == level:
+                            query = '%narok%'
+                            candidates = SQL.governors(query)
+                            response = 'The gubernatorial candidates in Narok are: \n' + str(candidates[0:])
+                            SendMessage(SenderID, response)
+                            SendMessage(SenderID, CandidateMoreInfo)
+
+                        elif Kiswahili is not True and 'narok' == UserSays.lower() and 'gov' == level:
+                            query = '%narok%'
+                            candidates = SQL.governors(query)
+                            response = 'The gubernatorial candidates in Narok are: \n' + str(candidates[0:])
                             SendMessage(SenderID, response)
                             SendMessage(SenderID, CandidateMoreInfo)
 
