@@ -463,6 +463,7 @@ def StartMessaging():
                             county = '%' + county + '%'
                             img, bio = SQL.senators_bio(query, county)
                             bio = str(bio)
+                            print(bio)
                             SendAttachment(SenderID, 'image', img)
                             if len(bio) > 640:
                                 bio, bios = CheckTextLength(bio)
