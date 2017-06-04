@@ -211,7 +211,6 @@ class UsingSQL:
         result = result.replace(')', ' ')
         result = result.replace("'", ' ')
         result = result.replace(',', '-')
-        print(result)
         return result
 
     def all_presidential_names(self):
@@ -252,7 +251,6 @@ class UsingSQL:
         result = result.replace(')', ' ')
         result = result.replace("'", ' ')
         result = result.replace(',', '-')
-        print(result)
         return result
 
 
@@ -375,7 +373,7 @@ def StartMessaging():
                         elif 'bye' in UserSays.lower():
                             SendMessage(SenderID, Goodbye)
 
-                        elif UserSays.lower() in cands.lower():
+                        elif level == 'pres' and UserSays.lower() in cands.lower():
                             print('Yes')
                             query = '%' + UserSays.lower() + '%'
                             run, bio = SQL.president_bio(query)
@@ -398,6 +396,31 @@ def StartMessaging():
                                     SendMessage(SenderID, bios)
                                 else:
                                     SendMessage(SenderID, bio)
+
+                        elif level == 'gov' and UserSays.lower() in cands.lower():
+                            print('Yes')
+                            query = '%' + UserSays.lower() + '%'
+                            run, bio = SQL.governor_bio(query)
+                            bio = str(bio)
+                            if len(str(run)) < 1:
+                                if len(bio) > 640:
+                                    bio, bios = CheckTextLength(bio)
+                                    response = bio + '-'
+                                    SendMessage(SenderID, response)
+                                    SendMessage(SenderID, bios)
+                                else:
+                                    SendMessage(SenderID, bio)
+                            else:
+                                running_mate = 'His running mate is ' + str(run)
+                                SendMessage(SenderID, running_mate)
+                                if len(bio) > 640:
+                                    bio, bios = CheckTextLength(bio)
+                                    response = bio + '-'
+                                    SendMessage(SenderID, response)
+                                    SendMessage(SenderID, bios)
+                                else:
+                                    SendMessage(SenderID, bio)
+
 
                         elif Kiswahili is not True and 'nairobi' == UserSays.lower() and 'gov' == level:
                             query = '%nairobi%'
@@ -601,6 +624,18 @@ def FindingCandidate(level, name):
         result = [c for c in candidates if name.lower() in c.lower()]
         result = ' '.join(result)
         return result.lower()
+
+    if level == 'gov':
+        candidates = SQL.all_governor_names()
+        result = [c for c in candidates if name.lower() in c.lower()]
+        result = ' '.join(result)
+        return result.lower()
+
+    if level == 'senate':
+        pass
+
+    if level == 'womrep':
+        pass
 
 def Home(RecipientID, TXT, op1):
     headers = {
