@@ -149,12 +149,14 @@ class UsingMongo:
                 level = data.lower()
                 return level
             else:
-                pass
+                county = user['county']
+                return county
         else:
-                level = user['level']
+            if data in options:
+                collection.insert({'fromuser' : FromUser}, {'level': data})
+                level = data.lower()
                 return level
-            else:
-                pass
+            
             
     def IncomingCounties(self, FromUser, data):
         collection = self.DB['counties']
@@ -166,14 +168,14 @@ class UsingMongo:
                 county = data.lower()
                 return county
             else:
-                pass
+                county = user['county']
+                return county
         else:
             if data in options:
                 collection.insert({'fromuser' : FromUser}, {'county': data})
                 county = data.lower()
                 return county
-            else:
-                pass
+            
             
 
 
