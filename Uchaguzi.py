@@ -213,7 +213,7 @@ class UsingSQL:
     def SQLConnection(self):
         try:
             self.conn = pymysql.connect(user='b5ad6687738858',passwd='23bfecef',host = 'us-cdbr-iron-east-03.cleardb.net', database='heroku_611862edb2b2330')
-            self.curs = conn.cursor()
+            self.curs = self.conn.cursor()
             print("Connection to database successful!")
             return self.curs
         
