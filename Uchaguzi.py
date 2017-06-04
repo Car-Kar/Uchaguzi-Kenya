@@ -267,7 +267,7 @@ class UsingSQL:
 MDB = UsingMongo()
 SQL = UsingSQL()
 
-options = ['gov', 'sen', 'wom']
+options = ['gov', 'senate', 'womrep']
 VotingInformation = {'image' : 'https://media.giphy.com/media/3o6ZtkFObzcJiaMOFG/giphy.gif', 'image' : 'https://media.giphy.com/media/26vUCOMzBiBZ0qW1a/giphy.gif', 
 'video' : 'https://www.youtube.com/watch?v=nQbztjkag1A&feature=youtu.be&t=1',  'image' : 'https://farm5.staticflickr.com/4267/34872767952_f36c5a4dda_o_d.jpg'}
 
