@@ -353,7 +353,7 @@ def StartMessaging():
                             bio = str(bio)
                             SendMessage(SenderID, running_mate)
                             if len(bio) > 640:
-                                bio, bios = CheckListLength(bio)
+                                bio, bios = CheckTextLength(bio)
                                 response = bio + '-'
                                 SendMessage(SenderID, response)
                                 SendMessage(SenderId, bios)
@@ -945,7 +945,7 @@ def CheckTextLength(text):
     l = 640
     if len(text) > l:
         texts = len(text)//2
-        return text[:names], text[names:]
+        return text[:texts], text[texts:]
     else:
         pass
 
