@@ -412,13 +412,13 @@ def StartMessaging():
                                 else:
                                     SendMessage(SenderID, bio)
 
-                        elif Kiswahili is not True and 'nairobi' == county and 'gov' == levels :
+                        elif Kiswahili is not True and 'nairobi' == county and 'gov' == level:
                             query = '%nairobi%'
                             candidates = SQL.governors(query)
                             response = 'The gubernatorial candidates for Nairobi are: \n' + str(candidates[0:])
                             SendMessage(SenderID, response)
 
-                        elif Kiswahili is not True and 'nakuru' == county and 'gov' == levels:
+                        elif Kiswahili is not True and 'nakuru' == county and 'gov' == level:
                             query = '%nakuru%'
                             candidates = SQL.governors(query)
                             response = 'The gubernatorial candidates for Nakuru are: \n' + str(candidates[0:])
