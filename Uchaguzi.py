@@ -365,7 +365,8 @@ def StartMessaging():
                     surveying = False
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
                     level = MDB.IncomingLevels(SenderID, UserSays)
-                    county = MDB.IncomingCounties(SenderID, UserSays)
+                    counties = MDB.IncomingCounties(SenderID, UserSays)
+                    county = [c for c in Counties if UserSays.lower() in c.lower()]
                     print(county)
                     cands = FindingCandidate(level, UserSays)
                     print(cands)
