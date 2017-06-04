@@ -298,8 +298,8 @@ class UsingSQL:
         result = result.replace(',', '-')
         return result
 
-    def senators_bio(self, value):
-        self.curs.execute("""SELECT political_bio, image FROM senators WHERE UPPER(name) Like  UPPER('%s') """ % (value))
+    def senators_bio(self, value1, value2):
+        self.curs.execute("""SELECT political_bio, image FROM senators WHERE UPPER(name) Like  UPPER('%s')&& UPPER(county) Like UPPER('%s') """ % (value1,value2))
         result = self.curs.fetchall()
         for row in result:
             return row[0], row[1]
@@ -476,26 +476,16 @@ def StartMessaging():
                             print('Yes')
                             query = '%' + UserSays.lower() + '%'
                             county = '%' + county + '%'
-                            run, bio = SQL.governor_bio(query, county)
+                            img, bio = SQL.senators_bio(query, county)
                             bio = str(bio)
-                            if len(str(run)) < 1:
-                                if len(bio) > 640:
-                                    bio, bios = CheckTextLength(bio)
-                                    response = bio + '-'
-                                    SendMessage(SenderID, response)
-                                    SendMessage(SenderID, bios)
-                                else:
-                                    SendMessage(SenderID, bio)
+                            SendAttachment(SenderID, 'image', img)
+                            if len(bio) > 640:
+                                bio, bios = CheckTextLength(bio)
+                                response = bio + '-'
+                                SendMessage(SenderID, response)
+                                SendMessage(SenderID, bios)
                             else:
-                                running_mate = 'His running mate is ' + str(run)
-                                SendMessage(SenderID, running_mate)
-                                if len(bio) > 640:
-                                    bio, bios = CheckTextLength(bio)
-                                    response = bio + '-'
-                                    SendMessage(SenderID, response)
-                                    SendMessage(SenderID, bios)
-                                else:
-                                    SendMessage(SenderID, bio)
+                                SendMessage(SenderID, bio)
 
                         elif level == 'gov' and UserSays.lower() in cands.lower():
                             print('Yes')
