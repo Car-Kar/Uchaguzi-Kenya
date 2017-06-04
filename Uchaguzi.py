@@ -367,6 +367,7 @@ def StartMessaging():
                     level = MDB.IncomingLevels(SenderID, UserSays)
                     counties = MDB.IncomingCounties(SenderID, UserSays)
                     county = [c for c in Counties if UserSays.lower() in c.lower()]
+                    county = ' '.join(county)
                     print(county)
                     cands = FindingCandidate(level, UserSays)
                     print(cands)
@@ -495,10 +496,11 @@ def StartMessaging():
                                 else:
                                     SendMessage(SenderID, bio)
 
-                        elif level == 'gov' and UserSays.lower() in cands.lower() and county == 'kisumu':
+                        elif level == 'gov' and UserSays.lower() in cands.lower():
                             print('Yes')
                             query = '%' + UserSays.lower() + '%'
-                            run, bio = SQL.governor_bio(query, '%kisumu%')
+                            county = '%' + county + '%'
+                            run, bio = SQL.governor_bio(query, county)
                             bio = str(bio)
                             if len(str(run)) < 1:
                                 if len(bio) > 640:
