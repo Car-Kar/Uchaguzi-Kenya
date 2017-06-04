@@ -918,7 +918,7 @@ def UsingWit(TEXT):
         if entity == 'names':
             value = response['entities'][entity][0]['value']
             return value
-        elif entity = 'location':
+        elif entity == 'location':
             value = response['entities'][entity][0]['value']
             return value
         else:
