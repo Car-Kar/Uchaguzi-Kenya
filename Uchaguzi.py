@@ -597,7 +597,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                             SendMessage(SenderID, response)
                             SendMessage(SenderID, second_names)
                             SendMessage(SenderID, CandidateMoreInfo)
-                        elif Kiswahili is not True and 'vote for' in MessageText.lower():
+                        elif Kiswahili is not True and 'vote for' in UserSays.lower():
                             SendMessage(SenderID, 'If the elections happened tomorrow, which presidential candidate would you vote for?')
 
                     elif msg.get('postback'):  
