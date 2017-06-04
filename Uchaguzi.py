@@ -410,9 +410,7 @@ def StartMessaging():
                             response = '''Nitakutumia alani ya kukukumbusha siku ya uchaguzi.
                             Unataka alani ya siku gani?'''
                             ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
-                        if Kiswahili is not True and x == True:
-                            race = MDB.PresidentialRace(racer.capitalize())
-
+                        
                         
                         if Kiswahili is not True and 'see results' in UserSays.lower():
                             WebView(SenderID, 'https://uchaguzi.herokuapp.com/')
