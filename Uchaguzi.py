@@ -159,25 +159,7 @@ class UsingMongo:
                 return level
             
             
-    def IncomingCounties(self, FromUser, data):
-        collection = self.DB['counties']
-        print('Connected to counties collection!')
-        user =  collection.find_one({'fromuser': FromUser})
-        if user is not Nonedata in Counties:
-                collection.update_one({'fromuser' : FromUser}, {'$set': {'county': data}})
-                county = data.lower()
-                return county
-            else:
-                county = user['county']
-                return county
-        else:
-            if data in options:
-                collection.insert({'fromuser' : FromUser}, {'county': data})
-                county = data.lower()
-                return county
-            
-            
-
+    
 
     def Subscribers(self, FromUser,  data):
         collection = self.DB['reminders']
