@@ -226,19 +226,19 @@ class UsingSQL:
 
     def president_bio(self, value):
         self.curs.execute("""SELECT running_mate,political_bio FROM presidential_candidates WHERE UPPER(name) Like  UPPER('%s') """ % (value))
-        result = curs.fetchall()
+        result = self.curs.fetchall()
         print(result)
         #return result
 
     def governor_bio(value):
         self.curs.execute("""SELECT running_mate,political_bio FROM governor_candidates WHERE UPPER(name) Like  UPPER('%s') """ % (value))
-        result= curs.fetchall()
+        result= self.curs.fetchall()
         #print(str(result))
         return result
 
     def governors(value):
         self.curs.execute("""SELECT name, political_party FROM governor_candidates WHERE UPPER(county) Like  UPPER('%s') """ % (value))
-        result = curs.fetchall()
+        result = self.curs.fetchall()
         #print(str(result))
         return result
 
