@@ -374,7 +374,61 @@ def StartMessaging():
                         elif Kiswahili is not True and 'nairobi' in UserSays.lower():
                             query = '%nairobi%'
                             candidates = SQL.governors(query)
-                            response = 'The gubernatorial candidates are: \n' + str(candidates[0:])
+                            response = 'The gubernatorial candidates for Nairobi are: \n' + str(candidates[0:])
+                            SendMessage(SenderID, response)
+
+                        elif Kiswahili is not True and 'nakuru' in UserSays.lower():
+                            query = '%nakuru%'
+                            candidates = SQL.governors(query)
+                            response = 'The gubernatorial candidates for Nakuru are: \n' + str(candidates[0:])
+                            SendMessage(SenderID, response)
+
+                        elif Kiswahili is not True and 'kiambu' in UserSays.lower():
+                            query = '%kiambu%'
+                            candidates = SQL.governors(query)
+                            response = 'The gubernatorial candidates in Kiambu are: \n' + str(candidates[0:])
+                            SendMessage(SenderID, response)
+
+                        elif Kiswahili is not True and 'kericho' in UserSays.lower():
+                            query = '%kericho%'
+                            candidates = SQL.governors(query)
+                            response = 'The gubernatorial candidates in Kericho are: \n' + str(candidates[0:])
+                            SendMessage(SenderID, response)
+
+                        elif Kiswahili is not True and 'uasin' in UserSays.lower():
+                            query = '%uasin%'
+                            candidates = SQL.governors(query)
+                            response = 'The gubernatorial candidates in Uasin Gishu are: \n' + str(candidates[0:])
+                            SendMessage(SenderID, response)
+
+                        elif Kiswahili is not True and 'kakamega' in UserSays.lower():
+                            query = '%kakamega%'
+                            candidates = SQL.governors(query)
+                            response = 'The gubernatorial candidates in Kakamega are: \n' + str(candidates[0:])
+                            SendMessage(SenderID, response)
+
+                        elif Kiswahili is not True and 'turkana' in UserSays.lower():
+                            query = '%turkana%'
+                            candidates = SQL.governors(query)
+                            response = 'The gubernatorial candidates in Turkana are: \n' + str(candidates[0:])
+                            SendMessage(SenderID, response)
+
+                        elif Kiswahili is not True and 'kisumu' in UserSays.lower():
+                            query = '%kisumu%'
+                            candidates = SQL.governors(query)
+                            response = 'The gubernatorial candidates  in Kisumu are: \n' + str(candidates[0:])
+                            SendMessage(SenderID, response)
+
+                        elif Kiswahili is not True and 'mombasa' in UserSays.lower():
+                            query = '%mombasa%'
+                            candidates = SQL.governors(query)
+                            response = 'The gubernatorial candidates in Mombasa are: \n' + str(candidates[0:])
+                            SendMessage(SenderID, response)
+
+                        elif Kiswahili is not True and 'narok' in UserSays.lower():
+                            query = '%narok%'
+                            candidates = SQL.governors(query)
+                            response = 'The gubernatorial candidates in Narok are: \n' + str(candidates[0:])
                             SendMessage(SenderID, response)
 
 
