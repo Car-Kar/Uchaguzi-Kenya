@@ -73,7 +73,7 @@ Sorry, I didn't get that.
 Would you mind repeating it?
 '''
 
-Counties = ['kiambu', 'kisumu', 'mombasa', 'nairobi', 'nakuru', 'kakamega', 'kiambu', 'uasin gishu', 'turkana', 'narok', 'kericho']
+Counties = ['kiambu', 'kisumu', 'mombasa', 'nairobi', 'nakuru', 'kakamega', 'uasin gishu', 'turkana', 'narok', 'kericho']
 OtherCounties = ''' Thank you for using Uchaguzi.
 However, this is our first beta and us such we can only provide information for Kiambu, Kisumu, Mombasa, Nairobi, or Nakuru.
 Please use any of those five counties for now, as we go about adding information support for all other counties!
@@ -368,9 +368,9 @@ def StartMessaging():
                                     SendMessage(SenderID, response)
                                     SendMessage(SenderID, bios)
                                 else:
-                                    SendMessage(SenderID, bio) 
+                                    SendMessage(SenderID, bio)
 
-                        elif level is not None and 'gov' == lvl.lower() and 'nairobi' in UserSays.lower():
+                        elif Kiswahili is not True and 'nairobi' in UserSays.lower():
                             query = '%nairobi%'
                             candidates = SQL.governors(query)
                             response = 'The gubernatorial candidates are: \n' + str(candidates[0:])
@@ -428,9 +428,6 @@ def StartMessaging():
                             SendMessage(SenderID, VoterRegistration)
                             Home(SenderID, 'Go back to home?', 'Home')
 
-                        elif Kiswahili is not True and UserSays == 'gov':
-                            SendMessage(SenderID, 'From what county?')
-
                         elif Kiswahili is not True and 'subscribe' in UserSays:
                             WebView(SenderID, 'News', 'http://www.nation.co.ke/page/search/DailyNation/election2017/3439870-3439870-view-asSearch-ccr8qt/index.html', 'The Top Election News Today')
                             
@@ -448,6 +445,10 @@ def StartMessaging():
                             SendMessage(SenderID, response)
                             SendMessage(SenderID, second_names)
                             SendMessage(SenderID, CandidateMoreInfo)
+
+                        elif Kiswahili is not True and UserSays == 'gov':
+                            CountyOptions(SenderID, 'From what county? Choose one below')
+
 
                         
 
@@ -972,6 +973,77 @@ def CheckTextLength(text):
         return text[:texts], text[texts:]
     else:
         pass
+
+def CountyOptions(RecipientID, TXT):
+    print(('Sending countyoptions to {0}').format(RecipientID))
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        'recipient': {
+        'id': RecipientID
+    },
+    'message' : {
+        'text': TXT,
+        'quick_replies':[
+      {
+        'content_type': 'text',
+        'title' : 'Nairobi',
+        'payload' : 'IsReusable'
+      },
+      {
+        'content_type': 'text',
+        'title' : 'Kisumu',
+        'payload' : 'IsReusable'
+      },
+      {
+        'content_type': 'text',
+        'title' : 'Mombasa',
+        'payload' : 'IsReusable'
+      },
+      {
+        'content_type': 'text',
+        'title' : 'Kiambu',
+        'payload' : 'IsReusable'
+      }
+      {
+        'content_type': 'text',
+        'title' : 'Uasin Gichu',
+        'payload' : 'IsReusable'
+      },
+      {
+        'content_type': 'text',
+        'title' : 'Nakuru',
+        'payload' : 'IsReusable'
+      },
+      {
+        'content_type': 'text',
+        'title' : 'Kakamega',
+        'payload' : 'IsReusable'
+      }.
+      {
+        'content_type': 'text',
+        'title' : 'Kericho',
+        'payload' : 'IsReusable'
+      },{
+        'content_type': 'text',
+        'title' : 'Narok',
+        'payload' : 'IsReusable'
+      },
+      {
+        'content_type': 'text',
+        'title' : 'Turkana',
+        'payload' : 'IsReusable'
+      }
+
+    ]
+    }
+    })
+    r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
+    if r.status_code != 200:
+        print(r.text)
+
+
 
 if __name__ == '__main__':
     #sched.start()
