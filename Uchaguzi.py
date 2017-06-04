@@ -555,7 +555,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                   'Home')
 
                         elif level == 'vote' and UserSays.lower() in racer.lower():
-                            print('Im voting')
+                            print('Im')
 
                         elif Kiswahili is not True and 'gov' == level:
                             query = '%' + county + '%'
@@ -607,7 +607,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                             SendMessage(SenderID, response)
                             SendMessage(SenderID, second_names)
                             SendMessage(SenderID, CandidateMoreInfo)
-                        elif Kiswahili is not True and 'vote for' in UserSays.lower():
+                        elif Kiswahili is not True and 'vote' in UserSays.lower():
                             SendMessage(SenderID, 'If the elections happened tomorrow, which presidential candidate would you vote for?')
 
                     elif msg.get('postback'):  
@@ -726,11 +726,6 @@ def Subscribed(SenderID, week, day):
 
     return 'OK', 200'''
 
-def Poll(text):
-    if 'vote for' in text.lower():
-        return True
-    else:
-        return False
 
 def ReturnType(msg):
     print('Checking Type')
