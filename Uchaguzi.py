@@ -73,7 +73,7 @@ Sorry, I didn't get that.
 Would you mind repeating it?
 '''
 
-Counties = ['kiambu', 'kisumu', 'mombasa', 'nairobi', 'nakuru']
+Counties = ['kiambu', 'kisumu', 'mombasa', 'nairobi', 'nakuru', 'kakamega', 'kiambu', 'uasin gishu', 'turkana', 'narok', 'kericho']
 OtherCounties = ''' Thank you for using Uchaguzi.
 However, this is our first beta and us such we can only provide information for Kiambu, Kisumu, Mombasa, Nairobi, or Nakuru.
 Please use any of those five counties for now, as we go about adding information support for all other counties!
@@ -219,7 +219,6 @@ class UsingSQL:
     def all_presidential_names(self):
         self.curs.execute("""SELECT name FROM presidential_candidates""")
         results = list(self.curs.fetchall())
-        result = '\n'.join([str(cand) for cand in results])
         result = result.replace('(', ' ')
         result = result.replace(')', ' ')
         result = result.replace("'", ' ')
@@ -284,6 +283,7 @@ def StartMessaging():
                     value = UsingWit(UserSays)
                     surveying = False
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
+                    cands = FindingCandidate(UserSays)
                     #News = MDB.NewsSubscribers(SenderID, UserSays)
                     print(Kiswahili)
                     ResponseStack.append(value)
@@ -366,6 +366,9 @@ def StartMessaging():
                         elif 'bye' in UserSays.lower():
                             SendMessage(SenderID, Goodbye)
 
+                        elif UserSays.lower() in cands.lower():
+                            print('Yes')
+
 
                     
                         
@@ -431,7 +434,7 @@ def StartMessaging():
                             candidates = SQL.all_presidential_candidates()
                             print(candidates)
                             first_names, second_names = CheckListLength(candidates)
-                            response = 'The governor candidates are: \n' + str(first_names[0:])
+                            response = 'The prsidential candidates are: \n' + str(first_names[0:])
                             SendMessage(SenderID, response)
                             SendMessage(SenderID, second_names)
                             SendMessage(SenderID, CandidateMoreInfo)
@@ -495,6 +498,13 @@ def ReturnType(msg):
     elif msg.get('web_url'):
         URLText = msg['web_url']['title']
         return URLText
+
+def FindingCandidate(name):
+    candidates = SQL.all_presidential_names()
+    if name in candidates:
+        return name
+    else:
+        pass
 
 def Home(RecipientID, TXT, op1):
     headers = {
@@ -906,6 +916,9 @@ def UsingWit(TEXT):
     try:
         entity = list(response['entities'])[0]
         if entity == 'names':
+            value = response['entities'][entity][0]['value']
+            return value
+        elif entity = 'location':
             value = response['entities'][entity][0]['value']
             return value
         else:
