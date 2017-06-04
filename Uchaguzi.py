@@ -193,7 +193,7 @@ class UsingMongo:
                 return time
 
 
-    def PresidentialRace(self, pres):
+    def PresidentialRace(self, FromUser, pres):
         collection = self.DB['presidentialrace']
         print('Connected to presidents collection!')
         user =  collection.find_one({'name': pres})
