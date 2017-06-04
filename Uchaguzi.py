@@ -356,7 +356,7 @@ def StartMessaging():
                                 bio, bios = CheckTextLength(bio)
                                 response = bio + '-'
                                 SendMessage(SenderID, response)
-                                SendMessage(SenderId, bios)
+                                SendMessage(SenderID, bios)
                             else:
                                 SendMessage(SenderID, bio) 
 
