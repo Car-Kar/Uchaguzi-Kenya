@@ -489,6 +489,11 @@ def Subscribed(SenderID, week, day):
         raise e
 
     return 'OK', 200'''
+old_list = ['abc123', 'def456', 'ghi789']
+new_list = [x for x in old_list if re.search('abc', x)]
+for item in new_list:
+    print item
+
 
 
 def ReturnType(msg):
@@ -504,7 +509,7 @@ def ReturnType(msg):
         return URLText
 
 def FindingCandidate(name):
-    candidates = SQL.all_presidential_names()
+    candidates = list(SQL.all_presidential_names())
     print(candidates.lower())
     result = [c for c in candidates if name.lower() in c.lower()]
     return result
