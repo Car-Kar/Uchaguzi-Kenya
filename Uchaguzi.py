@@ -472,10 +472,11 @@ def StartMessaging():
                                 else:
                                     SendMessage(SenderID, bio)
 
-                        elif level == 'gov' and UserSays.lower() in cands.lower() and county == 'nairobi':
+                        elif level == 'sen' and UserSays.lower() in cands.lower():
                             print('Yes')
                             query = '%' + UserSays.lower() + '%'
-                            run, bio = SQL.governor_bio(query, '%nairobi%')
+                            county = '%' + county + '%'
+                            run, bio = SQL.governor_bio(query, county)
                             bio = str(bio)
                             if len(str(run)) < 1:
                                 if len(bio) > 640:
