@@ -633,15 +633,7 @@ def StartMessaging():
                             CountyOptions(SenderID, 'From what county? Choose one below')
 
 
-                        
-
-
-
-
-
-
-
-    SQL.CloseConnection()
+        SQL.CloseConnection()
                         
     except Exception as e:
         raise e
