@@ -224,7 +224,6 @@ class UsingSQL:
         result = result.replace(')', ' ')
         result = result.replace("'", ' ')
         result = result.replace(',', '-')
-        print(result)
         return result
 
     def president_bio(value):
@@ -286,6 +285,7 @@ def StartMessaging():
                     surveying = False
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
                     cands = FindingCandidate(UserSays)
+                    print(cands)
                     #News = MDB.NewsSubscribers(SenderID, UserSays)
                     print(Kiswahili)
                     ResponseStack.append(value)
