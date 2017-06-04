@@ -33,17 +33,18 @@ What language do you want to continue in?
 
 IntroductoryMessage = ''' The 2017 Kenyan National Elections are taking place in August.
 I am a tool for you to acquire more information on voting and the vying candidates.
+'''
+IntroductoryMessage2 = '''I provide information on voting procedures, voter registration, your county administration, the vying candidates, and government .
 I have a top-level menu which you can access at any time by pressing the menu icon (\u2630)  at the bottom to choose the option that you want.
-Go ahead, try it.
 \U0001F642
 '''
-IntroductoryMessage2 = '''I provide information on voting procedures, voter registration, your county administration, the vying candidates, and government .'''
-KiswahiliIntroduction2 = '''Nitakupa taarifa kuhusu taratibu kupiga kura, usajili wa wapiga kura, utawala wa kata yako, wagombea wanaogombea na ukaguzi wa serikali.'''
+KiswahiliIntroduction2 = '''Nitakupa taarifa kuhusu taratibu kupiga kura, usajili wa wapiga kura, utawala wa kata yako, wagombea wanaogombea na ukaguzi wa serikali.
+Nina orodha ambayo unaweza kupata wakati wowote kwa kubonyeza menu (\u2630) hapo chini ili kuchagua chaguo unataka.
+\U0001F642'''
 KiswahiliIntroduction = '''Jambo!
 Uchaguzi wa Taifa wa Kenya unafanyika Agosti.
 Mimi ni chombo kwa ajili ya wewe kupata taarifa zaidi juu ya kupiga kura na wagombea wanaogombea.
-Nina orodha ambayo unaweza kupata wakati wowote kwa kubonyeza menu (\u2630) hapo chini ili kuchagua chaguo unataka.
-\U0001F642'''
+'''
 VoterRegistration = '''Thank you for using Uchaguzi!
 However due to logistical circumstances, the option of finding out your registration status is not available right now.
 Please check again in a little while as we go about incorporating it.
@@ -209,13 +210,13 @@ class UsingSQL:
         for row in result:
             return row[0], row[1]
 
-    def governor_bio(value):
+    def governor_bio(self, value):
         self.curs.execute("""SELECT running_mate,political_bio FROM governor_candidates WHERE UPPER(name) Like  UPPER('%s') """ % (value))
         result= self.curs.fetchall()
         #print(str(result))
         return result
 
-    def governors(value):
+    def governors(self, value):
         self.curs.execute("""SELECT name, political_party FROM governor_candidates WHERE UPPER(county) Like  UPPER('%s') """ % (value))
         results = list(self.curs.fetchall())
         result = '\n'.join([str(cand) for cand in results])
