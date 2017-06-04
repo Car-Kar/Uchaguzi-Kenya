@@ -442,7 +442,7 @@ def StartMessaging():
                             query = '%' + UserSays.lower() + '%'
                             run, bio, img = SQL.president_bio(query)
                             bio = str(bio)
-                            img = str(img).decode('base64')
+                            img = img.decode('base64')
                             
                             SendAttachment(SenderID, 'image', )
                             if len(str(run)) < 1:
