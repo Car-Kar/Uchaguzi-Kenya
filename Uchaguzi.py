@@ -937,9 +937,11 @@ def UsingWit(TEXT):
 #week = sched.add_job(OneWeek, 'date', run_date = datetime(2017, 8, 1, 12, 00))
 #day = sched.add_job(TwoDays, 'date', run_date = datetime(2017, 8, 6, 12, 00))
 
-ded Level(text):
-if text in options:
-    return text
+def Level(text):
+    if text in options:
+        return text
+    else:
+        pass
 
 def OneWeek():
     return True
