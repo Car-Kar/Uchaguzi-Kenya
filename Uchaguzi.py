@@ -369,7 +369,7 @@ def StartMessaging():
                         elif UserSays.lower() in cands.lower():
                             print('Yes')
                             query = '%' + UserSays.lower() + '%'
-                            response = SQL.president_bio()
+                            response = SQL.president_bio(query)
                             
 
 
