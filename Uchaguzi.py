@@ -13,6 +13,7 @@ from datetime import date
 import re
 import pymysql
 import sys
+import base64
 
 app = Flask(__name__)
 
@@ -442,9 +443,9 @@ def StartMessaging():
                             query = '%' + UserSays.lower() + '%'
                             run, bio, img = SQL.president_bio(query)
                             bio = str(bio)
-                            img = img.decode('base64')
+                            img = base64.b64decode('img')
                             
-                            SendAttachment(SenderID, 'image', )
+                            SendAttachment(SenderID, 'image', img)
                             if len(str(run)) < 1:
                                 if len(bio) > 640:
                                     bio, bios = CheckTextLength(bio)
