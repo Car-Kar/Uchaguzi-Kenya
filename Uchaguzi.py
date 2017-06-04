@@ -287,9 +287,9 @@ def StartMessaging():
                     cands = FindingCandidate(UserSays)
                     print(cands)
                     #News = MDB.NewsSubscribers(SenderID, UserSays)
-                    print(Kiswahili)
+                    #print(Kiswahili)
                     ResponseStack.append(value)
-                    print(ResponseStack)
+                    #print(ResponseStack)
                     race = MDB.PresidentialRace(UserSays)
                     cs = SQL.all_presidential_names()
                     if msg.get('message'):
@@ -368,10 +368,10 @@ def StartMessaging():
                         elif 'bye' in UserSays.lower():
                             SendMessage(SenderID, Goodbye)
 
-                        elif UserSays.lower() in cands.lower():
+                        '''elif UserSays.lower() in cands.lower():
                             print('Yes')
                             query = '%' + cands.lower() + '%'
-                            print(query)
+                            print(query)'''
 
 
                     
