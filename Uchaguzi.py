@@ -504,7 +504,7 @@ def ReturnType(msg):
         return URLText
 
 def FindingCandidate(name):
-    candidates = list(SQL.all_presidential_names())
+    candidates = SQL.all_presidential_names()
     print(candidates)
     result = [c for c in candidates if name.lower() in c.lower()]
     return result
