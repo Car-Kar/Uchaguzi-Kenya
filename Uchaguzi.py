@@ -429,27 +429,10 @@ def StartMessaging():
                         if Kiswahili is not True and 'home' in UserSays.lower():
                             GenericTemplateOptions(SenderID)
 
-                        if 'from what' in UserSays.lower():
-                            print('Fuck you facebook')
-            
-
-                        elif 'evans' in UserSays.lower() or 'kidero' in UserSays.lower():
-                            SendMessage(SenderID, g_evans_info)
-                            SendMessage(SenderID, ContinueUsing)
-                            Home(SenderID, 'Go back to home?', 'Home')
-                    
-                        elif 'mike' in UserSays.lower() or 'sonko' in UserSays.lower():
-                            SendMessage(SenderID, g_mike_info)
-                            SendMessage(SenderID, ContinueUsing)
-                            Home(SenderID, 'Go back to home?', 'Home')
-
-                        
-
                         elif 'bye' in UserSays.lower():
                             SendMessage(SenderID, Goodbye)
 
                         elif level == 'pres' and UserSays.lower() in cands.lower():
-                            print('Yes')
                             query = '%' + UserSays.lower() + '%'
                             run, bio = SQL.president_bio(query)
                             bio = str(bio)
@@ -473,7 +456,6 @@ def StartMessaging():
                                     SendMessage(SenderID, bio)
 
                         elif level == 'sen' and UserSays.lower() in cands.lower():
-                            print('Yes')
                             query = '%' + UserSays.lower() + '%'
                             county = '%' + county + '%'
                             img, bio = SQL.senators_bio(query, county)
@@ -576,8 +558,11 @@ def StartMessaging():
                         elif Kiswahili is not True and 'nairobi' == UserSays.lower() and 'senate' == level:
                             query = '%nairobi%'
                             candidates = SQL.senators(query)
-                            response = 'The senate candidates in Narok are: \n' + str(candidates[0:])
+                            first_names, second_names = CheckListLength(candidates)
+                            response = 'The senate candidates in Nairobi are: \n' + str(first_names[0:])
                             SendMessage(SenderID, response)
+                            SendMessage(SenderID, second_names)
+                            SendMessage(SenderID, CandidateMoreInfo)
 
 
                             
