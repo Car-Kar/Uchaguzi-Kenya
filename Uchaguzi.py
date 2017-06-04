@@ -204,16 +204,7 @@ class UsingMongo:
         else:
             collection.insert_one({'name' : pres, 'votes': 1})
 
-    def DeleteCollection(self, FromUser):
-        collection = self.DB['levels']
-        print('Connected to levels collection!')
-        user =  collection.find_one({'fromuser': FromUser})
-        if user is not None:
-            collection.delete_one({'fromuser' : FromUser})
-            return True
-
-        else:
-            return False
+    
 
 
 class UsingSQL:
@@ -389,8 +380,8 @@ def StartMessaging():
                     #print(Kiswahili)
                     
                     print(level)
-                    racer = DefiningRace(UserSays)
-                    print(racer)
+                    #racer = DefiningRace(UserSays)
+                    #print(racer)
                     
                     if msg.get('message'):
                         #matching = [s for s in cs if str(ResponseStack.pop()) in s]
@@ -423,7 +414,7 @@ def StartMessaging():
                             ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
                         if Kiswahili is not True and UserSays.lower() in racer:
                             print('Fuck yes!')
-                            race = MDB.PresidentialRace(racer.capitalize())
+                            #race = MDB.PresidentialRace(racer.capitalize())
 
                         
                         if Kiswahili is not True and 'see results' in UserSays.lower():
@@ -616,7 +607,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                             SendMessage(SenderID, second_names)
                             SendMessage(SenderID, CandidateMoreInfo)
                         elif Kiswahili is not True and 'vote for' in UserSays.lower():
-                            MDB.DeleteCollection(SenderID)
+                            #MDB.DeleteCollection(SenderID)
                             SendMessage(SenderID, 'If the elections happened tomorrow, which presidential candidate would you vote for?')
 
                     elif msg.get('postback'):  
