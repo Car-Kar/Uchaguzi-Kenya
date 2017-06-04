@@ -366,10 +366,10 @@ def StartMessaging():
                         elif 'bye' in UserSays.lower():
                             SendMessage(SenderID, Goodbye)
 
-                        '''elif UserSays.lower() in cands.lower():
+                        elif UserSays.lower() in cands.lower():
                             print('Yes')
                             query = '%' + cands.lower() + '%'
-                            print(query)'''
+                            print(query)
 
 
                     
