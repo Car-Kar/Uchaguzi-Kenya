@@ -938,8 +938,6 @@ def Level(text):
         ResponseStack.append(text)
         level = ResponseStack.pop()
         return level
-    else:
-        pass
 
 def OneWeek():
     return True
