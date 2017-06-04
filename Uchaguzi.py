@@ -437,7 +437,7 @@ def StartMessaging():
                             run, bio, img = SQL.president_bio(query)
                             bio = str(bio)
                             
-                            SendAttachment(SenderID, str(img) )
+                            SendAttachment(SenderID, 'image', str(img))
                             if len(str(run)) < 1:
                                 if len(bio) > 640:
                                     bio, bios = CheckTextLength(bio)
