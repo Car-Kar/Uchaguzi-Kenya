@@ -351,6 +351,11 @@ def StartMessaging():
                             run, bio = SQL.president_bio(query)
                             running_mate = 'His running mate is ' + str(run)
                             bio = str(bio)
+                            if len(bio) > 640:
+                                bio, bios = CheckListLength(bio)
+                                response = bio + '-'
+                                SendMessage(response)
+                                SendMessage(bios)
                             SendMessage(SenderID, running_mate)
                             SendMessage(SenderID, bio) 
 
@@ -421,7 +426,7 @@ def StartMessaging():
                             candidates = SQL.all_presidential_candidates()
                             print(candidates)
                             first_names, second_names = CheckListLength(candidates)
-                            response = 'The prsidential candidates are: \n' + str(first_names[0:])
+                            response = 'The presidential candidates are: \n' + str(first_names[0:])
                             SendMessage(SenderID, response)
                             SendMessage(SenderID, second_names)
                             SendMessage(SenderID, CandidateMoreInfo)
@@ -937,8 +942,11 @@ def CheckListLength(text):
 
 def CheckTextLength(text):
     l = 640
-    pl = [text[i:i + l] for i in range(0, len(text), l)]
-    return pl
+    if len(text) > l:
+        texts = len(text)//2
+        return text[:names], text[names:]
+    else:
+        pass
 
 if __name__ == '__main__':
     #sched.start()
