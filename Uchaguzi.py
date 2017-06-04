@@ -313,8 +313,8 @@ class UsingSQL:
         result = result.replace(',', '-')
         return result
 
-    def women_reps_bio(self, value):
-        self.curs.execute("""SELECT political_bio, image FROM women_reps WHERE UPPER(name) Like  UPPER('%s') """ % (value))
+    def women_reps_bio(self, value1, value2):
+        self.curs.execute("""SELECT political_bio,image FROM women_reps WHERE UPPER(name) Like  UPPER('%s')&& UPPER(county) Like UPPER('%s') """ % (value1,value2))
         result = self.curs.fetchall()
         for row in result:
             return row[0], row[1]
