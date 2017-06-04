@@ -368,7 +368,8 @@ def StartMessaging():
 
                         elif UserSays.lower() in cands.lower():
                             print('Yes')
-                            query = 
+                            query = '%' + cands.lower() + '%'
+                            print(query)
 
 
                     
