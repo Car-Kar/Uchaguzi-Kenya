@@ -405,9 +405,7 @@ def StartMessaging():
                             Unataka alani ya siku gani?'''
                             ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
 
-                        if Kiswahili is not True and 'vote for' in UserSays.lower():
-                            response = 'What presidential candidate would you vote for if the elections were tomorrow?'
-                            SendMessage(SendMessage, response)
+                        
                         if Kiswahili is not True and 'see results' in UserSays.lower():
                             WebView(SenderID, 'https://uchaguzi.herokuapp.com/')
 
@@ -595,7 +593,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                             SendMessage(SenderID, second_names)
                             SendMessage(SenderID, CandidateMoreInfo)
                         elif Kiswahili is not True and 'vote for' in MessageText.lower():
-                            SendMessage(SenderID, 'If the elections happened tomorrow, who would you vote for?')
+                            SendMessage(SenderID, 'If the elections happened tomorrow, which presidential candidate would you vote for?')
 
                     elif msg.get('postback'):  
                         if UserSays == 'Get Started':
