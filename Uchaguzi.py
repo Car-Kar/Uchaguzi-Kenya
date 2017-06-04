@@ -1020,12 +1020,13 @@ def CountyOptions(RecipientID, TXT):
         'content_type': 'text',
         'title' : 'Kakamega',
         'payload' : 'IsReusable'
-      }.
+      },
       {
         'content_type': 'text',
         'title' : 'Kericho',
         'payload' : 'IsReusable'
-      },{
+      },
+      {
         'content_type': 'text',
         'title' : 'Narok',
         'payload' : 'IsReusable'
