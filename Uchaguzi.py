@@ -1005,7 +1005,7 @@ def CountyOptions(RecipientID, TXT):
         'content_type': 'text',
         'title' : 'Kiambu',
         'payload' : 'IsReusable'
-      }
+      },
       {
         'content_type': 'text',
         'title' : 'Uasin Gichu',
