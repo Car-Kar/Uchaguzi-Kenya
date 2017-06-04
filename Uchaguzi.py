@@ -458,7 +458,7 @@ def StartMessaging():
                                     SendMessage(SenderID, bio)
                                     Home(SenderID, 'Do you want to know about another candidate, or go back to home?', 'Home')
 
-                        elif level == 'sen' and UserSays.lower() in cands.lower():
+                        elif level == 'senate' and UserSays.lower() in cands.lower():
                             query = '%' + UserSays.lower() + '%'
                             county = '%' + county + '%'
                             img, bio = SQL.senators_bio(query, county)
