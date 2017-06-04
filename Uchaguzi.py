@@ -217,8 +217,13 @@ class UsingSQL:
 
     def governors(value):
         self.curs.execute("""SELECT name, political_party FROM governor_candidates WHERE UPPER(county) Like  UPPER('%s') """ % (value))
-        result = self.curs.fetchall()
-        #print(str(result))
+        results = list(self.curs.fetchall())
+        result = '\n'.join([str(cand) for cand in results])
+        result = result.replace('(', ' ')
+        result = result.replace(')', ' ')
+        result = result.replace("'", ' ')
+        result = result.replace(',', '-')
+        print(result)
         return result
 
 
@@ -229,7 +234,7 @@ class UsingSQL:
 MDB = UsingMongo()
 SQL = UsingSQL()
 
-options = ['pres', 'gov', 'sen', 'wom']
+options = ['gov', 'sen', 'wom']
 VotingInformation = {'image' : 'https://media.giphy.com/media/3o6ZtkFObzcJiaMOFG/giphy.gif', 'image' : 'https://media.giphy.com/media/26vUCOMzBiBZ0qW1a/giphy.gif', 
 'video' : 'https://www.youtube.com/watch?v=nQbztjkag1A&feature=youtu.be&t=1',  'image' : 'https://farm5.staticflickr.com/4267/34872767952_f36c5a4dda_o_d.jpg'}
 
@@ -265,6 +270,7 @@ def StartMessaging():
                     print(cands)
                     #News = MDB.NewsSubscribers(SenderID, UserSays)
                     #print(Kiswahili)
+                    level = Level(UserSays)
                     ResponseStack.append(value)
                     #print(ResponseStack)
                     race = MDB.PresidentialRace(UserSays)
@@ -360,6 +366,7 @@ def StartMessaging():
                             else:
                                 SendMessage(SenderID, bio) 
 
+
                             
 
 
@@ -431,6 +438,13 @@ def StartMessaging():
                             SendMessage(SenderID, response)
                             SendMessage(SenderID, second_names)
                             SendMessage(SenderID, CandidateMoreInfo)
+
+                        elif 'gov' in UserSays.lower() and 'nairobi' in UserSays.lower():
+                            query = '%nairobi%'
+                            candidates = SQL.governors(query)
+                            response = 'The gubernatorial candidates are: \n' + str(candidates[0:])
+                            SendMessage(SenderID, response)
+
 
 
 
@@ -923,6 +937,9 @@ def UsingWit(TEXT):
 #week = sched.add_job(OneWeek, 'date', run_date = datetime(2017, 8, 1, 12, 00))
 #day = sched.add_job(TwoDays, 'date', run_date = datetime(2017, 8, 6, 12, 00))
 
+ded Level(text):
+if text in options:
+    return text
 
 def OneWeek():
     return True
