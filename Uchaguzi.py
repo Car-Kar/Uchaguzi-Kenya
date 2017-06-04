@@ -219,11 +219,11 @@ class UsingSQL:
     def all_presidential_names(self):
         self.curs.execute("""SELECT name FROM presidential_candidates""")
         results = list(self.curs.fetchall())
-        result = results.replace('(', ' ')
-        result = result.replace(')', ' ')
-        result = result.replace("'", ' ')
-        print(result)
-        return result
+        results = [result.replace('(', ' ' )for result in results]
+        results = [result.replace(')', ' ' )for result in results]
+        results = [result.replace("'", ' ' )for result in results]
+        print(results)
+        return results
 
     def president_bio(value):
         curs.execute("""SELECT running_mate,political_bio FROM presidential_candidates WHERE UPPER(name) Like  UPPER('%s') """ % (value))
@@ -368,6 +368,7 @@ def StartMessaging():
 
                         elif UserSays.lower() in cands.lower():
                             print('Yes')
+                            query = 
 
 
                     
