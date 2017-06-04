@@ -423,7 +423,7 @@ def StartMessaging():
                             ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
                         if Kiswahili is not True and UserSays.lower() in racer:
                             print('Fuck yes!')
-                            race = MDB.PresidentialRace(SenderId, racer.capitalize())
+                            race = MDB.PresidentialRace(SenderID, racer.capitalize())
 
                         
                         if Kiswahili is not True and 'see results' in UserSays.lower():
