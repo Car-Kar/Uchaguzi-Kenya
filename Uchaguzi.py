@@ -346,7 +346,12 @@ def StartMessaging():
                         elif UserSays.lower() in cands.lower():
                             print('Yes')
                             query = '%' + UserSays.lower() + '%'
-                            response = SQL.president_bio(query)
+                            res = SQL.president_bio(query)
+                            running_mate = 'His running mate is ' + resr[0]
+                            bio = res[1]
+                            SendMessage(SenderID, running_mate)
+                            SendMessage(SenderID, bio) 
+
                             
 
 
