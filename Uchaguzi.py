@@ -443,9 +443,9 @@ def StartMessaging():
                             query = '%' + UserSays.lower() + '%'
                             run, bio, img = SQL.president_bio(query)
                             bio = str(bio)
-                            img = base64.b64decode('img')
+                            #img = base64.b64decode('img')
                             
-                            SendAttachment(SenderID, 'image', img)
+                            #SendAttachment(SenderID, 'image', img)
                             if len(str(run)) < 1:
                                 if len(bio) > 640:
                                     bio, bios = CheckTextLength(bio)
@@ -483,7 +483,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                             bio, img = SQL.senators_bio(query, county)
                             bio = str(bio)
                             print(bio)
-                            SendAttachment(SenderID, 'image', img)
+                            #SendAttachment(SenderID, 'image', img)
                             if len(bio) > 640:
                                 bio, bios = CheckTextLength(bio)
                                 response = bio + '-'
@@ -503,7 +503,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                             bio, img = SQL.women_reps_bio(query, county)
                             bio = str(bio)
                             print(bio)
-                            SendAttachment(SenderID, 'image', str(img))
+                            #SendAttachment(SenderID, 'image', str(img))
                             if len(bio) > 640:
                                 bio, bios = CheckTextLength(bio)
                                 response = bio + '-'
