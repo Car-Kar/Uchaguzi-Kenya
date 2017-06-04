@@ -374,7 +374,7 @@ def StartMessaging():
                     #print(Kiswahili)
                     
                     print(level)
-                    race = MDB.PresidentialRace(UserSays)
+                    #race = MDB.PresidentialRace(UserSays)
                     if msg.get('message'):
                         #matching = [s for s in cs if str(ResponseStack.pop()) in s]
                         #print(matching)
