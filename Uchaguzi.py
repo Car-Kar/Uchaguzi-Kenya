@@ -271,6 +271,7 @@ def StartMessaging():
                     #News = MDB.NewsSubscribers(SenderID, UserSays)
                     #print(Kiswahili)
                     level = Level(UserSays)
+                    print(level)
                     ResponseStack.append(value)
                     #print(ResponseStack)
                     race = MDB.PresidentialRace(UserSays)
