@@ -227,8 +227,8 @@ class UsingSQL:
     def president_bio(value):
         curs.execute("""SELECT running_mate,political_bio FROM presidential_candidates WHERE UPPER(name) Like  UPPER('%s') """ % (value))
         result = curs.fetchall()
-        #print(result)
-        return result
+        print(result)
+        #return result
 
     def governor_bio(value):
         curs.execute("""SELECT running_mate,political_bio FROM governor_candidates WHERE UPPER(name) Like  UPPER('%s') """ % (value))
@@ -368,8 +368,9 @@ def StartMessaging():
 
                         elif UserSays.lower() in cands.lower():
                             print('Yes')
-                            query = '%' + cands.lower() + '%'
-                            print(query)
+                            query = '%' + UserSays.lower() + '%'
+                            response = SQL.president_bio()
+                            
 
 
                     
