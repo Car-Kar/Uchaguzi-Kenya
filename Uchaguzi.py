@@ -317,7 +317,7 @@ class UsingSQL:
         return result
 
     def women_reps_bio(self, value1, value2):
-        self.curs.execute("""SELECT political_bio,image FROM women_reps WHERE UPPER(name) Like  UPPER('%s')&& UPPER(county) Like UPPER('%s') """ % (value1,value2))
+        self.curs.execute("""SELECT political_bio, image FROM women_reps WHERE UPPER(name) Like  UPPER('%s')&& UPPER(county) Like UPPER('%s') """ % (value1,value2))
         result = self.curs.fetchall()
         for row in result:
             return row[0], row[1]
@@ -434,8 +434,10 @@ def StartMessaging():
 
                         elif level == 'pres' and UserSays.lower() in cands.lower():
                             query = '%' + UserSays.lower() + '%'
-                            run, bio = SQL.president_bio(query)
+                            run, bio, img = SQL.president_bio(query)
                             bio = str(bio)
+                            
+                            SendAttachment(SenderID, str(img) )
                             if len(str(run)) < 1:
                                 if len(bio) > 640:
                                     bio, bios = CheckTextLength(bio)
@@ -470,7 +472,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                         elif level == 'senate' and UserSays.lower() in cands.lower():
                             query = '%' + UserSays.lower() + '%'
                             county = '%' + county + '%'
-                            img, bio = SQL.senators_bio(query, county)
+                            bio, img = SQL.senators_bio(query, county)
                             bio = str(bio)
                             print(bio)
                             SendAttachment(SenderID, 'image', img)
@@ -490,10 +492,10 @@ If you want to know about another candidate, send me his or her name, otherwise 
                         elif level == 'womrep' and UserSays.lower() in cands.lower():
                             query = '%' + UserSays.lower() + '%'
                             county = '%' + county + '%'
-                            img, bio = SQL.women_reps_bio(query, county)
+                            bio, img = SQL.women_reps_bio(query, county)
                             bio = str(bio)
                             print(bio)
-                            SendAttachment(SenderID, 'image', img)
+                            SendAttachment(SenderID, 'image', str(img))
                             if len(bio) > 640:
                                 bio, bios = CheckTextLength(bio)
                                 response = bio + '-'
