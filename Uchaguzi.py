@@ -205,7 +205,7 @@ class UsingSQL:
         self.curs.execute("""SELECT running_mate,political_bio FROM presidential_candidates WHERE UPPER(name) Like  UPPER('%s') """ % (value))
         result = self.curs.fetchall()
         print(result)
-        #return result
+        return result
 
     def governor_bio(value):
         self.curs.execute("""SELECT running_mate,political_bio FROM governor_candidates WHERE UPPER(name) Like  UPPER('%s') """ % (value))
