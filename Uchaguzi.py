@@ -350,18 +350,27 @@ def StartMessaging():
                             print('Yes')
                             query = '%' + UserSays.lower() + '%'
                             run, bio = SQL.president_bio(query)
-                            running_mate = 'His running mate is ' + str(run)
                             bio = str(bio)
-                            SendMessage(SenderID, running_mate)
-                            if len(bio) > 640:
-                                bio, bios = CheckTextLength(bio)
-                                response = bio + '-'
-                                SendMessage(SenderID, response)
-                                SendMessage(SenderID, bios)
+                            if len(str(run)) < 1:
+                                if len(bio) > 640:
+                                    bio, bios = CheckTextLength(bio)
+                                    response = bio + '-'
+                                    SendMessage(SenderID, response)
+                                    SendMessage(SenderID, bios)
+                                else:
+                                    SendMessage(SenderID, bio)
                             else:
-                                SendMessage(SenderID, bio) 
+                                running_mate = 'His running mate is ' + str(run)
+                                SendMessage(SenderID, running_mate)
+                                if len(bio) > 640:
+                                    bio, bios = CheckTextLength(bio)
+                                    response = bio + '-'
+                                    SendMessage(SenderID, response)
+                                    SendMessage(SenderID, bios)
+                                else:
+                                    SendMessage(SenderID, bio) 
 
-                        elif lvl is not None and 'gov' == lvl.lower() and 'nairobi' in UserSays.lower():
+                        elif level is not None and 'gov' == lvl.lower() and 'nairobi' in UserSays.lower():
                             query = '%nairobi%'
                             candidates = SQL.governors(query)
                             response = 'The gubernatorial candidates are: \n' + str(candidates[0:])
