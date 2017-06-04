@@ -272,9 +272,6 @@ def StartMessaging():
                     #print(Kiswahili)
                     level = Level(UserSays)
                     print(level)
-                    ResponseStack.append(level)
-                    lvl = ResponseStack.pop()
-                    #print(ResponseStack)
                     race = MDB.PresidentialRace(UserSays)
                     cs = SQL.all_presidential_names()
                     if msg.get('message'):
@@ -491,6 +488,9 @@ def Subscribed(SenderID, week, day):
         raise e
 
     return 'OK', 200'''
+
+def Election(text):
+    if 
 
 
 def ReturnType(msg):
@@ -938,7 +938,9 @@ def UsingWit(TEXT):
 
 def Level(text):
     if text in options:
-        return text
+        ResponseStack.append(text)
+        level = ResponseStack.pop()
+        return level
     else:
         pass
 
