@@ -98,7 +98,6 @@ KiswahiliOptions = 'Chagua chaguo kuendelea.'
 
 ResponseStack = []
 KiswahiliHello = 'Jambo! '
-Options = ['governor', 'senator', 'women representative', 'members of parliament']
 Kiswahili = False
 uri = 'mongodb://MC:se*8DGs6t8F*39*k@ds149491.mlab.com:49491/uchaguzike'
 
@@ -369,7 +368,7 @@ def StartMessaging():
                     value = UsingWit(UserSays)
                     surveying = False
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
-                    level = MDB.IncomingLevels(SenderID, UserSays)
+                    level = MDB.IncomingLevels(SenderID, UserSays.lower())
                     counties = MDB.IncomingCounties(SenderID, UserSays)
                     county = [c for c in Counties if UserSays.lower() in c.lower()]
                     county = ' '.join(county)
