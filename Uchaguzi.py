@@ -206,8 +206,7 @@ class UsingSQL:
         result = self.curs.fetchall()
         mate = []
         bio = []
-        for row in results:
-
+        for row in result:
             return row[0], row[1]
 
     def governor_bio(value):
