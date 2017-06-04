@@ -429,11 +429,7 @@ def StartMessaging():
                             SendMessage(SenderID, response)
                             Home(SenderID, 'Go back to home?', 'Home')
 
-                        if Kiswahili is not True and UserSays.lower() in Options:
-                            response = 'You have successful subscribed! I will be messaging you weekly to give you up to date news!'
-                            SendMessage(SenderID, response)
-                            Home(SenderID, 'Go back to home?', 'Home')
-
+                        
                         if Kiswahili is not True and 'home' in UserSays.lower():
                             GenericTemplateOptions(SenderID)
 
