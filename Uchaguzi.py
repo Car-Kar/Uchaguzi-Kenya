@@ -207,11 +207,12 @@ class UsingMongo:
 
 class UsingSQL:
     def __init__(self):
-        self.DB = ''
+        self.conn = ''
+        self.curs = ''
 
     def SQLConnection(self):
         try:
-            conn = pymysql.connect(user='b5ad6687738858',passwd='23bfecef',host = 'us-cdbr-iron-east-03.cleardb.net', database='heroku_611862edb2b2330')
+            self.conn = pymysql.connect(user='b5ad6687738858',passwd='23bfecef',host = 'us-cdbr-iron-east-03.cleardb.net', database='heroku_611862edb2b2330')
             self.curs = conn.cursor()
             print("Connection to database successful!")
             return self.curs
@@ -320,7 +321,7 @@ class UsingSQL:
             return row[0], row[1]
 
     def CloseConnection(self):
-        conn.close()
+        self.conn.close()
         print('MySQL connection closed!')
 
 
@@ -630,6 +631,9 @@ def StartMessaging():
                             SendMessage(SenderID, CandidateMoreInfo)
 
                         elif Kiswahili is not True and UserSays == 'gov':
+                            CountyOptions(SenderID, 'From what county? Choose one below')
+
+                        elif Kiswahili is not True and UserSays == 'senate':
                             CountyOptions(SenderID, 'From what county? Choose one below')
 
 
