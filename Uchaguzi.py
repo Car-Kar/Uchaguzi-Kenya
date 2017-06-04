@@ -154,7 +154,7 @@ class UsingMongo:
 
         else:
             if data in options:
-                collection.insert({'fromuser' : FromUser}, {'level': data})
+                collection.insert({'fromuser' : FromUser, 'level': data})
                 level = data.lower()
                 return level
 
@@ -171,7 +171,7 @@ class UsingMongo:
                 return county
         else:
             if data in options:
-                collection.insert({'fromuser' : FromUser}, {'county': data})
+                collection.insert({'fromuser' : FromUser, 'county': data})
                 county = data.lower()
                 return county
             
