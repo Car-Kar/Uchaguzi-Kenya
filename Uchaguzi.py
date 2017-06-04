@@ -162,7 +162,7 @@ class UsingMongo:
         collection = self.DB['counties']
         print('Connected to counties collection!')
         user =  collection.find_one({'fromuser': FromUser})
-        if user is not Nonedata in Counties:
+        if user is not None and data in Counties:
                 collection.update_one({'fromuser' : FromUser}, {'$set': {'county': data}})
                 county = data.lower()
                 return county
