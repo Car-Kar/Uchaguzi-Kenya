@@ -151,9 +151,7 @@ class UsingMongo:
             else:
                 pass
         else:
-            if data in options:
-                collection.insert({'fromuser' : FromUser}, {'level': data})
-                level = data.lower()
+                level = user['level']
                 return level
             else:
                 pass
