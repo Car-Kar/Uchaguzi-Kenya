@@ -193,7 +193,7 @@ class UsingMongo:
                 return time
 
 
-    def PresidentialRace(self, FromUser, pres):
+    def PresidentialRace(self, pres):
         collection = self.DB['presidentialrace']
         print('Connected to presidents collection!')
         user =  collection.find_one({'name': pres})
@@ -202,7 +202,7 @@ class UsingMongo:
             collection.update_one({'name' : pres}, {'$set': {'votes': votes + 1}})
             print(votes)
         else:
-            collection.insert_one({'fromuser' : FromUser}, {'votes': 1})
+            collection.insert_one({'name' : pres}, {'votes': 1})
 
     def DeleteCollection(self, FromUser):
         collection = self.DB['levels']
@@ -423,7 +423,7 @@ def StartMessaging():
                             ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
                         if Kiswahili is not True and UserSays.lower() in racer:
                             print('Fuck yes!')
-                            race = MDB.PresidentialRace(SenderID, racer.capitalize())
+                            race = MDB.PresidentialRace(racer.capitalize())
 
                         
                         if Kiswahili is not True and 'see results' in UserSays.lower():
