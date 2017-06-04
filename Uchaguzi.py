@@ -204,6 +204,17 @@ class UsingMongo:
         else:
             collection.insert_one({'fromuser' : FromUser}, {'votes': 1})
 
+    def DeleteCollection(self, FromUser):
+        collection = self.DB['levels']
+        print('Connected to levels collection!')
+        user =  collection.find_one({'fromuser': FromUser})
+        if user is not None:
+            collection.delete_one({'fromuser' : FromUser})
+
+        else:
+            pass
+
+
 class UsingSQL:
     def __init__(self):
         self.conn = ''
@@ -598,6 +609,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                             SendMessage(SenderID, second_names)
                             SendMessage(SenderID, CandidateMoreInfo)
                         elif Kiswahili is not True and 'vote for' in UserSays.lower():
+                            MDB.DeleteCollection(SenderID)
                             SendMessage(SenderID, 'If the elections happened tomorrow, which presidential candidate would you vote for?')
 
                     elif msg.get('postback'):  
