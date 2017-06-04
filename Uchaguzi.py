@@ -224,7 +224,7 @@ class UsingSQL:
             candidates.append(row[0])
         return candidates
 
-    def president_bio(value):
+    def president_bio(self, value):
         self.curs.execute("""SELECT running_mate,political_bio FROM presidential_candidates WHERE UPPER(name) Like  UPPER('%s') """ % (value))
         result = curs.fetchall()
         print(result)
