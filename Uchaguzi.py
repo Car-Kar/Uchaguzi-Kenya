@@ -202,7 +202,7 @@ class UsingMongo:
             collection.update_one({'name' : pres}, {'$set': {'votes': votes + 1}})
             print(votes)
         else:
-            collection.insert_one({'name' : pres}, {'votes': 1})
+            collection.insert_one({'name' : pres, 'votes': 1})
 
     def DeleteCollection(self, FromUser):
         collection = self.DB['levels']
@@ -453,8 +453,9 @@ def StartMessaging():
                             query = '%' + UserSays.lower() + '%'
                             run, bio, img = SQL.president_bio(query)
                             bio = str(bio)
+                            img = str(img).decode('base64')
                             
-                            SendAttachment(SenderID, 'image', str(img))
+                            SendAttachment(SenderID, 'image', )
                             if len(str(run)) < 1:
                                 if len(bio) > 640:
                                     bio, bios = CheckTextLength(bio)
