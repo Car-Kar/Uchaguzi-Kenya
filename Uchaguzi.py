@@ -337,7 +337,7 @@ class UsingSQL:
 MDB = UsingMongo()
 SQL = UsingSQL()
 
-options = ['pres', 'gov', 'senate', 'womrep']
+options = ['pres', 'gov', 'senate', 'womrep', 'vote']
 VotingInformation = {'image' : 'https://media.giphy.com/media/3o6ZtkFObzcJiaMOFG/giphy.gif', 'image' : 'https://media.giphy.com/media/26vUCOMzBiBZ0qW1a/giphy.gif', 
 'video' : 'https://www.youtube.com/watch?v=nQbztjkag1A&feature=youtu.be&t=1',  'image' : 'https://farm5.staticflickr.com/4267/34872767952_f36c5a4dda_o_d.jpg'}
 
@@ -554,6 +554,8 @@ If you want to know about another candidate, send me his or her name, otherwise 
 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
 
+                        elif level == 'vote' and UserSays.lower() in racer.lower():
+                            print('Im voting')
 
                         elif Kiswahili is not True and 'gov' == level:
                             query = '%' + county + '%'
@@ -646,7 +648,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                             Home(SenderID, 'Go back to home?', 'Home')
 
                         elif Kiswahili is not True and UserSays == 'poll':
-                            ReusableOptions(SenderID, OptionsText, 'Vote for your preferred candidate', 'See the results.')
+                            ReusableOptions(SenderID, OptionsText, 'Vote', 'See the results')
 
                         elif Kiswahili is not True and UserSays == 'registration':
                             SendAttachment(SenderID, 'image', 'https://farm5.staticflickr.com/4243/34193089344_55a2249bd6_o_d.jpg')
