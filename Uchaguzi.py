@@ -508,86 +508,18 @@ def StartMessaging():
                         elif Kiswahili is not True and 'gov' == level:
                             query = '%' + county + '%'
                             candidates = SQL.governors(query)
-                            response = 'The gubernatorial candidates for Nairobi are: \n' + str(candidates[0:])
-                            SendMessage(SenderID, response)
-                            SendMessage(SenderID, CandidateMoreInfo)
+                            if len(candidates) > 640:
+                                first_names, second_names = CheckListLength(candidates)
+                                response = 'The presidential candidates are: \n' + str(first_names[0:])
+                                SendMessage(SenderID, response)
+                                SendMessage(SenderID, second_names)
+                                SendMessage(SenderID, CandidateMoreInfo)
+                            else:
+                                response = 'The gubernatorial candidates for ' + county + ' are: \n' + str(candidates[0:])
+                                SendMessage(SenderID, response)
+                                SendMessage(SenderID, CandidateMoreInfo)
 
-                        elif Kiswahili is not True and 'nakuru' == UserSays.lower() and 'gov' == level:
-                            query = '%nakuru%'
-                            candidates = SQL.governors(query)
-                            response = 'The gubernatorial candidates for Nakuru are: \n' + str(candidates[0:])
-                            SendMessage(SenderID, response)
-
-                        elif Kiswahili is not True and 'kiambu' == UserSays.lower() and 'gov' == level:
-                            query = '%kiambu%'
-                            candidates = SQL.governors(query)
-                            response = 'The gubernatorial candidates in Kiambu are: \n' + str(candidates[0:])
-                            SendMessage(SenderID, response)
-                            SendMessage(SenderID, CandidateMoreInfo)
-
-                        elif Kiswahili is not True and 'kericho' == UserSays.lower() and 'gov' == level:
-                            query = '%kericho%'
-                            candidates = SQL.governors(query)
-                            response = 'The gubernatorial candidates in Kericho are: \n' + str(candidates[0:])
-                            SendMessage(SenderID, response)
-                            SendMessage(SenderID, CandidateMoreInfo)
-
-                        elif Kiswahili is not True and 'uasin' in UserSays.lower() and 'gov' == level:
-                            query = '%uasin%'
-                            candidates = SQL.governors(query)
-                            response = 'The gubernatorial candidates in Uasin Gishu are: \n' + str(candidates[0:])
-                            SendMessage(SenderID, response)
-                            SendMessage(SenderID, CandidateMoreInfo)
-
-                        elif Kiswahili is not True and 'nakuru' == UserSays.lower() and 'gov' == level:
-                            query = '%kakamega%'
-                            candidates = SQL.governors(query)
-                            response = 'The gubernatorial candidates in Kakamega are: \n' + str(candidates[0:])
-                            SendMessage(SenderID, response)
-                            SendMessage(SenderID, CandidateMoreInfo)
-
-                        elif Kiswahili is not True and 'turkana' == UserSays.lower() and 'gov' == level:
-                            query = '%turkana%'
-                            candidates = SQL.governors(query)
-                            response = 'The gubernatorial candidates in Turkana are: \n' + str(candidates[0:])
-                            SendMessage(SenderID, response)
-                            SendMessage(SenderID, CandidateMoreInfo)
-
-                        elif Kiswahili is not True and 'kisumu' == UserSays.lower() and 'gov' == level:
-                            query = '%kisumu%'
-                            candidates = SQL.governors(query)
-                            response = 'The gubernatorial candidates  in Kisumu are: \n' + str(candidates[0:])
-                            SendMessage(SenderID, response)
-                            SendMessage(SenderID, CandidateMoreInfo)
-
-                        elif Kiswahili is not True and 'mombasa' == UserSays.lower() and 'gov' == level:
-                            query = '%mombasa%'
-                            candidates = SQL.governors(query)
-                            response = 'The gubernatorial candidates in Mombasa are: \n' + str(candidates[0:])
-                            SendMessage(SenderID, response)
-                            SendMessage(SenderID, CandidateMoreInfo)
-
-                        elif Kiswahili is not True and 'narok' == UserSays.lower() and 'gov' == level:
-                            query = '%narok%'
-                            candidates = SQL.governors(query)
-                            response = 'The gubernatorial candidates in Narok are: \n' + str(candidates[0:])
-                            SendMessage(SenderID, response)
-                            SendMessage(SenderID, CandidateMoreInfo)
-
-                        elif Kiswahili is not True and 'narok' == UserSays.lower() and 'gov' == level:
-                            query = '%narok%'
-                            candidates = SQL.governors(query)
-                            response = 'The gubernatorial candidates in Narok are: \n' + str(candidates[0:])
-                            SendMessage(SenderID, response)
-                            SendMessage(SenderID, CandidateMoreInfo)
-
-                        elif Kiswahili is not True and 'narok' == UserSays.lower() and 'gov' == level:
-                            query = '%narok%'
-                            candidates = SQL.governors(query)
-                            response = 'The gubernatorial candidates in Narok are: \n' + str(candidates[0:])
-                            SendMessage(SenderID, response)
-                            SendMessage(SenderID, CandidateMoreInfo)
-
+                        
                         elif Kiswahili is not True and 'nairobi' == UserSays.lower() and 'senate' == level:
                             query = '%nairobi%'
                             candidates = SQL.senators(query)
