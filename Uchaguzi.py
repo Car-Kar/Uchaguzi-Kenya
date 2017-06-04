@@ -204,19 +204,7 @@ class UsingMongo:
         else:
             collection.insert_one({'name' : pres, 'votes': 1})
 
-    def DeleteCollection(self, FromUser):
-        collection = self.DB['levels']
-        print('Connected to levels collection!')
-        user =  collection.find_one({'fromuser': FromUser})
-        if user is not None:
-            collection.delete_one({'fromuser' : FromUser})
-            return True
-
-        else:
-            return False
-
     
-
 
 class UsingSQL:
     def __init__(self):
@@ -389,7 +377,7 @@ def StartMessaging():
                     print(cands)
                     #News = MDB.NewsSubscribers(SenderID, UserSays)
                     #print(Kiswahili)
-                    
+                    x = Poll(UserSays)
                     print(level)
                     racer = DefiningRace(UserSays)
                     print(racer)
@@ -423,8 +411,7 @@ def StartMessaging():
                             response = '''Nitakutumia alani ya kukukumbusha siku ya uchaguzi.
                             Unataka alani ya siku gani?'''
                             ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
-                        if Kiswahili is not True and UserSays.lower() in racer:
-                            print('Fuck yes!')
+                        if Kiswahili is not True and x == True:
                             race = MDB.PresidentialRace(racer.capitalize())
 
                         
@@ -618,7 +605,6 @@ If you want to know about another candidate, send me his or her name, otherwise 
                             SendMessage(SenderID, second_names)
                             SendMessage(SenderID, CandidateMoreInfo)
                         elif Kiswahili is not True and 'vote for' in UserSays.lower():
-                            #MDB.DeleteCollection(SenderID)
                             SendMessage(SenderID, 'If the elections happened tomorrow, which presidential candidate would you vote for?')
 
                     elif msg.get('postback'):  
@@ -737,6 +723,11 @@ def Subscribed(SenderID, week, day):
 
     return 'OK', 200'''
 
+def Poll(text):
+    if 'vote for' in text.lower():
+        return True
+    else:
+        return False
 
 def ReturnType(msg):
     print('Checking Type')
