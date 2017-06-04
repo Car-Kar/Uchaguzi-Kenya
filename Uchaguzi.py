@@ -154,29 +154,6 @@ class UsingMongo:
                 time = collection.insert_one({'fromuser' : FromUser}, {'time': 'day'})
                 return time
 
-    '''def NewsSubscribers(self, FromUser,  data):
-        collection = self.DB['newssubscribers']
-        user =  collection.find_one({'fromuser': FromUser})
-        if user is not None: 
-            news =  user['news']
-            return news
-        else:
-            if 'pres' in data.lower():
-                news = collection.insert_one({'fromuser' : FromUser}, {'news': 'presidential'})
-                return news
-            elif 'gov' in data.lower():
-                news = collection.insert_one({'fromuser' : FromUser}, {'news': 'governor'})
-                return news
-
-            elif 'sen' in data.lower():
-                news = collection.insert_one({'fromuser' : FromUser}, {'news': 'senate'})
-                return news
-
-            elif 'wom' in data.lower():
-                news = collection.insert_one({'fromuser' : FromUser}, {'news': 'women representative'})
-                return news
-
-'''
 
     def PresidentialRace(self, pres):
         collection = self.DB['presidentialrace']
