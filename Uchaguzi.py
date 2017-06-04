@@ -157,6 +157,23 @@ class UsingMongo:
                 collection.insert({'fromuser' : FromUser}, {'level': data})
                 level = data.lower()
                 return level
+
+    def IncomingCounties(self, FromUser, data):
+        collection = self.DB['counties']
+        print('Connected to counties collection!')
+        user =  collection.find_one({'fromuser': FromUser})
+        if user is not Nonedata in Counties:
+                collection.update_one({'fromuser' : FromUser}, {'$set': {'county': data}})
+                county = data.lower()
+                return county
+        elif user is not None :
+                county = user['county']
+                return county
+        else:
+            if data in options:
+                collection.insert({'fromuser' : FromUser}, {'county': data})
+                county = data.lower()
+                return county
             
             
     
@@ -226,11 +243,28 @@ class UsingSQL:
         results = self.curs.fetchall()
         candidates = []
         for row in results:
+
+            candidates.append(row[0])
+        return candidates
+
+    def all_senator_names(self):
+        self.curs.execute("""SELECT name FROM senators""")
+        results = self.curs.fetchall()
+        candidates = []
+        for row in results:
+            candidates.append(row[0])
+        return candidates
+
+    def all_rep_names(self):
+        self.curs.execute("""SELECT name FROM women_rep""")
+        results = self.curs.fetchall()
+        candidates = []
+        for row in results:
             candidates.append(row[0])
         return candidates
 
     def president_bio(self, value):
-        self.curs.execute("""SELECT running_mate,political_bio FROM presidential_candidates WHERE UPPER(name) Like  UPPER('%s') """ % (value))
+        self.curs.execute("""SELECT running_mate, political_bio FROM presidential_candidates WHERE UPPER(name) Like  UPPER('%s') """ % (value))
         result = self.curs.fetchall()
         mate = []
         bio = []
@@ -238,7 +272,7 @@ class UsingSQL:
             return row[0], row[1]
 
     def governor_bio(self, value):
-        self.curs.execute("""SELECT running_mate,political_bio FROM governor_candidates WHERE UPPER(name) Like  UPPER('%s') """ % (value))
+        self.curs.execute("""SELECT running_mate, political_bio FROM governor_candidates WHERE UPPER(name) Like  UPPER('%s') """ % (value))
         result= self.curs.fetchall()
         for row in result:
             return row[0], row[1]
@@ -252,6 +286,42 @@ class UsingSQL:
         result = result.replace("'", ' ')
         result = result.replace(',', '-')
         return result
+
+    def senators(self, value):
+        self.curs.execute("""SELECT name, political_party FROM senators WHERE UPPER(county) Like  UPPER('%s') """ % (value))
+        results = list(self.curs.fetchall())
+        result = '\n'.join([str(cand) for cand in results])
+        result = result.replace('(', ' ')
+        result = result.replace(')', ' ')
+        result = result.replace("'", ' ')
+        result = result.replace(',', '-')
+        return result
+
+    def senators_bio(self, value):
+        self.curs.execute("""SELECT political_bio, image FROM senators WHERE UPPER(name) Like  UPPER('%s') """ % (value))
+        result = self.curs.fetchall()
+        for row in result:
+            return row[0], row[1]
+
+    def women_reps(self, value):
+        self.curs.execute("""SELECT name FROM women_reps WHERE UPPER(county) Like  UPPER('%s') """ % (value))
+        results = list(self.curs.fetchall())
+        result = '\n'.join([str(cand) for cand in results])
+        result = result.replace('(', ' ')
+        result = result.replace(')', ' ')
+        result = result.replace("'", ' ')
+        result = result.replace(',', '-')
+        return result
+
+    def women_reps_bio(self, value):
+        self.curs.execute("""SELECT political_bio, image FROM women_reps WHERE UPPER(name) Like  UPPER('%s') """ % (value))
+        result = self.curs.fetchall()
+        for row in result:
+            return row[0], row[1]
+
+    def CloseConnection(self):
+        conn.close()
+        print('MySQL connection closed!')
 
 
 
@@ -294,6 +364,7 @@ def StartMessaging():
                     surveying = False
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
                     level = MDB.IncomingLevels(SenderID, UserSays)
+                    county = MDB.IncomingCounties(SenderID, UserSays)
                     cands = FindingCandidate(level, UserSays)
                     print(cands)
                     #News = MDB.NewsSubscribers(SenderID, UserSays)
@@ -482,6 +553,12 @@ def StartMessaging():
                             response = 'The gubernatorial candidates in Narok are: \n' + str(candidates[0:])
                             SendMessage(SenderID, response)
 
+                        elif Kiswahili is not True and 'nairobi' == UserSays.lower() and 'senate' == level:
+                            query = '%nairobi%'
+                            candidates = SQL.senators(query)
+                            response = 'The senate candidates in Narok are: \n' + str(candidates[0:])
+                            SendMessage(SenderID, response)
+
 
                             
 
@@ -564,10 +641,11 @@ def StartMessaging():
 
 
 
-
+    SQL.CloseConnection()
                         
     except Exception as e:
         raise e
+
 
     return 'OK', 200
 
@@ -632,11 +710,16 @@ def FindingCandidate(level, name):
         return result.lower()
 
     if level == 'senate':
-        pass
+        candidates = SQL.all_senator_names()
+        result = [c for c in candidates if name.lower() in c.lower()]
+        result = ' '.join(result)
+        return result.lower()
 
     if level == 'womrep':
-        pass
-
+        candidates = SQL.all_rep_names()
+        result = [c for c in candidates if name.lower() in c.lower()]
+        result = ' '.join(result)
+        return result.lower()
 def Home(RecipientID, TXT, op1):
     headers = {
     'Content-Type' : 'application/json'
