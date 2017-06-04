@@ -505,7 +505,7 @@ def FindingCandidate(name):
     candidates = SQL.all_presidential_names()
     result = [c for c in candidates if name.lower() in c.lower()]
     result = str(result)
-    return result
+    return result.lower()
 
 def Home(RecipientID, TXT, op1):
     headers = {
