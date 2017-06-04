@@ -489,9 +489,6 @@ def Subscribed(SenderID, week, day):
 
     return 'OK', 200'''
 
-def Election(text):
-    if 
-
 
 def ReturnType(msg):
     print('Checking Type')
