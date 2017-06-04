@@ -505,10 +505,8 @@ def ReturnType(msg):
 
 def FindingCandidate(name):
     candidates = SQL.all_presidential_names()
-    if name in candidates:
-        return name
-    else:
-        pass
+    regex = re.findall(r"(?=("+'|'.join(candidates)+r"))", name)
+    return regex
 
 def Home(RecipientID, TXT, op1):
     headers = {
