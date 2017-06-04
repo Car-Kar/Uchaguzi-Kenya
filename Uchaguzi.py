@@ -378,7 +378,6 @@ def StartMessaging():
                     print(cands)
                     #News = MDB.NewsSubscribers(SenderID, UserSays)
                     #print(Kiswahili)
-                    x = Poll(UserSays)
                     print(level)
                     racer = DefiningRace(UserSays)
                     print(racer)
