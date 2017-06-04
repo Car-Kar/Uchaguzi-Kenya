@@ -210,9 +210,10 @@ class UsingMongo:
         user =  collection.find_one({'fromuser': FromUser})
         if user is not None:
             collection.delete_one({'fromuser' : FromUser})
+            return True
 
         else:
-            pass
+            return False
 
 
 class UsingSQL:
