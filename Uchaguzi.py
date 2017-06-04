@@ -389,8 +389,9 @@ def StartMessaging():
                     #print(Kiswahili)
                     
                     print(level)
-                    race = MDB.PresidentialRace(UserSays)
                     racer = DefiningRace(UserSays)
+                    print(racer)
+                    
                     if msg.get('message'):
                         #matching = [s for s in cs if str(ResponseStack.pop()) in s]
                         #print(matching)
@@ -422,6 +423,7 @@ def StartMessaging():
                             ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
                         if Kiswahili is not True and UserSays.lower() in racer:
                             print('Fuck yes!')
+                            race = MDB.PresidentialRace(SenderId, racer.capitalize())
 
                         
                         if Kiswahili is not True and 'see results' in UserSays.lower():
