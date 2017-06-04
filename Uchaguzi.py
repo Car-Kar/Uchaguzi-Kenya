@@ -494,6 +494,30 @@ def StartMessaging():
                                 else:
                                     SendMessage(SenderID, bio)
 
+                        elif level == 'gov' and UserSays.lower() in cands.lower() and county == 'kisumu':
+                            print('Yes')
+                            query = '%' + UserSays.lower() + '%'
+                            run, bio = SQL.governor_bio(query, '%kisumu%')
+                            bio = str(bio)
+                            if len(str(run)) < 1:
+                                if len(bio) > 640:
+                                    bio, bios = CheckTextLength(bio)
+                                    response = bio + '-'
+                                    SendMessage(SenderID, response)
+                                    SendMessage(SenderID, bios)
+                                else:
+                                    SendMessage(SenderID, bio)
+                            else:
+                                running_mate = 'His running mate is ' + str(run)
+                                SendMessage(SenderID, running_mate)
+                                if len(bio) > 640:
+                                    bio, bios = CheckTextLength(bio)
+                                    response = bio + '-'
+                                    SendMessage(SenderID, response)
+                                    SendMessage(SenderID, bios)
+                                else:
+                                    SendMessage(SenderID, bio)
+
 
                         elif Kiswahili is not True and 'nairobi' == UserSays.lower() and 'gov' == level:
                             query = '%nairobi%'
