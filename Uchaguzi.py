@@ -272,7 +272,8 @@ def StartMessaging():
                     #print(Kiswahili)
                     level = Level(UserSays)
                     print(level)
-                    ResponseStack.append(value)
+                    ResponseStack.append(level)
+                    lvl = ResponseStack.pop()
                     #print(ResponseStack)
                     race = MDB.PresidentialRace(UserSays)
                     cs = SQL.all_presidential_names()
@@ -343,11 +344,7 @@ def StartMessaging():
                             SendMessage(SenderID, ContinueUsing)
                             Home(SenderID, 'Go back to home?', 'Home')
 
-                        elif 'nairobi' in UserSays.lower():
-                            names = Candidates(g_nairobi)
-                            TEXT = 'The governor candidates are: \n' + str(names[0:])
-                            SendMessage(SenderID, TEXT)
-                            SendMessage(SenderID, CandidateMoreInfo)
+                        
 
                         elif 'bye' in UserSays.lower():
                             SendMessage(SenderID, Goodbye)
@@ -366,6 +363,12 @@ def StartMessaging():
                                 SendMessage(SenderID, bios)
                             else:
                                 SendMessage(SenderID, bio) 
+
+                        elif lvl is not None and 'gov' == lvl.lower() and 'nairobi' in UserSays.lower():
+                            query = '%nairobi%'
+                            candidates = SQL.governors(query)
+                            response = 'The gubernatorial candidates are: \n' + str(candidates[0:])
+                            SendMessage(SenderID, response)
 
 
                             
@@ -440,12 +443,7 @@ def StartMessaging():
                             SendMessage(SenderID, second_names)
                             SendMessage(SenderID, CandidateMoreInfo)
 
-                        elif level is not None and 'gov' == level.lower() and 'nairobi' in UserSays.lower():
-                            query = '%nairobi%'
-                            candidates = SQL.governors(query)
-                            response = 'The gubernatorial candidates are: \n' + str(candidates[0:])
-                            SendMessage(SenderID, response)
-
+                        
 
 
 
