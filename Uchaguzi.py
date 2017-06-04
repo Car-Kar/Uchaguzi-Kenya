@@ -155,21 +155,27 @@ class UsingMongo:
                 collection.insert({'fromuser' : FromUser}, {'level': data})
                 level = data.lower()
                 return level
-            if 'gov' == data.lower():
-                collection.insert({'fromuser': FromUser}, {'level' : data})
-                print('Added new Kiswahili User!')
-                swahili = True
-                return swahili
-            if 'gov' == data.lower():
-                collection.insert({'fromuser': FromUser}, {'level' : data})
-                print('Added new Kiswahili User!')
-                swahili = True
-                return swahili
-            if 'gov' == data.lower():
-                collection.insert({'fromuser': FromUser}, {'level' : data})
-                print('Added new Kiswahili User!')
-                swahili = True
-                return swahili
+            else:
+                pass
+            
+    def IncomingCounties(self, FromUser, data):
+        collection = self.DB['counties']
+        print('Connected to counties collection!')
+        user =  collection.find_one({'fromuser': FromUser})
+        if user is not None:
+            if data in Counties:
+                collection.update_one({'fromuser' : FromUser}, {'$set': {'county': data}})
+                county = data.lower()
+                return county
+            else:
+                pass
+        else:
+            if data in options:
+                collection.insert({'fromuser' : FromUser}, {'county': data})
+                county = data.lower()
+                return county
+            else:
+                pass
             
 
 
@@ -304,6 +310,8 @@ def StartMessaging():
                     #News = MDB.NewsSubscribers(SenderID, UserSays)
                     #print(Kiswahili)
                     level = MDB.IncomingLevels(SenderID, UserSays)
+                    county = MDB.IncomingCounties(SenderID, UserSays)
+                    print(county)
                     print(level)
                     race = MDB.PresidentialRace(UserSays)
                     cs = SQL.all_presidential_names()
