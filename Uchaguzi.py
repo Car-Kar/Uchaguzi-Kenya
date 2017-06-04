@@ -503,8 +503,8 @@ def ReturnType(msg):
 
 def FindingCandidate(name):
     candidates = SQL.all_presidential_names()
-    print(candidates)
     result = [c for c in candidates if name.lower() in c.lower()]
+    result = str(result)
     return result
 
 def Home(RecipientID, TXT, op1):
