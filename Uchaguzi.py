@@ -347,7 +347,7 @@ def StartMessaging():
                             print('Yes')
                             query = '%' + UserSays.lower() + '%'
                             res = SQL.president_bio(query)
-                            running_mate = 'His running mate is ' + resr[0]
+                            running_mate = 'His running mate is ' + res[0]
                             bio = res[1]
                             SendMessage(SenderID, running_mate)
                             SendMessage(SenderID, bio) 
