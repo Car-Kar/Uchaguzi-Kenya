@@ -139,6 +139,38 @@ class UsingMongo:
             elif 'english' == data.lower():
                 swahili = False
                 return swahili
+    def IncomingLevels(self, FromUser, data):
+        collection = self.DB['levels']
+        print('Connected to levels collection!')
+        user =  collection.find_one({'fromuser': FromUser})
+        if user is not None:
+            if data in options:
+                collection.update_one({'fromuser' : FromUser}, {'$set': {'level': data}})
+                level = data.lower()
+                return level
+            else:
+                pass
+        else:
+            if data in options:
+                collection.update_one({'fromuser' : FromUser}, {'level': data})
+                level = data.lower()
+                return level
+            if 'gov' == data.lower():
+                collection.insert({'fromuser': FromUser}, {'level' : data})
+                print('Added new Kiswahili User!')
+                swahili = True
+                return swahili
+            if 'gov' == data.lower():
+                collection.insert({'fromuser': FromUser}, {'level' : data})
+                print('Added new Kiswahili User!')
+                swahili = True
+                return swahili
+            if 'gov' == data.lower():
+                collection.insert({'fromuser': FromUser}, {'level' : data})
+                print('Added new Kiswahili User!')
+                swahili = True
+                return swahili
+            
 
 
     def Subscribers(self, FromUser,  data):
@@ -271,7 +303,7 @@ def StartMessaging():
                     print(cands)
                     #News = MDB.NewsSubscribers(SenderID, UserSays)
                     #print(Kiswahili)
-                    level = Level(UserSays)
+                    level = MDB.IncomingLevels(SenderID, UserSays)
                     print(level)
                     race = MDB.PresidentialRace(UserSays)
                     cs = SQL.all_presidential_names()
