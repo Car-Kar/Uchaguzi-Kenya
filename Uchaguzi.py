@@ -335,7 +335,7 @@ class UsingSQL:
 
 MDB = UsingMongo()
 SQL = UsingSQL()
-
+Options = ['haha']
 options = ['pres', 'gov', 'senate', 'womrep', 'vote']
 VotingInformation = {'image' : 'https://media.giphy.com/media/3o6ZtkFObzcJiaMOFG/giphy.gif', 'image' : 'https://media.giphy.com/media/26vUCOMzBiBZ0qW1a/giphy.gif', 
 'video' : 'https://www.youtube.com/watch?v=nQbztjkag1A&feature=youtu.be&t=1',  'image' : 'https://farm5.staticflickr.com/4267/34872767952_f36c5a4dda_o_d.jpg'}
@@ -410,6 +410,11 @@ def StartMessaging():
                             response = '''Nitakutumia alani ya kukukumbusha siku ya uchaguzi.
                             Unataka alani ya siku gani?'''
                             ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
+
+                        if level == 'vote' and UserSays.lower() in racer.lower():
+                            MDB.PresidentialRace(racer.capitalize())
+                            SendMessage(SenderID, 'Thank you for voting!')
+                            ReusableOptions(SenderID, 'Do you want to see the results, go back home, or say goodbye?', 'Results', 'Home')
                         
                         
                         if Kiswahili is not True and 'see results' in UserSays.lower():
@@ -424,7 +429,7 @@ def StartMessaging():
                             SendMessage(SenderID, response)
                             Home(SenderID, 'Go back to home?', 'Home')
 
-                        if Kiswahili is not True and UserSays.lower() in options:
+                        if Kiswahili is not True and UserSays.lower() in Options:
                             response = 'You have successful subscribed! I will be messaging you weekly to give you up to date news!'
                             SendMessage(SenderID, response)
                             Home(SenderID, 'Go back to home?', 'Home')
