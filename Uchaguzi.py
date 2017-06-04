@@ -351,13 +351,14 @@ def StartMessaging():
                             run, bio = SQL.president_bio(query)
                             running_mate = 'His running mate is ' + str(run)
                             bio = str(bio)
+                            SendMessage(SenderID, running_mate)
                             if len(bio) > 640:
                                 bio, bios = CheckListLength(bio)
                                 response = bio + '-'
-                                SendMessage(response)
-                                SendMessage(bios)
-                            SendMessage(SenderID, running_mate)
-                            SendMessage(SenderID, bio) 
+                                SendMessage(SenderID, response)
+                                SendMessage(SenderId, bios)
+                            else:
+                                SendMessage(SenderID, bio) 
 
                             
 
