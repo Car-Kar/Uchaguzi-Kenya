@@ -389,7 +389,8 @@ def StartMessaging():
                     #print(Kiswahili)
                     
                     print(level)
-                    #race = MDB.PresidentialRace(UserSays)
+                    race = MDB.PresidentialRace(UserSays)
+                    racer = DefiningRace(UserSays)
                     if msg.get('message'):
                         #matching = [s for s in cs if str(ResponseStack.pop()) in s]
                         #print(matching)
@@ -419,6 +420,8 @@ def StartMessaging():
                             response = '''Nitakutumia alani ya kukukumbusha siku ya uchaguzi.
                             Unataka alani ya siku gani?'''
                             ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
+                        if Kiswahili is not True and UserSays.lower() in racer:
+                            print('Fuck yes!')
 
                         
                         if Kiswahili is not True and 'see results' in UserSays.lower():
@@ -741,6 +744,11 @@ def ReturnType(msg):
     elif msg.get('web_url'):
         URLText = msg['web_url']['title']
         return URLText
+def DefiningRace(name):
+    candidates = SQL.all_presidential_names()
+    result = [c for c in candidates if name.lower() in c.lower()]
+    result = ' '.join(result)
+    return result.lower()
 
 def FindingCandidate(level, name):
     if level == 'pres':
