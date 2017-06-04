@@ -505,7 +505,7 @@ def ReturnType(msg):
 
 def FindingCandidate(name):
     candidates = list(SQL.all_presidential_names())
-    print(candidates.lower())
+    print(candidates)
     result = [c for c in candidates if name.lower() in c.lower()]
     return result
 
