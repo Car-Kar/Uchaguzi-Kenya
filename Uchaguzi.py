@@ -475,6 +475,23 @@ def StartMessaging():
                                 SendMessage(SenderID, bio)
                                 Home(SenderID, 'Do you want to know about another candidate, or go back to home?', 'Home')
 
+                        elif level == 'womrep' and UserSays.lower() in cands.lower():
+                            query = '%' + UserSays.lower() + '%'
+                            county = '%' + county + '%'
+                            img, bio = SQL.women_reps_bio(query, county)
+                            bio = str(bio)
+                            print(bio)
+                            SendAttachment(SenderID, 'image', img)
+                            if len(bio) > 640:
+                                bio, bios = CheckTextLength(bio)
+                                response = bio + '-'
+                                SendMessage(SenderID, response)
+                                SendMessage(SenderID, bios)
+                                Home(SenderID, 'Do you want to know about another candidate, or go back to home?', 'Home')
+                            else:
+                                SendMessage(SenderID, bio)
+                                Home(SenderID, 'Do you want to know about another candidate, or go back to home?', 'Home')
+
                         elif level == 'gov' and UserSays.lower() in cands.lower():
                             print('Yes')
                             query = '%' + UserSays.lower() + '%'
@@ -510,7 +527,7 @@ def StartMessaging():
                             candidates = SQL.governors(query)
                             if len(candidates) > 640:
                                 first_names, second_names = CheckListLength(candidates)
-                                response = 'The presidential candidates are: \n' + str(first_names[0:])
+                                response = 'The gubernatorial candidatesfor ' + county + ' are: \n' + str(first_names[0:])
                                 SendMessage(SenderID, response)
                                 SendMessage(SenderID, second_names)
                                 SendMessage(SenderID, CandidateMoreInfo)
@@ -518,6 +535,39 @@ def StartMessaging():
                                 response = 'The gubernatorial candidates for ' + county + ' are: \n' + str(candidates[0:])
                                 SendMessage(SenderID, response)
                                 SendMessage(SenderID, CandidateMoreInfo)
+
+                        elif Kiswahili is not True and 'senate' == level:
+                            query = '%' + county + '%'
+                            candidates = SQL.senators(query)
+                            if len(candidates) > 640:
+                                first_names, second_names = CheckListLength(candidates)
+                                response = 'The senate candidates are: \n' + str(first_names[0:])
+                                SendMessage(SenderID, response)
+                                SendMessage(SenderID, second_names)
+                                SendMessage(SenderID, CandidateMoreInfo)
+                            else:
+                                response = 'The senate candidates for ' + county + ' are: \n' + str(candidates[0:])
+                                SendMessage(SenderID, response)
+                                SendMessage(SenderID, CandidateMoreInfo)
+
+                        elif Kiswahili is not True and 'womrep' == level:
+                            query = '%' + county + '%'
+                            candidates = SQL.women_reps(query)
+                            if len(candidates) > 640:
+                                first_names, second_names = CheckListLength(candidates)
+                                response = 'The  candidates are: \n' + str(first_names[0:])
+                                SendMessage(SenderID, response)
+                                SendMessage(SenderID, second_names)
+                                SendMessage(SenderID, CandidateMoreInfo)
+                            else:
+                                response = 'The candidates for ' + county + ' are: \n' + str(candidates[0:])
+                                SendMessage(SenderID, response)
+                                SendMessage(SenderID, CandidateMoreInfo)
+
+
+
+
+
 
                         
                         elif Kiswahili is not True and 'nairobi' == UserSays.lower() and 'senate' == level:
