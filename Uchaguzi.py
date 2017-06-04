@@ -152,7 +152,7 @@ class UsingMongo:
                 pass
         else:
             if data in options:
-                collection.update_one({'fromuser' : FromUser}, {'level': data})
+                collection.insert({'fromuser' : FromUser}, {'level': data})
                 level = data.lower()
                 return level
             if 'gov' == data.lower():
