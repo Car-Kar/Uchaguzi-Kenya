@@ -222,6 +222,14 @@ class UsingSQL:
             candidates.append(row[0])
         return candidates
 
+    def all_governor_names(self):
+        self.curs.execute("""SELECT name FROM governor_candidates""")
+        results = self.curs.fetchall()
+        candidates = []
+        for row in results:
+            candidates.append(row[0])
+        return candidates
+
     def president_bio(self, value):
         self.curs.execute("""SELECT running_mate,political_bio FROM presidential_candidates WHERE UPPER(name) Like  UPPER('%s') """ % (value))
         result = self.curs.fetchall()
@@ -233,8 +241,8 @@ class UsingSQL:
     def governor_bio(self, value):
         self.curs.execute("""SELECT running_mate,political_bio FROM governor_candidates WHERE UPPER(name) Like  UPPER('%s') """ % (value))
         result= self.curs.fetchall()
-        #print(str(result))
-        return result
+        for row in result:
+            return row[0], row[1]
 
     def governors(self, value):
         self.curs.execute("""SELECT name, political_party FROM governor_candidates WHERE UPPER(county) Like  UPPER('%s') """ % (value))
@@ -255,7 +263,7 @@ class UsingSQL:
 MDB = UsingMongo()
 SQL = UsingSQL()
 
-options = ['gov', 'senate', 'womrep']
+options = ['pres', 'gov', 'senate', 'womrep']
 VotingInformation = {'image' : 'https://media.giphy.com/media/3o6ZtkFObzcJiaMOFG/giphy.gif', 'image' : 'https://media.giphy.com/media/26vUCOMzBiBZ0qW1a/giphy.gif', 
 'video' : 'https://www.youtube.com/watch?v=nQbztjkag1A&feature=youtu.be&t=1',  'image' : 'https://farm5.staticflickr.com/4267/34872767952_f36c5a4dda_o_d.jpg'}
 
@@ -287,14 +295,14 @@ def StartMessaging():
                     value = UsingWit(UserSays)
                     surveying = False
                     Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
-                    cands = FindingCandidate(UserSays)
+                    level = MDB.IncomingLevels(SenderID, UserSays)
+                    cands = FindingCandidate(level, UserSays)
                     print(cands)
                     #News = MDB.NewsSubscribers(SenderID, UserSays)
                     #print(Kiswahili)
-                    level = MDB.IncomingLevels(SenderID, UserSays)
+                    
                     print(level)
                     race = MDB.PresidentialRace(UserSays)
-                    cs = SQL.all_presidential_names()
                     if msg.get('message'):
                         #matching = [s for s in cs if str(ResponseStack.pop()) in s]
                         #print(matching)
@@ -587,11 +595,12 @@ def ReturnType(msg):
         URLText = msg['web_url']['title']
         return URLText
 
-def FindingCandidate(name):
-    candidates = SQL.all_presidential_names()
-    result = [c for c in candidates if name.lower() in c.lower()]
-    result = ' '.join(result)
-    return result.lower()
+def FindingCandidate(level, name):
+    if level == 'pres':
+        candidates = SQL.all_presidential_names()
+        result = [c for c in candidates if name.lower() in c.lower()]
+        result = ' '.join(result)
+        return result.lower()
 
 def Home(RecipientID, TXT, op1):
     headers = {
