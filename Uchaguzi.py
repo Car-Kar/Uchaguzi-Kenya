@@ -147,9 +147,9 @@ class UsingMongo:
             collection.update_one({'fromuser' : FromUser}, {'$set': {'level': data}})
             level = data.lower()
             return level
-            
+
         elif user is not None:
-            county = user['county']
+            county = user['level']
             return county
 
         else:
