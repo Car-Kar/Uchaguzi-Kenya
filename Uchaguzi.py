@@ -442,12 +442,12 @@ def StartMessaging():
                                     SendMessage(SenderID, response)
                                     SendMessage(SenderID, bios)
                                     Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
-                                 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
+If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
                                 else:
                                     SendMessage(SenderID, bio)
                                     Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
-                                 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
+If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
                             else:
                                 running_mate = 'His running mate is ' + str(run)
@@ -458,12 +458,12 @@ def StartMessaging():
                                     SendMessage(SenderID, response)
                                     SendMessage(SenderID, bios)
                                     Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
-                                 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
+If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
                                 else:
                                     SendMessage(SenderID, bio)
                                     Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
-                                 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
+If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
 
                         elif level == 'senate' and UserSays.lower() in cands.lower():
@@ -499,12 +499,12 @@ def StartMessaging():
                                 SendMessage(SenderID, response)
                                 SendMessage(SenderID, bios)
                                 Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
-                                 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
+If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
                             else:
                                 SendMessage(SenderID, bio)
                                 Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
-                                 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
+If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
                         elif level == 'gov' and UserSays.lower() in cands.lower():
                             print('Yes')
@@ -519,7 +519,7 @@ def StartMessaging():
                                     SendMessage(SenderID, response)
                                     SendMessage(SenderID, bios)
                                     Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
-                                 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
+If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
                                 else:
                                     SendMessage(SenderID, bio)
@@ -535,12 +535,12 @@ def StartMessaging():
                                     SendMessage(SenderID, response)
                                     SendMessage(SenderID, bios)
                                     Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
-                                 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
+If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
                                 else:
                                     SendMessage(SenderID, bio)
                                     Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
-                                 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
+If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
 
 
@@ -585,12 +585,6 @@ def StartMessaging():
                                 response = 'The candidates for ' + county + ' are: \n' + str(candidates[0:])
                                 SendMessage(SenderID, response)
                                 SendMessage(SenderID, CandidateMoreInfo)
-
-
-
-
-
-
                         
                         elif Kiswahili is not True and 'nairobi' == UserSays.lower() and 'senate' == level:
                             query = '%nairobi%'
@@ -600,13 +594,6 @@ def StartMessaging():
                             SendMessage(SenderID, response)
                             SendMessage(SenderID, second_names)
                             SendMessage(SenderID, CandidateMoreInfo)
-
-
-                            
-
-
-                    
-                        
 
                     elif msg.get('postback'):  
                         if UserSays == 'Get Started':
@@ -675,6 +662,8 @@ def StartMessaging():
                             CountyOptions(SenderID, 'From what county? Choose one below')
 
                         elif Kiswahili is not True and UserSays == 'senate':
+                            CountyOptions(SenderID, 'From what county? Choose one below')
+                        elif Kiswahili is not True and UserSays == 'womrep':
                             CountyOptions(SenderID, 'From what county? Choose one below')
 
                         elif Kiswahili is not True and UserSays == 'poll':
