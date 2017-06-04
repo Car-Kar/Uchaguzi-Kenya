@@ -594,6 +594,8 @@ If you want to know about another candidate, send me his or her name, otherwise 
                             SendMessage(SenderID, response)
                             SendMessage(SenderID, second_names)
                             SendMessage(SenderID, CandidateMoreInfo)
+                        elif Kiswahili is not True and 'vote for' in MessageText.lower():
+                            SendMessage(SenderID, 'If the elections happened tomorrow, who would you vote for?')
 
                     elif msg.get('postback'):  
                         if UserSays == 'Get Started':
@@ -666,8 +668,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                         elif Kiswahili is not True and UserSays == 'womrep':
                             CountyOptions(SenderID, 'From what county? Choose one below')
 
-                        elif Kiswahili is not True and UserSays == 'poll':
-                            SendMessage(SenderID, 'If the elections happened tomorrow, who would you vote for?')
+                            
 
 
         SQL.CloseConnection()
