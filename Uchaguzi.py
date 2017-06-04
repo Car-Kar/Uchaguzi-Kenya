@@ -207,21 +207,23 @@ class UsingSQL:
 
     def all_presidential_candidates(self):
         self.curs.execute("""SELECT name, political_party FROM presidential_candidates""")
+        results = list(self.curs.fetchall())
+        result = '\n'.join([str(cand) for cand in results])
+        result = result.replace('(', ' ')
+        result = result.replace(')', ' ')
+        result = result.replace("'", ' ')
+        result = result.replace(',', '-')
+        print(result)
+        return result
+
+    def all_presidential_names(self):
+        self.curs.execute("""SELECT name FROM presidential_candidates""")
         results = self.curs.fetchall()
         candidates = []
         for row in results:
             candidates.append(row[0])
         print(candidates)
         #return candidates
-        
-    def all_presidential_names(self):
-        self.curs.execute("""SELECT name FROM presidential_candidates""")
-        results = list(self.curs.fetchall())
-        results = [result.replace('(', ' ') for result in results]
-        #results = [result.replace('(', ' ') for result in results]
-        #esults = [result.replace('(', ' ') for result in results]
-        #results = [result.replace('(', ' ') for result in results]
-        return results
 
     def president_bio(value):
         curs.execute("""SELECT running_mate,political_bio FROM presidential_candidates WHERE UPPER(name) Like  UPPER('%s') """ % (value))
