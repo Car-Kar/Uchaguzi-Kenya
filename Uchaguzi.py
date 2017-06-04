@@ -440,7 +440,7 @@ def StartMessaging():
                             SendMessage(SenderID, second_names)
                             SendMessage(SenderID, CandidateMoreInfo)
 
-                        elif 'gov' == level.lower() and 'nairobi' in UserSays.lower():
+                        elif level is not None and 'gov' == level.lower() and 'nairobi' in UserSays.lower():
                             query = '%nairobi%'
                             candidates = SQL.governors(query)
                             response = 'The gubernatorial candidates are: \n' + str(candidates[0:])
