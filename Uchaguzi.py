@@ -735,10 +735,10 @@ def Subscribed(SenderID, week, day):
 
 def ReturnType(msg):
     print('Checking Type')
-    if msg['message'].get('text'):
+    if msg('message').get('text'):
         MessageText = msg['message']['text']
         return MessageText
-    elif msg.get['postback'].get('payload'):
+    elif msg.get('postback').get('payload'):
         PostbackText = msg['postback']['payload']
         return PostbackText
     elif msg.get('web_url'):
@@ -958,7 +958,7 @@ def GenericTemplateOptions(RecipientID):
                     ,{
                         'type' : 'postback',
                         'payload' : 'levels',
-                        'title' : 'Choose an Election Level'
+                        'title' : 'Election Levels'
                     },
                 
                 ]},
