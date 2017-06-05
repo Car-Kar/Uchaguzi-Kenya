@@ -746,14 +746,19 @@ def ReturnType(msg):
     if msg.get('message'):
         if msg['message'].get('text'):
             MessageText = msg['message']['text']
+            print(MessageText)
             return MessageText
+        elif msg['message'].get('attachments'):
+            pass
     elif msg.get('postback'):
         if msg.get('postback').get('payload'):
             PostbackText = msg['postback']['payload']
+            print(PostbackText)
             return PostbackText
     elif msg.get('web_url'):
         URLText = msg['web_url']['title']
         return URLText
+        print(URLText)
     else:
         pass
     
