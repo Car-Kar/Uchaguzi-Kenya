@@ -336,7 +336,7 @@ class UsingSQL:
 MDB = UsingMongo()
 SQL = UsingSQL()
 Options = ['haha']
-options = ['pres', 'gov', 'senate', 'womrep', 'vote', 'contact']
+options = ['pres', 'gov', 'senate', 'womrep', 'vote', 'contact', 'survey']
 VotingInformation = {'image' : 'https://media.giphy.com/media/3o6ZtkFObzcJiaMOFG/giphy.gif', 'image' : 'https://media.giphy.com/media/26vUCOMzBiBZ0qW1a/giphy.gif', 
 'video' : 'https://www.youtube.com/watch?v=nQbztjkag1A&feature=youtu.be&t=1',  'image' : 'https://farm5.staticflickr.com/4267/34872767952_f36c5a4dda_o_d.jpg'}
 
@@ -629,14 +629,13 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 SendMessage(SenderID, response)
                                 SendMessage(SenderID, second_names)
                                 SendMessage(SenderID, CandidateMoreInfo)
-                            elif Kiswahili is not True and 'vote' in UserSays.lower():
-                                SendMessage(SenderID, 'If the elections happened tomorrow, which presidential candidate would you vote for?')
-
+                            
                             elif level == 'contact' and county is not None:
                                 contacts = countydict[county]
                                 print(contacts)
 
-                        elif msg.get('postback'):  
+                        elif msg.get('postback'): 
+
                             if UserSays == 'Get Started':
                                 ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
 
@@ -672,8 +671,8 @@ If you want to know about another candidate, send me his or her name, otherwise 
 
                             elif Kiswahili is not True and UserSays == 'poll':
                                 ButtonTemplate(SenderID, 'You can vote or see the results of the current polling.',
-                             '\u1f5f3 Vote',
-                             '\u1f4cb Results')
+                             '\u2705 Vote',
+                             '\U0001F4CB Results')
 
                             elif Kiswahili is not True and UserSays == 'registration':
                                 SendAttachment(SenderID, 'image', 'https://farm5.staticflickr.com/4243/34193089344_55a2249bd6_o_d.jpg')
@@ -705,13 +704,10 @@ If you want to know about another candidate, send me his or her name, otherwise 
 
                             elif Kiswahili is not True and UserSays == 'contact':
                                 CountyOptions(SenderID, 'From what county? Choose one below')
-                        
 
-        
+                            elif Kiswahili is not True and 'vote' in UserSays.lower():
+                                SendMessage(SenderID, 'If the elections happened tomorrow, which presidential candidate would you vote for?')
 
-
-
-                            
 
 
         SQL.CloseConnection()
