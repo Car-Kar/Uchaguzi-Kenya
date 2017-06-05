@@ -749,7 +749,8 @@ def ReturnType(msg):
             print(MessageText)
             return MessageText
         elif msg['message'].get('attachments'):
-            pass
+            text = 'image'
+            return text
     elif msg.get('postback'):
         if msg.get('postback').get('payload'):
             PostbackText = msg['postback']['payload']
