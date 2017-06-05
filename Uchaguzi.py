@@ -366,7 +366,6 @@ def StartMessaging():
                         FindingUser(SenderID)
                         response = None
                         UserSays = ReturnType(msg)
-                        value = UsingWit(UserSays)
                         surveying = False
                         Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
                         level = MDB.IncomingLevels(SenderID, UserSays.lower())
