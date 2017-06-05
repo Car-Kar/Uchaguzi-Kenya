@@ -379,7 +379,7 @@ def StartMessaging():
                         print(level)
                         racer = DefiningRace(UserSays)
                         print(racer)
-                        Start = 'Hello ' + nme + 'What language do you want to continue in?'
+                        Start = 'Hello ' + nme + '! What language do you want to continue in?'
                     
                         if msg.get('message'):
                             if Kiswahili is not True and county is not None and level == 'cs':
@@ -639,9 +639,12 @@ If you want to know about another candidate, send me his or her name, otherwise 
 
                             elif Kiswahili is not True and UserSays.lower() == 'yes' or UserSays.lower() == 'no':
                                 SendMessage(SenderID, 'On a scale of 1 - 10, how effective would you rate your county government.')
-                            elif Kiswahili is not True and level == 'survey' and  int(UserSays) in range(10):
-                                print('hehehe')
-                                Home(SenderID, 'Thank you for taking our survey!', '\U000FE4B0 Home')
+                            elif Kiswahili is not True and level == 'survey':
+                                if int(UserSays) in range(10):
+                                    print('hehehe')
+                                    Home(SenderID, 'Thank you for taking our survey!', '\U000FE4B0 Home')
+                            else:
+                                pass
 
 
                         elif msg.get('postback'): 
