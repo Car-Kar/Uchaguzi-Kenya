@@ -442,7 +442,7 @@ def StartMessaging():
                             bio = str(bio)
                             #img = base64.b64decode('img')
                             
-                            #SendAttachment(SenderID, 'image', img)
+                            SendAttachment(SenderID, 'image', img)
                             if len(str(run)) < 1:
                                 if len(bio) > 640:
                                     bio, bios = CheckTextLength(bio)
@@ -680,8 +680,8 @@ If you want to know about another candidate, send me his or her name, otherwise 
 
                         elif Kiswahili is not True and UserSays == 'contact':
                             CountyOptions(SenderID, 'From what county? Choose one below')
-                        elif Kiswahili is not True and 'result' in UserSays.lower():
-                            WebView(SenderID, 'Click below to see the results')
+                        #elif Kiswahili is not True and 'result' in UserSays.lower():
+        
 
 
 
