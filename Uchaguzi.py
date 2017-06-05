@@ -743,7 +743,7 @@ def Subscribed(SenderID, week, day):
 
 def ReturnType(msg):
     print('Checking Type')
-    if msg.get('text'):
+    if msg.get('message'):
         MessageText = msg['message']['text']
         return MessageText
     elif msg.get('postback'):
