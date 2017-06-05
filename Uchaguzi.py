@@ -476,12 +476,12 @@ def StartMessaging():
                                         SendMessage(SenderID, bios)
                                         HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
-                                  'Home')
+                                  '\U000FE4B0 Home')
                                     else:
                                         SendMessage(SenderID, bio)
                                         HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
-                                  'Home')
+                                  '\U000FE4B0 Home')
                                 else:
                                     running_mate = 'His running mate is ' + str(run)
                                     SendMessage(SenderID, running_mate)
@@ -492,12 +492,12 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                         SendMessage(SenderID, bios)
                                         HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
-                                  'Home')
+                                  '\U000FE4B0 Home')
                                     else:
                                         SendMessage(SenderID, bio)
                                         HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
-                                  'Home')
+                                  '\U000FE4B0 Home')
 
                             elif level == 'senate' and UserSays.lower() in cands.lower():
                                 query = '%' + UserSays.lower() + '%'
@@ -513,12 +513,12 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                     SendMessage(SenderID, bios)
                                     HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
                                  If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
-                                  'Home')
+                                  '\U000FE4B0 Home')
                                 else:
                                     SendMessage(SenderID, bio)
                                     HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
                                  If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
-                                  'Home')
+                                  '\U000FE4B0 Home')
                             elif level == 'womrep' and UserSays.lower() in cands.lower():
                                 query = '%' + UserSays.lower() + '%'
                                 county = '%' + county + '%'
@@ -533,12 +533,12 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                     SendMessage(SenderID, bios)
                                     HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
-                                  'Home')
+                                  '\U000FE4B0 Home')
                                 else:
                                     SendMessage(SenderID, bio)
                                     HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
-                                  'Home')
+                                  '\U000FE4B0 Home')
                             elif level == 'gov' and UserSays.lower() in cands.lower():
                                 
                                 query = '%' + UserSays.lower() + '%'
@@ -554,12 +554,12 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                         SendMessage(SenderID, bios)
                                         HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
-                                  'Home')
+                                  '\U000FE4B0 Home')
                                     else:
                                         SendMessage(SenderID, bio)
                                         HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
                                  If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
-                                  'Home')
+                                  '\U000FE4B0 Home')
                                 else:
                                     running_mate = 'His running mate is ' + str(run)
                                     SendMessage(SenderID, running_mate)
@@ -570,12 +570,12 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                         SendMessage(SenderID, bios)
                                         HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
-                                  'Home')
+                                  '\U000FE4B0 Home')
                                     else:
                                         SendMessage(SenderID, bio)
                                         HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
-                                  'Home')
+                                  '\U000FE4B0 Home')
 
                             elif level == 'vote' and UserSays.lower() in racer.lower():
                                 print('Im')
