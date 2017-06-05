@@ -641,7 +641,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
 
                             elif Kiswahili is not True and UserSays.lower() == 'yes' or UserSays.lower() == 'no':
                                 SendMessage(SenderID, 'On a scale of 1 - 10, how effective would you rate your county government.')
-                            elif Kiswahili is not True and UserSays in range(10):
+                            elif Kiswahili is not True and int(UserSays) in range(10):
                                 print('hehehe')
                                 Home(SenderID, 'Thank you for taking our survey!', '\U000FE4B0 Home')
 
