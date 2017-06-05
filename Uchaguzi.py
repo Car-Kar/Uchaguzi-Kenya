@@ -607,7 +607,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                         elif Kiswahili is not True and 'vote' in UserSays.lower():
                             SendMessage(SenderID, 'If the elections happened tomorrow, which presidential candidate would you vote for?')
 
-                        elif level == 'contact' and county == 'nairobi':
+                        elif level == 'contact':
                             contacts = countydict[county]
                             print(contacts)
 
@@ -1297,7 +1297,7 @@ if __name__ == '__main__':
     #sched.start()
     app.run(debug = True)
 
-countydict = {'nairobi': '',
+countydict = {'nairobi': 'http://www.nairobi.go.ke/home/subcounty-administration/',
 'nakuru' : 'http://www.nakuru.go.ke/contactus/',
 'kiambu' : 'http://www.kiambu.go.ke/contact-us',
 'mombasa' : 'http://assembly.mombasa.go.ke/',
