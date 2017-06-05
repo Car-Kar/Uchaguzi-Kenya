@@ -417,7 +417,7 @@ def StartMessaging():
                             ReusableOptions(SenderID, 'Do you want to see the results, go back home, or say goodbye?', 'Results', 'Home')
                         
                         
-                        if Kiswahili is not True and 'see results' in UserSays.lower():
+                        if Kiswahili is not True and 'results' in UserSays.lower():
                             WebView(SenderID, 'https://uchaguzi.herokuapp.com/')
 
                         if Kiswahili is not True and 'a week' in UserSays.lower():
@@ -680,6 +680,8 @@ If you want to know about another candidate, send me his or her name, otherwise 
 
                         elif Kiswahili is not True and UserSays == 'contact':
                             CountyOptions(SenderID, 'From what county? Choose one below')
+                        elif Kiswahili is not True and 'result' in UserSays.lower():
+                            WebView(SenderID, 'Click below to see the results')
 
 
 
