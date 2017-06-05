@@ -640,7 +640,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
 
                             elif Kiswahili is not True and UserSays.lower() == 'yes' or UserSays.lower() == 'no':
                                 SendMessage(SenderID, 'On a scale of 1 - 10, how effective would you rate your county government.')
-                            elif Kiswahili is not True and level == 'survey' int(UserSays) in range(10):
+                            elif Kiswahili is not True and level == 'survey' and  int(UserSays) in range(10):
                                 print('hehehe')
                                 Home(SenderID, 'Thank you for taking our survey!', '\U000FE4B0 Home')
 
@@ -1377,7 +1377,7 @@ def FindingUser(ID):
     headers = {
     'Content-Type' : 'application/json'
     }
-    r = requests.post('https://graph.facebook.com/v2.9/' + ID + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + PAT, headers=headers)
+    r = requests.get('https://graph.facebook.com/v2.9/' + ID + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + PAT, headers=headers)
     print(r)
     return r
 
