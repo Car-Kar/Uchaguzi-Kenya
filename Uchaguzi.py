@@ -681,7 +681,8 @@ If you want to know about another candidate, send me his or her name, otherwise 
 
                         elif Kiswahili is not True and UserSays == 'contact':
                             CountyOptions(SenderID, 'From what county? Choose one below')
-                        #elif Kiswahili is not True and 'result' in UserSays.lower():
+                        
+
         
 
 
@@ -743,10 +744,10 @@ def ReturnType(msg):
     elif msg.get('web_url'):
         URLText = msg['web_url']['title']
         return URLText
-    elif msg.get('image'):
+    elif msg.get('attachments'):
         pass
-    elif msg.get('video'):
-        pass
+    
+    
 def DefiningRace(name):
     candidates = SQL.all_presidential_names()
     result = [c for c in candidates if name.lower() in c.lower()]
