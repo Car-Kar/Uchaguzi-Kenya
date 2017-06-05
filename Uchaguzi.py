@@ -869,7 +869,7 @@ def ListTemplate(RecipientID, A, B, C, D):
     }
     data = json.dumps({
         "recipient": {
-        "id":"RECIPIENT_ID"
+        "id": RecipientID
     },
     "message": {
     "attachment": {
