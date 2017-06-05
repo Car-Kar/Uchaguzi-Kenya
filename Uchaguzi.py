@@ -652,11 +652,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                             SendMessage(SenderID, VoterRegistration)
                             Home(SenderID, 'Go back to home?', 'Home')
 
-                        elif Kiswahili is not True and 'subscribe' in UserSays:
-                            WebView(SenderID, 'News', 'http://www.nation.co.ke/page/search/DailyNation/election2017/3439870-3439870-view-asSearch-ccr8qt/index.html', 'The Top Election News Today')
-                            
-
-
+                    
                         elif Kiswahili is not True and UserSays == 'reminder':
                             ReusableOptions(SenderID, 'When would you like to get a reminder notification for the elections?', 'A Week Before', 'Two Days Before')
 
