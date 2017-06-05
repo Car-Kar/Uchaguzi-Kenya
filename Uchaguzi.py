@@ -934,7 +934,7 @@ def GenericTemplateOptions(RecipientID):
                 'buttons' : [
                     {
                         'type' : 'web_url',
-                        'url' : '"http://www.nairobi.go.ke/home/subcounty-administration/"',
+                        'url' : "http://www.nairobi.go.ke/home/subcounty-administration/",
                         'title' : 'Get election News',
                         "webview_height_ratio": "tall"
                     }
