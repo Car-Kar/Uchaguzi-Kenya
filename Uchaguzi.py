@@ -1300,11 +1300,11 @@ if __name__ == '__main__':
 countydict = {'nairobi': ,
 'nakuru' : 'http://www.nakuru.go.ke/contactus/',
 'kiambu' : 'http://www.kiambu.go.ke/contact-us',
-'mombasa' :,
-'kericho' : ,
-'turkana' :,
-'kisumu' :,
-'uasin gishu' : ,
-'kakamega':
- 'narok': }
+'mombasa' : '',
+'kericho' : '' ,
+'turkana' : '',
+'kisumu' : '' ,
+'uasin gishu' : '' ,
+'kakamega': '',
+ 'narok': '' }
 
