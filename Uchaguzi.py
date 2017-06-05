@@ -864,7 +864,7 @@ def Home(RecipientID, Text, op1):
     if r.status_code != 200:
         print(r.text)
 
-def ButtonTemplate(RecipientID, A, B, C, D):
+def ButtonTemplate(RecipientID, A, B, C):
 
     headers = {
     'Content-Type' : 'application/json'
