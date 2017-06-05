@@ -277,10 +277,10 @@ class UsingSQL:
             return row[0], row[1], row[2]
 
     def governor_bio(self, value1, value2):
-        self.curs.execute("""SELECT running_mate,political_bio, image FROM governor_candidates WHERE UPPER(name) Like  UPPER('%s') && UPPER(county) Like UPPER('%s') """ % (value1,value2))
+        self.curs.execute("""SELECT running_mate, political_bio, image FROM governor_candidates WHERE UPPER(name) Like  UPPER('%s') && UPPER(county) Like UPPER('%s') """ % (value1,value2))
         result= self.curs.fetchall()
         for row in result:
-            return row[0], row[1]
+            return row[0], row[1], row[2]
 
     def governors(self, value):
         self.curs.execute("""SELECT name, political_party FROM governor_candidates WHERE UPPER(county) Like  UPPER('%s') """ % (value))
@@ -427,7 +427,7 @@ def StartMessaging():
                             if level == 'vote' and UserSays.lower() in racer.lower():
                                 MDB.PresidentialRace(racer.capitalize())
                                 SendMessage(SenderID, 'Thank you for voting!')
-                                ReusableOptions(SenderID, 'Do you want to see the results, go back home, or say goodbye?', 'Results', 'Home')
+                                HomeTemplate(SenderID, 'Do you want to see the results, go back home, or say goodbye?', 'Home', 'Results')
                         
                         
                         
@@ -543,7 +543,8 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 
                                 query = '%' + UserSays.lower() + '%'
                                 county = '%' + county + '%'
-                                run, bio = SQL.governor_bio(query, county)
+                                run, bio, img = SQL.governor_bio(query, county)
+                                SendAttachment(SenderID, 'image', img)
                                 bio = str(bio)
                                 if len(str(run)) < 1:
                                     if len(bio) > 640:
@@ -895,6 +896,42 @@ def ButtonTemplate(RecipientID, A, B, C):
     r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
     if r.status_code != 200:
         print(r.text)
+def HomeTemplate(RecipientID, A, B, C):
+
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        "recipient": {
+        "id": RecipientID
+    },
+    "message": {
+    "attachment": {
+        "type": "template",
+        "payload":{
+        "template_type":"button",
+        "text": A,
+        "buttons":[
+        {
+            "type":"postback",
+            "title": B,
+            "payload": "home"
+          },
+          {
+            "type":"web_url",
+            "url": "https://uchaguzi-ke.herokuapp.com",
+            "title": C          }
+          
+        ]
+      }
+    }
+  }
+    } 
+    )
+    r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
+    if r.status_code != 200:
+        print(r.text)
+
 
 
 def ReusableOptions(RecipientID, Text, op1, op2):
