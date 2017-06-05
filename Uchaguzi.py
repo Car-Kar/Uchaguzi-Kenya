@@ -1378,7 +1378,7 @@ def FindingUser(ID):
     'Content-Type' : 'application/json'
     }
     r = requests.get('https://graph.facebook.com/v2.9/' + ID + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + PAT, headers=headers)
-    print(r)
+    print(r.text)
     return r
 
 
