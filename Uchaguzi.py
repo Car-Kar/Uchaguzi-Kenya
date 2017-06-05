@@ -885,7 +885,7 @@ def ListTemplate(RecipientID, A, B, C, D):
                     "default_action": {
                         "type": "web_url",
                         "url": "https://uchaguzi-ke.herokuapp.com",
-                        "messenger_extensions": true,
+                        "messenger_extensions": True,
                         "webview_height_ratio": "tall",
                         "fallback_url": "https://uchaguzi-ke.herokuapp.com"
                     },             
