@@ -671,7 +671,9 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 HomeP(SenderID, 'Go back to home, or do you want to say goodbye?', '\U000FE4B0 Home')
 
                             elif Kiswahili is not True and UserSays == 'poll':
-                                ListTemplate(SenderID, 'Results', 'https://d30y9cdsu7xlg0.cloudfront.net/png/25759-200.png', 'See the results of the poll.' , '\u1f5f3 Vote')
+                                ButtonTemplate(SenderID, 'You can vote or see the results of the current polling.',
+                             '\u1f5f3 Vote',
+                             '\u1f4cb Results')
 
                             elif Kiswahili is not True and UserSays == 'registration':
                                 SendAttachment(SenderID, 'image', 'https://farm5.staticflickr.com/4243/34193089344_55a2249bd6_o_d.jpg')
@@ -862,7 +864,7 @@ def Home(RecipientID, Text, op1):
     if r.status_code != 200:
         print(r.text)
 
-def ListTemplate(RecipientID, A, B, C, D):
+def ButtonTemplate(RecipientID, A, B, C, D):
 
     headers = {
     'Content-Type' : 'application/json'
@@ -874,33 +876,26 @@ def ListTemplate(RecipientID, A, B, C, D):
     "message": {
     "attachment": {
         "type": "template",
-        "payload": {
-            "template_type": "list",
-            "top_element_style": "compact",
-            "elements": [
-                {
-                    "title": A,
-                    "image_url": B,
-                    "subtitle": C,
-                    "default_action": {
-                        "type": "web_url",
-                        "url": "https://uchaguzi-ke.herokuapp.com",
-                        "messenger_extensions": True,
-                        "webview_height_ratio": "tall",
-                        "fallback_url": "https://uchaguzi-ke.herokuapp.com"
-                    },             
-                }
-            ],
-             "buttons": [
-                {
-                    "title": D,
-                    "type": "postback",
-                    "payload": "vote"                        
-                }
-            ]  
-        }
+        "payload":{
+        "template_type":"button",
+        "text": A,
+        "buttons":[
+        {
+            "type":"postback",
+            "title": B,
+            "payload": "vote"
+          },
+          {
+            "type":"web_url",
+            "url": "https://uchaguzi-ke.herokuapp.com",
+            "title": C          }
+          
+        ]
+      }
+    }
+  }
     } 
-    }})
+    )
     r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
     if r.status_code != 200:
         print(r.text)
