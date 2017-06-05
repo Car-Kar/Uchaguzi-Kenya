@@ -460,8 +460,7 @@ def StartMessaging():
                                 'Elections Levels',
                                 'Government Review',
                                 'Talk to your county government',
-                                'Contact',
-                                'Take a survey'
+                                'County Review'
                                 )
 
                             elif 'bye' in UserSays.lower():
