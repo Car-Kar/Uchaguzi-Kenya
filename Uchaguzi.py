@@ -739,7 +739,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 SendMessage(SenderID, 'What county are you from?')
                                 CountyOptions(SenderID, 'Choose one below')
 
-                            elif Kiswahili is not True and level = 'survey':
+                            elif Kiswahili is not True and level == 'survey':
                                 SendMessage(SenderID, 'Please answer the followinf few questions.')
                                 ReusableOptions(SenderID, 'Are you familiar with your county administration?', 'Yes', 'No')
 
