@@ -393,6 +393,7 @@ def StartMessaging():
                                 'Kupiga Kura', 'Tunakupa mawaidha kuhusu kupiga kura',
                                 'Mahitaji ya Kura', 'Umesajiliwa?', 'Weka Mawaidha',
                                 'Wagombea', 'Jua nani anagombea cheo cha serikali',
+                                'Ujumbe kuhusu uchaguzi'
                                 'Chagua cheo cha kura',
                                 'Serikali', 
                                 'Pata ujumbe kuhusu serikali ya kata yako.'
@@ -408,6 +409,7 @@ def StartMessaging():
                                 'Voter Registration',
                                 'Set a reminder',
                                 'Elections 2017',
+                                'Latest Election News',
                                 'Know your candidates for the coming elections',
                                 'Elections Levels',
                                 'Government Review',
@@ -921,7 +923,7 @@ def Options(RecipientID, Text, OP1, OP2):
     if r.status_code != 200:
         print(r.text)
 
-def GenericTemplateOptions(RecipientID, A, B, C, D, E, F, G, H, I, J, K, L):
+def GenericTemplateOptions(RecipientID, A, B, C, D, E, F, G, H, I, J, K, L, M):
     print(('Sending  options to {0}').format(RecipientID))
     headers = {
     'Content-Type' : 'application/json'
@@ -940,7 +942,7 @@ def GenericTemplateOptions(RecipientID, A, B, C, D, E, F, G, H, I, J, K, L):
                 {
             'title' : A,
             'image_url' : 'https://c1.staticflickr.com/5/4219/34872765202_148d73b973_c.jpg',
-            'subtitle': B
+            'subtitle': B,
                 'buttons' : [
                     {
                         'type' : 'postback',
@@ -981,17 +983,17 @@ def GenericTemplateOptions(RecipientID, A, B, C, D, E, F, G, H, I, J, K, L):
                 {
             'title' : J,
             'image_url' : 'https://farm5.staticflickr.com/4221/34872757372_26a343544c_o_d.jpg',
-            'subtitle': 'Get information about your county administration, or take a survey about them',
+            'subtitle': K,
                 'buttons' : [
                     {
                         'type' : 'postback',
                         'payload' : 'contact',
-                        'title' : K
+                        'title' : L
                     } ,
                     {
                         'type' : 'postback',
                         'payload' : 'review',
-                        'title' : L
+                        'title' : M
                     }                  
                 
                 ]}
