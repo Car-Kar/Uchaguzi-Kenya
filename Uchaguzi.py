@@ -737,7 +737,6 @@ def ReturnType(msg):
     print('Checking Type')
     if msg['message']..get('text'):
         MessageText = msg['message']['text']
-        ImageUrl = msg[]
         return MessageText
     elif msg.get('postback'):
         PostbackText = msg['postback']['payload']
