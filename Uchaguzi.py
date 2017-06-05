@@ -671,7 +671,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 HomeP(SenderID, 'Go back to home?', '\U000FE4B0 Home')
 
                             elif Kiswahili is not True and UserSays == 'poll':
-                                ListTemplate(RecipientID, 'Results', 'https://d30y9cdsu7xlg0.cloudfront.net/png/25759-200.png', 'See the results of the poll.', 'Vote')
+                                ListTemplate(RecipientID, 'Results', 'https://d30y9cdsu7xlg0.cloudfront.net/png/25759-200.png', 'See the results of the poll.', '\U1F5F3 Vote')
 
                             elif Kiswahili is not True and UserSays == 'registration':
                                 SendAttachment(SenderID, 'image', 'https://farm5.staticflickr.com/4243/34193089344_55a2249bd6_o_d.jpg')
@@ -866,9 +866,8 @@ def ListTemplate(RecipientID, TXT, A, B, C, D):
      headers = {
     'Content-Type' : 'application/json'
     }
-    data = json.dumps(
-    {
-  "recipient":{
+    data = json.dumps({
+  "recipient": {
     "id":"RECIPIENT_ID"
   },
    "message": {
