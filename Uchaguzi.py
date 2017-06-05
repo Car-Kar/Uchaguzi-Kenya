@@ -738,7 +738,7 @@ def ReturnType(msg):
     if msg['message'].get('text'):
         MessageText = msg['message']['text']
         return MessageText
-    elif msg.get('postback').get('payload'):
+    elif msg['postback'].get('payload'):
         PostbackText = msg['postback']['payload']
         return PostbackText
     elif msg.get('web_url'):
