@@ -914,7 +914,7 @@ def Voting(RecipientID, A, B, C, D):
         {
             "type":"postback",
             "title": B,
-            "payload": "su"
+            "payload": "survey"
           },
           {
             "type":"web_url",
