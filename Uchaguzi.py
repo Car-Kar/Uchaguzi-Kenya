@@ -366,6 +366,7 @@ def StartMessaging():
                         FindingUser(SenderID)
                         response = None
                         UserSays = ReturnType(msg)
+                        print(UserSays)
                         surveying = False
                         Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
                         level = MDB.IncomingLevels(SenderID, UserSays.lower())
@@ -745,7 +746,7 @@ def ReturnType(msg):
     if msg.get('text'):
         MessageText = msg['message']['text']
         return MessageText
-    elif msg.get('payload'):
+    elif msg.get('postback'):
         PostbackText = msg['postback']['payload']
         return PostbackText
     elif msg.get('web_url'):
