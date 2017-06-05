@@ -735,8 +735,9 @@ def Subscribed(SenderID, week, day):
 
 def ReturnType(msg):
     print('Checking Type')
-    if msg.get('message'):
+    if msg['message']..get('text'):
         MessageText = msg['message']['text']
+        ImageUrl = msg[]
         return MessageText
     elif msg.get('postback'):
         PostbackText = msg['postback']['payload']
@@ -744,10 +745,10 @@ def ReturnType(msg):
     elif msg.get('web_url'):
         URLText = msg['web_url']['title']
         return URLText
-    elif msg.get('attachments'):
+    else:
         pass
     
-    
+
 def DefiningRace(name):
     candidates = SQL.all_presidential_names()
     result = [c for c in candidates if name.lower() in c.lower()]
