@@ -385,7 +385,7 @@ def StartMessaging():
                         if msg.get('message'):
                             if Kiswahili is not True and county is not None and level == 'cs':
                                 url = countydict[county]
-                                Voting(SenderID, 'Choose an option below', 'Take a short survey', url, 'County Contacts')
+                                Voting(SenderID, 'Choose an option below', '\U000FEB0A Take a short survey', url, '\U000FE524 County Contacts')
 
 
                             if 'start' in UserSays.lower() or 'hey' in UserSays.lower() or 'hi' in UserSays.lower() or 'hello' in UserSays.lower():
@@ -639,6 +639,12 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 contacts = countydict[county]
                                 print(contacts)
 
+                            elif Kiswahili is not True and UserSays.lower() == 'yes':
+                                SendMessage(SenderID, 'On a scale of 1 - 10, how effective would you rate your county government.')
+                            elif Kiswahili is not True and UserSays in range(0 - 10):
+                                Home(SenderID, 'Thank you for taking our survey!', '\U000FE4B0 Home')
+
+
                         elif msg.get('postback'): 
 
                             if UserSays == 'Get Started':
@@ -732,6 +738,10 @@ If you want to know about another candidate, send me his or her name, otherwise 
                             elif 'cs' == UserSays:
                                 SendMessage(SenderID, 'What county are you from?')
                                 CountyOptions(SenderID, 'Choose one below')
+
+                            elif Kiswahili is not True and level = 'survey':
+                                SendMessage(SenderID, 'Please answer the followinf few questions.')
+                                ReusableOptions(SenderID, 'Are you familiar with your county administration?', 'Yes', 'No')
 
 
 
