@@ -451,8 +451,8 @@ def StartMessaging():
                                 'Voter Registration',
                                 'Set a reminder',
                                 'Elections 2017',
-                                'Latest Election News',
                                 'Know your candidates for the coming elections',
+                                'Latest Election News',
                                 'Elections Levels',
                                 'Government Review',
                                 'Talk to your county government',
@@ -671,7 +671,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 HomeP(SenderID, 'Go back to home?', '\U000FE4B0 Home')
 
                             elif Kiswahili is not True and UserSays == 'poll':
-                                ReusableOptions(SenderID, OptionsText, 'Vote', 'See the results')
+                                ListTemplate(RecipientID, 'Results', 'https://d30y9cdsu7xlg0.cloudfront.net/png/188134-200.png', 'See the results of the poll.', 'Vote')
 
                             elif Kiswahili is not True and UserSays == 'registration':
                                 SendAttachment(SenderID, 'image', 'https://farm5.staticflickr.com/4243/34193089344_55a2249bd6_o_d.jpg')
@@ -861,6 +861,50 @@ def Home(RecipientID, Text, op1):
     r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
     if r.status_code != 200:
         print(r.text)
+
+def ListTemplate(RecipientID, TXT, A, B, C, D):
+     headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps(
+    {
+  "recipient":{
+    "id":"RECIPIENT_ID"
+  },
+   "message": {
+    "attachment": {
+        "type": "template",
+        "payload": {
+            "template_type": "list",
+            "top_element_style": "compact",
+            "elements": [
+                {
+                    "title": A,
+                    "image_url": B,
+                    "subtitle": C,
+                    "default_action": {
+                        "type": "web_url",
+                        "url": "",
+                        "messenger_extensions": true,
+                        "webview_height_ratio": "tall",
+                        "fallback_url": ""
+                    },             
+                }
+            ],
+             "buttons": [
+                {
+                    "title": D,
+                    "type": "postback",
+                    "payload": "vote"                        
+                }
+            ]  
+        }
+    } 
+}})
+    r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
+    if r.status_code != 200:
+        print(r.text)
+
 
 def ReusableOptions(RecipientID, Text, op1, op2):
     print(('Sending message to {0}').format(RecipientID))
