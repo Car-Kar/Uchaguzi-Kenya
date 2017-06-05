@@ -709,6 +709,23 @@ If you want to know about another candidate, send me his or her name, otherwise 
                             elif Kiswahili is not True and 'vote' in UserSays.lower():
                                 SendMessage(SenderID, 'If the elections happened tomorrow, which presidential candidate would you vote for?')
 
+                            if Kiswahili is not True and 'home' in UserSays.lower():
+                                GenericTemplateOptions(SenderID,
+                                'Voter Information',
+                                'We give you information on voting in the elections.',
+                                'Voter Requirements',
+                                'Voter Registration',
+                                'Set a reminder',
+                                'Elections 2017',
+                                'Know your candidates for the coming elections',
+                                'Latest Election News',
+                                'Elections Levels',
+                                'Government Review',
+                                'Talk to your county government',
+                                'Contact',
+                                'Take a survey'
+                                )
+
 
 
         SQL.CloseConnection()
