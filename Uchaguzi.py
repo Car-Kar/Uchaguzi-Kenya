@@ -390,15 +390,31 @@ def StartMessaging():
                             SendMessage(SenderID, KiswahiliIntroduction)
                             SendMessage(SenderID, KiswahiliIntroduction2)
                             GenericTemplateOptions(SenderID, 
-                                'Kupiga Kura', 'Tunakupa mawaidha kuhusu kupiga kura', 'Wagombea', 'Jua nani anagombea cheo cha serikali', 'Serikali', 'Pata ujumbe kuhusu serikali ya kata yako.',
-                                'Mahitaji ya Kura', 'Weka Mawaidha',
+                                'Kupiga Kura', 'Tunakupa mawaidha kuhusu kupiga kura',
+                                'Mahitaji ya Kura', 'Umesajiliwa?', 'Weka Mawaidha',
+                                'Wagombea', 'Jua nani anagombea cheo cha serikali',
                                 'Chagua cheo cha kura',
+                                'Serikali', 
+                                'Pata ujumbe kuhusu serikali ya kata yako.'
                                 'Kagua Serikali',
                                 'Wasiliana na serikali ya kata yako')
                         if Kiswahili is not True and 'english' in UserSays.lower():
                             SendMessage(SenderID, IntroductoryMessage)
                             SendMessage(SenderID, IntroductoryMessage2)
-                            GenericTemplateOptions(SenderID)
+                            GenericTemplateOptions(SenderID,
+                                'Voter Information',
+                                'We give you information on voting in the elections.',
+                                'Voter Requirements',
+                                'Voter Registration',
+                                'Set a reminder',
+                                'Elections 2017',
+                                'Know your candidates for the coming elections',
+                                'Elections Levels',
+                                'Government Review',
+                                'Talk to your county government',
+                                'Contact',
+                                'Take a survey'
+                                '')
 
                         if Kiswahili == True and 'nipe' in UserSays.lower():
                             SendMessage(SenderID, VoterRequirements)
@@ -905,7 +921,7 @@ def Options(RecipientID, Text, OP1, OP2):
     if r.status_code != 200:
         print(r.text)
 
-def GenericTemplateOptions(RecipientID):
+def GenericTemplateOptions(RecipientID, A, B, C, D, E, F, G, H, I, J, K, L):
     print(('Sending  options to {0}').format(RecipientID))
     headers = {
     'Content-Type' : 'application/json'
@@ -922,56 +938,61 @@ def GenericTemplateOptions(RecipientID):
             'template_type' : 'generic',
             'elements' : [
                 {
-            'title' : 'Get Voter information',
+            'title' : A,
             'image_url' : 'https://c1.staticflickr.com/5/4219/34872765202_148d73b973_c.jpg',
-            'subtitle': 'Get to know your voter requirements or set a reminder',
+            'subtitle': B
                 'buttons' : [
                     {
                         'type' : 'postback',
                         'payload' : 'voters',
-                        'title' : 'Voter Requirements'
+                        'title' : C
                     },
                     {
                         'type' : 'postback',
                         'payload' : 'registration',
-                        'title' : 'Voter Registration'
+                        'title' : D
                     },
                      {
                         'type' : 'postback',
                         'payload' : 'reminder',
-                        'title' : 'Set A Reminder'
+                        'title' : E
                     }              
                              
                 
                 ]},
                 {
-            'title' : 'Know your candidates',
+            'title' : F,
             'image_url' : 'https://farm5.staticflickr.com/4250/34872749292_ffd4cc9444_o_d.jpg',
-            'subtitle': 'Get information on who is vying.',
+            'subtitle': G,
                 'buttons' : [
                     {
                         'type' : 'web_url',
                         'url' : "https://www.standardmedia.co.ke/elections2017/news",
-                        'title' : 'Get election News',
+                        'title' : H,
                         "webview_height_ratio": "tall"
                     }
                     ,{
                         'type' : 'postback',
                         'payload' : 'levels',
-                        'title' : 'Election Levels'
+                        'title' : I
                     },
                 
                 ]},
                 {
-            'title' : 'Goverment Review',
+            'title' : J,
             'image_url' : 'https://farm5.staticflickr.com/4221/34872757372_26a343544c_o_d.jpg',
             'subtitle': 'Get information about your county administration, or take a survey about them',
                 'buttons' : [
                     {
                         'type' : 'postback',
                         'payload' : 'contact',
-                        'title' : 'Contact your county'
-                    }              
+                        'title' : K
+                    } ,
+                    {
+                        'type' : 'postback',
+                        'payload' : 'review',
+                        'title' : L
+                    }                  
                 
                 ]}
                 ]
