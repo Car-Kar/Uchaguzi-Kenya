@@ -98,6 +98,7 @@ ResponseStack = []
 KiswahiliHello = 'Jambo! '
 Kiswahili = False
 uri = 'mongodb://MC:se*8DGs6t8F*39*k@ds149491.mlab.com:49491/uchaguzike'
+ys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
 
 class UsingMongo:
@@ -640,13 +641,10 @@ If you want to know about another candidate, send me his or her name, otherwise 
                             elif Kiswahili is not True and UserSays.lower() == 'yes' or UserSays.lower() == 'no':
                                 SendMessage(SenderID, 'On a scale of 1 - 10, how effective would you rate your county government.')
 
-                            elif isinstance(int(UserSays), int):
-                                if Kiswahili is not True and level == 'survey' and int(UserSays) in range(10):
+                            elif Kiswahili is not True and level == 'survey' and UserSays in ys:
                                     print('hehehe')
                                     Home(SenderID, 'Thank you for taking our survey!', '\U000FE4B0 Home')
-                                else:
-                                    pass
-
+                                
 
                         elif msg.get('postback'): 
 
