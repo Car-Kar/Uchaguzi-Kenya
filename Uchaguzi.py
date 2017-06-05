@@ -743,10 +743,10 @@ def Subscribed(SenderID, week, day):
 
 def ReturnType(msg):
     print('Checking Type')
-    if msg['message'].get('text'):
+    if msg.get('text'):
         MessageText = msg['message']['text']
         return MessageText
-    elif msg['postback'].get('payload'):
+    elif msg.get('payload'):
         PostbackText = msg['postback']['payload']
         return PostbackText
     elif msg.get('web_url'):
