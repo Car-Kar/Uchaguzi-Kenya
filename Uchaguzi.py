@@ -417,8 +417,7 @@ def StartMessaging():
                             ReusableOptions(SenderID, 'Do you want to see the results, go back home, or say goodbye?', 'Results', 'Home')
                         
                         
-                        if Kiswahili is not True and 'results' in UserSays.lower():
-                            WebView(SenderID, 'https://uchaguzi.herokuapp.com/')
+                        
 
                         if Kiswahili is not True and 'a week' in UserSays.lower():
                             response = 'I will be messaging you a week before the elections as a reminder'
