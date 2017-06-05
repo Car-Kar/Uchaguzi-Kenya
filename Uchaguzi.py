@@ -28,9 +28,7 @@ client = Wit(access_token = WitToken)
 
 SurveyUrl = 'https://m.me/672849446250204/?ref=f258b3c90e014ce15030df0a91a0a322'
 
-Start = '''Hello There!
-What language do you want to continue in?
-'''
+
 
 IntroductoryMessage = ''' The 2017 Kenyan National Elections are taking place in August.
 I am a tool for you to acquire more information on voting and the vying candidates.
@@ -363,7 +361,7 @@ def StartMessaging():
                     if (msg.get('message')) or  (msg.get('postback')):
                         print(msg)
                         SenderID = msg['sender']['id']
-                        FindingUser(SenderID)
+                        nme = FindingUser(SenderID)
                         response = None
                         UserSays = ReturnType(msg)
                         print(UserSays)
@@ -381,6 +379,7 @@ def StartMessaging():
                         print(level)
                         racer = DefiningRace(UserSays)
                         print(racer)
+                        Start = 'Hello ' + nme + 'What language do you want to continue in?'
                     
                         if msg.get('message'):
                             if Kiswahili is not True and county is not None and level == 'cs':
@@ -1378,8 +1377,8 @@ def FindingUser(ID):
     'Content-Type' : 'application/json'
     }
     r = requests.get('https://graph.facebook.com/v2.9/' + ID + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + PAT, headers=headers)
-    print(r.text['first_name'])
-    return r.text['first_name']
+    nm = r.json()
+    return nm['first_name']
 
 
 def UsingWit(TEXT):
