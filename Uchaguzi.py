@@ -422,6 +422,7 @@ def StartMessaging():
                         if Kiswahili is not True and 'a week' in UserSays.lower():
                             response = 'I will be messaging you a week before the elections as a reminder'
                             SendMessage(SenderID, response)
+                            Home(SenderID, 'Go back to home?', 'Home')
 
                         if Kiswahili is not True and 'two days' in UserSays.lower():
                             response = 'I will be messaging you two days before the elections as a reminder'
@@ -652,6 +653,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
 
                         elif Kiswahili is not True and UserSays == 'registration':
                             SendAttachment(SenderID, 'image', 'https://farm5.staticflickr.com/4243/34193089344_55a2249bd6_o_d.jpg')
+                            SendAttachment(SenderID, 'video', '')
                             SendMessage(SenderID, VoterRegistration)
                             Home(SenderID, 'Go back to home?', 'Home')
 
@@ -741,6 +743,10 @@ def ReturnType(msg):
     elif msg.get('web_url'):
         URLText = msg['web_url']['title']
         return URLText
+    elif msg.get('image'):
+        pass
+    elif msg.get('video'):
+        pass
 def DefiningRace(name):
     candidates = SQL.all_presidential_names()
     result = [c for c in candidates if name.lower() in c.lower()]
@@ -781,11 +787,11 @@ def Home(RecipientID, TXT, op1):
     },
     'message' : {
         'text': TXT,
-        'quick_replies':[
+        'buttons':[
       {
-        'content_type': 'text',
+        'type': 'postback',
         'title' : op1,
-        'payload' : 'IsReusable'
+        'payload' : 'home'
       }
     ]
     }
@@ -927,7 +933,7 @@ def GenericTemplateOptions(RecipientID):
                     {
                         'type' : 'postback',
                         'payload' : 'registration',
-                        'title' : 'Know your voting status.'
+                        'title' : 'Voter Registration'
                     },
                      {
                         'type' : 'postback',
