@@ -393,10 +393,10 @@ def StartMessaging():
                                 'Kupiga Kura', 'Tunakupa mawaidha kuhusu kupiga kura',
                                 'Mahitaji ya Kura', 'Umesajiliwa?', 'Weka Mawaidha',
                                 'Wagombea', 'Jua nani anagombea cheo cha serikali',
-                                'Ujumbe kuhusu uchaguzi'
+                                'Ujumbe kuhusu uchaguzi',
                                 'Chagua cheo cha kura',
                                 'Serikali', 
-                                'Pata ujumbe kuhusu serikali ya kata yako.'
+                                'Pata ujumbe kuhusu serikali ya kata yako.',
                                 'Kagua Serikali',
                                 'Wasiliana na serikali ya kata yako')
                         if Kiswahili is not True and 'english' in UserSays.lower():
@@ -416,7 +416,7 @@ def StartMessaging():
                                 'Talk to your county government',
                                 'Contact',
                                 'Take a survey'
-                                '')
+                                )
 
                         if Kiswahili == True and 'nipe' in UserSays.lower():
                             SendMessage(SenderID, VoterRequirements)
