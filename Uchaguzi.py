@@ -639,7 +639,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 contacts = countydict[county]
                                 print(contacts)
 
-                            elif Kiswahili is not True and UserSays.lower() == 'yes':
+                            elif Kiswahili is not True and UserSays.lower() == 'yes' or UserSays.lower() == 'no':
                                 SendMessage(SenderID, 'On a scale of 1 - 10, how effective would you rate your county government.')
                             elif Kiswahili is not True and UserSays in range(0 - 10):
                                 Home(SenderID, 'Thank you for taking our survey!', '\U000FE4B0 Home')
