@@ -336,7 +336,7 @@ class UsingSQL:
 MDB = UsingMongo()
 SQL = UsingSQL()
 Options = ['haha']
-options = ['pres', 'gov', 'senate', 'womrep', 'vote']
+options = ['pres', 'gov', 'senate', 'womrep', 'vote', 'contact']
 VotingInformation = {'image' : 'https://media.giphy.com/media/3o6ZtkFObzcJiaMOFG/giphy.gif', 'image' : 'https://media.giphy.com/media/26vUCOMzBiBZ0qW1a/giphy.gif', 
 'video' : 'https://www.youtube.com/watch?v=nQbztjkag1A&feature=youtu.be&t=1',  'image' : 'https://farm5.staticflickr.com/4267/34872767952_f36c5a4dda_o_d.jpg'}
 
@@ -607,6 +607,10 @@ If you want to know about another candidate, send me his or her name, otherwise 
                         elif Kiswahili is not True and 'vote' in UserSays.lower():
                             SendMessage(SenderID, 'If the elections happened tomorrow, which presidential candidate would you vote for?')
 
+                        elif level == 'contact' and county == 'nairobi':
+                            contacts = countydict[county]
+                            print(contacts)
+
                     elif msg.get('postback'):  
                         if UserSays == 'Get Started':
                             ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
@@ -673,6 +677,11 @@ If you want to know about another candidate, send me his or her name, otherwise 
                             CountyOptions(SenderID, 'From what county? Choose one below')
                         elif Kiswahili is not True and UserSays == 'womrep':
                             CountyOptions(SenderID, 'From what county? Choose one below')
+
+                        elif Kiswahili is not True and UserSays == 'contact':
+                            CountyOptions(SenderID, 'From what county? Choose one below')
+
+
 
                             
 
@@ -934,7 +943,7 @@ def GenericTemplateOptions(RecipientID):
                 'buttons' : [
                     {
                         'type' : 'web_url',
-                        'url' : "http://www.nairobi.go.ke/home/subcounty-administration/",
+                        'url' : "https://www.standardmedia.co.ke/elections2017/news",
                         'title' : 'Get election News',
                         "webview_height_ratio": "tall"
                     }
@@ -952,13 +961,8 @@ def GenericTemplateOptions(RecipientID):
                 'buttons' : [
                     {
                         'type' : 'postback',
-                        'payload' : 'survey',
-                        'title' : 'Review your county administration'
-                    },
-                    {
-                        'type' : 'postback',
                         'payload' : 'contact',
-                        'title' : 'Contact your county administration'
+                        'title' : 'Contact your county'
                     }              
                 
                 ]}
@@ -1296,11 +1300,11 @@ if __name__ == '__main__':
 countydict = {'nairobi': '',
 'nakuru' : 'http://www.nakuru.go.ke/contactus/',
 'kiambu' : 'http://www.kiambu.go.ke/contact-us',
-'mombasa' : '',
-'kericho' : '' ,
-'turkana' : '',
-'kisumu' : '' ,
-'uasin gishu' : '' ,
-'kakamega': '',
- 'narok': '' }
+'mombasa' : 'http://assembly.mombasa.go.ke/',
+'kericho' : 'http://www.kericho.go.ke/pages/contact.html' ,
+'turkana' : 'http://www.turkana.go.ke/index.php/governor/',
+'kisumu' : 'http://kisumu.go.ke/contact' ,
+'uasin gishu' : 'https://www.uasingishu.go.ke/?page_id=41' ,
+'kakamega': 'https://kakamega.go.ke/contact-us/',
+ 'narok': 'http://www.narok.go.ke/contact-us' }
 
