@@ -444,7 +444,21 @@ def StartMessaging():
 
                         
                             if Kiswahili is not True and 'home' in UserSays.lower():
-                                GenericTemplateOptions(SenderID)
+                                GenericTemplateOptions(SenderID,
+                                'Voter Information',
+                                'We give you information on voting in the elections.',
+                                'Voter Requirements',
+                                'Voter Registration',
+                                'Set a reminder',
+                                'Elections 2017',
+                                'Latest Election News',
+                                'Know your candidates for the coming elections',
+                                'Elections Levels',
+                                'Government Review',
+                                'Talk to your county government',
+                                'Contact',
+                                'Take a survey'
+                                )
 
                             elif 'bye' in UserSays.lower():
                                 SendMessage(SenderID, Goodbye)
