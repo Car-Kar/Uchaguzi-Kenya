@@ -383,7 +383,7 @@ def StartMessaging():
                         print(racer)
                     
                         if msg.get('message'):
-                            if Kiswahili is not True and county is Not none and level == 'cs':
+                            if Kiswahili is not True and county is not None and level == 'cs':
                                 url = countydict[county]
                                 Voting(SenderID, 'Choose an option below', 'Take a short survey', 'County Contacts', url)
 
