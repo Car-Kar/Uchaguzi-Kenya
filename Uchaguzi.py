@@ -938,7 +938,7 @@ def GenericTemplateOptions(RecipientID):
                 'buttons' : [
                     {
                         'type' : 'web_url',
-                        'url' : 'https://www.standardmedia.co.ke/elections2017/news',
+                        'url' : '"http://www.nairobi.go.ke/home/subcounty-administration/"',
                         'title' : 'Get election News',
                         "webview_height_ratio": "tall"
                     }
@@ -1296,4 +1296,15 @@ def CountyOptions(RecipientID, TXT):
 if __name__ == '__main__':
     #sched.start()
     app.run(debug = True)
+
+countydict = {'nairobi': ,
+'nakuru' : 'http://www.nakuru.go.ke/contactus/',
+'kiambu' : 'http://www.kiambu.go.ke/contact-us',
+'mombasa' :,
+'kericho' : ,
+'turkana' :,
+'kisumu' :,
+'uasin gishu' : ,
+'kakamega':
+ 'narok': }
 
