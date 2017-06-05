@@ -886,7 +886,7 @@ def Home(RecipientID, Text, op1):
     if r.status_code != 200:
         print(r.text)
 
-def Voting(RecipientID, A, B, c, D):
+def Voting(RecipientID, A, B, C, D):
     headers = {
     'Content-Type' : 'application/json'
     }
