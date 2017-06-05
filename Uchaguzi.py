@@ -668,7 +668,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                             
                                 SendAttachment(SenderID,'image', 'https://farm5.staticflickr.com/4248/34872766342_a66c0fa485_o_d.jpg')
                                 SendMessage(SenderID, ContinueUsing)
-                                HomeP(SenderID, 'Go back to home?', '\U000FE4B0 Home')
+                                HomeP(SenderID, 'Go back to home, or do you want to say goodbye?', '\U000FE4B0 Home')
 
                             elif Kiswahili is not True and UserSays == 'poll':
                                 ListTemplate(RecipientID, 'Results', 'https://d30y9cdsu7xlg0.cloudfront.net/png/25759-200.png', 'See the results of the poll.', '\U1F5F3 Vote')
@@ -677,7 +677,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 SendAttachment(SenderID, 'image', 'https://farm5.staticflickr.com/4243/34193089344_55a2249bd6_o_d.jpg')
                                 SendAttachment(SenderID, 'video', '')
                                 SendMessage(SenderID, VoterRegistration)
-                                HomeP(SenderID, 'Go back to home?', '\U000FE4B0 Home')
+                                HomeP(SenderID, 'Go back to home, or do you want to say goodbye?', '\U000FE4B0 Home')
 
                     
                             elif Kiswahili is not True and UserSays == 'reminder':
@@ -863,14 +863,15 @@ def Home(RecipientID, Text, op1):
         print(r.text)
 
 def ListTemplate(RecipientID, TXT, A, B, C, D):
-     headers = {
+
+    headers = {
     'Content-Type' : 'application/json'
     }
     data = json.dumps({
-  "recipient": {
-    "id":"RECIPIENT_ID"
-  },
-   "message": {
+        "recipient": {
+        "id":"RECIPIENT_ID"
+    },
+    "message": {
     "attachment": {
         "type": "template",
         "payload": {
@@ -899,7 +900,7 @@ def ListTemplate(RecipientID, TXT, A, B, C, D):
             ]  
         }
     } 
-}})
+    }})
     r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
     if r.status_code != 200:
         print(r.text)
