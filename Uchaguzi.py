@@ -360,36 +360,35 @@ def StartMessaging():
         if messages['object'] == 'page':
             for message in messages['entry']:
                 for msg in message['messaging']:
-                    print(msg)
-                    SenderID = msg['sender']['id']
-                    FindingUser(SenderID)
-                    response = None
-                    UserSays = ReturnType(msg)
-                    value = UsingWit(UserSays)
-                    surveying = False
-                    Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
-                    level = MDB.IncomingLevels(SenderID, UserSays.lower())
-                    counties = MDB.IncomingCounties(SenderID, UserSays)
-                    county = [c for c in Counties if UserSays.lower() in c.lower()]
-                    county = ' '.join(county)
-                    print(county)
-                    cands = FindingCandidate(level, UserSays)
-                    print(cands)
-                    #News = MDB.NewsSubscribers(SenderID, UserSays)
-                    #print(Kiswahili)
-                    print(level)
-                    racer = DefiningRace(UserSays)
-                    print(racer)
+                    if (msg.get('message')) or  (msg.get('postback')):
+                        print(msg)
+                        SenderID = msg['sender']['id']
+                        FindingUser(SenderID)
+                        response = None
+                        UserSays = ReturnType(msg)
+                        value = UsingWit(UserSays)
+                        surveying = False
+                        Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
+                        level = MDB.IncomingLevels(SenderID, UserSays.lower())
+                        counties = MDB.IncomingCounties(SenderID, UserSays)
+                        county = [c for c in Counties if UserSays.lower() in c.lower()]
+                        county = ' '.join(county)
+                        print(county)
+                        cands = FindingCandidate(level, UserSays)
+                        print(cands)
+                        #News = MDB.NewsSubscribers(SenderID, UserSays)
+                        #print(Kiswahili)
+                        print(level)
+                        racer = DefiningRace(UserSays)
+                        print(racer)
                     
-                    if msg.get('message'):
-                        #matching = [s for s in cs if str(ResponseStack.pop()) in s]
-                        #print(matching)
-                        if 'start' in UserSays.lower() or 'hey' in UserSays.lower() or 'hi' in UserSays.lower() or 'hello' in UserSays.lower():
-                            ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
-                        if Kiswahili == True and 'swahili' in UserSays.lower():
-                            SendMessage(SenderID, KiswahiliIntroduction)
-                            SendMessage(SenderID, KiswahiliIntroduction2)
-                            GenericTemplateOptions(SenderID, 
+                        if msg.get('message'):
+                            if 'start' in UserSays.lower() or 'hey' in UserSays.lower() or 'hi' in UserSays.lower() or 'hello' in UserSays.lower():
+                                ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
+                            if Kiswahili == True and 'swahili' in UserSays.lower():
+                                SendMessage(SenderID, KiswahiliIntroduction)
+                                SendMessage(SenderID, KiswahiliIntroduction2)
+                                GenericTemplateOptions(SenderID, 
                                 'Kupiga Kura', 'Tunakupa mawaidha kuhusu kupiga kura',
                                 'Mahitaji ya Kura', 'Umesajiliwa?', 'Weka Mawaidha',
                                 'Wagombea', 'Jua nani anagombea cheo cha serikali',
@@ -399,10 +398,10 @@ def StartMessaging():
                                 'Pata ujumbe kuhusu serikali ya kata yako.',
                                 'Kagua Serikali',
                                 'Wasiliana na serikali ya kata yako')
-                        if Kiswahili is not True and 'english' in UserSays.lower():
-                            SendMessage(SenderID, IntroductoryMessage)
-                            SendMessage(SenderID, IntroductoryMessage2)
-                            GenericTemplateOptions(SenderID,
+                            if Kiswahili is not True and 'english' in UserSays.lower():
+                                SendMessage(SenderID, IntroductoryMessage)
+                                SendMessage(SenderID, IntroductoryMessage2)
+                                GenericTemplateOptions(SenderID,
                                 'Voter Information',
                                 'We give you information on voting in the elections.',
                                 'Voter Requirements',
@@ -418,143 +417,101 @@ def StartMessaging():
                                 'Take a survey'
                                 )
 
-                        if Kiswahili == True and 'nipe' in UserSays.lower():
-                            SendMessage(SenderID, VoterRequirements)
-                        '''if Kiswahili == True and UserSays == oi:
-                            response = 'Naweza kupa ujumbe kuhusu kupiga kura, au kuweka mawaidha ya kukukumbusha kupiga kura.'
-                            SendMessage(SenderID, response)
-                            ReusableOptions(SenderID, KiswahiliOptions, 'Nipe Ujumbe', 'Mawaidha')'''
-                        if Kiswahili == True and 'mawaidha' in UserSays.lower():
-                            response = '''Nitakutumia alani ya kukukumbusha siku ya uchaguzi.
-                            Unataka alani ya siku gani?'''
-                            ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
+                            if Kiswahili == True and 'nipe' in UserSays.lower():
+                                SendMessage(SenderID, VoterRequirements)
+                            if Kiswahili == True and 'mawaidha' in UserSays.lower():
+                                response = '''Nitakutumia alani ya kukukumbusha siku ya uchaguzi.
+                                Unataka alani ya siku gani?'''
+                                ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
 
-                        if level == 'vote' and UserSays.lower() in racer.lower():
-                            MDB.PresidentialRace(racer.capitalize())
-                            SendMessage(SenderID, 'Thank you for voting!')
-                            ReusableOptions(SenderID, 'Do you want to see the results, go back home, or say goodbye?', 'Results', 'Home')
+                            if level == 'vote' and UserSays.lower() in racer.lower():
+                                MDB.PresidentialRace(racer.capitalize())
+                                SendMessage(SenderID, 'Thank you for voting!')
+                                ReusableOptions(SenderID, 'Do you want to see the results, go back home, or say goodbye?', 'Results', 'Home')
                         
                         
                         
 
-                        if Kiswahili is not True and 'a week' in UserSays.lower():
-                            response = 'I will be messaging you a week before the elections as a reminder'
-                            SendMessage(SenderID, response)
-                            Home(SenderID, 'Go back to home?', 'Home')
+                            if Kiswahili is not True and 'a week' in UserSays.lower():
+                                response = 'I will be messaging you a week before the elections as a reminder'
+                                SendMessage(SenderID, response)
+                                Home(SenderID, 'Go back to home?', 'Home')
 
-                        if Kiswahili is not True and 'two days' in UserSays.lower():
-                            response = 'I will be messaging you two days before the elections as a reminder'
-                            SendMessage(SenderID, response)
-                            Home(SenderID, 'Go back to home?', 'Home')
+                            if Kiswahili is not True and 'two days' in UserSays.lower():
+                                response = 'I will be messaging you two days before the elections as a reminder'
+                                SendMessage(SenderID, response)
+                                Home(SenderID, 'Go back to home?', 'Home')
 
                         
-                        if Kiswahili is not True and 'home' in UserSays.lower():
-                            GenericTemplateOptions(SenderID)
+                            if Kiswahili is not True and 'home' in UserSays.lower():
+                                GenericTemplateOptions(SenderID)
 
-                        elif 'bye' in UserSays.lower():
-                            SendMessage(SenderID, Goodbye)
+                            elif 'bye' in UserSays.lower():
+                                SendMessage(SenderID, Goodbye)
 
-                        elif level == 'pres' and UserSays.lower() in cands.lower():
-                            query = '%' + UserSays.lower() + '%'
-                            run, bio, img = SQL.president_bio(query)
-                            bio = str(bio)
-                            #img = base64.b64decode('img')
+                            elif level == 'pres' and UserSays.lower() in cands.lower():
+                                query = '%' + UserSays.lower() + '%'
+                                run, bio, img = SQL.president_bio(query)
+                                bio = str(bio)
+                                SendAttachment(SenderID, 'image', img)
+                                if len(str(run)) < 1:
+                                    if len(bio) > 640:
+                                        bio, bios = CheckTextLength(bio)
+                                        response = bio + '-'
+                                        SendMessage(SenderID, response)
+                                        SendMessage(SenderID, bios)
+                                        Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
+If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
+                                  'Home')
+                                    else:
+                                        SendMessage(SenderID, bio)
+                                        Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
+If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
+                                  'Home')
+                                else:
+                                    running_mate = 'His running mate is ' + str(run)
+                                    SendMessage(SenderID, running_mate)
+                                    if len(bio) > 640:
+                                        bio, bios = CheckTextLength(bio)
+                                        response = bio + '-'
+                                        SendMessage(SenderID, response)
+                                        SendMessage(SenderID, bios)
+                                        Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
+If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
+                                  'Home')
+                                    else:
+                                        SendMessage(SenderID, bio)
+                                        Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
+If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
+                                  'Home')
+
+                            elif level == 'senate' and UserSays.lower() in cands.lower():
+                                query = '%' + UserSays.lower() + '%'
+                                county = '%' + county + '%'
+                                bio, img = SQL.senators_bio(query, county)
+                                bio = str(bio)
                             
-                            SendAttachment(SenderID, 'image', img)
-                            if len(str(run)) < 1:
+                                SendAttachment(SenderID, 'image', img)
                                 if len(bio) > 640:
                                     bio, bios = CheckTextLength(bio)
                                     response = bio + '-'
                                     SendMessage(SenderID, response)
                                     SendMessage(SenderID, bios)
                                     Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
-If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
-                                  'Home')
-                                else:
-                                    SendMessage(SenderID, bio)
-                                    Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
-If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
-                                  'Home')
-                            else:
-                                running_mate = 'His running mate is ' + str(run)
-                                SendMessage(SenderID, running_mate)
-                                if len(bio) > 640:
-                                    bio, bios = CheckTextLength(bio)
-                                    response = bio + '-'
-                                    SendMessage(SenderID, response)
-                                    SendMessage(SenderID, bios)
-                                    Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
-If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
-                                  'Home')
-                                else:
-                                    SendMessage(SenderID, bio)
-                                    Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
-If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
-                                  'Home')
-
-                        elif level == 'senate' and UserSays.lower() in cands.lower():
-                            query = '%' + UserSays.lower() + '%'
-                            county = '%' + county + '%'
-                            bio, img = SQL.senators_bio(query, county)
-                            bio = str(bio)
-                            print(bio)
-                            #SendAttachment(SenderID, 'image', img)
-                            if len(bio) > 640:
-                                bio, bios = CheckTextLength(bio)
-                                response = bio + '-'
-                                SendMessage(SenderID, response)
-                                SendMessage(SenderID, bios)
-                                Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
                                  If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
-                                  'Home')
-                            else:
-                                SendMessage(SenderID, bio)
-                                Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
-                                 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
-                                  'Home')
-                        elif level == 'womrep' and UserSays.lower() in cands.lower():
-                            query = '%' + UserSays.lower() + '%'
-                            county = '%' + county + '%'
-                            bio, img = SQL.women_reps_bio(query, county)
-                            bio = str(bio)
-                            print(bio)
-                            #SendAttachment(SenderID, 'image', str(img))
-                            if len(bio) > 640:
-                                bio, bios = CheckTextLength(bio)
-                                response = bio + '-'
-                                SendMessage(SenderID, response)
-                                SendMessage(SenderID, bios)
-                                Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
-If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
-                                  'Home')
-                            else:
-                                SendMessage(SenderID, bio)
-                                Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
-If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
-                                  'Home')
-                        elif level == 'gov' and UserSays.lower() in cands.lower():
-                            print('Yes')
-                            query = '%' + UserSays.lower() + '%'
-                            county = '%' + county + '%'
-                            run, bio = SQL.governor_bio(query, county)
-                            bio = str(bio)
-                            if len(str(run)) < 1:
-                                if len(bio) > 640:
-                                    bio, bios = CheckTextLength(bio)
-                                    response = bio + '-'
-                                    SendMessage(SenderID, response)
-                                    SendMessage(SenderID, bios)
-                                    Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
-If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
                                 else:
                                     SendMessage(SenderID, bio)
                                     Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
                                  If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
-                            else:
-                                running_mate = 'His running mate is ' + str(run)
-                                SendMessage(SenderID, running_mate)
+                            elif level == 'womrep' and UserSays.lower() in cands.lower():
+                                query = '%' + UserSays.lower() + '%'
+                                county = '%' + county + '%'
+                                bio, img = SQL.women_reps_bio(query, county)
+                                bio = str(bio)
+                                print(bio)
+                                SendAttachment(SenderID, 'image', img)
                                 if len(bio) > 640:
                                     bio, bios = CheckTextLength(bio)
                                     response = bio + '-'
@@ -568,82 +525,115 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                     Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
+                            elif level == 'gov' and UserSays.lower() in cands.lower():
+                                
+                                query = '%' + UserSays.lower() + '%'
+                                county = '%' + county + '%'
+                                run, bio = SQL.governor_bio(query, county)
+                                bio = str(bio)
+                                if len(str(run)) < 1:
+                                    if len(bio) > 640:
+                                        bio, bios = CheckTextLength(bio)
+                                        response = bio + '-'
+                                        SendMessage(SenderID, response)
+                                        SendMessage(SenderID, bios)
+                                        Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
+If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
+                                  'Home')
+                                    else:
+                                        SendMessage(SenderID, bio)
+                                        Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
+                                 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
+                                  'Home')
+                                else:
+                                    running_mate = 'His running mate is ' + str(run)
+                                    SendMessage(SenderID, running_mate)
+                                    if len(bio) > 640:
+                                        bio, bios = CheckTextLength(bio)
+                                        response = bio + '-'
+                                        SendMessage(SenderID, response)
+                                        SendMessage(SenderID, bios)
+                                        Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
+If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
+                                  'Home')
+                                    else:
+                                        SendMessage(SenderID, bio)
+                                        Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
+If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
+                                  'Home')
 
-                        elif level == 'vote' and UserSays.lower() in racer.lower():
-                            print('Im')
+                            elif level == 'vote' and UserSays.lower() in racer.lower():
+                                print('Im')
 
-                        elif Kiswahili is not True and 'gov' == level:
-                            query = '%' + county + '%'
-                            candidates = SQL.governors(query)
-                            if len(candidates) > 640:
-                                first_names, second_names = CheckListLength(candidates)
-                                response = 'The gubernatorial candidatesfor ' + county + ' are: \n' + str(first_names[0:])
-                                SendMessage(SenderID, response)
-                                SendMessage(SenderID, second_names)
-                                SendMessage(SenderID, CandidateMoreInfo)
-                            else:
-                                response = 'The gubernatorial candidates for ' + county + ' are: \n' + str(candidates[0:])
-                                SendMessage(SenderID, response)
-                                SendMessage(SenderID, CandidateMoreInfo)
+                            elif Kiswahili is not True and 'gov' == level:
+                                query = '%' + county + '%'
+                                candidates = SQL.governors(query)
+                                if len(candidates) > 640:
+                                    first_names, second_names = CheckListLength(candidates)
+                                    response = 'The gubernatorial candidatesfor ' + county + ' are: \n' + str(first_names[0:])
+                                    SendMessage(SenderID, response)
+                                    SendMessage(SenderID, second_names)
+                                    SendMessage(SenderID, CandidateMoreInfo)
+                                else:
+                                    response = 'The gubernatorial candidates for ' + county + ' are: \n' + str(candidates[0:])
+                                    SendMessage(SenderID, response)
+                                    SendMessage(SenderID, CandidateMoreInfo)
 
-                        elif Kiswahili is not True and 'senate' == level:
-                            query = '%' + county + '%'
-                            candidates = SQL.senators(query)
-                            if len(candidates) > 640:
-                                first_names, second_names = CheckListLength(candidates)
-                                response = 'The senate candidates are: \n' + str(first_names[0:])
-                                SendMessage(SenderID, response)
-                                SendMessage(SenderID, second_names)
-                                SendMessage(SenderID, CandidateMoreInfo)
-                            else:
-                                response = 'The senate candidates for ' + county + ' are: \n' + str(candidates[0:])
-                                SendMessage(SenderID, response)
-                                SendMessage(SenderID, CandidateMoreInfo)
+                            elif Kiswahili is not True and 'senate' == level:
+                                query = '%' + county + '%'
+                                candidates = SQL.senators(query)
+                                if len(candidates) > 640:
+                                    first_names, second_names = CheckListLength(candidates)
+                                    response = 'The senate candidates are: \n' + str(first_names[0:])
+                                    SendMessage(SenderID, response)
+                                    SendMessage(SenderID, second_names)
+                                    SendMessage(SenderID, CandidateMoreInfo)
+                                else:
+                                    response = 'The senate candidates for ' + county + ' are: \n' + str(candidates[0:])
+                                    SendMessage(SenderID, response)
+                                    SendMessage(SenderID, CandidateMoreInfo)
 
-                        elif Kiswahili is not True and 'womrep' == level:
-                            query = '%' + county + '%'
-                            candidates = SQL.women_reps(query)
-                            if len(candidates) > 640:
-                                first_names, second_names = CheckListLength(candidates)
-                                response = 'The  candidates are: \n' + str(first_names[0:])
-                                SendMessage(SenderID, response)
-                                SendMessage(SenderID, second_names)
-                                SendMessage(SenderID, CandidateMoreInfo)
-                            else:
-                                response = 'The candidates for ' + county + ' are: \n' + str(candidates[0:])
-                                SendMessage(SenderID, response)
-                                SendMessage(SenderID, CandidateMoreInfo)
+                            elif Kiswahili is not True and 'womrep' == level:
+                                query = '%' + county + '%'
+                                candidates = SQL.women_reps(query)
+                                if len(candidates) > 640:
+                                    first_names, second_names = CheckListLength(candidates)
+                                    response = 'The  candidates are: \n' + str(first_names[0:])
+                                    SendMessage(SenderID, response)
+                                    SendMessage(SenderID, second_names)
+                                    SendMessage(SenderID, CandidateMoreInfo)
+                                else:
+                                    response = 'The candidates for ' + county + ' are: \n' + str(candidates[0:])
+                                    SendMessage(SenderID, response)
+                                    SendMessage(SenderID, CandidateMoreInfo)
                         
-                        elif Kiswahili is not True and 'nairobi' == UserSays.lower() and 'senate' == level:
-                            query = '%nairobi%'
-                            candidates = SQL.senators(query)
-                            first_names, second_names = CheckListLength(candidates)
-                            response = 'The senate candidates in Nairobi are: \n' + str(first_names[0:])
-                            SendMessage(SenderID, response)
-                            SendMessage(SenderID, second_names)
-                            SendMessage(SenderID, CandidateMoreInfo)
-                        elif Kiswahili is not True and 'vote' in UserSays.lower():
-                            SendMessage(SenderID, 'If the elections happened tomorrow, which presidential candidate would you vote for?')
+                            elif Kiswahili is not True and 'nairobi' == UserSays.lower() and 'senate' == level:
+                                query = '%nairobi%'
+                                candidates = SQL.senators(query)
+                                first_names, second_names = CheckListLength(candidates)
+                                response = 'The senate candidates in Nairobi are: \n' + str(first_names[0:])
+                                SendMessage(SenderID, response)
+                                SendMessage(SenderID, second_names)
+                                SendMessage(SenderID, CandidateMoreInfo)
+                            elif Kiswahili is not True and 'vote' in UserSays.lower():
+                                SendMessage(SenderID, 'If the elections happened tomorrow, which presidential candidate would you vote for?')
 
-                        '''elif level == 'contact':
-                            contacts = countydict[county]
-                            print(contacts)'''
+                            elif level == 'contact' and county is not None:
+                                contacts = countydict[county]
+                                print(contacts)
 
-                    elif msg.get('postback'):  
-                        if UserSays == 'Get Started':
-                            ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
+                        elif msg.get('postback'):  
+                            if UserSays == 'Get Started':
+                                ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
 
-                        if Kiswahili == True and UserSays == 'survey':
-                            TakeSurvey(SenderID, 'Tafadhali Jibu maswali haya ili - review them.', SurveyUrl, 'SurveyName')
-                        ''''elif Kiswahili is not True and UserSays == 'subscribe':
-                            response = 'What level of election do you want to get weekly news for?'
-                            UsingOptions(SenderID, response, 'Presidential', 'Governor', 'Senate', 'Women Representative')
-'''
-                        if Kiswahili == False and UserSays == 'survey':
-                            TakeSurvey(SenderID, 'Please take the following survey to review your county administration', SurveyUrl, 'SurveyName')
+                            if Kiswahili == True and UserSays == 'survey':
+                                TakeSurvey(SenderID, 'Tafadhali Jibu maswali haya ili - review them.', SurveyUrl, 'SurveyName')
+    
+                            if Kiswahili == False and UserSays == 'survey':
+                                TakeSurvey(SenderID, 'Please take the following survey to review your county administration', SurveyUrl, 'SurveyName')
 
-                        if Kiswahili is not True and UserSays == 'levels':
-                            LevelTemplateOptions(SenderID,
+                            if Kiswahili is not True and UserSays == 'levels':
+                                LevelTemplateOptions(SenderID,
                                 'Presidential Candidates.',
                                 'Know the vying presidential candidates and their running mates.',
                                 'Governor Candidates.',
@@ -658,47 +648,47 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 'Senator Candidates',
                                 'Women Representative Candidates'
                                 )
-                        if Kiswahili is not True and UserSays == 'voters':
-                            SendMessage(SenderID, VoterRequirements )
-                            SendMessage(SenderID, 'Here are some helpful graphics to help you.')
+                            if Kiswahili is not True and UserSays == 'voters':
+                                SendMessage(SenderID, VoterRequirements )
+                                SendMessage(SenderID, 'Here are some helpful graphics to help you.')
                             
-                            SendAttachment(SenderID,'image', 'https://farm5.staticflickr.com/4248/34872766342_a66c0fa485_o_d.jpg')
-                            SendMessage(SenderID, ContinueUsing)
-                            Home(SenderID, 'Go back to home?', 'Home')
+                                SendAttachment(SenderID,'image', 'https://farm5.staticflickr.com/4248/34872766342_a66c0fa485_o_d.jpg')
+                                SendMessage(SenderID, ContinueUsing)
+                                Home(SenderID, 'Go back to home?', 'Home')
 
-                        elif Kiswahili is not True and UserSays == 'poll':
-                            ReusableOptions(SenderID, OptionsText, 'Vote', 'See the results')
+                            elif Kiswahili is not True and UserSays == 'poll':
+                                ReusableOptions(SenderID, OptionsText, 'Vote', 'See the results')
 
-                        elif Kiswahili is not True and UserSays == 'registration':
-                            SendAttachment(SenderID, 'image', 'https://farm5.staticflickr.com/4243/34193089344_55a2249bd6_o_d.jpg')
-                            SendAttachment(SenderID, 'video', '')
-                            SendMessage(SenderID, VoterRegistration)
-                            Home(SenderID, 'Go back to home?', 'Home')
+                            elif Kiswahili is not True and UserSays == 'registration':
+                                SendAttachment(SenderID, 'image', 'https://farm5.staticflickr.com/4243/34193089344_55a2249bd6_o_d.jpg')
+                                SendAttachment(SenderID, 'video', '')
+                                SendMessage(SenderID, VoterRegistration)
+                                Home(SenderID, 'Go back to home?', 'Home')
 
                     
-                        elif Kiswahili is not True and UserSays == 'reminder':
-                            ReusableOptions(SenderID, 'When would you like to get a reminder notification for the elections?', 'A Week Before', 'Two Days Before')
+                            elif Kiswahili is not True and UserSays == 'reminder':
+                                ReusableOptions(SenderID, 'When would you like to get a reminder notification for the elections?', 'A Week Before', 'Two Days Before')
 
 
-                        elif Kiswahili is not True and UserSays == 'pres':
-                            candidates = SQL.all_presidential_candidates()
-                            print(candidates)
-                            first_names, second_names = CheckListLength(candidates)
-                            response = 'The presidential candidates are: \n' + str(first_names[0:])
-                            SendMessage(SenderID, response)
-                            SendMessage(SenderID, second_names)
-                            SendMessage(SenderID, CandidateMoreInfo)
+                            elif Kiswahili is not True and UserSays == 'pres':
+                                candidates = SQL.all_presidential_candidates()
+                                print(candidates)
+                                first_names, second_names = CheckListLength(candidates)
+                                response = 'The presidential candidates are: \n' + str(first_names[0:])
+                                SendMessage(SenderID, response)
+                                SendMessage(SenderID, second_names)
+                                SendMessage(SenderID, CandidateMoreInfo)
 
-                        elif Kiswahili is not True and UserSays == 'gov':
-                            CountyOptions(SenderID, 'From what county? Choose one below')
+                            elif Kiswahili is not True and UserSays == 'gov':
+                                CountyOptions(SenderID, 'From what county? Choose one below')
 
-                        elif Kiswahili is not True and UserSays == 'senate':
-                            CountyOptions(SenderID, 'From what county? Choose one below')
-                        elif Kiswahili is not True and UserSays == 'womrep':
-                            CountyOptions(SenderID, 'From what county? Choose one below')
+                            elif Kiswahili is not True and UserSays == 'senate':
+                                CountyOptions(SenderID, 'From what county? Choose one below')
+                            elif Kiswahili is not True and UserSays == 'womrep':
+                                CountyOptions(SenderID, 'From what county? Choose one below')
 
-                        elif Kiswahili is not True and UserSays == 'contact':
-                            CountyOptions(SenderID, 'From what county? Choose one below')
+                            elif Kiswahili is not True and UserSays == 'contact':
+                                CountyOptions(SenderID, 'From what county? Choose one below')
                         
 
         
