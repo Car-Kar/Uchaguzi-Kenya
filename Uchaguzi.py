@@ -822,7 +822,7 @@ def HomeP(RecipientID, TXT, op1):
         'attachment' : {
         'type': 'template',
         'payload' : {
-        'template_type' : 'buttons',
+        'template_type' : 'button',
         'text': TXT,
         'buttons':[
       {
