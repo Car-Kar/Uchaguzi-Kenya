@@ -385,7 +385,7 @@ def StartMessaging():
                         if msg.get('message'):
                             if Kiswahili is not True and county is not None and level == 'cs':
                                 url = countydict[county]
-                                Voting(SenderID, 'Choose an option below', 'Take a short survey', 'County Contacts', url)
+                                Voting(SenderID, 'Choose an option below', 'Take a short survey', 'County Contacts', 'http://www.nairobi.go.ke/home/subcounty-administration/')
 
 
                             if 'start' in UserSays.lower() or 'hey' in UserSays.lower() or 'hi' in UserSays.lower() or 'hello' in UserSays.lower():
