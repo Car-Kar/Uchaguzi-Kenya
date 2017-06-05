@@ -606,9 +606,9 @@ If you want to know about another candidate, send me his or her name, otherwise 
                         elif Kiswahili is not True and 'vote' in UserSays.lower():
                             SendMessage(SenderID, 'If the elections happened tomorrow, which presidential candidate would you vote for?')
 
-                        elif level == 'contact':
+                        '''elif level == 'contact':
                             contacts = countydict[county]
-                            print(contacts)
+                            print(contacts)'''
 
                     elif msg.get('postback'):  
                         if UserSays == 'Get Started':
