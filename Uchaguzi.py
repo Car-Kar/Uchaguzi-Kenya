@@ -671,7 +671,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 HomeP(SenderID, 'Go back to home?', '\U000FE4B0 Home')
 
                             elif Kiswahili is not True and UserSays == 'poll':
-                                ListTemplate(RecipientID, 'Results', 'https://d30y9cdsu7xlg0.cloudfront.net/png/188134-200.png', 'See the results of the poll.', 'Vote')
+                                ListTemplate(RecipientID, 'Results', 'https://d30y9cdsu7xlg0.cloudfront.net/png/25759-200.png', 'See the results of the poll.', 'Vote')
 
                             elif Kiswahili is not True and UserSays == 'registration':
                                 SendAttachment(SenderID, 'image', 'https://farm5.staticflickr.com/4243/34193089344_55a2249bd6_o_d.jpg')
@@ -884,10 +884,10 @@ def ListTemplate(RecipientID, TXT, A, B, C, D):
                     "subtitle": C,
                     "default_action": {
                         "type": "web_url",
-                        "url": "",
+                        "url": "https://uchaguzi-ke.herokuapp.com",
                         "messenger_extensions": true,
                         "webview_height_ratio": "tall",
-                        "fallback_url": ""
+                        "fallback_url": "https://uchaguzi-ke.herokuapp.com"
                     },             
                 }
             ],
