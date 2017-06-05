@@ -474,12 +474,12 @@ def StartMessaging():
                                         response = bio + '-'
                                         SendMessage(SenderID, response)
                                         SendMessage(SenderID, bios)
-                                        Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
+                                        HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
                                     else:
                                         SendMessage(SenderID, bio)
-                                        Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
+                                        HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
                                 else:
@@ -490,12 +490,12 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                         response = bio + '-'
                                         SendMessage(SenderID, response)
                                         SendMessage(SenderID, bios)
-                                        Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
+                                        HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
                                     else:
                                         SendMessage(SenderID, bio)
-                                        Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
+                                        HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
 
@@ -511,12 +511,12 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                     response = bio + '-'
                                     SendMessage(SenderID, response)
                                     SendMessage(SenderID, bios)
-                                    Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
+                                    HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
                                  If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
                                 else:
                                     SendMessage(SenderID, bio)
-                                    Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
+                                    HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
                                  If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
                             elif level == 'womrep' and UserSays.lower() in cands.lower():
@@ -531,12 +531,12 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                     response = bio + '-'
                                     SendMessage(SenderID, response)
                                     SendMessage(SenderID, bios)
-                                    Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
+                                    HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
                                 else:
                                     SendMessage(SenderID, bio)
-                                    Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
+                                    HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
                             elif level == 'gov' and UserSays.lower() in cands.lower():
@@ -551,12 +551,12 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                         response = bio + '-'
                                         SendMessage(SenderID, response)
                                         SendMessage(SenderID, bios)
-                                        Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
+                                        HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
                                     else:
                                         SendMessage(SenderID, bio)
-                                        Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
+                                        HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
                                  If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
                                 else:
@@ -567,12 +567,12 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                         response = bio + '-'
                                         SendMessage(SenderID, response)
                                         SendMessage(SenderID, bios)
-                                        Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
+                                        HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
                                     else:
                                         SendMessage(SenderID, bio)
-                                        Home(SenderID, ''''Do you want to know about another candidate, or go back to home?
+                                        HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   'Home')
 
@@ -668,7 +668,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                             
                                 SendAttachment(SenderID,'image', 'https://farm5.staticflickr.com/4248/34872766342_a66c0fa485_o_d.jpg')
                                 SendMessage(SenderID, ContinueUsing)
-                                Home(SenderID, 'Go back to home?', 'Home')
+                                HomeP(SenderID, 'Go back to home?', '\U000FE4B0 Home')
 
                             elif Kiswahili is not True and UserSays == 'poll':
                                 ReusableOptions(SenderID, OptionsText, 'Vote', 'See the results')
@@ -677,7 +677,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 SendAttachment(SenderID, 'image', 'https://farm5.staticflickr.com/4243/34193089344_55a2249bd6_o_d.jpg')
                                 SendAttachment(SenderID, 'video', '')
                                 SendMessage(SenderID, VoterRegistration)
-                                Home(SenderID, 'Go back to home?', 'Home')
+                                HomeP(SenderID, 'Go back to home?', '\U000FE4B0 Home')
 
                     
                             elif Kiswahili is not True and UserSays == 'reminder':
@@ -808,7 +808,38 @@ def FindingCandidate(level, name):
         result = [c for c in candidates if name.lower() in c.lower()]
         result = ' '.join(result)
         return result.lower()
-def Home(RecipientID, TXT, op1):
+
+
+def HomeP(RecipientID, TXT, op1):
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        'recipient': {
+        'id': RecipientID
+    },
+    'message' :  {
+        'attachment' : {
+        'type': 'template',
+        'payload' : {
+        'template_type' : 'buttons',
+        'text': TXT,
+        'buttons':[
+      {
+        'type': 'postback',
+        'title' : op1,
+        'payload' : 'home'
+      }
+    ]
+    }
+    }}})
+    r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
+    if r.status_code != 200:
+        print(r.text)
+
+def Home(RecipientID, Text, op1):
+    print(('Sending message to {0}').format(RecipientID))
+
     headers = {
     'Content-Type' : 'application/json'
     }
@@ -817,12 +848,12 @@ def Home(RecipientID, TXT, op1):
         'id': RecipientID
     },
     'message' : {
-        'text': TXT,
-        'buttons':[
+        'text': Text,
+        'quick_replies':[
       {
-        'type': 'postback',
+        'content_type': 'text',
         'title' : op1,
-        'payload' : 'home'
+        'payload' : 'IsReusable'
       }
     ]
     }
