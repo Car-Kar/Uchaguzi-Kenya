@@ -1293,7 +1293,7 @@ if __name__ == '__main__':
     #sched.start()
     app.run(debug = True)
 
-countydict = {'nairobi': ,
+countydict = {'nairobi': '',
 'nakuru' : 'http://www.nakuru.go.ke/contactus/',
 'kiambu' : 'http://www.kiambu.go.ke/contact-us',
 'mombasa' : '',
