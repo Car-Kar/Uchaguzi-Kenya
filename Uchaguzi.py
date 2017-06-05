@@ -336,7 +336,7 @@ class UsingSQL:
 MDB = UsingMongo()
 SQL = UsingSQL()
 Options = ['haha']
-options = ['pres', 'gov', 'senate', 'womrep', 'vote', 'contact', 'survey']
+options = ['pres', 'gov', 'senate', 'womrep', 'vote', 'contact', 'survey', 'cs']
 VotingInformation = {'image' : 'https://media.giphy.com/media/3o6ZtkFObzcJiaMOFG/giphy.gif', 'image' : 'https://media.giphy.com/media/26vUCOMzBiBZ0qW1a/giphy.gif', 
 'video' : 'https://www.youtube.com/watch?v=nQbztjkag1A&feature=youtu.be&t=1',  'image' : 'https://farm5.staticflickr.com/4267/34872767952_f36c5a4dda_o_d.jpg'}
 
@@ -383,6 +383,11 @@ def StartMessaging():
                         print(racer)
                     
                         if msg.get('message'):
+                            if Kiswahili is not True and county is Not none and level == 'cs':
+                                url = countydict[county]
+                                Voting(SenderID, 'Choose an option below', 'Take a short survey', 'County Contacts', url)
+
+
                             if 'start' in UserSays.lower() or 'hey' in UserSays.lower() or 'hi' in UserSays.lower() or 'hello' in UserSays.lower():
                                 ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
                             if Kiswahili == True and 'swahili' in UserSays.lower():
@@ -396,8 +401,8 @@ def StartMessaging():
                                 'Chagua cheo cha kura',
                                 'Serikali', 
                                 'Pata ujumbe kuhusu serikali ya kata yako.',
-                                'Kagua Serikali',
-                                'Wasiliana na serikali ya kata yako')
+                                'Kagua Serikali'
+                                )
                             if Kiswahili is not True and 'english' in UserSays.lower():
                                 SendMessage(SenderID, IntroductoryMessage)
                                 SendMessage(SenderID, IntroductoryMessage2)
@@ -413,8 +418,7 @@ def StartMessaging():
                                 'Elections Levels',
                                 'Government Review',
                                 'Talk to your county government',
-                                'Contact',
-                                'Take a survey'
+                                'County Review'
                                 )
 
                             if Kiswahili == True and 'nipe' in UserSays.lower():
@@ -709,7 +713,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                             elif Kiswahili is not True and 'vote' in UserSays.lower():
                                 SendMessage(SenderID, 'If the elections happened tomorrow, which presidential candidate would you vote for?')
 
-                            if Kiswahili is not True and 'home' in UserSays.lower():
+                            elif Kiswahili is not True and 'home' in UserSays.lower():
                                 GenericTemplateOptions(SenderID,
                                 'Voter Information',
                                 'We give you information on voting in the elections.',
@@ -722,9 +726,13 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 'Elections Levels',
                                 'Government Review',
                                 'Talk to your county government',
-                                'Contact',
-                                'Take a survey'
+                                'Contact Review'
                                 )
+
+                            elif 'cs' == UserSays:
+                                SendMessage(SenderID, 'What county are you from?')
+                                CountyOptions(SenderID, 'Choose one below')
+
 
 
 
@@ -878,7 +886,45 @@ def Home(RecipientID, Text, op1):
     if r.status_code != 200:
         print(r.text)
 
+def Voting(RecipientID, A, B, c, D):
+    headers = {
+    'Content-Type' : 'application/json'
+    }
+    data = json.dumps({
+        "recipient": {
+        "id": RecipientID
+    },
+    "message": {
+    "attachment": {
+        "type": "template",
+        "payload":{
+        "template_type":"button",
+        "text": A,
+        "buttons":[
+        {
+            "type":"postback",
+            "title": B,
+            "payload": "su"
+          },
+          {
+            "type":"web_url",
+            "url": C,
+            "title": D          }
+          
+        ]
+      }
+    }
+  }
+    } 
+    )
+    r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
+    if r.status_code != 200:
+        print(r.text)
+
+
+
 def ButtonTemplate(RecipientID, A, B, C):
+    
 
     headers = {
     'Content-Type' : 'application/json'
@@ -913,6 +959,7 @@ def ButtonTemplate(RecipientID, A, B, C):
     r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
     if r.status_code != 200:
         print(r.text)
+
 def HomeTemplate(RecipientID, A, B, C):
 
     headers = {
@@ -1055,7 +1102,7 @@ def Options(RecipientID, Text, OP1, OP2):
     if r.status_code != 200:
         print(r.text)
 
-def GenericTemplateOptions(RecipientID, A, B, C, D, E, F, G, H, I, J, K, L, M):
+def GenericTemplateOptions(RecipientID, A, B, C, D, E, F, G, H, I, J, K, L):
     print(('Sending  options to {0}').format(RecipientID))
     headers = {
     'Content-Type' : 'application/json'
@@ -1119,14 +1166,9 @@ def GenericTemplateOptions(RecipientID, A, B, C, D, E, F, G, H, I, J, K, L, M):
                 'buttons' : [
                     {
                         'type' : 'postback',
-                        'payload' : 'contact',
+                        'payload' : 'cs',
                         'title' : L
-                    } ,
-                    {
-                        'type' : 'postback',
-                        'payload' : 'review',
-                        'title' : M
-                    }                  
+                    }            
                 
                 ]}
                 ]
