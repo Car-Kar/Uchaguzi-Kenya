@@ -508,77 +508,146 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                         HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   '\U000FE4B0 Home')
-                            elif Kiswahili is True and level == 'pres' and ('uhuru' in UserSays.lower() or 'kenyatta' in UserSays.lower()):
-                                run, bio, img = SQL.president_bio(query)
-                                bio = kiswa.uk
-                                SendAttachment(SenderID, 'image', img)
-                                if len(bio) > 640:
-                                    bio, bios = CheckTextLength(bio)
-                                    response = bio + '-'
-                                    SendMessage(SenderID, response)
-                                    SendMessage(SenderID, bios)
-                                    HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
+                            elif Kiswahili is True and level == 'pres':
+                                if  'uhuru' in UserSays.lower() or 'kenyatta' in UserSays.lower():
+                                    run, bio, img = SQL.president_bio('uhuru')
+                                    bio = kiswa.uk
+                                    SendAttachment(SenderID, 'image', img)
+                                    if len(bio) > 640:
+                                        bio, bios = CheckTextLength(bio)
+                                        response = bio + '-'
+                                        SendMessage(SenderID, response)
+                                        SendMessage(SenderID, bios)
+                                        HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
 Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani.''',
                                   '\U000FE4B0 Nyumbani')
-                                else:
-                                    SendMessage(SenderID, bio)
-                                    HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
+                                    else:
+                                        SendMessage(SenderID, bio)
+                                        HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
 Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani''',
                                   '\U000FE4B0 Nyumbani')
-                            elif Kiswahili is True and level == 'pres' and ('raila' in UserSays.lower() or 'amollo' in UserSays.lower() 'odinga' in UserSays.lower()):
-                                run, bio, img = SQL.president_bio(query)
-                                bio = kiswa.rk
-                                SendAttachment(SenderID, 'image', img)
-                                if len(bio) > 640:
-                                    bio, bios = CheckTextLength(bio)
-                                    response = bio + '-'
-                                    SendMessage(SenderID, response)
-                                    SendMessage(SenderID, bios)
-                                    HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
+                                elif  'raila' in UserSays.lower() or 'amollo' in UserSays.lower() or 'odinga' in UserSays.lower():
+                                    run, bio, img = SQL.president_bio('raila')
+                                    bio = kiswa.rk
+                                    SendAttachment(SenderID, 'image', img)
+                                    if len(bio) > 640:
+                                        bio, bios = CheckTextLength(bio)
+                                        response = bio + '-'
+                                        SendMessage(SenderID, response)
+                                        SendMessage(SenderID, bios)
+                                        HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
 Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani.''',
                                   '\U000FE4B0 Nyumbani')
-                                else:
-                                    SendMessage(SenderID, bio)
-                                    HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
-Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani''',
-                                  '\U000FE4B0 Nyumbani')
-
-                            elif Kiswahili is True and level == 'pres' and ('david' in UserSays.lower() or 'munga' in UserSays.lower()):
-                                run, bio, img = SQL.president_bio(query)
-                                bio = kiswa.uk
-                                SendAttachment(SenderID, 'image', img)
-                                if len(bio) > 640:
-                                    bio, bios = CheckTextLength(bio)
-                                    response = bio + '-'
-                                    SendMessage(SenderID, response)
-                                    SendMessage(SenderID, bios)
-                                    HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
-Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani.''',
-                                  '\U000FE4B0 Nyumbani')
-                                else:
-                                    SendMessage(SenderID, bio)
-                                    HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
-Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani''',
-                                  '\U000FE4B0 Nyumbani')
-                                elif Kiswahili is True and level == 'pres' and 'uhuru' in UserSays.lower() or 'kenyatta' in UserSays.lower():
-                                run, bio, img = SQL.president_bio(query)
-                                bio = kiswa.uk
-                                SendAttachment(SenderID, 'image', img)
-                                if len(bio) > 640:
-                                    bio, bios = CheckTextLength(bio)
-                                    response = bio + '-'
-                                    SendMessage(SenderID, response)
-                                    SendMessage(SenderID, bios)
-                                    HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
-Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani.''',
-                                  '\U000FE4B0 Nyumbani')
-                                else:
-                                    SendMessage(SenderID, bio)
-                                    HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
+                                    else:
+                                        SendMessage(SenderID, bio)
+                                        HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
 Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani''',
                                   '\U000FE4B0 Nyumbani')
 
-            
+                                elif  'mohamed' in UserSays.lower() or 'diba' in UserSays.lower() or 'adbuba' in UserSays.lower():
+                                    run, bio, img = SQL.president_bio(diba)
+                                    bio = kiswa.mdk
+                                    SendAttachment(SenderID, 'image', img)
+                                    if len(bio) > 640:
+                                        bio, bios = CheckTextLength(bio)
+                                        response = bio + '-'
+                                        SendMessage(SenderID, response)
+                                        SendMessage(SenderID, bios)
+                                        HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
+Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani.''',
+                                  '\U000FE4B0 Nyumbani')
+                                    else:
+                                        SendMessage(SenderID, bio)
+                                        HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
+Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani''',
+                                  '\U000FE4B0 Nyumbani')
+                                elif  'khwa' in UserSays.lower() or 'jirongo' in UserSays.lower() or 'shakhalaga' in UserSays.lower():
+                                    run, bio, img = SQL.president_bio('khwa')
+                                    bio = kiswa.kwk
+                                    SendAttachment(SenderID, 'image', img)
+                                    if len(bio) > 640:
+                                        bio, bios = CheckTextLength(bio)
+                                        response = bio + '-'
+                                        SendMessage(SenderID, response)
+                                        SendMessage(SenderID, bios)
+                                        HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
+Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani.''',
+                                  '\U000FE4B0 Nyumbani')
+                                    else:
+                                        SendMessage(SenderID, bio)
+                                        HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
+Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani''',
+                                  '\U000FE4B0 Nyumbani')
+                                elif  'aukot' in UserSays.lower() or 'ekuru' in UserSays.lower():
+                                    run, bio, img = SQL.president_bio('ekuru')
+                                    bio = kiswa.aek
+                                    SendAttachment(SenderID, 'image', img)
+                                    if len(bio) > 640:
+                                        bio, bios = CheckTextLength(bio)
+                                        response = bio + '-'
+                                        SendMessage(SenderID, response)
+                                        SendMessage(SenderID, bios)
+                                        HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
+Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani.''',
+                                  '\U000FE4B0 Nyumbani')
+                                    else:
+                                        SendMessage(SenderID, bio)
+                                        HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
+Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani''',
+                                  '\U000FE4B0 Nyumbani')
+                                elif  'justus' in UserSays.lower() or 'zakayo' in UserSays.lower():
+                                    run, bio, img = SQL.president_bio('justus')
+                                    bio = kiswa.uk
+                                    SendAttachment(SenderID, 'image', img)
+                                    if len(bio) > 640:
+                                        bio, bios = CheckTextLength(bio)
+                                        response = bio + '-'
+                                        SendMessage(SenderID, response)
+                                        SendMessage(SenderID, bios)
+                                        HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
+Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani.''',
+                                  '\U000FE4B0 Nyumbani')
+                                    else:
+                                        SendMessage(SenderID, bio)
+                                        HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
+Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani''',
+                                  '\U000FE4B0 Nyumbani')
+                                elif  'peter' in UserSays.lower() or 'solomon' in UserSays.lower() or 'gichira' in UserSays.lower():
+                                    run, bio, img = SQL.president_bio('gichira')
+                                    bio = kiswa.psk
+                                    SendAttachment(SenderID, 'image', img)
+                                    if len(bio) > 640:
+                                        bio, bios = CheckTextLength(bio)
+                                        response = bio + '-'
+                                        SendMessage(SenderID, response)
+                                        SendMessage(SenderID, bios)
+                                        HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
+Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani.''',
+                                  '\U000FE4B0 Nyumbani')
+                                    else:
+                                        SendMessage(SenderID, bio)
+                                        HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
+Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani''',
+                                  '\U000FE4B0 Nyumbani')
+                                elif  'amram' in UserSays.lower() or 'inyambuki' in UserSays.lower():
+                                    run, bio, img = SQL.president_bio(query)
+                                    bio = kiswa.uk
+                                    SendAttachment(SenderID, 'image', img)
+                                    if len(bio) > 640:
+                                        bio, bios = CheckTextLength(bio)
+                                        response = bio + '-'
+                                        SendMessage(SenderID, response)
+                                        SendMessage(SenderID, bios)
+                                        HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
+Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani.''',
+                                  '\U000FE4B0 Nyumbani')
+                                    else:
+                                        SendMessage(SenderID, bio)
+                                        HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
+Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani''',
+                                  '\U000FE4B0 Nyumbani')
+                                else:
+                                    SendMessage(SenderID, 'Maelezo mengine kuhusu huyu mgombea rais yatapewa kwa muda usiokuwa mrefu.Tafadhali zidi kuangalia kila wakati kwa maelezo Zaidi.')
 
                             elif level == 'senate' and UserSays.lower() in cands.lower():
                                 query = '%' + UserSays.lower() + '%'
@@ -812,6 +881,14 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 SendMessage(SenderID, response)
                                 SendMessage(SenderID, second_names)
                                 SendMessage(SenderID, CandidateMoreInfo)
+                            elif Kiswahili is  True and UserSays == 'pres':
+                                candidates = SQL.all_presidential_candidates()
+                                first_names, second_names = CheckListLength(candidates)
+                                response = 'Wagombea urais ni: \n' + str(first_names[0:])
+                                SendMessage(SenderID, response)
+                                SendMessage(SenderID, second_names)
+                                SendMessage(SenderID, 'Unataka kujua zaidi kuhusu moja ya wagombea hawa? Nitumie jina lake.')
+
 
                             elif Kiswahili is not True and UserSays == 'gov':
                                 SendMessage(SenderID, CountiesMessage)
