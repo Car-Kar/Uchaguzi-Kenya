@@ -451,6 +451,14 @@ def StartMessaging():
                                 response = 'I will be messaging you two days before the elections as a reminder'
                                 SendMessage(SenderID, response)
                                 Home(SenderID, 'Go back to home?', 'Home')
+                            if Kiswahili is True and 'siku mbili' in UserSays.lower():
+                                response = 'Nitakupa alani siku mbili kabla ya uchaguzi.'
+                                SendMessage(SenderID, response)
+                                Home(SenderID, 'Rudi Mwanzo?', 'Mwanzo')
+                            if Kiswahili is True and 'wiki' in UserSays.lower():
+                                response = 'Nitakupa alani wiki moja kabla ya uchaguzi.'
+                                SendMessage(SenderID, response)
+                                Home(SenderID, 'Rudi Mwanzo?', 'Mwanzo')
 
                         
                             if Kiswahili is not True and 'home' in UserSays.lower():
@@ -467,6 +475,17 @@ def StartMessaging():
                                 'Government Review',
                                 'Talk to your county government',
                                 'County Review'
+                                )
+                            elif Kiswahili is True and 'mwanzo' in UserSays.lower():
+                                GenericTemplateOptions(SenderID, 
+                                'Kupiga Kura', 'Tunakupa mawaidha kuhusu kupiga kura',
+                                'Mahitaji ya Kura', 'Umesajiliwa?', 'Weka Mawaidha',
+                                'Wagombea', 'Jua nani anagombea cheo cha serikali',
+                                'Ujumbe kuhusu uchaguzi',
+                                'Chagua cheo cha kura',
+                                'Serikali', 
+                                'Pata ujumbe kuhusu serikali ya kata yako.',
+                                'Kagua Serikali'
                                 )
 
                             elif 'bye' in UserSays.lower():
@@ -943,6 +962,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 'Pata ujumbe kuhusu serikali ya kata yako.',
                                 'Kagua Serikali'
                                 )
+
                             elif Kiswahili is True and level is not None:
                                 if (level == 'gov' or level == 'sen' or level == 'womrep'):
                                     SendAttachment(SenderID, 'image', 'https://media.giphy.com/media/RFgY2jhk6xKzS/giphy.gif')
