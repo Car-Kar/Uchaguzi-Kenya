@@ -391,9 +391,6 @@ def StartMessaging():
                             if Kiswahili is not True and county is not None and level == 'cs':
                                 url = countydict[county]
                                 Voting(SenderID, 'Choose an option below', '\U000FEB0A Take a short survey', url, '\U000FE524 County Contacts')
-                            if Kiswahili is True and level == 'pres' and 'uhuru' in UserSays.lower():
-                                SendMessage(SenderID, kiswa.uk)
-
 
                             if 'start' in UserSays.lower() or 'hey' in UserSays.lower() or 'hi' in UserSays.lower() or 'hello' in UserSays.lower():
                                 ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
@@ -864,7 +861,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                             elif Kiswahili is True and UserSays == 'registration':
                                 SendAttachment(SenderID, 'image', 'https://farm5.staticflickr.com/4243/34193089344_55a2249bd6_o_d.jpg')
                                 
-                                SendMessage(SenderID, KQ)
+                                SendMessage(SenderID, KG)
                                 HomeP(SenderID, 'Unataka kurudi mwanzo?', '\U000FE4B0 Mwanzo')
 
                     
@@ -933,7 +930,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 SendMessage(SenderID, 'Please answer the following few questions.')
                                 ReusableOptions(SenderID, 'Are you familiar with your county administration?', 'Yes', 'No')
 
-                            if Kiswahili == True and 'home' in UserSays.lower():
+                            elif Kiswahili is True and 'home' in UserSays.lower():
                                 GenericTemplateOptions(SenderID, 
                                 'Kupiga Kura', 'Tunakupa mawaidha kuhusu kupiga kura',
                                 'Mahitaji ya Kura', 'Umesajiliwa?', 'Weka Mawaidha',
@@ -944,6 +941,11 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 'Pata ujumbe kuhusu serikali ya kata yako.',
                                 'Kagua Serikali'
                                 )
+                            elif Kiswahili is True and level is not None:
+                                if (level == 'gov' or level == 'sen' or level == 'womrep'):
+                                    SendAttachment(SenderID, 'image', 'https://media.giphy.com/media/RFgY2jhk6xKzS/giphy.gif')
+                                    HomeP(SenderID, 'Kiswahili hakitumiki na hatua hii. Endelea na Kiingereza?', '\U0001F44D Sawa')
+
 
 
 
