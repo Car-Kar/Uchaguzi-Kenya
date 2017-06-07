@@ -933,6 +933,18 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 SendMessage(SenderID, 'Please answer the following few questions.')
                                 ReusableOptions(SenderID, 'Are you familiar with your county administration?', 'Yes', 'No')
 
+                            if Kiswahili == True and 'home' in UserSays.lower():
+                                GenericTemplateOptions(SenderID, 
+                                'Kupiga Kura', 'Tunakupa mawaidha kuhusu kupiga kura',
+                                'Mahitaji ya Kura', 'Umesajiliwa?', 'Weka Mawaidha',
+                                'Wagombea', 'Jua nani anagombea cheo cha serikali',
+                                'Ujumbe kuhusu uchaguzi',
+                                'Chagua cheo cha kura',
+                                'Serikali', 
+                                'Pata ujumbe kuhusu serikali ya kata yako.',
+                                'Kagua Serikali'
+                                )
+
 
 
 
