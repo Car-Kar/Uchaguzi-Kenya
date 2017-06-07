@@ -379,7 +379,7 @@ def StartMessaging():
                         Start = 'Hello ' + nme + '! What language do you want to continue in?'
                     
                         if msg.get('message'):
-                            if Kiswahili is not True and county is not None and level == 'cs':
+                            if Kiswahili is not True and level == 'cs' and county is not None:
                                 url = countydict[county]
                                 Voting(SenderID, 'Choose an option below', '\U000FEB0A Take a short survey', url, '\U000FE524 County Contacts')
 
