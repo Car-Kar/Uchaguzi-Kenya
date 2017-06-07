@@ -436,9 +436,6 @@ def StartMessaging():
                                 'County Review'
                                 )
 
-                            if Kiswahili == True and 'nipe' in UserSays.lower():
-                                level = None
-                                SendMessage(SenderID, VoterRequirements)
                             if Kiswahili == True and 'mawaidha' in UserSays.lower():
                                 level = None
                                 response = '''Nitakutumia alani ya kukukumbusha siku ya uchaguzi.
@@ -976,7 +973,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 )
 
                             elif Kiswahili is True and level is not None:
-                                if (level == 'gov' or level == 'sen' or level == 'womrep' or level == 'vote'):
+                                if (level == 'gov' or level == 'sen' or level == 'womrep' or level == 'cs'):
                                     SendAttachment(SenderID, 'image', 'https://media.giphy.com/media/RFgY2jhk6xKzS/giphy.gif')
                                     Home(SenderID, 'Kiswahili hakitumiki na hatua hii. Endelea na Kiingereza?', '\U0001F44D Sawa')
 
