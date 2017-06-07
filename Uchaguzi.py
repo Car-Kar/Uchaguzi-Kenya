@@ -14,6 +14,7 @@ import re
 import pymysql
 import sys
 import base64
+from kiswa import *
 
 app = Flask(__name__)
 
@@ -64,7 +65,7 @@ If so, send me his or her name.
 
 '''
 CountiesMessage = ''''
-We are only supporting three counties right now; Kisumu, Mombasa and Nairobi.
+We are only supporting ten counties right now; Kisumu, Mombasa, Nairobi, Kakamega, Turkana, Narok, Kericho, Kiambu, Nakuru, and Uasin Gishu.
 Please check back from time to time as we integrate more counties!
 \U0001F642
 '''
@@ -386,6 +387,8 @@ def StartMessaging():
                             if Kiswahili is not True and county is not None and level == 'cs':
                                 url = countydict[county]
                                 Voting(SenderID, 'Choose an option below', '\U000FEB0A Take a short survey', url, '\U000FE524 County Contacts')
+                            if Kiswahili is True and level == 'pres' and 'uhuru' in UserSays.lower():
+                                SendMessage(SenderID, kiswa.uk)
 
 
                             if 'start' in UserSays.lower() or 'hey' in UserSays.lower() or 'hi' in UserSays.lower() or 'hello' in UserSays.lower():
@@ -707,15 +710,20 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 SendMessage(SenderID, CandidateMoreInfo)
 
                             elif Kiswahili is not True and UserSays == 'gov':
-                                CountyOptions(SenderID, 'From what county? Choose one below')
+                                SendMessage(SenderID, CountiesMessage)
+                                CountyOptions(SenderID, 'Please choose one below.')
 
                             elif Kiswahili is not True and UserSays == 'senate':
-                                CountyOptions(SenderID, 'From what county? Choose one below')
+                                SendMessage(SenderID, CountiesMessage)
+                                CountyOptions(SenderID, 'Please choose one below.')
+
                             elif Kiswahili is not True and UserSays == 'womrep':
-                                CountyOptions(SenderID, 'From what county? Choose one below')
+                                SendMessage(SenderID, CountiesMessage)
+                                CountyOptions(SenderID, 'Please choose one below.')
 
                             elif Kiswahili is not True and UserSays == 'contact':
-                                CountyOptions(SenderID, 'From what county? Choose one below')
+                                SendMessage(SenderID, CountiesMessage)
+                                CountyOptions(SenderID, 'Please choose one below.')
 
                             elif Kiswahili is not True and 'vote' in UserSays.lower():
                                 SendMessage(SenderID, 'If the elections happened tomorrow, which presidential candidate would you vote for?')
