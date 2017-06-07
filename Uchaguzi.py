@@ -507,7 +507,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                   '\U000FE4B0 Home')
                             elif Kiswahili is True and level == 'pres':
                                 if  'uhuru' in UserSays.lower() or 'kenyatta' in UserSays.lower():
-                                    run, bio, img = SQL.president_bio('uhuru')
+                                    #run, bio, img = SQL.president_bio('uhuru')
                                     bio = kiswa.uk
                                     SendAttachment(SenderID, 'image', img)
                                     if len(bio) > 640:
