@@ -126,7 +126,7 @@ class UsingMongo:
         collection = self.DB['kiswahili']
         print('Connected to kiswahili users collection!')
         user =  collection.find_one({'fromuser': FromUser})
-        if user is not None and 'english' == data.lower():
+        if user is not None and 'english' == data.lower() or 'sawa' in data.lower():
             print('Changed a language!')
             language = collection.delete_one({'fromuser': FromUser})
             swahili = False
@@ -369,9 +369,9 @@ def StartMessaging():
                         SenderID = msg['sender']['id']
                         nme = FindingUser(SenderID)
                         response = None
-                        UserSays = ReturnType(msg)
                         print(UserSays)
                         surveying = False
+                        UserSays = ReturnType(msg)
                         Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
                         level = MDB.IncomingLevels(SenderID, UserSays.lower())
                         counties = MDB.IncomingCounties(SenderID, UserSays)
@@ -411,6 +411,24 @@ def StartMessaging():
                                 'Kagua Serikali'
                                 )
                             if Kiswahili is not True and 'english' in UserSays.lower():
+                                level = None
+                                SendMessage(SenderID, IntroductoryMessage)
+                                SendMessage(SenderID, IntroductoryMessage2)
+                                GenericTemplateOptions(SenderID,
+                                'Voter Information',
+                                'We give you information on voting in the elections.',
+                                'Voter Requirements',
+                                'Voter Registration',
+                                'Set a reminder',
+                                'Elections 2017',
+                                'Latest Election News',
+                                'Know your candidates for the coming elections',
+                                'Elections Levels',
+                                'Government Review',
+                                'Talk to your county government',
+                                'County Review'
+                                )
+                            if Kiswahili is not True and 'sawa' in UserSays.lower():
                                 level = None
                                 SendMessage(SenderID, IntroductoryMessage)
                                 SendMessage(SenderID, IntroductoryMessage2)
@@ -969,9 +987,9 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 )
 
                             elif Kiswahili is True and level is not None:
-                                if (level == 'gov' or level == 'sen' or level == 'womrep'):
+                                if (level == 'gov' or level == 'sen' or level == 'womrep' or level == 'vote'):
                                     SendAttachment(SenderID, 'image', 'https://media.giphy.com/media/RFgY2jhk6xKzS/giphy.gif')
-                                    HomeP(SenderID, 'Kiswahili hakitumiki na hatua hii. Endelea na Kiingereza?', '\U0001F44D Sawa')
+                                    Home(SenderID, 'Kiswahili hakitumiki na hatua hii. Endelea na Kiingereza?', '\U0001F44D Sawa')
 
 
 
