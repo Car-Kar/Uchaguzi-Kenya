@@ -153,9 +153,8 @@ class UsingMongo:
             return level
 
         elif user is not None:
-            if data in options:
-                level = user['level']
-                return level
+            level = user['level']
+            return level
 
         else:
             if data in options:
@@ -394,9 +393,11 @@ def StartMessaging():
                                 Voting(SenderID, 'Choose an option below', '\U000FEB0A Take a short survey', url, '\U000FE524 County Contacts')
 
                             if 'start' in UserSays.lower() or 'hey' in UserSays.lower() or 'hi' == UserSays.lower() or 'hello' in UserSays.lower():
+                                level = None
                                 ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
 
                             if Kiswahili == True and 'swahili' in UserSays.lower():
+                                level = None
                                 SendMessage(SenderID, KiswahiliIntroduction)
                                 SendMessage(SenderID, KiswahiliIntroduction2)
                                 GenericTemplateOptions(SenderID, 
@@ -410,6 +411,7 @@ def StartMessaging():
                                 'Kagua Serikali'
                                 )
                             if Kiswahili is not True and 'english' in UserSays.lower():
+                                level = None
                                 SendMessage(SenderID, IntroductoryMessage)
                                 SendMessage(SenderID, IntroductoryMessage2)
                                 GenericTemplateOptions(SenderID,
@@ -428,8 +430,10 @@ def StartMessaging():
                                 )
 
                             if Kiswahili == True and 'nipe' in UserSays.lower():
+                                level = None
                                 SendMessage(SenderID, VoterRequirements)
                             if Kiswahili == True and 'mawaidha' in UserSays.lower():
+                                level = None
                                 response = '''Nitakutumia alani ya kukukumbusha siku ya uchaguzi.
                                 Unataka alani ya siku gani?'''
                                 ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
@@ -809,8 +813,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                             elif Kiswahili is not True and level == 'survey' and UserSays in ys:
                                     print('hehehe')
                                     Home(SenderID, 'Thank you for taking our survey!', '\U000FE4B0 Home')
-                            else:
-                                SendMessage(SenderID, ApologyMessage)
+
                                 
 
                         elif msg.get('postback'): 
