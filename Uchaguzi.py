@@ -379,13 +379,15 @@ def StartMessaging():
                         Start = 'Hello ' + nme + '! What language do you want to continue in?'
                     
                         if msg.get('message'):
-                            if Kiswahili is not True and level == 'cs' and county is not None:
-                                url = countydict[county]
-                                Voting(SenderID, 'Choose an option below', '\U000FEB0A Take a short survey', url, '\U000FE524 County Contacts')
-
                             if 'start' in UserSays.lower() or 'hey' in UserSays.lower() or 'hi' == UserSays.lower() or 'hello' in UserSays.lower():
                                 level = None
                                 ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
+                            if Kiswahili is not True and level == 'cs':
+                                if county is not None:
+                                    url = countydict[county]
+                                    Voting(SenderID, 'Choose an option below', '\U000FEB0A Take a short survey', url, '\U000FE524 County Contacts')
+
+                            
 
                             if Kiswahili == True and 'swahili' in UserSays.lower():
                                 level = None
@@ -973,7 +975,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 )
 
                             elif Kiswahili is True and level == 'gov':
-                                SendAttachment(SenderID, 'image', 'https://media.giphy.com/media/RFgY2jhk6xKzS/giphy.gif')
+                                SendAttachment(SenderID, 'image', '')
                                 Home(SenderID, 'Kiswahili hakitumiki na hatua hii. Endelea na Kiingereza?', '\U0001F44D Sawa')
                             elif Kiswahili is True and level == 'sen':
                                 SendAttachment(SenderID, 'image', 'https://media.giphy.com/media/RFgY2jhk6xKzS/giphy.gif')
