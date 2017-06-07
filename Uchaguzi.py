@@ -972,10 +972,30 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 'Kagua Serikali'
                                 )
 
-                            elif Kiswahili is True and level is not None:
-                                if (level == 'gov' or level == 'sen' or level == 'womrep' or level == 'cs'):
-                                    SendAttachment(SenderID, 'image', 'https://media.giphy.com/media/RFgY2jhk6xKzS/giphy.gif')
-                                    Home(SenderID, 'Kiswahili hakitumiki na hatua hii. Endelea na Kiingereza?', '\U0001F44D Sawa')
+                            elif Kiswahili is True and level == 'gov':
+                                SendAttachment(SenderID, 'image', 'https://media.giphy.com/media/RFgY2jhk6xKzS/giphy.gif')
+                                Home(SenderID, 'Kiswahili hakitumiki na hatua hii. Endelea na Kiingereza?', '\U0001F44D Sawa')
+                            elif Kiswahili is True and level == 'sen':
+                                SendAttachment(SenderID, 'image', 'https://media.giphy.com/media/RFgY2jhk6xKzS/giphy.gif')
+                                Home(SenderID, 'Kiswahili hakitumiki na hatua hii. Endelea na Kiingereza?', '\U0001F44D Sawa')
+                            
+                            elif Kiswahili is True and level == 'cs':
+                                SendAttachment(SenderID, 'image', 'https://media.giphy.com/media/RFgY2jhk6xKzS/giphy.gif')
+                                Home(SenderID, 'Kiswahili hakitumiki na hatua hii. Endelea na Kiingereza?', '\U0001F44D Sawa')
+                            
+                            elif Kiswahili is True and level == 'womrep':
+                                SendAttachment(SenderID, 'image', 'https://media.giphy.com/media/RFgY2jhk6xKzS/giphy.gif')
+                                Home(SenderID, 'Kiswahili hakitumiki na hatua hii. Endelea na Kiingereza?', '\U0001F44D Sawa')
+                            
+                            elif Kiswahili is True and level == 'survey':
+                                SendAttachment(SenderID, 'image', 'https://media.giphy.com/media/RFgY2jhk6xKzS/giphy.gif')
+                                Home(SenderID, 'Kiswahili hakitumiki na hatua hii. Endelea na Kiingereza?', '\U0001F44D Sawa')
+                            elif Kiswahili is True and level == 'vote':
+                                SendAttachment(SenderID, 'image', 'https://media.giphy.com/media/RFgY2jhk6xKzS/giphy.gif')
+                                Home(SenderID, 'Kiswahili hakitumiki na hatua hii. Endelea na Kiingereza?', '\U0001F44D Sawa')
+                            
+
+
 
 
 
