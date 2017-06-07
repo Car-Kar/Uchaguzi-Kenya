@@ -385,7 +385,9 @@ def StartMessaging():
                                 ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
                             if Kiswahili is not True and level == 'cs' and county.lower() in Counties:
                                     k = county.lower()
+                                    print(k)
                                     url = countydict[k]
+                                    print(url)
                                     Voting(SenderID, 'Choose an option below', '\U000FEB0A Take a short survey', url, '\U000FE524 County Contacts')
 
                             
