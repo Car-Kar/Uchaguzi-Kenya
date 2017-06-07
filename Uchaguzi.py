@@ -147,10 +147,13 @@ class UsingMongo:
         collection = self.DB['levels']
         print('Connected to levels collection!')
         user =  collection.find_one({'fromuser': FromUser})
-        if user is not None and data in options:
-            collection.update_one({'fromuser' : FromUser}, {'$set': {'level': data}})
-            level = data.lower()
-            return level
+        if user is not None:
+            if data in options:
+                collection.update_one({'fromuser' : FromUser}, {'$set': {'level': data}})
+                level = data.lower()
+                return level
+            else:
+                pass
 
         elif user is not None:
             level = user['level']
@@ -392,8 +395,9 @@ def StartMessaging():
                                 url = countydict[county]
                                 Voting(SenderID, 'Choose an option below', '\U000FEB0A Take a short survey', url, '\U000FE524 County Contacts')
 
-                            if 'start' in UserSays.lower() or 'hey' in UserSays.lower() or 'hi' in UserSays.lower() or 'hello' in UserSays.lower():
+                            if 'start' in UserSays.lower() or 'hey' in UserSays.lower() or 'hi' == UserSays.lower() or 'hello' in UserSays.lower():
                                 ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
+
                             if Kiswahili == True and 'swahili' in UserSays.lower():
                                 SendMessage(SenderID, KiswahiliIntroduction)
                                 SendMessage(SenderID, KiswahiliIntroduction2)
