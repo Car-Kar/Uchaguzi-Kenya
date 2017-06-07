@@ -421,8 +421,6 @@ def StartMessaging():
                                 )
                             if Kiswahili is not True and 'sawa' in UserSays.lower():
                                 level = None
-                                SendMessage(SenderID, IntroductoryMessage)
-                                SendMessage(SenderID, IntroductoryMessage2)
                                 GenericTemplateOptions(SenderID,
                                 'Voter Information',
                                 'We give you information on voting in the elections.',
