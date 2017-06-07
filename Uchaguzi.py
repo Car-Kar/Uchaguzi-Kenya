@@ -508,7 +508,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                         HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   '\U000FE4B0 Home')
-                            elif Kiswahili is True and level == 'pres' and 'uhuru' in UserSays.lower() or 'kenyatta' in UserSays.lower():
+                            elif Kiswahili is True and level == 'pres' and ('uhuru' in UserSays.lower() or 'kenyatta' in UserSays.lower()):
                                 run, bio, img = SQL.president_bio(query)
                                 bio = kiswa.uk
                                 SendAttachment(SenderID, 'image', img)
@@ -525,7 +525,7 @@ Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevy
                                     HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
 Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani''',
                                   '\U000FE4B0 Nyumbani')
-                            elif Kiswahili is True and level == 'pres' and if('raila' in UserSays.lower() or 'amollo' in UserSays.lower() 'odinga' in UserSays.lower()):
+                            elif Kiswahili is True and level == 'pres' and ('raila' in UserSays.lower() or 'amollo' in UserSays.lower() 'odinga' in UserSays.lower()):
                                 run, bio, img = SQL.president_bio(query)
                                 bio = kiswa.rk
                                 SendAttachment(SenderID, 'image', img)
@@ -543,7 +543,7 @@ Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevy
 Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani''',
                                   '\U000FE4B0 Nyumbani')
 
-                            elif Kiswahili is True and level == 'pres' and if ('david' in UserSays.lower() or 'munga' in UserSays.lower()):
+                            elif Kiswahili is True and level == 'pres' and ('david' in UserSays.lower() or 'munga' in UserSays.lower()):
                                 run, bio, img = SQL.president_bio(query)
                                 bio = kiswa.uk
                                 SendAttachment(SenderID, 'image', img)
