@@ -952,7 +952,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 'County Review'
                                 )
 
-                            elif 'cs' == UserSays:
+                            elif Kiswahili is not True and 'cs' == UserSays:
                                 SendMessage(SenderID, 'What county are you from?')
                                 CountyOptions(SenderID, 'Choose one below')
 
