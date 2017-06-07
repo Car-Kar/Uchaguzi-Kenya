@@ -374,6 +374,7 @@ def StartMessaging():
                         counties = MDB.IncomingCounties(SenderID, UserSays)
                         county = [c for c in Counties if UserSays.lower() in c.lower()]
                         county = ' '.join(county)
+                        print(county)
                         cands = FindingCandidate(level, UserSays)
                         racer = DefiningRace(UserSays)
                         Start = 'Hello ' + nme + '! What language do you want to continue in?'
