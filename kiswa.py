@@ -9,7 +9,7 @@ rk = '''Chama cha Kisiasa -ODM (NASA)
 Mgombea mwenza-KALOZO MUSYOKA
 Raila Amolo Odinga (alizaliwa Januari 7, 1945), pia maarufu kwa wafuasi wake kama Agwambo (maana yake "ajabu mkubwa"), Tinga (Luo na Kiswahili wa "trekta"), Baba (Kiswahili wa "baba"), RAO, ( kifupi namna ya 'Raila Amolo Odinga ") na Jakom (Luo kwa" Mwenyekiti ") ni mwanasiasa wa Kenya ambaye alikuwa Waziri Mkuu wa Kenya kutoka 2008 hadi 2013. alichaguliwa kama Mbunge wa Langata mwaka 1992, kuwahudumia kama Waziri wa Nishati na mwaka wa 2001 kwa 2002 na kuwa Waziri wa Barabara, Ujenzi wa Umma, na Makazi kutoka 2003 kwa 2005. Yeye alikuwa mkuu wa upinzani mgombea katika uchaguzi wa rais 2007, kukimbia dhidi anayemaliza muda wake Mwai Kibaki. Kufuatia uchaguzi na baada ya uchaguzi mgogoro vurugu-umeharibika, Odinga aliteuliwa kuwa Waziri Mkuu katika Aprili 2008 katika serikali ya mseto mkataba na Mwai Kibaki, kutumikia kama Msimamizi na Mratibu wa umoja wa kitaifa serikali ya mseto. Katika uchaguzi wa rais wa baadae miaka 5 baadaye nafasi ya pili dhidi ya Uhuru Kenyatta, Kibaki iliyopendelewa mrithi, garnering 5340546 kura, ambayo kuwakilishwa 43.28% ya kura zilizopigwa.
  '''
- mdk = '''
+mdk = '''
 Chama cha Kisiasa -ALLIANCE FOR REAL CHANGE
 Mohammed Abduba Dida (alizaliwa 1974) ni mwalimu wa Kenya ambaye aliwania urais wa nchi mwaka 2013 uchaguzi wa rais juu ya ALLIANCE FOR REAL CHANGE. Dida hakuwa anajulikana kabla ya kuwasilisha yake ya magazeti ya IEBC. Kazi yake awali ilikuwa  kufundisha Kiingereza Fasihi na Dini katika shule ya Lenana na Daadab Shule ya Sekondari katika wakimbizi camp. Alifanikiwa  kupata  kura 52848 inayewakilisha 0.43% ya kura za wananchi.
 '''
