@@ -49,6 +49,10 @@ VoterRegistration = '''Thank you for using Uchaguzi!
 However due to logistical circumstances, the option of finding out your registration status is not available right now.
 Please check again in a little while as we go about incorporating it.
 '''
+KG = '''Asante kwa kutumia Uchaguzi!
+Hata hivyo kutokana na mazingira vifaa, chaguo la kutafuta hali yako ya usajili haipatikani kwa sasa.
+Tafadhali angalia tena baada ya muda mfupi kama sisi kwenda juu kuchanganya yake.'''
+
 VoterRequirements = '''
 The national elections are on Tuesday, August 8th.
 You will need to have registered as a voter and carry your national identification, or passport to vote.
@@ -469,7 +473,7 @@ def StartMessaging():
                             elif 'bye' in UserSays.lower():
                                 SendMessage(SenderID, Goodbye)
 
-                            elif level == 'pres' and UserSays.lower() in cands.lower():
+                            elif Kiswahili is not True and level == 'pres' and UserSays.lower() in cands.lower():
                                 query = '%' + UserSays.lower() + '%'
                                 run, bio, img = SQL.president_bio(query)
                                 bio = str(bio)
@@ -504,6 +508,77 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                         HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   '\U000FE4B0 Home')
+                            elif Kiswahili is True and level == 'pres' and 'uhuru' in UserSays.lower() or 'kenyatta' in UserSays.lower():
+                                run, bio, img = SQL.president_bio(query)
+                                bio = kiswa.uk
+                                SendAttachment(SenderID, 'image', img)
+                                if len(bio) > 640:
+                                    bio, bios = CheckTextLength(bio)
+                                    response = bio + '-'
+                                    SendMessage(SenderID, response)
+                                    SendMessage(SenderID, bios)
+                                    HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
+Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani.''',
+                                  '\U000FE4B0 Nyumbani')
+                                else:
+                                    SendMessage(SenderID, bio)
+                                    HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
+Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani''',
+                                  '\U000FE4B0 Nyumbani')
+                            elif Kiswahili is True and level == 'pres' and if('raila' in UserSays.lower() or 'amollo' in UserSays.lower() 'odinga' in UserSays.lower()):
+                                run, bio, img = SQL.president_bio(query)
+                                bio = kiswa.rk
+                                SendAttachment(SenderID, 'image', img)
+                                if len(bio) > 640:
+                                    bio, bios = CheckTextLength(bio)
+                                    response = bio + '-'
+                                    SendMessage(SenderID, response)
+                                    SendMessage(SenderID, bios)
+                                    HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
+Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani.''',
+                                  '\U000FE4B0 Nyumbani')
+                                else:
+                                    SendMessage(SenderID, bio)
+                                    HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
+Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani''',
+                                  '\U000FE4B0 Nyumbani')
+
+                            elif Kiswahili is True and level == 'pres' and if ('david' in UserSays.lower() or 'munga' in UserSays.lower()):
+                                run, bio, img = SQL.president_bio(query)
+                                bio = kiswa.uk
+                                SendAttachment(SenderID, 'image', img)
+                                if len(bio) > 640:
+                                    bio, bios = CheckTextLength(bio)
+                                    response = bio + '-'
+                                    SendMessage(SenderID, response)
+                                    SendMessage(SenderID, bios)
+                                    HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
+Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani.''',
+                                  '\U000FE4B0 Nyumbani')
+                                else:
+                                    SendMessage(SenderID, bio)
+                                    HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
+Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani''',
+                                  '\U000FE4B0 Nyumbani')
+                                elif Kiswahili is True and level == 'pres' and 'uhuru' in UserSays.lower() or 'kenyatta' in UserSays.lower():
+                                run, bio, img = SQL.president_bio(query)
+                                bio = kiswa.uk
+                                SendAttachment(SenderID, 'image', img)
+                                if len(bio) > 640:
+                                    bio, bios = CheckTextLength(bio)
+                                    response = bio + '-'
+                                    SendMessage(SenderID, response)
+                                    SendMessage(SenderID, bios)
+                                    HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
+Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani.''',
+                                  '\U000FE4B0 Nyumbani')
+                                else:
+                                    SendMessage(SenderID, bio)
+                                    HomeP(SenderID, ''''Je, unataka kujua kuhusu mgombea nyingine, au kurejea nyumbani?
+Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani''',
+                                  '\U000FE4B0 Nyumbani')
+
+            
 
                             elif level == 'senate' and UserSays.lower() in cands.lower():
                                 query = '%' + UserSays.lower() + '%'
@@ -591,7 +666,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 candidates = SQL.governors(query)
                                 if len(candidates) > 640:
                                     first_names, second_names = CheckListLength(candidates)
-                                    response = 'The gubernatorial candidatesfor ' + county + ' are: \n' + str(first_names[0:])
+                                    response = 'The gubernatorial candidates for ' + county + ' are: \n' + str(first_names[0:])
                                     SendMessage(SenderID, response)
                                     SendMessage(SenderID, second_names)
                                     SendMessage(SenderID, CandidateMoreInfo)
@@ -676,13 +751,35 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 'Senator Candidates',
                                 'Women Representative Candidates'
                                 )
+                            if Kiswahili is True and UserSays == 'levels':
+                                LevelTemplateOptions(SenderID,
+                                'Urais',
+                                'Fahamu wanaogombea wagombea urais na wenzi wao kukimbia.',
+                                'Gavana',
+                                'Fahamu wanaogombea ugavana urais na wenzi wao kukimbia.',
+                                'Wagombea seneta',
+                                'Fahamu wanaogombea wagombea useneta na wenzi wao kukimbia.',
+                                'Wawakilishi wa Wanawake',
+                                'Fahamu wanaogombea wagombea.',
+                                'Wagombea Urais',
+                                'Kagua wagombea',
+                                'Wagombea ugavana',
+                                'Wagombea useneta',
+                                'Wawakilishi wa wanawake'
+                                )
                             if Kiswahili is not True and UserSays == 'voters':
                                 SendMessage(SenderID, VoterRequirements )
                                 SendMessage(SenderID, 'Here are some helpful graphics to help you.')
+                                SendAttachment(SenderID, 'video', '')
                             
                                 SendAttachment(SenderID,'image', 'https://farm5.staticflickr.com/4248/34872766342_a66c0fa485_o_d.jpg')
                                 SendMessage(SenderID, ContinueUsing)
                                 HomeP(SenderID, 'Go back to home, or do you want to say goodbye?', '\U000FE4B0 Home')
+                            if Kiswahili is True and UserSays == 'voters':
+                                SendMessage(SenderID, KiswahiliRequirements)
+                                SendAttachment(SenderID,'image', 'https://farm5.staticflickr.com/4248/34872766342_a66c0fa485_o_d.jpg')
+                                HomeP(SenderID, 'Unataka kurudi mwanzo?', '\U000FE4B0 Mwanzo')
+
 
                             elif Kiswahili is not True and UserSays == 'poll':
                                 ButtonTemplate(SenderID, 'You can vote or see the results of the current polling.',
@@ -691,14 +788,21 @@ If you want to know about another candidate, send me his or her name, otherwise 
 
                             elif Kiswahili is not True and UserSays == 'registration':
                                 SendAttachment(SenderID, 'image', 'https://farm5.staticflickr.com/4243/34193089344_55a2249bd6_o_d.jpg')
-                                SendAttachment(SenderID, 'video', '')
+                                
                                 SendMessage(SenderID, VoterRegistration)
                                 HomeP(SenderID, 'Go back to home, or do you want to say goodbye?', '\U000FE4B0 Home')
 
-                    
-                            elif Kiswahili is not True and UserSays == 'reminder':
-                                ReusableOptions(SenderID, 'When would you like to get a reminder notification for the elections?', 'A Week Before', 'Two Days Before')
+                            elif Kiswahili is True and UserSays == 'registration':
+                                SendAttachment(SenderID, 'image', 'https://farm5.staticflickr.com/4243/34193089344_55a2249bd6_o_d.jpg')
+                                
+                                SendMessage(SenderID, KQ)
+                                HomeP(SenderID, 'Unataka kurudi mwanzo?', '\U000FE4B0 Mwanzo')
 
+                    
+                            if Kiswahili == True and 'reminder' in UserSays.lower():
+                                response = '''Nitakutumia alani ya kukukumbusha siku ya uchaguzi.
+                                Unataka alani ya siku gani?'''
+                                ReusableOptions(SenderID, response, 'Wiki moja kabla.', 'Siku mbili.')
 
                             elif Kiswahili is not True and UserSays == 'pres':
                                 candidates = SQL.all_presidential_candidates()
