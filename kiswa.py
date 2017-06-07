@@ -1,5 +1,4 @@
-UHURU KENYATTA
- 
+
 uk = '''Chama cha Kisiasa-Jubilee 
 Mgombea mwenza-William Ruto 
 Uhuru Muigai Kenyatta (alizaliwa 26 Oktoba 1961) ni 4 na Rais wa sasa wa Kenya, katika ofisi tangu 2013. Yeye ni mwana wa Jomo Kenyatta, rais wa kwanza wa Kenya, na mke wake wa nne Ngina Kenyatta. Uhuru Kenyatta alichaguliwa kuwa rais wa Kenya chini ya Alliance National (TNA), ambayo ilikuwa sehemu ya Jubilee Alliance na mgombea mwenza William Ruto la Umoja wa Republican Party (URP). Uhuru na Ruto walishinda 50.07% ya kura kutupwa, na wapinzani wa karibu, Raila Odinga na mgombea mwenza Kalonzo Musyoka wa Muungano wa Mageuzi na Demokrasia kupata 42%. Raila Amolo Odinga mgogoro matokeo ya uchaguzi katika Mahakama Kuu ambayo hata hivyo ilishikilia kwamba uchaguzi wa Uhuru ulikuwa halali na kama makosa kama ulikuwepo halikuleta tofauti na matokeo ya mwisho. Uhuru Kenyatta aliweza kuapishwa kama Rais tarehe 9 Aprili 2013.
