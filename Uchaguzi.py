@@ -567,7 +567,7 @@ Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevy
                                   '\U000FE4B0 Nyumbani')
 
                                 elif  'mohamed' in UserSays.lower() or 'diba' in UserSays.lower() or 'adbuba' in UserSays.lower():
-                                    run, bio, img = SQL.president_bio('mohamed%')
+                                    run, bio, img = SQL.president_bio('%mohamed%')
                                     bio = mdk
                                     SendAttachment(SenderID, 'image', img)
                                     if len(bio) > 640:
