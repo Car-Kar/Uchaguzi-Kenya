@@ -383,7 +383,7 @@ def StartMessaging():
                             if 'start' in UserSays.lower() or 'hey' in UserSays.lower() or 'hi' == UserSays.lower() or 'hello' in UserSays.lower():
                                 level = None
                                 ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
-                            if Kiswahili is not True and level == 'cs' and county in Counties:
+                            if Kiswahili is not True and level == 'cs' and county.lower() in Counties:
                                     url = countydict[county]
                                     Voting(SenderID, 'Choose an option below', '\U000FEB0A Take a short survey', url, '\U000FE524 County Contacts')
 
