@@ -147,17 +147,15 @@ class UsingMongo:
         collection = self.DB['levels']
         print('Connected to levels collection!')
         user =  collection.find_one({'fromuser': FromUser})
-        if user is not None:
-            if data in options:
-                collection.update_one({'fromuser' : FromUser}, {'$set': {'level': data}})
-                level = data.lower()
-                return level
-            else:
-                pass
+        if user is not None and data in options:
+            collection.update_one({'fromuser' : FromUser}, {'$set': {'level': data}})
+            level = data.lower()
+            return level
 
         elif user is not None:
-            level = user['level']
-            return level
+            if data in options:
+                level = user['level']
+                return level
 
         else:
             if data in options:
