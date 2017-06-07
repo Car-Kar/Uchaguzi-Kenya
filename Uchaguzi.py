@@ -507,7 +507,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                   '\U000FE4B0 Home')
                             elif Kiswahili is True and level == 'pres':
                                 if  'uhuru' in UserSays.lower() or 'kenyatta' in UserSays.lower():
-                                    #run, bio, img = SQL.president_bio('uhuru')
+                                    run, bio, img = SQL.president_bio('%uhuru%')
                                     bio = kiswa.uk
                                     SendAttachment(SenderID, 'image', img)
                                     if len(bio) > 640:
@@ -524,7 +524,7 @@ Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevy
 Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani''',
                                   '\U000FE4B0 Nyumbani')
                                 elif  'raila' in UserSays.lower() or 'amollo' in UserSays.lower() or 'odinga' in UserSays.lower():
-                                    run, bio, img = SQL.president_bio('raila')
+                                    run, bio, img = SQL.president_bio('%raila%')
                                     bio = kiswa.rk
                                     SendAttachment(SenderID, 'image', img)
                                     if len(bio) > 640:
@@ -542,7 +542,7 @@ Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevy
                                   '\U000FE4B0 Nyumbani')
 
                                 elif  'mohamed' in UserSays.lower() or 'diba' in UserSays.lower() or 'adbuba' in UserSays.lower():
-                                    run, bio, img = SQL.president_bio(diba)
+                                    run, bio, img = SQL.president_bio('%diba%')
                                     bio = kiswa.mdk
                                     SendAttachment(SenderID, 'image', img)
                                     if len(bio) > 640:
@@ -559,7 +559,7 @@ Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevy
 Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani''',
                                   '\U000FE4B0 Nyumbani')
                                 elif  'khwa' in UserSays.lower() or 'jirongo' in UserSays.lower() or 'shakhalaga' in UserSays.lower():
-                                    run, bio, img = SQL.president_bio('khwa')
+                                    run, bio, img = SQL.president_bio('%khwa%')
                                     bio = kiswa.kwk
                                     SendAttachment(SenderID, 'image', img)
                                     if len(bio) > 640:
@@ -576,7 +576,7 @@ Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevy
 Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani''',
                                   '\U000FE4B0 Nyumbani')
                                 elif  'aukot' in UserSays.lower() or 'ekuru' in UserSays.lower():
-                                    run, bio, img = SQL.president_bio('ekuru')
+                                    run, bio, img = SQL.president_bio('%ekuru%')
                                     bio = kiswa.aek
                                     SendAttachment(SenderID, 'image', img)
                                     if len(bio) > 640:
@@ -593,7 +593,7 @@ Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevy
 Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani''',
                                   '\U000FE4B0 Nyumbani')
                                 elif  'justus' in UserSays.lower() or 'zakayo' in UserSays.lower():
-                                    run, bio, img = SQL.president_bio('justus')
+                                    run, bio, img = SQL.president_bio('%justus%')
                                     bio = kiswa.uk
                                     SendAttachment(SenderID, 'image', img)
                                     if len(bio) > 640:
@@ -610,7 +610,7 @@ Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevy
 Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani''',
                                   '\U000FE4B0 Nyumbani')
                                 elif  'peter' in UserSays.lower() or 'solomon' in UserSays.lower() or 'gichira' in UserSays.lower():
-                                    run, bio, img = SQL.president_bio('gichira')
+                                    run, bio, img = SQL.president_bio('%gichira%')
                                     bio = kiswa.psk
                                     SendAttachment(SenderID, 'image', img)
                                     if len(bio) > 640:
@@ -627,7 +627,7 @@ Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevy
 Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevyo bofya kitufe hapo chini kwenda nyumbani''',
                                   '\U000FE4B0 Nyumbani')
                                 elif  'amram' in UserSays.lower() or 'inyambuki' in UserSays.lower():
-                                    run, bio, img = SQL.president_bio(query)
+                                    run, bio, img = SQL.president_bio('%amram%')
                                     bio = kiswa.uk
                                     SendAttachment(SenderID, 'image', img)
                                     if len(bio) > 640:
