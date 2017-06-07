@@ -368,23 +368,14 @@ def StartMessaging():
                         print(msg)
                         SenderID = msg['sender']['id']
                         nme = FindingUser(SenderID)
-                        response = None
-                        print(UserSays)
-                        surveying = False
                         UserSays = ReturnType(msg)
                         Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
                         level = MDB.IncomingLevels(SenderID, UserSays.lower())
                         counties = MDB.IncomingCounties(SenderID, UserSays)
                         county = [c for c in Counties if UserSays.lower() in c.lower()]
                         county = ' '.join(county)
-                        print(county)
                         cands = FindingCandidate(level, UserSays)
-                        print(cands)
-                        #News = MDB.NewsSubscribers(SenderID, UserSays)
-                        #print(Kiswahili)
-                        print(level)
                         racer = DefiningRace(UserSays)
-                        print(racer)
                         Start = 'Hello ' + nme + '! What language do you want to continue in?'
                     
                         if msg.get('message'):
