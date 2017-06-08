@@ -868,17 +868,18 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 'Wagombea useneta',
                                 'Wawakilishi wa wanawake'
                                 )
-                            if Kiswahili is not True and UserSays == 'voters':
+                            if Kiswahili is not True and UserSays == 'req':
                                 SendMessage(SenderID, VoterRequirements )
                                 SendMessage(SenderID, 'Here are some helpful graphics to help you.')
-                                SendAttachment(SenderID, 'video', '')
-                            
                                 SendAttachment(SenderID,'image', 'https://farm5.staticflickr.com/4248/34872766342_a66c0fa485_o_d.jpg')
+                                SendAttachment(SenderID, 'video', 'https://www.youtube.com/watch?v=nQbztjkag1A&t=1')
                                 SendMessage(SenderID, ContinueUsing)
                                 HomeP(SenderID, 'Go back to home, or do you want to say goodbye?', '\U000FE4B0 Home')
-                            if Kiswahili is True and UserSays == 'voters':
+                            if Kiswahili is True and UserSays == 'req':
                                 SendMessage(SenderID, KiswahiliRequirements)
+                                SendMessage(SenderID, 'Hapa ni baadhi ya picha na manufaa ya kukusaidia.')
                                 SendAttachment(SenderID,'image', 'https://farm5.staticflickr.com/4248/34872766342_a66c0fa485_o_d.jpg')
+                                SendAttachment(SenderID, 'video', 'https://www.youtube.com/watch?v=nQbztjkag1A&t=1')
                                 HomeP(SenderID, 'Unataka kurudi mwanzo?', '\U000FE4B0 Mwanzo')
 
 
@@ -1395,7 +1396,7 @@ def GenericTemplateOptions(RecipientID, A, B, C, D, E, F, G, H, I, J, K, L):
                 'buttons' : [
                     {
                         'type' : 'postback',
-                        'payload' : 'voters',
+                        'payload' : 'req',
                         'title' : C
                     },
                     {
