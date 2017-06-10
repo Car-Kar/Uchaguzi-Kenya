@@ -827,7 +827,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
 
                         elif msg.get('postback'): 
 
-                            if UserSays == 'Get Started':
+                            if UserSays == 'start':
                                 ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
 
                             if Kiswahili == True and UserSays == 'survey':
