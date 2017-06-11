@@ -1091,6 +1091,8 @@ def FindingLevel(text):
     if text == 'pres'
         level = 'pres'
         return level
+    else:
+        pass
 
 
 def DefiningRace(name):
