@@ -371,7 +371,7 @@ def StartMessaging():
                         level = None
                         UserSays = ReturnType(msg)
                         Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
-                        level = MDB.IncomingLevels(SenderID, FindingLevel(UserSays.lower()))
+                        level = MDB.IncomingLevels(SenderID, UserSays.lower())
                         counties = MDB.IncomingCounties(SenderID, UserSays)
                         county = [c for c in Counties if UserSays.lower() in c.lower()]
                         county = ' '.join(county)
@@ -1090,8 +1090,21 @@ def FindingLevel(text):
     if text == 'pres':
         level = 'pres'
         return level
-    else:
-        pass
+    if text == 'pres':
+        level = 'pres'
+        return level
+    if text == 'pres':
+        level = 'pres'
+        return level
+    if text == 'pres':
+        level = 'pres'
+        return level
+    if text == 'pres':
+        level = 'pres'
+        return level
+    if text == 'pres':
+        level = 'pres'
+        return level
 
 
 def DefiningRace(name):
