@@ -441,17 +441,13 @@ def StartMessaging():
                                 'County Review'
                                 )
 
-                            if Kiswahili == True and 'mawaidha' in UserSays.lower():
-                                level = None
-                                response = '''Nitakutumia alani ya kukukumbusha siku ya uchaguzi.
-                                Unataka alani ya siku gani?'''
-                                ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
+                            
+
 
                             if level == 'vote' and UserSays.lower() in racer.lower():
                                 MDB.PresidentialRace(racer.capitalize())
                                 SendMessage(SenderID, 'Thank you for voting!')
                                 HomeTemplate(SenderID, 'Do you want to see the results, go back home, or say goodbye?', 'Home', 'Results')
-                        
                         
                         
 
@@ -829,6 +825,17 @@ If you want to know about another candidate, send me his or her name, otherwise 
 
                             if UserSays == 'start':
                                 ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
+                            if Kiswahili is not True and 'reminder' in UserSays.lower():
+                                level = None
+                                response = '''What day would you like to set a reminder for?'''
+                                ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
+
+                            if Kiswahili == True and 'reminder' in UserSays.lower():
+                                level = None
+                                response = '''Nitakutumia alani ya kukukumbusha siku ya uchaguzi.
+                                Unataka alani ya siku gani?'''
+                                ReusableOptions(SenderID, response, 'Wiki moja', 'Siku mbili kabla')
+
 
                             if Kiswahili == True and UserSays == 'survey':
                                 TakeSurvey(SenderID, 'Tafadhali Jibu maswali haya ili - review them.', SurveyUrl, 'SurveyName')
