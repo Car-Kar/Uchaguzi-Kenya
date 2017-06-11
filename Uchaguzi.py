@@ -368,10 +368,9 @@ def StartMessaging():
                         print(msg)
                         SenderID = msg['sender']['id']
                         nme = FindingUser(SenderID)
-                        level = None
                         UserSays = ReturnType(msg)
                         Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
-                        level = MDB.IncomingLevels(SenderID, UserSays.lower())
+                        level = FindingLevel(SenderID, UserSays.lower())
                         counties = MDB.IncomingCounties(SenderID, UserSays)
                         county = [c for c in Counties if UserSays.lower() in c.lower()]
                         county = ' '.join(county)
@@ -1085,7 +1084,14 @@ def ReturnType(msg):
         print(URLText)
     else:
         pass
-    
+  
+def FindingLevel(ID, text):
+    if text = 'gov':
+        level = MDB.IncomingLevels(SenderID, text)
+        return level
+    else:
+        pass
+
 
 def DefiningRace(name):
     candidates = SQL.all_presidential_names()
