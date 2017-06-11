@@ -1088,7 +1088,7 @@ def ReturnType(msg):
         pass
   
 def FindingLevel(text):
-    if text == 'pres'
+    if text == 'pres':
         level = 'pres'
         return level
     else:
