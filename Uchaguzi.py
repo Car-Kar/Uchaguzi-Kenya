@@ -1084,10 +1084,28 @@ def ReturnType(msg):
         print(URLText)
     else:
         pass
-  
+        
 def FindingLevel(ID, text):
     if text == 'gov':
-        level = MDB.IncomingLevels(SenderID, text)
+        level = MDB.IncomingLevels(ID, text)
+        return level
+    if text == 'sen':
+        level = MDB.IncomingLevels(ID, text)
+        return level
+    if text == 'womrep':
+        level = MDB.IncomingLevels(ID, text)
+        return level
+    if text == 'cs':
+        level = MDB.IncomingLevels(ID, text)
+        return level
+    if text == 'survey':
+        level = MDB.IncomingLevels(ID, text)
+        return level
+    if text == 'contact':
+        level = MDB.IncomingLevels(ID, text)
+        return level
+    if text == 'pres':
+        level = MDB.IncomingLevels(ID, text)
         return level
     else:
         pass
