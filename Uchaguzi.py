@@ -738,7 +738,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                     else:
                                         SendMessage(SenderID, bio)
                                         HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
-                                 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
+If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   '\U000FE4B0 Home')
                                 else:
                                     running_mate = 'His running mate is ' + str(run)
