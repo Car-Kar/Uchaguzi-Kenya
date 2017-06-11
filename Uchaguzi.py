@@ -307,7 +307,7 @@ class UsingSQL:
         return result
 
     def senators_bio(self, value1, value2):
-        self.curs.execute("""SELECT political_bio, image FROM senators WHERE UPPER(name) Like  UPPER('%s')&& UPPER(county) Like UPPER('%s') """ % (value1,value2))
+        self.curs.execute("""SELECT political_bio, image FROM senators WHERE UPPER(name) Like  UPPER('%s')&& UPPER(county) Like UPPER('%s') """ % (value1, value2))
         result = self.curs.fetchall()
         for row in result:
             return row[0], row[1]
@@ -323,7 +323,7 @@ class UsingSQL:
         return result
 
     def women_reps_bio(self, value1, value2):
-        self.curs.execute("""SELECT political_bio, image FROM women_reps WHERE UPPER(name) Like  UPPER('%s')&& UPPER(county) Like UPPER('%s') """ % (value1,value2))
+        self.curs.execute("""SELECT political_bio, image FROM women_reps WHERE UPPER(name) Like  UPPER('%s') && UPPER(county) Like UPPER('%s') """ % (value1, value2))
         result = self.curs.fetchall()
         for row in result:
             return row[0], row[1]
@@ -368,12 +368,14 @@ def StartMessaging():
                         print(msg)
                         SenderID = msg['sender']['id']
                         nme = FindingUser(SenderID)
+                        level = None
                         UserSays = ReturnType(msg)
                         Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
                         level = MDB.IncomingLevels(SenderID, UserSays.lower())
                         counties = MDB.IncomingCounties(SenderID, UserSays)
                         county = [c for c in Counties if UserSays.lower() in c.lower()]
                         county = ' '.join(county)
+                        print(level)
                         print(county)
                         cands = FindingCandidate(level, UserSays)
                         racer = DefiningRace(UserSays)
@@ -392,8 +394,7 @@ def StartMessaging():
 
                             
 
-                            if Kiswahili == True and 'swahili' in UserSays.lower():
-                                level = None
+                            if Kiswahili == True and 'swahili' in UserSays.lower() and level == None:
                                 SendMessage(SenderID, KiswahiliIntroduction)
                                 SendMessage(SenderID, KiswahiliIntroduction2)
                                 GenericTemplateOptions(SenderID, 
@@ -452,19 +453,23 @@ def StartMessaging():
                         
 
                             if Kiswahili is not True and 'a week' in UserSays.lower():
+                                level = None
                                 response = 'I will be messaging you a week before the elections as a reminder'
                                 SendMessage(SenderID, response)
                                 Home(SenderID, 'Go back to home?', 'Home')
 
                             if Kiswahili is not True and 'two days' in UserSays.lower():
+                                level = None
                                 response = 'I will be messaging you two days before the elections as a reminder'
                                 SendMessage(SenderID, response)
                                 Home(SenderID, 'Go back to home?', 'Home')
                             if Kiswahili is True and 'siku mbili' in UserSays.lower():
+                                level = None
                                 response = 'Nitakupa alani siku mbili kabla ya uchaguzi.'
                                 SendMessage(SenderID, response)
                                 Home(SenderID, 'Rudi Mwanzo?', 'Mwanzo')
                             if Kiswahili is True and 'wiki' in UserSays.lower():
+                                level = None
                                 response = 'Nitakupa alani wiki moja kabla ya uchaguzi.'
                                 SendMessage(SenderID, response)
                                 Home(SenderID, 'Rudi Mwanzo?', 'Mwanzo')
@@ -688,13 +693,11 @@ Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevy
                                     response = bio + '-'
                                     SendMessage(SenderID, response)
                                     SendMessage(SenderID, bios)
-                                    HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
-                                 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
+                                    HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home? If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   '\U000FE4B0 Home')
                                 else:
                                     SendMessage(SenderID, bio)
-                                    HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home?
-                                 If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
+                                    HomeP(SenderID, ''''Do you want to know about another candidate, or go back to home? If you want to know about another candidate, send me his or her name, otherwise click the button below to go home''',
                                   '\U000FE4B0 Home')
                             elif level == 'womrep' and UserSays.lower() in cands.lower():
                                 query = '%' + UserSays.lower() + '%'
@@ -818,6 +821,11 @@ If you want to know about another candidate, send me his or her name, otherwise 
                             elif Kiswahili is not True and level == 'survey' and UserSays in ys:
                                     print('hehehe')
                                     Home(SenderID, 'Thank you for taking our survey!', '\U000FE4B0 Home')
+                            else:
+                                if Kiswahili is not True:
+                                    SendMessage(SenderID, ApologyMessage)
+                                elif Kiswahili is True:
+                                    SendMessage(SenderID, 'Samahani, unaweza rudia hivyo tena?')
 
                                 
 
@@ -825,15 +833,14 @@ If you want to know about another candidate, send me his or her name, otherwise 
 
                             if UserSays == 'start':
                                 ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
-                            if Kiswahili is not True and 'reminder' in UserSays.lower():
+                            if Kiswahili is not True and 'reminder' in UserSays.lower() and level == None:
                                 level = None
                                 response = '''What day would you like to set a reminder for?'''
                                 ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
 
                             if Kiswahili == True and 'reminder' in UserSays.lower():
                                 level = None
-                                response = '''Nitakutumia alani ya kukukumbusha siku ya uchaguzi.
-                                Unataka alani ya siku gani?'''
+                                response = '''Nitakutumia alani ya kukukumbusha siku ya uchaguzi. Unataka alani ya siku gani?'''
                                 ReusableOptions(SenderID, response, 'Wiki moja', 'Siku mbili kabla')
 
 
