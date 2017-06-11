@@ -702,8 +702,8 @@ Kama unataka kujua kuhusu mgombea mwingine, nitumie yake au jina lake, vinginevy
                                 bio, img = SQL.women_reps_bio(query, county)
                                 bio = str(bio)
                                 print(bio)
-                                SendAttachment(SenderID, 'image', img)
-                                if len(bio) > 640:
+                                if len(bio) > 640 and len(img) > 2:
+                                    SendAttachment(SenderID, 'image', img)
                                     bio, bios = CheckTextLength(bio)
                                     response = bio + '-'
                                     SendMessage(SenderID, response)
