@@ -1086,7 +1086,7 @@ def ReturnType(msg):
         pass
   
 def FindingLevel(ID, text):
-    if text = 'gov':
+    if text == 'gov':
         level = MDB.IncomingLevels(SenderID, text)
         return level
     else:
