@@ -373,7 +373,6 @@ def StartMessaging():
                         Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
                         level = MDB.IncomingLevels(SenderID, FindingLevel(UserSays.lower()))
                         counties = MDB.IncomingCounties(SenderID, UserSays)
-
                         county = [c for c in Counties if UserSays.lower() in c.lower()]
                         county = ' '.join(county)
                         print(level)
@@ -834,7 +833,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
 
                             if UserSays == 'start':
                                 ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
-                            if Kiswahili is not True and 'reminder' in UserSays.lower() and level == None:
+                            if Kiswahili is not True and 'reminder' in UserSays.lower():
                                 level = None
                                 response = '''What day would you like to set a reminder for?'''
                                 ReusableOptions(SenderID, response, 'A Week Before', 'Two Days Before')
