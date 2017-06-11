@@ -821,11 +821,11 @@ If you want to know about another candidate, send me his or her name, otherwise 
                             elif Kiswahili is not True and level == 'survey' and UserSays in ys:
                                     print('hehehe')
                                     Home(SenderID, 'Thank you for taking our survey!', '\U000FE4B0 Home')
-                            else:
+                            '''else:
                                 if Kiswahili is not True:
                                     SendMessage(SenderID, ApologyMessage)
                                 elif Kiswahili is True:
-                                    SendMessage(SenderID, 'Samahani, unaweza rudia hivyo tena?')
+                                    SendMessage(SenderID, 'Samahani, unaweza rudia hivyo tena?')'''
 
                                 
 
