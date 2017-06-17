@@ -208,6 +208,17 @@ class UsingMongo:
         else:
             collection.insert_one({'name' : pres, 'votes': 1})
 
+    def Race(self, county, v):
+        collection = self.DB['presidentialrace']
+        print('Connected to presidents collection!')
+        user =  collection.find_one({'name': county})
+        if user is not None:
+            votes = user['votes']
+            collection.update_one({'name' : county}, {'$set': {'votes': votes + v}})
+            print(votes)
+        else:
+            collection.insert_one({'name' : pres, 'votes': v})
+
     
 
 class UsingSQL:
@@ -371,6 +382,7 @@ def StartMessaging():
                         level = None
                         UserSays = ReturnType(msg)
                         Kiswahili = MDB.IncomingKiswahiliUsers(SenderID, UserSays)
+                        print(Kiswahili)
                         level = MDB.IncomingLevels(SenderID, UserSays.lower())
                         counties = MDB.IncomingCounties(SenderID, UserSays)
                         county = [c for c in Counties if UserSays.lower() in c.lower()]
@@ -385,14 +397,13 @@ def StartMessaging():
                             if 'start' in UserSays.lower() or 'hey' in UserSays.lower() or 'hi' == UserSays.lower() or 'hello' in UserSays.lower():
                                 level = None
                                 ReusableOptions(SenderID, Start, 'Kiswahili', 'English')
+
                             if Kiswahili is not True and level == 'cs' and county.lower() in Counties:
                                     k = county.lower()
                                     print(k)
                                     url = countydict[k]
                                     print(url)
-                                    Voting(SenderID, 'Choose an option below', '\U000FEB0A Take a short survey', url, '\U000FE524 County Contacts')
-
-                            
+                                    Voting(SenderID, 'Choose an option below', '\U000FEB0A Take a short survey', url, '\U000FE524 County Contacts')                           
 
                             if Kiswahili == True and 'swahili' in UserSays.lower() and level == None:
                                 SendMessage(SenderID, KiswahiliIntroduction)
@@ -1013,11 +1024,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                             elif Kiswahili is True and level == 'vote':
                                 SendAttachment(SenderID, 'image', 'https://media.giphy.com/media/RFgY2jhk6xKzS/giphy.gif')
                                 Home(SenderID, 'Kiswahili hakitumiki na hatua hii. Endelea na Kiingereza?', '\U0001F44D Sawa')
-                            
-
-
-
-
+                        
 
 
 
@@ -1300,8 +1307,6 @@ def HomeTemplate(RecipientID, A, B, C):
     r = requests.post('https://graph.facebook.com/v2.9/me/messages/?access_token=' + PAT,  headers=headers, data=data)
     if r.status_code != 200:
         print(r.text)
-
-
 
 def ReusableOptions(RecipientID, Text, op1, op2):
     print(('Sending message to {0}').format(RecipientID))
@@ -1665,7 +1670,7 @@ def FindingUser(ID):
     headers = {
     'Content-Type' : 'application/json'
     }
-    r = requests.get('https://graph.facebook.com/v2.9/' + ID + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + PAT, headers=headers)
+    r = requests.get('https://graph.facebook.com/v2.9/' + ID + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + PAT, headers = headers)
     nm = r.json()
     return nm['first_name']
 
