@@ -1027,6 +1027,7 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 SendAttachment(SenderID, 'image', 'https://media.giphy.com/media/RFgY2jhk6xKzS/giphy.gif')
                                 Home(SenderID, 'Kiswahili hakitumiki na hatua hii. Endelea na Kiingereza?', '\U0001F44D Sawa')
                             elif Kiswahili is True and UserSays.lower() == 'poll':
+                                level = None
                                 SendAttachment(SenderID, 'image', 'https://media.giphy.com/media/RFgY2jhk6xKzS/giphy.gif')
                                 Home(SenderID, 'Kiswahili hakitumiki na hatua hii. Endelea na Kiingereza?', '\U0001F44D Sawa')
                         
