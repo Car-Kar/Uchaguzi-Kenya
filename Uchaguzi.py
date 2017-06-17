@@ -131,7 +131,7 @@ class UsingMongo:
             language = collection.delete_one({'fromuser': FromUser})
             swahili = False
             return swahili
-            
+
         elif user is not None:
             swahili = True
             return swahili
@@ -1024,6 +1024,9 @@ If you want to know about another candidate, send me his or her name, otherwise 
                                 SendAttachment(SenderID, 'image', 'https://media.giphy.com/media/RFgY2jhk6xKzS/giphy.gif')
                                 Home(SenderID, 'Kiswahili hakitumiki na hatua hii. Endelea na Kiingereza?', '\U0001F44D Sawa')
                             elif Kiswahili is True and level == 'vote':
+                                SendAttachment(SenderID, 'image', 'https://media.giphy.com/media/RFgY2jhk6xKzS/giphy.gif')
+                                Home(SenderID, 'Kiswahili hakitumiki na hatua hii. Endelea na Kiingereza?', '\U0001F44D Sawa')
+                            elif Kiswahili is True and UserSays.lower() == 'poll':
                                 SendAttachment(SenderID, 'image', 'https://media.giphy.com/media/RFgY2jhk6xKzS/giphy.gif')
                                 Home(SenderID, 'Kiswahili hakitumiki na hatua hii. Endelea na Kiingereza?', '\U0001F44D Sawa')
                         
