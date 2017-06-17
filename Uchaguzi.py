@@ -131,10 +131,7 @@ class UsingMongo:
             language = collection.delete_one({'fromuser': FromUser})
             swahili = False
             return swahili
-        elif user is not None and 'kiswahili' == data.lower():
-            language = collection.delete_one({'fromuser': FromUser})
-            swahili = False
-            return swahili
+            
         elif user is not None:
             swahili = True
             return swahili
@@ -409,7 +406,8 @@ def StartMessaging():
                                     print(url)
                                     Voting(SenderID, 'Choose an option below', '\U000FEB0A Take a short survey', url, '\U000FE524 County Contacts')                           
 
-                            if Kiswahili == True and 'swahili' in UserSays.lower() and level == None:
+                            if Kiswahili == True and 'swahili' in UserSays.lower():
+                                level == None
                                 SendMessage(SenderID, KiswahiliIntroduction)
                                 SendMessage(SenderID, KiswahiliIntroduction2)
                                 GenericTemplateOptions(SenderID, 
