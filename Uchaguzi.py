@@ -1,20 +1,8 @@
 from flask import Flask, request
 import json
 import requests
-import pymongo
 from pymongo import MongoClient
-from wit import Wit
-import datetime
-from datetime import date
-import os
-import sys
-from datetime import date
-#from apscheduler.scheduler import Scheduler
-import re
 import pymysql
-import sys
-import base64
-from kiswa import *
 
 app = Flask(__name__)
 
@@ -108,7 +96,7 @@ class UsingMongo:
         try:
             client = MongoClient(uri)
             self.DB = client.get_default_database()
-            self.DB.authenticate('MC', 'se*8DGs6t8F*39*k')
+            self.DB.authenticate('', '')
             print('Connection Successful!')
             return self.DB
         
@@ -1693,10 +1681,6 @@ def UsingWit(TEXT):
     except Exception as e:
         raise e
 
-#def Search(url):
-
-#week = sched.add_job(OneWeek, 'date', run_date = datetime(2017, 8, 1, 12, 00))
-#day = sched.add_job(TwoDays, 'date', run_date = datetime(2017, 8, 6, 12, 00))
 
 def Level(text):
     if text in options:
@@ -1897,6 +1881,5 @@ Chama cha Kisiasa -INDEPENDENT CANDIDATE
 Maelezo mengine kuhusu huyu mgombea rais yatapewa kwa muda usiokuwa mrefu.Tafadhali zidi kuangalia kila wakati kwa maelezo Zaidi. 
 
 '''
-
 
 
