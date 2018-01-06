@@ -22,14 +22,8 @@ app = Flask(__name__)
 #sched = Scheduler()
 
 
-PAT = 'EAAarLkMVMy4BAIuCjnu6XEWbgYE7Op70gm04sPLncGlIaFlLIWcjElIyvNRlonkvzOfHoOpVZCJVusCTnUuKQRZBtUmhashmdUReeJJEF2ZAAXc2eX2CGYEKIadq1acDaZBCVJOMqJZCNCpPZA1ADOInfPgq90xlo1ekEBAqn2hAZDZD'
-VerifyToken = '0454'
-WitToken = 'DYIOAENA3VUYMZ2QHFQ6OX3AOZ3P3D3V'
-client = Wit(access_token = WitToken)
-
-SurveyUrl = 'https://m.me/672849446250204/?ref=f258b3c90e014ce15030df0a91a0a322'
-
-
+PAT = ''
+VerifyToken = ''
 
 IntroductoryMessage = ''' The 2017 Kenyan National Elections are taking place in August.
 I am a tool for you to acquire more information on voting and the vying candidates.
@@ -102,7 +96,7 @@ KiswahiliOptions = 'Chagua chaguo kuendelea.'
 ResponseStack = []
 KiswahiliHello = 'Jambo! '
 Kiswahili = False
-uri = 'mongodb://MC:se*8DGs6t8F*39*k@ds149491.mlab.com:49491/uchaguzike'
+
 ys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
 

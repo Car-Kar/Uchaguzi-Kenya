@@ -1,0 +1,7 @@
+{
+  "greeting" : [
+        {
+        "locale" : "default",
+        "text" : "Hello {{user_first_name}}! My name is Uchaguzi, and I provide you with voter and candidate information for the 2017 National Elections."
+        }]
+    }
