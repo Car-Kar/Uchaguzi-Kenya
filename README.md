@@ -14,7 +14,7 @@ Uchaguzi Kenya was originally written during the 2017 Kenyan General Elections a
 ### How to Get Involved.
 
 ### Get in Touch.
-Uchaguzi Kenya is on Facebook.
+Uchaguzi Kenya is on [Facebook](https://www.facebook.com/UchaguziKE/).
 
 
 Contact the developer @namespacewambui on Twitter.
