@@ -15,7 +15,8 @@ Uchaguzi Kenya was originally written during the 2017 Kenyan General Elections a
 Contributing to the project can be through:
 1. Contributing code.  
 The project is written in Python 3. Code contributions should therefore use Python 3.
-2. Researchers.
+2. Researchers and Content Contributors.
+As the project expands its scope, research in new and existing topics is required for the project. Researchers interested in political and social issues should definitely get in contact for contribution.
 
 
 ### Get in Touch.
