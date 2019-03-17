@@ -52,7 +52,7 @@ A webhook is the interface through which the bot receives, processes, sends mess
 
 4. Creating a Facebook App and Connecting it to the Webhook.  
 A Facebook App is the interface between the created webhook and the respective Facebook page. The App is responsible for generating authentication tokens and configuring settings for the Messenger bot. A Facebook App can be created on your developer page [here](https://developers.facebook.com/apps). The App set up can be done following the steps in the official documentation [here](https://developers.facebook.com/docs/messenger-platform/getting-started/app-setup).
-The page access token generated in the guide can be configured as an environment variable (in UNIX environments) or passed as a command line argument in the running of the app. This will be described in the following sections.
+The page access token generated and verify token in the guide can be configured as an environment variable (in UNIX environments) or passed as a command line argument in the running of the app. This will be described in the following sections.
 
 5. Develop against a feature and submit a pull request.  
 After the above successfull set up, you can now contribute by developing a feature or fixing a bug in the project. Features and bugs are usually listed in the [issues](https://github.com/wambu-i/Jumuiya/issues) pages of the project. After development you can submit a [pull](https://help.github.com/en/articles/about-pull-requests) request for review and merging of code.
@@ -74,4 +74,6 @@ When using the Heroku CLI, login into your Heroku account and connect it to your
 `heroku login`
 
 `heroku git:remote -a <heroku-app-name>`
+
+Use the page access token generated from the Facebook App as an environment variable:
 
