@@ -10,8 +10,8 @@ app = Flask(__name__)
 #sched = Scheduler()
 
 
-PAT = ''
-VerifyToken = ''
+PAT = 'EAAarLkMVMy4BAMKvoGqRqod35PTLNIh6NHjVjKBOiqL3jnVAjBXfwPvXpA5WMJQsstY3VePK8J7jEuGt7ifXC8R0QwvYs05oGRk4JnghiIB2xmZCbsDoLphimTk6vEwe4aYCYTlpBFxIpbZBVSdJGZCl4ZCELZBLiHzhYFJDipQZDZD'
+VerifyToken = 'jumuiya-ke'
 
 IntroductoryMessage = ''' The 2017 Kenyan National Elections are taking place in August.
 I am a tool for you to acquire more information on voting and the vying candidates.
