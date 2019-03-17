@@ -48,7 +48,7 @@ The Facebook page will provide the identity and entry point of the bot. A Facebo
 A Facebook developers account will provide various tools for development agains the Facebook/Messenger APIs. A developer account can be created [here](https://developers.facebook.com/). A developer account is usually linked to your normal Facebook account.
 
 3. Setting up a web server for webhooks.
-A webhook is the interface through which the bot receives, processes, sends messages and generally interacts with the Messenger API. The webhook is also used for verification and should therefore be hosted publicly with HTTPS support. The server can be on Heroku, AWS, or using tunnel clients such as [ngrok](https://ngrok.com/). The original project uses a Heroku instance for the webhook. Using Heroku for the webserver is described here while using ngrok is described here.
+A webhook is the interface through which the bot receives, processes, sends messages and generally interacts with the Messenger API. The webhook is also used for verification and should therefore be hosted publicly with HTTPS support. The server can be on Heroku, AWS, or using tunnel clients such as [ngrok](https://ngrok.com/). The original project uses a Heroku instance for the webhook. Using Heroku for the webserver is described [here](#hosting-a-webserver-with-Heroku) while using ngrok is described here.
 
 4. Creating a Facebook App and Connecting it to the Webhook.  
 A Facebook App is the interface between the created webhook and the respective Facebook page. The App is responsible for generating authentication tokens and configuring settings for the Messenger bot. A Facebook App can be created on your developer page [here](https://developers.facebook.com/apps). The App set up can be done following the steps in the official documentation [here](https://developers.facebook.com/docs/messenger-platform/getting-started/app-setup).
@@ -74,3 +74,4 @@ When using the Heroku CLI, login into your Heroku account and connect it to your
 `heroku login`
 
 `heroku git:remote -a <heroku-app-name>`
+
