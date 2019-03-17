@@ -1,17 +1,18 @@
 from flask import Flask, request
 import json
 import requests
-
+import os
 from . import bot
 
 
 
 PAT = 'EAAarLkMVMy4BAMKvoGqRqod35PTLNIh6NHjVjKBOiqL3jnVAjBXfwPvXpA5WMJQsstY3VePK8J7jEuGt7ifXC8R0QwvYs05oGRk4JnghiIB2xmZCbsDoLphimTk6vEwe4aYCYTlpBFxIpbZBVSdJGZCl4ZCELZBLiHzhYFJDipQZDZD'
-VerifyToken = 'jumuiya-ke'
+
+verify_token = os.environ.get('VERIFY_TOKEN', None)
 
 @bot.route('/', methods=['GET'])
 def verification():
-  if request.args.get('hub.verify_token', '') == VerifyToken:
+  if request.args.get('hub.verify_token', '') == verify_token:
     print("Verification successful!")
     return request.args.get('hub.challenge', '')
   else:
