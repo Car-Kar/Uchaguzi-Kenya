@@ -16,7 +16,7 @@ def verification():
         else:
             print("Verification failed!")
             return 'Error, wrong validation token'
-    else
+    else:
         return "Could not get verification tokens."
 
 
