@@ -2,19 +2,14 @@
 #include <iostream>
 
 int main() {
-    class noop_logger : public mongocxx::logger {
-       public:
-        virtual void operator()(mongocxx::log_level,
-                                bsoncxx::stdx::string_view,
-                                bsoncxx::stdx::string_view) noexcept {}
-    };
-    const std::string path = "mongodb+srv://root:h#1kiJivP1Gd@jumuiya-fq7b8.mongodb.net/test?retryWrites=true";
+    const char *path = std::getenv("MONGO_DB");
     auto location = mongocxx::uri{path};
-    auto instance =  bsoncxx::stdx::make_unique<mongocxx::instance>(bsoncxx::stdx::make_unique<noop_logger>());
+    std::string db_name = "articles";
+    std::string coll_name = "submitted";
+
     Database &inst = Database::get_instance();
-    /* inst.configure(std::move(instance), bsoncxx::stdx::make_unique<mongocxx::pool>(std::move(location))); */
+
     inst.create_instance(std::move(location));
-    /* db->connect(path); */
-    inst.sanity();
+    auto client = inst.create_new_collection(&db_name, &coll_name);
     return 0;
 }
