@@ -1,8 +1,7 @@
-%module database
+%module interface
 %{
-    #include "database.hpp"
+    #include "/usr/local/include/libmongoc-1.0/mongoc.h"
+    #include "database.h"
 %}
 
-%include "database.hpp"
-
-%import "mongocxx::logger"
+%include "database.h"

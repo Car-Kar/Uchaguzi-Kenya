@@ -1,35 +1,38 @@
-CXX:=g++
+CC:=gcc
+LD:=ld
 
 GEN_OUTPUT:=database
 SWIG_OUTPUT:=interface
-OBJECTS:=database.cpp main.cpp
+OBJECTS:=database.c
 INTERFACE:=database.i
-CXXSRCS:=database.cpp
 
 LOCATION:=$(shell pwd)
-CXXFLAGS:=-g -std=c++11  -Wall -Wextra -fPIC
+CFLAGS:=-g -Wall -Wextra -fPIC
 LIBRARY_PATH:=-L/usr/local/lib/
-INCLUDE:=-I/usr/local/include/mongocxx/v_noabi \
-		-I/usr/local/include/bsoncxx/v_noabi \
+INCLUDE:=-I/usr/local/include/libbson-1.0 -I/usr/local/include/libmongoc-1.0 \
 		-I$(LOCATION)
 
+
 PYTHON_INCLUDE:=-I/usr/include/python3.6/
-LIBRARIES:=-lmongocxx -lbsoncxx
+LIBRARIES:=-lmongoc-1.0 -lbson-1.0
 LDFLAGS:=-Wl,-rpath,/usr/local/lib/
 
-COMPILE:=$(CXX) $(CXXFLAGS) $(INCLUDE)
+COMPILE:=$(CC) $(CXXFLAGS) $(INCLUDE)
 
 all: $(GEN_OUTPUT) $(SWIG_OUTPUT)
 
 $(GEN_OUTPUT): $(OBJECTS)
 	$(COMPILE) -o $@ $^ $(LIBRARIES) $(LIBRARY_PATH) $(LDFLAGS)
 
-%.o: %.cpp
+%.o: %.c
 	$(COMPILE) -c $< -o $@
 
 $(SWIG_OUTPUT):
-	g++ -fPIC -c $(INCLUDE) $(PYTHON_INCLUDE) database.cpp -o database.o
-	swig -c++ -python -o database.o database.i 
+	#swig -c++ -python database.i
+	swig -python $(INTERFACE)
+	$(CC) $(CFLAGS) -c $(INCLUDE) $(OBJECTS) -o database.o
+	$(CC) $(CFLAGS) -c $(INCLUDE) $(PYTHON_INCLUDE) database_wrap.c -o database_wrap.o
+	$(LD) -shared database.o database_wrap.o -o _interface.so $(LIBRARIES) $(LIBRARY_PATH)
 
 clean:
-	rm -f *.o *.out database
+	rm -f *.o *.so *.out database interface
