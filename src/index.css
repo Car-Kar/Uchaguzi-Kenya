@@ -1,0 +1,302 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+html {
+  background: #ffffff
+}
+
+* {
+-webkit-box-sizing: border-box;
+        box-sizing: border-box;
+}
+
+
+.content {
+  margin: 80px 20px 20px 20px;
+  background: #ffffff;
+}
+
+section button {
+  margin: 3px 10px;
+  padding: 10px;
+  height: 40px
+}
+
+button#save {
+  background: #025A90;
+  color: white;
+  border: 1px solid #025A90
+
+}
+button#show:hover,
+button#save:hover {
+  background: #336633;
+  color: white;
+  border: 1px solid #336633;
+}
+
+button#solved {
+  background: #336633;
+  color: white;
+  border: 1px solid #336633;
+}
+
+#solve .btn.btn-default {
+  float: right;
+  background: #101010;
+  color: white;
+  margin: 5px;
+  border-radius: 0;
+  padding: 5px 15px;
+  border: 1px solid #101010;
+}
+#solve .btn.btn-default:hover {
+  background: #336633;
+  border: 1px solid #336633;
+}
+
+button#solve {
+  background: #708ba7;
+  color: white;
+  border-color: #708ba7;
+}
+
+header, footer {
+  background: #040430;
+  min-width: 100%;
+  margin: 0;
+}
+header {
+  top: 0;
+  left:0;
+  right:0;
+  position: fixed;
+  height: 60px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2)
+}
+footer {
+  /* height: 70px; */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 0 40px;
+  color: #fff;
+  margin-top: 30px;
+}
+.container {
+  margin: 0;
+  min-width: 100%;
+  max-width: 100%;
+  padding: 0;
+}
+
+
+header p {
+  color: #ffffff;
+  font-size: 25px;
+  margin: 15px;
+}
+header a {
+  color: #9d9d9d;
+}
+
+nav#nav {
+  position: absolute;
+  top: 20px;
+  left: 150px;
+}
+
+header a {
+  font-size: 20px;
+  padding : 15px;
+  margin: 5px
+}
+
+ul {
+  display: block;
+}
+
+li {
+  display: inline-block;
+}
+
+a {
+  text-decoration: none;
+}
+
+header a:hover {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+
+h4.greeting {
+  text-align: center;
+  position: relative;
+}
+
+h4.greeting::after {
+  display: block;
+  content: "";
+  width: 85%;
+  color: black;
+  height: 3px;
+  background: #9d9d9d;
+  position: absolute;
+  top: 25px;
+  left: 7%;
+}
+
+header a:active {
+  color: #ffffff;
+}
+
+
+form#solution {
+  display: grid;
+}
+
+pre {
+  font-size: 11px;
+}
+
+textarea {
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 400px;
+  max-height: 500px;
+  border: 1px solid #ccc;
+}
+
+div#solve > h4 {
+  text-align: center;
+}
+
+div#solve input[type="submit"] {
+  margin: 10px 0;
+  background: #101010;
+  color: white;
+  border: 2px solid #101010;
+  padding: 3px;
+}
+
+div#solve input[type="submit"]:hover {
+  margin: 10px 0;
+  background: green;
+  color: white;
+  border: 2px solid green;
+  padding: 3px;
+}
+
+a:focus,
+a:hover {
+  outline: none;
+  outline: none;
+  outline-offset: unset;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+
+* {
+-webkit-box-sizing: border-box;
+       box-sizing: border-box;
+}
+*:before,
+*:after {
+-webkit-box-sizing: border-box;
+       box-sizing: border-box;
+}
+html,
+body {
+height: 100%;
+position: relative;
+}
+
+.push {
+  height: 60px;
+}
+
+
+
+* {
+margin: 0;
+}
+div#root {
+  height: 100%;
+}
+/*
+.wrapper {
+  min-height: 100%;
+}
+
+.router {
+  min-height: 100%;
+}
+
+.push {
+  height: 100%;
+}*/
+
+a#media {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+
+
+section.solution h4 {
+  text-align: center;
+}
+
+.solution.tile {
+  height: 100px;
+  margin: 10px;
+  padding:  0 10px;
+  background: gray;
+}
+
+
+section.unsolved.tile {
+  text-align: center;
+}
+
+.challenges h4,
+.challenges h5 {
+  text-align: center;
+  margin: 25px;
+}
+
+span a:hover {
+  color: #337ab7
+}
+
+section {
+  max-height: 150px;
+  height: auto;
+  margin-top: 15px;
+  padding: 13px;
+  background: #f5f5f5;
+  margin-right: 10px;
+  margin-left: 1px;
+  border: 2px solid #000;
+}
+.fb-login-button.fb_iframe_widget {
+  position: absolute;
+  left: 40%;
+  top: 45%;
+}
