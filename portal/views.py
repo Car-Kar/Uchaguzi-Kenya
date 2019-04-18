@@ -1,7 +1,7 @@
 from . import portal
-from utilities import response
+from utilities import response, load_file
 from flask import request, jsonify
-
+from flask import current_app as app
 
 """
 Two routes - 
@@ -13,6 +13,7 @@ Two routes -
 def submit_request():
     article =request.get_json()['title']
     print(article)
+    print(load_file(app.config.get('private_key')))
     result = {
         'result' : 'Successfully made article request!'
     }
