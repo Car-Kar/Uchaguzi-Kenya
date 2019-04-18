@@ -1,31 +1,26 @@
 import React from 'react';
 import {
-  Link
+Link
 } from 'react-router-dom'
 
 
 class Header extends React.Component{
-  constructor(props){
-    super(props);
-    this.openPage = this.openPage.bind(this)
-  }
-  openPage(url){
-    window.open(url, '_blank')
-  }
   render() {
     return (
       <header>
-      <p>Challenge Us</p>
-      <br />
-      <nav id = 'nav'>
-      <ul>
-        <li><Link to = '/all'>All</Link></li>
-        <li><Link to = '/solved'>Solved</Link></li>
-        <li><Link to = '/unsolved'>Unsolved</Link></li>
-     </ul>
-    </nav>
-  </header>
-  )
+        <nav className = 'navbar navbar-default navbar-expand-lg navbar-dark navbar-fixed-top' id = 'nav'>
+        <a className = "navbar-brand" href="#">Jumuiya</a>
+        <br />
+          <div className = "collapse navbar-collapse" id = "myNavbar">
+            <ul className = "nav navbar-nav ml-auto">
+              <li><Link to = '/contributors'>Contributors</Link></li>
+              <li><Link to = '/get-involved'>Get Involved</Link></li>
+              <li><Link to = '/portal'>Portal</Link></li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+    )
   }
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './header';
 import Footer from './footer';
-/* import Content from './content.js' */
+import Content from './content.js'
 
 
 class Main extends React.Component{ 
@@ -10,7 +10,7 @@ class Main extends React.Component{
 		<div className = 'wrapper'>
 			<div className = 'content'>
 				<Header />
-				{/* <Content /> */}
+				<Content />
 				<Footer />
 			</div>
 		</div>
