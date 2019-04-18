@@ -5,7 +5,7 @@ import Portal from './portal';
 class Content extends React.Component {
 	render() {
 		return (
-			<div className = 'router'>
+			<div className = 'router container-fluid'>
                 <Switch>
                     {/* <Route exact path = '/login' render = {() => (cookies.get('accessToken') ? ( <UserChallenges />) :  (<Login />) )} />
                     <PrivateRoute exact path = '/' component = {UserChallenges}/>

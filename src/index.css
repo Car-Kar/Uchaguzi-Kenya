@@ -90,16 +90,14 @@ div#media ul {
 #media li {
   margin:0 1.5em;
   background: rgba(0,0,0, 0.4);
-  height: 40px;
-  width: 40px;
+  width: 50px;
+  height: 50px;
   text-align: center;
   border-radius: 50%;
   padding: 1%;
 }
 
 #media li a {
-  width: 60px;
-  height: 60px;
   color:#ffffff;
   text-align: center;
 }
@@ -114,4 +112,42 @@ footer #media li a:hover {
 
 footer #credits {
   margin: 10px 0 0 0;
+}
+
+footer i.fab {
+  font-size: 1.5em;
+}
+
+#resource.form-control {
+  text-align: center;
+}
+
+.container-fluid {
+  padding: 10rem 5rem;
+  margin: 10px 0;
+}
+
+#portal.text-center p {
+  font-size: 1.25em;
+  margin: 5px 0;
+}
+
+#portal.text-center h1::after {
+  content: "";
+  display: block;
+  width: auto;
+  border: 1px solid #dddbec;
+  margin: 10px 0;
+}
+
+form.form-inline {
+  display: inline-block;
+  margin: 2.5rem 0;
+}
+
+button.submit {
+  background: #040430;
+  border-radius: 0;
+  border: 1px solid #040430;
+  margin: 0 5px;
 }
