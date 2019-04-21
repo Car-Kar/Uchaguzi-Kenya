@@ -1,7 +1,10 @@
+asn1crypto==0.24.0
 beautifulsoup4==4.7.1
 certifi==2019.3.9
+cffi==1.12.2
 chardet==3.0.4
 Click==7.0
+cryptography==2.6.1
 Flask==1.0.2
 Flask-Cors==3.0.7
 gunicorn==19.9.0
@@ -10,6 +13,8 @@ itsdangerous==1.1.0
 Jinja2==2.10
 MarkupSafe==1.1.1
 olefile==0.46
+pycparser==2.19
+PyJWT==1.7.1
 requests==2.21.0
 six==1.12.0
 soupsieve==1.8

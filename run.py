@@ -1,3 +1,4 @@
+import sys
 from bot import bot
 from portal import portal
 from flask import Flask
@@ -11,7 +12,8 @@ def setup():
 
     return application
 
-app = setup()
 
 if __name__ == '__main__':
-	app.run()
+    app = setup()
+    app.config['private_key'] = sys.argv[1]
+    app.run(port=5000, debug = True)
