@@ -36,7 +36,7 @@ header {
 }
 footer {
   /* height: 70px; */
-  position: absolute;
+  position: relative;
   bottom: 0;
   left: 0;
   right: 0;
@@ -65,7 +65,7 @@ ul {
   display: block;
 }
 
-li {
+footer li {
   display: inline-block;
 }
 
@@ -94,7 +94,7 @@ div#media ul {
   height: 50px;
   text-align: center;
   border-radius: 50%;
-  padding: 1%;
+  padding: 1.3%;
 }
 
 #media li a {
@@ -123,8 +123,8 @@ footer i.fab {
 }
 
 .container-fluid {
-  padding: 10rem 5rem;
-  margin: 10px 0;
+    padding: 10rem 5rem 3rem 5rem;
+    margin: 10px 0;
 }
 
 #portal.text-center p {
@@ -150,4 +150,8 @@ button.submit {
   border-radius: 0;
   border: 1px solid #040430;
   margin: 0 5px;
+}
+
+div#pitch {
+  font-size: 1.25em;
 }

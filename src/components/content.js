@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch} from 'react-router-dom';
 import Portal from './portal';
+import Pitch from './pitch'
 
 class Content extends React.Component {
 	render() {
@@ -14,6 +15,7 @@ class Content extends React.Component {
                     <PrivateRoute exact path = '/solved' component = {AllSolved}/>
                     <PrivateRoute exact path = '/unsolved' component = {Unsolved}/> */}
                     <Route exact path = '/portal' component = {Portal} />
+                    <Route exact path = '/' component = { Pitch} />
                 </Switch>
 			</div>
 			)
